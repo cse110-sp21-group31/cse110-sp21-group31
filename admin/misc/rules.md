@@ -7,4 +7,5 @@ Rules:
 - If someone breaks the rules, discuss with the team, and TA if needed. 
 
 Signed by: _____
+
 Date: mm/dd/yyyy
