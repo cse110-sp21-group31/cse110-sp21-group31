@@ -1,4 +1,5 @@
-Rules: 
+# Rules
+
 - Communication between roles
 - Only have necessary meetings
 - Give a warning about absence a day in advance
@@ -8,4 +9,4 @@ Rules:
 
 Signed by: _____
 
-Date: mm/dd/yyyy
+Date: 04/12/2021
