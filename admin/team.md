@@ -1,6 +1,8 @@
 # Team 31 Page
 
-## Team Name: 2^2 + 3^3
+## Team Name: 2<sup>2</sup> + 3<sup>3<sup>
+
+<img src="branding/logo.png" width=128 height=128>
 
 ## Roster:
 - Artyom Muradyan
