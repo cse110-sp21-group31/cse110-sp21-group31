@@ -49,6 +49,13 @@
 - No application that combines a daily and long-term task list with features like trackers and journaling
     - Utilize photos, videos, and recordings
 
+## Scope
+
+- Time for the project: 4 Weeks
+- We are limiting to solving the problem identified for college students (at UCSD) only
+- We will prioritizing finishing daily logs, calendar view, and the ability to insert audio/images first
+- Any extra features will be optional to add if time permits, but they will not be a priority
+
 ## Our Solution
 
 - Index / Home Page
@@ -85,13 +92,6 @@
 ## Flowchart
 
 FLOWCHART GOES HERE - TBD
-
-## Scope
-
-- Time for the project: 4 Weeks
-- We are limiting to solving the problem identified for college students (at UCSD) only
-- We will prioritizing finishing daily logs, calendar view, and the ability to insert audio/images first
-- Any extra features will be optional to add if time permits, but they will not be a priority
 
 ## Risks/Rabbit Holes
 
