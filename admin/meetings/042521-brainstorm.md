@@ -6,7 +6,7 @@
 2. Begin User Personas
 
 ### Attendance: 
-- Artyom Muradyan
+- Artyom Muradyan (note taker)
 - Harshil Panchal
 - Bryce Tsuyuki
 - Allison Ngo

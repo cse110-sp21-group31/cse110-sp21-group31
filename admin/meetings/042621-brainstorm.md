@@ -9,7 +9,7 @@
 ### Attendance: 
 - Artyom Muradyan
 - Bryce Tsuyuki
-- Allison Ngo
+- Allison Ngo (note taker)
 - Aryan Pareek
 - Minsung Kang 
 - Victor Chen

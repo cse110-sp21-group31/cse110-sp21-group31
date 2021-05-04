@@ -7,7 +7,7 @@
 3. Brief brainstorming about Bullet Journal 
 
 ### Attendance: 
-- Artyom Muradyan
+- Artyom Muradyan (note taker)
 - Victor Chen
 - Harshil Panchal
 - Bryce Tsuyuki

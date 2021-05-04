@@ -10,7 +10,7 @@
 6. Team Bonding Event
 
 ### Attendance: 
-- Artyom Muradyan
+- Artyom Muradyan (note taker)
 - Victor Chen
 - Harshil Panchal
 - Bryce Tsuyuki
