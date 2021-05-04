@@ -15,7 +15,8 @@
 - Due to the pandemic, school is online
     - Screen time is 6-7 hours
 - Technology and software:
-    - Mainly uses Laptop, Phone, and Tablet
+    - Mainly uses Laptop and Tablet for classes
+    - Phone for social media
     - Uses Chrome, Canvas, and Google Drive
 
 ### Lisa
@@ -25,7 +26,9 @@
 - 35 years old
 - Project manager for a S&P 500 company
 - Wants to organize work for her team and herself, to deliver projects on time
-- Primarily uses her laptop
+- Technology and software
+    - Primarily uses her laptop
+    - Uses phone for social media and communication
 
 ### Jon
 
@@ -39,6 +42,7 @@
 
 ## Problem (Statement of Purpose)
 
+- Target struggling college students who need to organize their life
 - There is not a quick and easy way to organize your life digitally?
 - Help with the uncertainty brought by the pandemic and online education
     - Online education can require more organization and planning
@@ -52,7 +56,7 @@
     - Tasks / Events / Notes
 - Weekly View
     - Includes lectures and assignments (recurring option available)
-    - Synchronized with Daily Log 
+    - Synchronized with Daily Log
 - Calendar View
     - Keeps track of all events & tasks from Daily Log
 - Filtering System
@@ -70,12 +74,13 @@
     - Has a sliding menu for accessing logs
     - Logo leads to the home page
 - 3 Main panels
-    - Central Panel for notes/tasks/events
+    - Central Panel for notes/tasks/events (NTE)
     - Pinned left and right panels
         - Can be used for pictures, videos, audio
 - Bottom bar
-    - Add a new
-    - Attach media
+    - Add a new NTE to the daily log
+    - Select or create tags for the NTE
+    - Attach media to the day or side panels
 
 ## Flowchart
 
