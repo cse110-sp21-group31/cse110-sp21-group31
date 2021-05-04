@@ -91,7 +91,7 @@
 
 ## Flowchart
 
-FLOWCHART GOES HERE - TBD
+![Flowchart](flowchart.drawio.png)
 
 ## Risks/Rabbit Holes
 
