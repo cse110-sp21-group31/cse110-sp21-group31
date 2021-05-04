@@ -35,9 +35,10 @@
 ![Jon](images/jon.png)
 
 - 27 years old
-- Fitness trainer
+- Fitness trainer for celebrities
 - Hard to track multiple clients' fitness progress and goals
-- Primarily uses phone
+- Technology and software
+    - Primarily uses phone for tracking customers' needs
     - Fitness/health tracker apps (MyFitnessPal, Fitbit)
 
 ## Problem (Statement of Purpose)
@@ -91,7 +92,7 @@
 
 ## Flowchart
 
-FLOWCHART GOES HERE - TBD
+![Flowchart](flowchart.drawio.png)
 
 ## Risks/Rabbit Holes
 
