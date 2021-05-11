@@ -1,5 +1,9 @@
 # How and where to store data
 
+* Status: [accepted]
+* Deciders: [entire team]
+* Date: [2021-05-10]
+
 ## Context and Problem Statement
 
 Since our bullet journal will have to store text, images, and audio clips, we need a place to store those things. Where and how will we store them?
@@ -11,7 +15,16 @@ Since our bullet journal will have to store text, images, and audio clips, we ne
 
 ## Decision Outcome
 
-Chosen option: Local storage, since it would be easier to implement and we don't need to store the actual images and audio clips, just the links to them.
+Chosen option: Local storage
+
+### Positive Consequences 
+
+* Easier to implement, given the amount of time left
+
+### Negative Consequences
+
+* Limited in size
+* However, we only need to store links to images and audio clips, thus not a considerable problem
 
 ## Pros and Cons of the Options
 
