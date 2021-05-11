@@ -1,6 +1,6 @@
 # DevOps Pipeline
 
-* Status: Proposed
+* Status: Accepted
 * Deciders: Bryce Tsuyuki, Artyom Mudaryan, Allison Ngo, Jonathan Deguzman, Harshil Panchal, Victor Chen
 * Date: 2021-05-10
 
