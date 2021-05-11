@@ -129,3 +129,4 @@ We need a CI/CD pipeline to automate our build process, to automate deploys of o
 ### [JSDoc](https://jsdoc.app/)
 
 * Good, we can generate documentation automatically alongside code
+* Good, similar to javadoc in idea
