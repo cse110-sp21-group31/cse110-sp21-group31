@@ -2,6 +2,8 @@
 
 ## [Google Slides Version](https://docs.google.com/presentation/d/1LN0QaDYnQGybovSRNXuex7BkuSn9WxUcT-Q5lRLusqs/edit?usp=sharing)
 
+## [PDF File](CSE%20110%20Team%2031%20Pitch.pdf)
+
 ## User Personas
 
 ### Liam
@@ -54,7 +56,7 @@
 
 - Time for the project: 4 Weeks
 - We are limiting to solving the problem identified for college students (at UCSD) only
-- We will prioritizing finishing daily logs, calendar view, and the ability to insert audio/images first
+- We will prioritizing finishing daily logs, and the ability to insert audio/images first
 - Any extra features will be optional to add if time permits, but they will not be a priority
 
 ## Our Solution
@@ -65,11 +67,9 @@
 - Weekly View
     - Includes lectures and assignments (recurring option available)
     - Synchronized with Daily Log
-- Calendar View
-    - Keeps track of all events & tasks from Daily Log
 - Filtering System
     - By priority, tags (emojis), colors, finished tasks, etc.
-    - For Weekly and Calendar View
+    - For Weekly View
 - Digital media
     - Images, Audio, Video, Embedded Links
     - Add to any task, note or event
@@ -94,16 +94,31 @@
 
 ![Flowchart](flowchart.drawio.png)
 
+## Backend Design / Data Storage
+
+- Store data on local storage
+    - About 5 MB storage
+- Decided against backend and authentication system
+    - Provides privacy for our users as data is not stored on the cloud
+    - In interest of time for development
+- For media like images, videos, and audio
+    - Instruct users to upload their files to a hosting service (Imgur, YouTube, etc.)
+    - Embed these links into the bullet journal
+    - Solves the limited storage issue
+
 ## Risks/Rabbit Holes
 
 - Having too many features --- unnecessary complication of the user interface
 - Avoid creating too many different logs or interface views
+- Focusing on making base features first
+    - Daily Log > Weekly View > anything else
 - Bugs to Avoid
     - Empty tasks
     - Editing and Deleting tasks and notes
     - Synchronization between different views (logs, index, etc.)
+    - Broken media upload
 
 ## No-Gos
 
 - Future Log
-    - This is already covered by the calendar
+- Calendar View
