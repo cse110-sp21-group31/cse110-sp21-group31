@@ -23,7 +23,7 @@
   - Log and index will be light blue
   - Notepad and media will be light yellow
   - Agreed on this simple color pallete for organization and visual appearance purposes
-- Tag Colors:
+- Tag colors
   - Rainbow color scheme (distinct color for each tag)
 
 ### 2. Hi-Fi Prototype Updates
