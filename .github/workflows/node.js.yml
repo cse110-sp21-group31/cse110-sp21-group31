@@ -20,7 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
       - run: npm install
         working-directory: ./source
       - run: npm run lint
@@ -31,7 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
       - run: npm install
         working-directory: ./source
       - run: npm run test
@@ -42,7 +40,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
       - run: npm install
         working-directory: ./source
       - run: npm run docs
