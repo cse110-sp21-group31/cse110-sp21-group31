@@ -2,6 +2,8 @@ let a = 1;
 
 let doubleQuotes = 'asdf'; // this text was originally with double quotes
 
+let something = 'string';
+
 function sample(arg1, arg2) {
     a = arg1;
     doubleQuotes = arg2;
