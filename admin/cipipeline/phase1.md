@@ -24,9 +24,11 @@ Our plans for the future of our automated documentation generation include hosti
 
 We were hoping to do code quality testing using something like Code Climate or Codacy, but the main issue that we ran into was that these are paid products for private repositories. So we decided to focus on the other aspects of the CI/CD pipeline for now and come back to it later once we  have a way to do free automated code quality review.
 
-## Push or Pull Requests
+## Human PR Review
 
 Once a push or pull request runs through each of the 3 stages of the build pipeline on GitHub, it needs to be approved by a team member before being merged into the main branch.
+
+We were hoping to require pull request review before merging into the `main` branch. However, branch protection is a paid feature for private repositories such as ours, so we were unable to implement it. We will simply be relying on an honor system among the team, and we hope that it will be sufficient.
 
 ## Diagram of our current pipeline
 
