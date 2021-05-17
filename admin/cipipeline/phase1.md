@@ -15,4 +15,4 @@ Automated documentation generation is set up using JSDoc.
 Once a push or pull request runs through each of the 3 stages of the build pipeline on Github, it needs to be approved by a team member before being merged into the main branch.
 
 ## Diagram of our current pipeline
-![Diagram of our Pipeline](/admin/cipipeline/phase1.png.png)
+![Diagram of our Pipeline](/admin/cipipeline/phase1.png)
