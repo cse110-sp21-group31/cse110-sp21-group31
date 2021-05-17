@@ -21,6 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - run: npm install
+        working-directory: ./source
       - run: npm run lint
         working-directory: ./source
   test:
@@ -30,6 +32,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - run: npm install
+        working-directory: ./source
       - run: npm run test
         working-directory: ./source
   gen_docs:
@@ -39,5 +43,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
+      - run: npm install
+        working-directory: ./source
       - run: npm run docs
         working-directory: ./source
