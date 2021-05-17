@@ -17,27 +17,24 @@ on:
 jobs:
   lint:
     name: ESLint Linting - Airbnb
-    runs-on: ubuntu-latest
-    env:
-      working-directory: ./source
+    runs-on: ubuntu-latest\
     steps:
       - uses: actions/checkout@v2
       - run: npm run lint
+        working-directory: ./source
   test:
     name: Jest Tests
     needs: lint
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./source
     steps:
       - uses: actions/checkout@v2
       - run: npm run test
+        working-directory: ./source
   gen_docs:
     name: JSDoc Documentation
     needs: [lint, test]
     runs-on: ubuntu-latest
-    env:
-      working-directory: ./source
     steps:
       - uses: actions/checkout@v2
       - run: npm run docs
+        working-directory: ./source
