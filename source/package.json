@@ -4,7 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "test": "jest"
+        "lint": "eslint . --ext .js",
+        "test": "jest",
+        "docs": "jsdoc -c jsdocConf.json *.js"
     },
     "keywords": [],
     "author": "",
