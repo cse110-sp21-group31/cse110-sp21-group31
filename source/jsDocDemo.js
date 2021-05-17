@@ -8,4 +8,4 @@ function returnStudentInfo(name, major, gpa) {
     return `${name} ${major} ${gpa}`;
 }
 
-printStudentInfo('Johnny Jenkins', 'Computer Science', 3.75);
+returnStudentInfo('Johnny Jenkins', 'Computer Science', 3.75);
