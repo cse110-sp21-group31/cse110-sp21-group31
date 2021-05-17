@@ -4,9 +4,9 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "lint": "eslint . --ext .js",
-        "test": "jest",
-        "docs": "jsdoc -c jsdocConf.json *.js"
+        "lint": "npx eslint . --ext .js",
+        "test": "npx jest",
+        "docs": "npx jsdoc -c jsdocConf.json *.js"
     },
     "keywords": [],
     "author": "",
