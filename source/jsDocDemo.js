@@ -1,5 +1,5 @@
 /**
- * Print information representing a student. The function will print the values.
+ * Print information representing a student. This function will print the values given.
  * @param {string} name - The name of the student.
  * @param {string} major - The student's major.
  * @param {number} gpa - The student's GPA.
