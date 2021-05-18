@@ -6,7 +6,7 @@
     "scripts": {
         "lint": "eslint . --ext .js",
         "test": "jest",
-        "docs": "jsdoc -c jsdocConf.json *.js"
+        "docs": "jsdoc -c build/jsdocConf.json *.js"
     },
     "keywords": [],
     "author": "",
