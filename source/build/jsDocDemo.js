@@ -4,10 +4,8 @@
  * @param {string} major - The student's major.
  * @param {number} gpa - The student's GPA.
  */
-function printStudentInfo(name, major, gpa) {
-    console.log(`Name: ${name}`);
-    console.log(`Major: ${major}`);
-    console.log(`GPA: ${gpa}`);
+function returnStudentInfo(name, major, gpa) {
+    return `${name} ${major} ${gpa}`;
 }
 
-printStudentInfo('Johnny Jenkins', 'Computer Science', 3.75);
+returnStudentInfo('Johnny Jenkins', 'Computer Science', 3.75);
