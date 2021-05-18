@@ -1,6 +1,16 @@
 #  Sprint Review #1 for Team 31:
 ## Date: 05/17/2021
 
+## Figma Screen
+### Daily Log Lo-Fi
+![Daily Log Lo-Fi](/specs/figma/dailylog_lofi.png)
+### Daily Log Hi-Fi
+![Weekly Log Hi-Fi](/specs/figma/dailylog_hifi.png)
+### Weekly Log Lo-Fi
+![Daily Log Lo-Fi](/specs/figma/weeklylog_lofi.png)
+### Weekly Log Hi-Fi
+![Weekly Log Hi-Fi](/specs/figma/weeklylog_hifi.png)
+
 ### Sprint Reviews
 - Artyom Muradyan
   - Used Figma to work on wireframing 
