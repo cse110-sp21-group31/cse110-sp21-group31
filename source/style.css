@@ -11,4 +11,37 @@
 /* Grid Properties */
 .container {
     display: grid;
+    grid-template-rows: 10% auto 10%;
 }
+
+.container-center {
+    display: grid;
+    grid-template-columns: 25% auto 25%;
+}
+
+.item-header {
+    grid-area: header;
+    grid-row: 0;
+    background-color: lightblue;
+}
+
+.item-center {
+    grid-area: main;
+    background-color: lightcoral;
+}
+
+.item-sidebar {
+    display: inline-block;
+    grid-area: sidebar;
+    grid-column-start: 0;
+}
+
+.item-footer {
+    grid-area: footer;
+    background-color: lightcyan;
+}
+
+#task-popup {
+    grid-area: footer;
+}
+
