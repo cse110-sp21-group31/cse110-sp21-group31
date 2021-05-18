@@ -119,13 +119,20 @@ LocalStorage: {
 
     "2021-05-13": {
         name: "Thursday, May 13th",
-        events: [
+        notepad: <p></p>
+        tasks: [
             {
                 content: "Go on a run",
-                type: "event" or "task" or "notepad",
+                completed: true/false,
                 tags: ["Lecture", ...],
-                (from): timeData
-                (to): timeData
+            }, tasks2, ...
+        ],
+        events: [
+            {
+                content: "CSE 110 Lecture",
+                tags: ["Lecture", ...],
+                from: 1621308663,
+                to: 1621367364,
             }, event2, ...
         ],
         media: [
