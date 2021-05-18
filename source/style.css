@@ -21,6 +21,7 @@
 
 .item-header {
     grid-area: header;
+    grid-row: 0;
     background-color: lightblue;
 }
 
