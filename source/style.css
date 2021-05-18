@@ -1,0 +1,14 @@
+/* Font */
+.main-title {
+    font-family: 'Sen', 'sans-serif';
+}
+
+/* Flex Properties 
+.container {
+    display: flex;
+}*/
+
+/* Grid Properties */
+.container {
+    display: grid;
+}
