@@ -24,11 +24,11 @@
 }
 
 .header-item-img {
-    grid-column-start: 0;
+    padding: 16px 0 0 12px;
 }
 
 .header-item-title {
-
+    padding-right: 45px;
 }
 
 .item-middle {
