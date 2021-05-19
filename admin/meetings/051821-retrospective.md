@@ -1,5 +1,5 @@
 #  Retrospective Meeting for Team 31:
-## Start time: 9:00 PM 05/17/2021
+## Start time: 9:00 PM 05/18/2021
 
 ### Agenda: 
 1. Complete team retrospective
