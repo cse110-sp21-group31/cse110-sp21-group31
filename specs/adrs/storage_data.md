@@ -1,4 +1,4 @@
-Data Brainstorming
+# Data Brainstorming
 
 Where to store: local storage
 
@@ -12,8 +12,7 @@ let data = JSON.parse(localStorage.getItem("entry1"));
 // getting an item that doesn't exist in the storage will return null
 localStorage.getItem("256765434"); // returns null
 
-Things to store:
-
+## Things to store:
 - entries
   - title
   - list of tags
@@ -30,7 +29,7 @@ Things to store:
 
 Design Decisions:
 
-                How to store the entries?
+How to store the entries?
 consider: most times (on daily log view) we want to easily get all events on a single day.
 >>solution: 
 - key is date, and an array of entries is stored on that date
@@ -90,19 +89,26 @@ LocalStorage: {
     
     "custom-tags": {
         "Lecture": "blue",
-        "Assignments": "red",
+        "Assignment": "red",
         "Other": "yellow"
     },
 
     "2021-05-13": {
         name: "Thursday, May 13th",
-        events: [
+        notepad: <p></p>
+        tasks: [
             {
                 content: "Go on a run",
-                type: "event" or "task" or "notepad",
-                tags: ["Lecture", ...],
-                (from): timeData
-                (to): timeData
+                completed: true/false,
+                tags: ["Other", ...],
+            }, task2, ...
+        ],
+        events: [
+            {
+                content: "CSE 110 Lecture",
+                tags: "Lecture",
+                from: 1621308663,
+                to: 1621367364,
             }, event2, ...
         ],
         media: [
