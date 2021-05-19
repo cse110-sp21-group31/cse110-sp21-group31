@@ -21,7 +21,13 @@
 - Highlights included the team agreeing on more async work to be more efficient
 - Team decided on having dedicated meetings/slack channels for specific tasks
 
-  Team retrospective summary:
+  Team Radar:
+
+  ![Our Team Radar](/admin/retrospective/team_radar.png)
+
+  Mad/Sad/Glad:
+  
+  ![Mad/Sad/Glad](/admin/retrospective/mad_sad_glad.png)
 
 ### 2. Assign tasks for next sprint
 - Created issues on github to better understand the roles of each teammate
