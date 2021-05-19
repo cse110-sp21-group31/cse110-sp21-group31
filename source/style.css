@@ -128,21 +128,23 @@
 }
 
 #task-event-selector-area {
+    grid-column: 1 / 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0px 10px 0px 10px;
 }
 
-#task-event-selector {
+#task-event-selector, select {
     font-family: 'Roboto', sans-serif; 
     font-size: 24px;
     text-align: center;
     border: 1px solid transparent;
     border-radius: 10px;
-} 
+}
 
 #task-event-textbox-area {
+    grid-column: 2 / 3;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -156,6 +158,38 @@
     height: 60%;
     border: 1px solid transparent;
     border-radius: 10px;
+}
+
+#clock-tags-upload-area {
+    grid-column: 3 / 4;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#clock-img {
+    grid-column: 1 / 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+#tags-selector {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 0px 5px 0px 5px;
+}
+
+#upload-img {
+    grid-column: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
 }
 
 /* Other Components */
