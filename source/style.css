@@ -12,14 +12,14 @@
     grid-template-rows: 10% auto 10%;
 }
 
+.item-header {
+    background-color: burlywood;
+}
+
 #header-container {
     width: 100%;
     display: grid;
     grid-template-columns: 60px auto;
-}
-
-.item-header {
-    background-color: lightblue;
 }
 
 #header-item-img {
@@ -36,15 +36,14 @@
 }
 
 #middle-container {
-    width: 100%;
     display: grid;
     grid-template-columns: 1fr 2fr 1fr;
-    grid-template-rows: 15% 85%;
-    
+    grid-template-rows: 5% auto;
+    background-color: lightskyblue;
 }
 
 #middle-item-bar {
-    grid-column: span 3;    
+    grid-column: span 3;
 }
 
 #middle-item-log {
@@ -70,3 +69,7 @@
 }
 
 /* Other Components */
+html, body {
+    height: 100%;
+    margin: 0;
+}
