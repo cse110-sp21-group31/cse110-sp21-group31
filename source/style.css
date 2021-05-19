@@ -122,7 +122,40 @@
 
 .item-footer {
     grid-row: 3 / 4;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
     background-color: lightpink;
+}
+
+#task-event-selector-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 10px 0px 10px;
+}
+
+#task-event-selector {
+    font-family: 'Roboto', sans-serif; 
+    font-size: 24px;
+    text-align: center;
+    border: 1px solid transparent;
+    border-radius: 10px;
+} 
+
+#task-event-textbox-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0px 10px 0px 10px;
+}
+
+#task-event-textbox {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    height: 60%;
+    border: 1px solid transparent;
+    border-radius: 10px;
 }
 
 /* Other Components */
