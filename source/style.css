@@ -67,27 +67,57 @@
 #middle-item-log {
     grid-column: 2 / 3;
     grid-row-start: 2;
+    display: grid;
+    grid-template-rows: 10% auto;
     background-color: lightblue;
     border: 1px solid black;
     border-radius: 25px;
 }
 
+#log-title {
+    grid-row: 1 / 2;
+}
+
+#log-text-area {
+    grid-row: 2 / 3;
+}
+
 #middle-item-notes {
     grid-column: 1 / 2;
     grid-row-start: 2;
+    display: grid;
+    grid-template-rows: 10% auto;
     background-color: lightyellow;
     border: 1px solid black;
     border-radius: 25px;
     margin-left: 5px;
 }
 
+#notes-title {
+    grid-row: 1 / 2;
+}
+
+#notes-text-area {
+    grid-row: 2 / 3;
+}
+
 #middle-item-media {
     grid-column: 3 / 4;
     grid-row-start: 2;
+    display: grid;
+    grid-template-rows: 10% auto;
     background-color: rgb(252, 183, 156);
     border: 1px solid black;
     border-radius: 25px;
     margin-right: 5px;
+}
+
+#media-title {
+    grid-row: 1 / 2;
+}
+
+#media-text-area {
+    grid-row: 2 / 3;
 }
 
 .item-footer {
