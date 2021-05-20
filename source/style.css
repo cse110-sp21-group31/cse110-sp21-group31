@@ -89,14 +89,20 @@
 
 #log-tasks-area {
     display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    /* overflow: scroll; */
+    grid-template-rows: repeat(1fr);
+    align-items: center;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#log-tasks-area:hover {
+    /* overflow-y: scroll; */
 }
 
 #log-events-area {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
-    /* overflow: scroll; */
+    align-items: center;
     border-top: 1px solid black;
 }
 
@@ -125,7 +131,7 @@
     grid-row-start: 2;
     display: grid;
     grid-template-rows: 10% auto;
-    background-color: rgb(252, 183, 156);
+    background-color: rgb(178, 228, 189);
     border: 1px solid black;
     border-radius: 25px;
     margin-right: 5px;
@@ -133,6 +139,7 @@
 
 #media-title {
     grid-row: 1 / 2;
+    border-bottom: 1px solid black;
 }
 
 #media-text-area {
@@ -229,16 +236,18 @@ body {
     text-align: center;
 }
 
-/* #log-tasks-area label {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-} */
-
 #log-tasks-area label {
     font-family: 'Roboto', 'sans-serif';
 }
 
+#log-tasks-area label:hover {
+    background-color: rgb(157, 207, 223);
+}
+
 #log-events-area label {
     font-family: 'Roboto', 'sans-serif';
+}
+
+#log-events-area label:hover {
+    background-color: rgb(157, 207, 223);
 }
