@@ -39,7 +39,7 @@ class Event extends HTMLElement {
 
         // append a tag element inside the tag div for each individual tag string
         event.tags.forEach((tag)=>{
-            let singleTag = document.createElement("p");
+            const singleTag = document.createElement("p");
             // can also set other attributes of element later if needed
             singleTag.innerText = tag;
             this.shadowRoot.querySelector(".event-log-tags").appendChild(singleTag);
@@ -47,7 +47,7 @@ class Event extends HTMLElement {
     }
 
     get content() {
-        let returnObj = {};
+        const returnObj = {};
         returnObj.content = this.shadowRoot.querySelector(".event-log-content").innerText;
         returnObj.from = this.shadowRoot.querySelector(".event-log-from").innerText;
         returnObj.to = this.shadowRoot.querySelector(".event-log-to").innerText;

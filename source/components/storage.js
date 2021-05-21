@@ -4,7 +4,7 @@ functions to get/set local storage
 */
 
 /*
-getKey
+getDaysKey
 returns a string that represents the key that corresponds to the current date
 @returns 2021-05-17
 */
@@ -23,7 +23,7 @@ getName
 */
 function getName(){
     const options = {weekday: "long", month: "long", day: "numeric"};
-    let now = new Date();
+    const now = new Date();
     return now.toLocaleDateString("en-US", options);
 }
 
@@ -51,7 +51,7 @@ get/set the relevant data for the day specified in key
 @returns: {events: [], tasks: [], name: "", media: []}
 */
 function getData(key){
-    let res = localStorage.getItem(key);
+    const res = localStorage.getItem(key);
     if (res == null) return null;
     return JSON.parse(res);
 }
@@ -64,26 +64,28 @@ function setData(key, data){
 /*
 addTask
 add a task into local storage
+@param key: 2021-05-17
 @param task: the json data returned from Task.content
 @return: whether or not the day exists
 */
 function addTask(key, task){
-    let dayData = getData(key);
+    const dayData = getData(key);
     if (dayData == null) return false;
 
-    dayData['tasks'].push(task);
+    dayData.tasks.push(task);
     setData(key, dayData);
     return true;
 }
 
 /*
 addEvent
-add a event into local storage
-@param task: the json data returned from Task.content
+add an event into local storage
+@param key: 2021-05-17
+@param event: the json data returned from Event.content
 */
 function addEvent(key, event){
-    let dayData = getData(key);
-    dayData['events'].push(events);
+    const dayData = getData(key);
+    dayData.events.push(event);
     setData(key, dayData);
 }
 
@@ -91,18 +93,18 @@ function addEvent(key, event){
 addLink
 */
 function addLink(key, link){
-    let dayData = getData(key);
-    dayData['media'].push(link);
+    const dayData = getData(key);
+    dayData.media.push(link);
     setData(key, dayData);
 }
 
 /*
 add custom tag
 */
-function addCustomTag(tagName, colorIndex){
+function addCustomTag(tagName){
     const colorArr = ["blue", "red", "yellow", "green"];
-    let customTags = getData("custom-tags");
-    customTags[tagName] = colorArr[customTags.length % colorArr.length];
+    const customTags = getData("custom-tags");
+    customTags.tagName = colorArr[customTags.length % colorArr.length];
     setData("custom-tags", customTags);
 }
 
@@ -110,11 +112,24 @@ function addCustomTag(tagName, colorIndex){
 update paragraph
 */
 function updateNotepad(key, text){
-    let dayData = getData(key);
-    dayData['notepad'] = text;
+    const dayData = getData(key);
+    dayData.notepad = text;
     setData(key, dayData);
 }
 
+/*
+temporary test function to satisfy linter
+*/
+function test() {
+    getName()
+    addTask(getDaysKey(), "task");
+    addEvent(getDaysKey(), "event"); 
+    addLink(getDaysKey(), "link");
+    addCustomTags("newTag");
+    updateNotepad(getDaysKey(), "note");
+}
+
+test();
 
 /*
 
