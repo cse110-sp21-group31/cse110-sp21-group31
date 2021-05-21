@@ -41,6 +41,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: npm install
-        working-directory: ./source/*
+        working-directory: ./source/components/
       - run: npm run docs
-        working-directory: ./source/*
+        working-directory: ./source/components/
