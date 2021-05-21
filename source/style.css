@@ -96,7 +96,7 @@
 }
 
 #log-tasks-area:hover {
-    /* overflow-y: scroll; */
+    overflow-y: scroll;
 }
 
 #log-events-area {
