@@ -37,7 +37,7 @@ class Task extends HTMLElement {
 
         // append a tag element inside the tag div for each individual tag string
         task.tags.forEach((tag)=>{
-            let singleTag = document.createElement("p");
+            const singleTag = document.createElement("p");
             // can also set other attributes of element later if needed
             singleTag.innerText = tag;
             this.shadowRoot.querySelector(".task-log-tags").appendChild(singleTag);
@@ -49,7 +49,7 @@ class Task extends HTMLElement {
     */
     get content(){
 
-        let returnObj = {};
+        const returnObj = {};
 
         returnObj.content = this.shadowRoot.querySelector(".task-log-content").innerText;       // get the content
         returnObj.completed = this.shadowRoot.querySelector(".task-log-completed").checked;   // get the completion
