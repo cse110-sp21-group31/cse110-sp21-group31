@@ -18,7 +18,8 @@ let data = JSON.parse(localStorage.getItem("entry1"));
 localStorage.getItem("256765434"); // returns null
 ```
 
-## Things to store
+
+## Things to store:
 
 - entries
 - title
@@ -38,7 +39,8 @@ localStorage.getItem("256765434"); // returns null
 
 ### How to store the entries?
 
-consider: most times (on daily log view) we want to easily get all events on a single day.
+Consider: most times (on daily log view) we want to easily get all events on a single day.
+
 Solution: key is date, and an array of entries is stored on that date
 
 ### How to store the color of tags?
@@ -113,7 +115,7 @@ LocalStorage: {
     
     "custom-tags": {
         "Lecture": "blue",
-        "Assignments": "red",
+        "Assignment": "red",
         "Other": "yellow"
     },
 
@@ -124,13 +126,13 @@ LocalStorage: {
             {
                 content: "Go on a run",
                 completed: true/false,
-                tags: ["Lecture", ...],
-            }, tasks2, ...
+                tags: ["Other", ...],
+            }, task2, ...
         ],
         events: [
             {
                 content: "CSE 110 Lecture",
-                tags: ["Lecture", ...],
+                tags: "Lecture",
                 from: 1621308663,
                 to: 1621367364,
             }, event2, ...
