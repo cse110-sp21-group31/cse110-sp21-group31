@@ -15,7 +15,7 @@ class Event extends HTMLElement {
             </div>
         `;
 
-        this.attatchShadow({mode: 'open'});
+        this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
@@ -42,7 +42,7 @@ class Event extends HTMLElement {
             let singleTag = document.createElement("p");
             // can also set other attributes of element later if needed
             singleTag.innerText = tag;
-            this.shadowRoot.querySelector("event-log-tags").appendChild(singleTag);
+            this.shadowRoot.querySelector(".event-log-tags").appendChild(singleTag);
         });  
     }
 
@@ -61,4 +61,4 @@ class Event extends HTMLElement {
     }
 }
 
-customElements.define('event', Event);
+customElements.define('event-log', Event);

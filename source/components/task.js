@@ -14,7 +14,7 @@ class Task extends HTMLElement {
             </div>
         `;
 
-        this.attatchShadow({mode: 'open'});
+        this.attachShadow({mode: 'open'});
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
@@ -33,14 +33,14 @@ class Task extends HTMLElement {
         this.shadowRoot.querySelector(".task-log-content").innerText = task.content;
         
         // set completed, and the status of the checkbox
-        this.shadowRoot.querySelector(".task-log-completed").completed = task.completed;
+        this.shadowRoot.querySelector(".task-log-completed").checked = task.completed;
 
         // append a tag element inside the tag div for each individual tag string
         task.tags.forEach((tag)=>{
             let singleTag = document.createElement("p");
             // can also set other attributes of element later if needed
             singleTag.innerText = tag;
-            this.shadowRoot.querySelector("task-log-tags").appendChild(singleTag);
+            this.shadowRoot.querySelector(".task-log-tags").appendChild(singleTag);
         });  
     }
 
@@ -48,10 +48,11 @@ class Task extends HTMLElement {
     *   returns the content to store in the database
     */
     get content(){
+
         let returnObj = {};
 
         returnObj.content = this.shadowRoot.querySelector(".task-log-content").innerText;       // get the content
-        returnObj.completed = this.shadowRoot.querySelector(".task-log-completed").completed;   // get the completion
+        returnObj.completed = this.shadowRoot.querySelector(".task-log-completed").checked;   // get the completion
         returnObj.tags = [];
         this.shadowRoot.querySelectorAll(".task-log-tags p").forEach((item)=>{
             returnObj.tags.push(item.innerText);                                                // push tags in
@@ -59,6 +60,9 @@ class Task extends HTMLElement {
 
         return returnObj;
     }
+
+    
+
 }
 
-customElements.define('task', Task);
+customElements.define('task-log', Task);
