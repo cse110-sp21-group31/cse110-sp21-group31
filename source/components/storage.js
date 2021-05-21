@@ -33,6 +33,7 @@ function setDayData(key, data){
 /*
 addTask
 add a task into local storage
+@param key: 2021-05-17
 @param task: the json data returned from Task.content
 @return: whether or not the day exists
 */
@@ -47,8 +48,9 @@ function addTask(key, task){
 
 /*
 addEvent
-add a task into local storage
-@param task: the json data returned from Task.content
+add an event into local storage
+@param key: 2021-05-17
+@param event: the json data returned from Event.content
 */
 function addEvent(key, event){
     const dayData = getDayData(key);
@@ -56,6 +58,8 @@ function addEvent(key, event){
     setDayData(key, dayData);
 }
 
+addTask(getKey(), "task");
+addEvent(getKey(), "event");
 
 /*
 
