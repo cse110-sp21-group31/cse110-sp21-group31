@@ -9,12 +9,15 @@ returns a string that represents the key that corresponds to the current date
 @returns 2021-05-17
 */
 function getDaysKey(now){
-    if (now == undefined) now = new Date();
+    if (now === undefined) {
+        const day = new Date();
+        return [day.getFullYear(), day.getMonth(), day.getDate()].join('-');
+    }
     return [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
 }
 
-//https://www.digitalocean.com/community/tutorials/understanding-date-and-time-in-javascript
-//https://www.w3schools.com/jsref/jsref_getday.as
+// https://www.digitalocean.com/community/tutorials/understanding-date-and-time-in-javascript
+// https://www.w3schools.com/jsref/jsref_getday.as
 
 /*
 getName
@@ -32,7 +35,7 @@ getWeek
 @param key: input day key
 @return: an array of keys for each day in the week that key belongs in
 */
-/*function getWeek(key) {
+/* function getWeek(key) {
     const msPerDay = 86400000;
     let now = new Date(key);
     let currentDay = now.getDay();
@@ -43,7 +46,7 @@ getWeek
         result.push(getDaysKey(date));
     }
     return result;
-}*/
+} */
 
 /*
 get/set the relevant data for the day specified in key
@@ -104,7 +107,7 @@ add custom tag
 function addCustomTag(tagName){
     const colorArr = ["blue", "red", "yellow", "green"];
     const customTags = getData("custom-tags");
-    customTags.tagName = colorArr[customTags.length % colorArr.length];
+    customTags[tagName] = colorArr[customTags.length % colorArr.length];
     setData("custom-tags", customTags);
 }
 
@@ -125,7 +128,7 @@ function test() {
     addTask(getDaysKey(), "task");
     addEvent(getDaysKey(), "event"); 
     addLink(getDaysKey(), "link");
-    addCustomTags("newTag");
+    addCustomTag("newTag");
     updateNotepad(getDaysKey(), "note");
 }
 
