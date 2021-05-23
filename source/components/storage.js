@@ -109,6 +109,12 @@ function addCustomTag(tagName){
     const customTags = getData("custom-tags");
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
     setData("custom-tags", customTags);
+
+    // add tag option to html list
+    let newTag = document.createElement("option");
+    newTag.innerHTML = tagName;
+    let addTagOption = document.querySelector("add-tag-option");
+    document.querySelector("tag-selection").insertBefore(newTag, addTagOption);
 }
 
 /*
