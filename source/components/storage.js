@@ -143,6 +143,7 @@ function updateNotepad(key, text) {
 /**
 temporary test function to satisfy linter
 */
+<<<<<<< HEAD
 function test() {
     getName();
     addTask(getDaysKey(), 'task');
@@ -150,9 +151,18 @@ function test() {
     addLink(getDaysKey(), 'link');
     addCustomTag('newTag');
     updateNotepad(getDaysKey(), 'note');
+=======
+/*function test() {
+    getName()
+    addTask(getDaysKey(), "task");
+    addEvent(getDaysKey(), "event"); 
+    addLink(getDaysKey(), "link");
+    addCustomTag("newTag");
+    updateNotepad(getDaysKey(), "note");
+>>>>>>> 9ae140b (Fixed date misalignment, added dummy item)
 }
 
-test();
+test();*/
 
 export { getDaysKey, getData, getName };
 

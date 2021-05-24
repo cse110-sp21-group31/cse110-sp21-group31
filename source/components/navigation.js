@@ -81,6 +81,7 @@ forward.addEventListener('click', () => {
     /* gets tomorrow date key */
     newDate.setDate(newDate.getDate() + 1);
     curDate = newDate;
+    let key = getDaysKey(newDate);
 
     populate(getData(key), newDate);
 
@@ -91,7 +92,7 @@ backward.addEventListener('click', () => {
     /* gets yesterday date key */
     newDate.setDate(newDate.getDate() - 1);
     curDate = newDate;
-
+    let key = getDaysKey(newDate);
     populate(getData(key), newDate);
 });
 >>>>>>> 2442e17 (Fixed event listeners and populate)
@@ -104,8 +105,12 @@ backward.addEventListener('click', () => {
     const allMedia = log.media;
 =======
     /* Sets new date at the top */
+<<<<<<< HEAD
     let i = document.getElementsByTagName('h3')[0].innerText = getName(key);
 >>>>>>> 2442e17 (Fixed event listeners and populate)
+=======
+    document.getElementsByTagName('h3')[0].innerText = getName(key);
+>>>>>>> 9ae140b (Fixed date misalignment, added dummy item)
 
     noteArea.append(log.notepad);
 
@@ -149,7 +154,26 @@ forward.addEventListener('click', () => {
 =======
 document.addEventListener('DOMContentLoaded' , () => {
 
-    let item = getData(curDate);
+    let item = {
+        name: "Monday, May 24th",
+        notepad: "blan blah blah",
+        tasks: [
+            {
+                content: "Go on a run",
+                completed: true/false,
+                tags: ["Other", "UCSD"],
+            }
+        ],
+        events: [
+            {
+                content: "CSE 110 Lecture",
+                tags: "Lecture",
+                from: 1621308663,
+                to: 1621367364,
+            },
+        ]
+    }
+    //let item = getData(curDate);
     /* populate with current data */
     populate(item, curDate);
 >>>>>>> 2442e17 (Fixed event listeners and populate)
