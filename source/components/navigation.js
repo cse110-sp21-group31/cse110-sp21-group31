@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 import { getDaysKey, getData, getName } from './storage';
 
 /* date variables */
 let curDate = new Date();
 const newDate = curDate;
 const possibleImageSubscripts = ['.jpg', '.png'];
+=======
+
+import { getDaysKey, getData, getName } from './storage.js';
+
+/* date variables */
+let curDate = new Date();
+let newDate = curDate;
+>>>>>>> 2442e17 (Fixed event listeners and populate)
 
 /* access log components */
 const taskArea = document.getElementById('log-tasks-area');
@@ -13,6 +22,7 @@ const mediaArea = document.getElementById('media-text-area');
 const forward = document.getElementById('right-arrow');
 const backward = document.getElementById('left-arrow');
 
+<<<<<<< HEAD
 /**
  * Removes the current content from the log, notepad, and media tab
  */
@@ -65,12 +75,37 @@ function isLinkImage(link) {
  */
 function populate(log, key) {
     document.getElementsByTagName('h3')[0].innerText = getName(key);
+=======
+/* Increases date by one, gets data, calls populate */
+forward.addEventListener('click', () => {
+    /* gets tomorrow date key */
+    newDate.setDate(newDate.getDate() + 1);
+    curDate = newDate;
+
+    populate(getData(key), newDate);
+
+});
+
+/* Decreases date by one, gets data, calls populate */
+backward.addEventListener('click', () => {
+    /* gets yesterday date key */
+    newDate.setDate(newDate.getDate() - 1);
+    curDate = newDate;
+
+    populate(getData(key), newDate);
+});
+>>>>>>> 2442e17 (Fixed event listeners and populate)
 
     removeAll();
 
+<<<<<<< HEAD
     const allTasks = log.tasks;
     const allEve = log.events;
     const allMedia = log.media;
+=======
+    /* Sets new date at the top */
+    let i = document.getElementsByTagName('h3')[0].innerText = getName(key);
+>>>>>>> 2442e17 (Fixed event listeners and populate)
 
     noteArea.append(log.notepad);
 
@@ -99,6 +134,7 @@ function populate(log, key) {
     });
 }
 
+<<<<<<< HEAD
 /**
  * Increases date by one day, calls populate
  * @listens forward#click
@@ -110,6 +146,13 @@ forward.addEventListener('click', () => {
 
     populate(getData(key), newDate);
 });
+=======
+document.addEventListener('DOMContentLoaded' , () => {
+
+    let item = getData(curDate);
+    /* populate with current data */
+    populate(item, curDate);
+>>>>>>> 2442e17 (Fixed event listeners and populate)
 
 /**
  * Decreases the date by one day, calls populate
