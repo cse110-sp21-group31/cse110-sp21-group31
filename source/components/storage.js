@@ -26,6 +26,7 @@ getName
 @param: key of that day
 @return: the name of that day "Thursday, May 13th"
 */
+<<<<<<< HEAD
 function getName(key) {
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
     if (key == null) {
@@ -33,6 +34,15 @@ function getName(key) {
         return now.toLocaleDateString('en-US', options);
     }
     return key.toLocaleDateString('en-US', options);
+=======
+function getName(key){
+    const options = {weekday: "long", month: "long", day: "numeric"};
+    if (key == null) {
+        const now = new Date();
+        return now.toLocaleDateString("en-US", options);
+    }
+    return key.toLocaleDateString("en-US", options);
+>>>>>>> 9e1d286 (Edited getName to take in date)
 }
 
 /**
