@@ -26,10 +26,13 @@ getName
 @param: key of that day
 @return: the name of that day "Thursday, May 13th"
 */
-function getName(){
+function getName(key){
     const options = {weekday: "long", month: "long", day: "numeric"};
-    const now = new Date();
-    return now.toLocaleDateString("en-US", options);
+    if (key == null) {
+        const now = new Date();
+        return now.toLocaleDateString("en-US", options);
+    }
+    return key.toLocaleDateString("en-US", options);
 }
 
 /*
