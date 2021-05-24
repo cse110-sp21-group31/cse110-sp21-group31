@@ -122,8 +122,19 @@
     border-bottom: 1px solid black;
 }
 
+[contenteditable] {
+    outline: 0px solid transparent;
+}
+
 #notes-text-area {
     grid-row: 2 / 3;
+    font-family: 'Sen', 'sans-serif';
+    padding: 15px;
+}
+
+#notes-text-area:empty:before{
+    content:attr(data-text);
+    color: gray;
 }
 
 #middle-item-media {
