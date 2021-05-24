@@ -1,9 +1,9 @@
 
-import { getDaysKey } from './storage.js';
+import { getDaysKey, getData, getName } from './storage.js';
 
 /* date variables */
 let curDate = new Date();
-let changeDate = curDate;
+let newDate = curDate;
 
 /* access log components */
 const taskArea = document.getElementById('log-tasks-area');
@@ -11,35 +11,29 @@ const eventArea = document.getElementById('log-events-area');
 const forward = document.getElementById('right-arrow');
 const backward = document.getElementById('left-arrow');
 
-/* day key to access individual log */
-let key;
-
 /* Increases date by one, gets data, calls populate */
 forward.addEventListener('click', () => {
     /* gets tomorrow date key */
-    changeDate.setDate(curDate.getDate() - 1);
-    curDate = changeDate;
-    key = getDaysKey(changeDate);
+    newDate.setDate(newDate.getDate() + 1);
+    curDate = newDate;
 
-    populate(getData(key));
+    populate(getData(key), newDate);
 
 });
 
 /* Decreases date by one, gets data, calls populate */
 backward.addEventListener('click', () => {
     /* gets yesterday date key */
-    changeDate.setDate(curDate.getDate() - 1);
-    curDate = changeDate;
-    key = getDaysKey(changeDate);
+    newDate.setDate(newDate.getDate() - 1);
+    curDate = newDate;
 
-    populate(getData(key), key);
-
+    populate(getData(key), newDate);
 });
 
 function populate(item, key) {
 
     /* Sets new date at the top */
-    document.querySelector('date-text').innerHTML = getName(key);
+    let i = document.getElementsByTagName('h3')[0].innerText = getName(key);
 
     /* remove current data and repopulate with new data shit idk how to remove*/
     const allTasks = item["tasks"];
@@ -62,10 +56,10 @@ function populate(item, key) {
     /* populate media and notepad */
 }
 
-document.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded' , () => {
 
     let item = getData(curDate);
     /* populate with current data */
-    populate(item);
+    populate(item, curDate);
 
 });
