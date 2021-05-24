@@ -68,7 +68,7 @@
         </div>
         <div class='item-footer'>
             <div id='task-event-selector-area'>
-                <select name="task-event-selector">
+                <select name="Task Event Selector" id='task-event-selector'>
                     <option value="default">Task or Event</option>
                     <option value="Task">Task</option>
                     <option value="Event">Event</option> 
@@ -79,7 +79,19 @@
             </div>
             <div id='clock-tags-upload-area'>
                 <div id='clock-img'>
-                    <a href="#"><img src="/source/images/clock.png" alt="Right Arrow" height='40' width='40'></a>
+                    <a href="#popup"><img src="/source/images/clock.png" alt="Right Arrow" height='40' width='40'></a>
+                </div>
+                <div id='popup'>
+                    <div class='window'>
+                        <button id='close'>X</button>
+                        <form id='time-selector'>
+                            <label for='startTime'>Start Time:</label>
+                            <input type='time' id='start-time' name='start-time'>
+                            <label for='endTime'>End Time:</label>
+                            <input type='time' id='end-time' name='end-time'>
+                            <input type='submit'>
+                        </form>
+                    </div>
                 </div>
                 <div id='tags-selector'>
                     <select name="Tags" id="tag-selection">
