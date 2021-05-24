@@ -28,7 +28,7 @@ class Task extends HTMLElement {
      *    }
      *
      */
-    setContent(task) {
+    set content(task) {
         // set content
         this.shadowRoot.querySelector('.task-log-content').innerText =
             task.content;
@@ -51,7 +51,7 @@ class Task extends HTMLElement {
     /**
      *   returns the content to store in the database
      */
-    getContent() {
+    get content() {
         const returnObj = {};
 
         returnObj.content =

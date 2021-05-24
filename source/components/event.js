@@ -31,7 +31,7 @@ class Event extends HTMLElement {
      *
      *
      */
-    setContent(event) {
+    set content(event) {
         // set content
         this.shadowRoot.querySelector('.event-log-content').innerText =
             event.content;
@@ -50,7 +50,7 @@ class Event extends HTMLElement {
         });
     }
 
-    getContent() {
+    get content() {
         const returnObj = {};
         returnObj.content =
             this.shadowRoot.querySelector('.event-log-content').innerText;
