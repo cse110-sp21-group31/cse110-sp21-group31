@@ -2,7 +2,7 @@ class Event extends HTMLElement {
     constructor() {
         super();
 
-        const template = document.createElement("template");
+        const template = document.createElement('template');
         template.innerHTML = `
             <style>
             </style>
@@ -15,12 +15,13 @@ class Event extends HTMLElement {
             </div>
         `;
 
-        this.attachShadow({mode: 'open'});
+        this.attachShadow({ mode: 'open' });
         this.shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
-    /* 
-     * @param event:
+    /**
+     * @param event - json for the event
+     * @example
      *    {
      *        content: "CSE 110 Lecture",
      *        tags: ["Lecture", ...],
@@ -28,34 +29,41 @@ class Event extends HTMLElement {
      *        to: 1621367364
      *    }
      *
+     *
      */
-    set content(event) {
-
+    setContent(event) {
         // set content
-        this.shadowRoot.querySelector(".event-log-content").innerText = event.content;
-        
-        this.shadowRoot.querySelector(".event-log-from").innerText = event.from;
-        this.shadowRoot.querySelector(".event-log-to").innerText = event.to;
+        this.shadowRoot.querySelector('.event-log-content').innerText =
+            event.content;
+
+        this.shadowRoot.querySelector('.event-log-from').innerText = event.from;
+        this.shadowRoot.querySelector('.event-log-to').innerText = event.to;
 
         // append a tag element inside the tag div for each individual tag string
-        event.tags.forEach((tag)=>{
-            const singleTag = document.createElement("p");
+        event.tags.forEach((tag) => {
+            const singleTag = document.createElement('p');
             // can also set other attributes of element later if needed
             singleTag.innerText = tag;
-            this.shadowRoot.querySelector(".event-log-tags").appendChild(singleTag);
-        });  
+            this.shadowRoot
+                .querySelector('.event-log-tags')
+                .appendChild(singleTag);
+        });
     }
 
-    get content() {
+    getContent() {
         const returnObj = {};
-        returnObj.content = this.shadowRoot.querySelector(".event-log-content").innerText;
-        returnObj.from = this.shadowRoot.querySelector(".event-log-from").innerText;
-        returnObj.to = this.shadowRoot.querySelector(".event-log-to").innerText;
+        returnObj.content =
+            this.shadowRoot.querySelector('.event-log-content').innerText;
+        returnObj.from =
+            this.shadowRoot.querySelector('.event-log-from').innerText;
+        returnObj.to = this.shadowRoot.querySelector('.event-log-to').innerText;
 
         returnObj.tags = [];
-        this.shadowRoot.querySelectorAll(".event-log-tags p").forEach((item)=>{
-            returnObj.tags.push(item.innerText);                                               
-        });
+        this.shadowRoot
+            .querySelectorAll('.event-log-tags p')
+            .forEach((item) => {
+                returnObj.tags.push(item.innerText);
+            });
 
         return returnObj;
     }

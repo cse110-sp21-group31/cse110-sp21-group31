@@ -1,14 +1,14 @@
-/*
+/**
 storage.js
 functions to get/set local storage 
 */
 
-/*
+/**
 getDaysKey
 returns a string that represents the key that corresponds to the current date
 @returns 2021-05-17
 */
-function getDaysKey(now){
+function getDaysKey(now) {
     if (now === undefined) {
         const day = new Date();
         return [day.getFullYear(), day.getMonth(), day.getDate()].join('-');
@@ -19,18 +19,18 @@ function getDaysKey(now){
 // https://www.digitalocean.com/community/tutorials/understanding-date-and-time-in-javascript
 // https://www.w3schools.com/jsref/jsref_getday.as
 
-/*
+/**
 getName
 @param: key of that day
 @return: the name of that day "Thursday, May 13th"
 */
-function getName(){
-    const options = {weekday: "long", month: "long", day: "numeric"};
+function getName() {
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
     const now = new Date();
-    return now.toLocaleDateString("en-US", options);
+    return now.toLocaleDateString('en-US', options);
 }
 
-/*
+/**
 getWeek
 @param key: input day key
 @return: an array of keys for each day in the week that key belongs in
@@ -48,30 +48,29 @@ getWeek
     return result;
 } */
 
-/*
+/**
 get/set the relevant data for the day specified in key
 @param key: 2021-05-17
 @returns: {events: [], tasks: [], name: "", media: []}
 */
-function getData(key){
+function getData(key) {
     const res = localStorage.getItem(key);
     if (res == null) return null;
     return JSON.parse(res);
 }
 
-function setData(key, data){
-    localStorage.setItem(key, JSON.stringify(data))
+function setData(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
 }
 
-
-/*
+/**
 addTask
 add a task into local storage
 @param key: 2021-05-17
 @param task: the json data returned from Task.content
 @return: whether or not the day exists
 */
-function addTask(key, task){
+function addTask(key, task) {
     const dayData = getData(key);
     if (dayData == null) return false;
 
@@ -80,56 +79,56 @@ function addTask(key, task){
     return true;
 }
 
-/*
+/**
 addEvent
 add an event into local storage
 @param key: 2021-05-17
 @param event: the json data returned from Event.content
 */
-function addEvent(key, event){
+function addEvent(key, event) {
     const dayData = getData(key);
     dayData.events.push(event);
     setData(key, dayData);
 }
 
-/*
+/**
 addLink
 */
-function addLink(key, link){
+function addLink(key, link) {
     const dayData = getData(key);
     dayData.media.push(link);
     setData(key, dayData);
 }
 
-/*
+/**
 add custom tag
 */
-function addCustomTag(tagName){
-    const colorArr = ["blue", "red", "yellow", "green"];
-    const customTags = getData("custom-tags");
+function addCustomTag(tagName) {
+    const colorArr = ['blue', 'red', 'yellow', 'green'];
+    const customTags = getData('custom-tags');
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
-    setData("custom-tags", customTags);
+    setData('custom-tags', customTags);
 }
 
-/*
+/**
 update paragraph
 */
-function updateNotepad(key, text){
+function updateNotepad(key, text) {
     const dayData = getData(key);
     dayData.notepad = text;
     setData(key, dayData);
 }
 
-/*
+/**
 temporary test function to satisfy linter
 */
 function test() {
-    getName()
-    addTask(getDaysKey(), "task");
-    addEvent(getDaysKey(), "event"); 
-    addLink(getDaysKey(), "link");
-    addCustomTag("newTag");
-    updateNotepad(getDaysKey(), "note");
+    getName();
+    addTask(getDaysKey(), 'task');
+    addEvent(getDaysKey(), 'event');
+    addLink(getDaysKey(), 'link');
+    addCustomTag('newTag');
+    updateNotepad(getDaysKey(), 'note');
 }
 
 test();
