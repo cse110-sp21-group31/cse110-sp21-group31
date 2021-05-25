@@ -12,8 +12,8 @@ document.getElementById("tag-selection").addEventListener("change", ()=> {
         this.value = "default";
         return;
     }
-    let tags = this.children;
-    for(let i = 0; i < tags.length; i = i + 1) {
+    const tags = this.children;
+    for(let i = 0; i < tags.length; i += 1) {
         if(tags[i].innerHTML === this.value) {
             if(tags[i].innerHTML.includes("✓")) {
                 tags[i].innerHTML = this.value.substring(0, this.value.length - 2);
@@ -56,7 +56,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", (butt
             
             // collect selected tags from tag bar
             const tags = document.getElementById("tag-selection").children;
-            for(let i = 0; i < tags.length; i = i + 1) {
+            for(let i = 0; i < tags.length; i += 1) {
                 if(tags[i].innerHTML.includes("✓")) {
                     entry.tags.push(tags[i].innerHTML.substring(0, tags[i].innerHTML.length - 2));
                 }
@@ -69,7 +69,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", (butt
             // Append task element to log (subject to change according to log css etc.)
             const taskSpace = document.getElementById("log-tasks-area");
             taskSpace.appendChild(newEntry);
-        } else if(taskEventChoice == "Event") {
+        } else if(taskEventChoice === "Event") {
             /*  entry should contain:
             * 
             *   content: "CSE 110 Lecture",
@@ -82,7 +82,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", (butt
             
             // collect selected tags from tag bar
             const tags = document.getElementById("tag-selection").children;
-            for(let i = 0; i < tags.length; i = i + 1) {
+            for(let i = 0; i < tags.length; i += 1) {
                 if(tags[i].innerHTML.includes("✓")) {
                     entry.tags.push(tags[i].innerHTML.substring(0, tags[i].innerHTML.length - 2));
                 }
