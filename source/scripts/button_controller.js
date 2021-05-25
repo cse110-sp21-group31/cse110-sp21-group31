@@ -3,7 +3,7 @@
 /*
 implements tag selector functionality
 */
-document.getElementById("tag-selection").addEventListener("change", ()=> {
+document.getElementById("tag-selection").addEventListener("change", function() {
     if(this.value === "default") {
         return;
     }
@@ -28,7 +28,7 @@ document.getElementById("tag-selection").addEventListener("change", ()=> {
 /*
 implements upload button functionality
 */
-document.getElementById("task-event-textbox").addEventListener("keypress", (button)=> {
+document.getElementById("task-event-textbox").addEventListener("keypress", button => {
     if(button.key === "Enter") {
         const input = document.getElementById("task-event-textbox");
         // ensure bar is not empty
