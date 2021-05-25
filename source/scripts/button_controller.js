@@ -3,7 +3,7 @@
 /*
 implements tag selector functionality
 */
-document.getElementById("tag-selection").addEventListener("change", function() {
+document.getElementById("tag-selection").addEventListener("change", function handleTags() {
     if(this.value === "default") {
         return;
     }
