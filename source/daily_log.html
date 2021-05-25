@@ -8,6 +8,7 @@
     <script src="./components/task.js" type="module"></script>
     <script src="./components/event.js" type="module"></script>
     <script src="./components/storage.js"></script>
+    <script src="./scripts/button_controller.js" type="module"></script>
 
     <!-- Fonts -->
     <!-- Sen -->
@@ -80,7 +81,7 @@
         </div>
         <div class='item-footer'>
             <div id='task-event-selector-area'>
-                <select name="task-event-selector">
+                <select name="task-event-selector" id="task-event-selector">
                     <option value="default">Task or Event</option>
                     <option value="Task">Task</option>
                     <option value="Event">Event</option> 
@@ -99,7 +100,7 @@
                         <option>Lecture</option>
                         <option>UCSD</option>
                         <option>Other</option>
-                        <option>Add Tag Here...</option>
+                        <option id="add-tag-option">Add Tag Here...</option>
                       </select>
                 </div>
                 <div id='upload-img'>
