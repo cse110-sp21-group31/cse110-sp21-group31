@@ -55,7 +55,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", funct
             entry.tags = []; 
             
             // collect selected tags from tag bar
-            let tags = document.getElementById("tag-selection").children;
+            const tags = document.getElementById("tag-selection").children;
             for(let i = 0; i < tags.length; i++) {
                 if(tags[i].innerHTML.includes("✓")) {
                     entry.tags.push(tags[i].innerHTML.substring(0, tags[i].innerHTML.length - 2));
