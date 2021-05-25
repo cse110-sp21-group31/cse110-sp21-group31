@@ -97,7 +97,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", funct
             newEntry.content = entry;
 
             // Append event element to log (subject to change)
-            let eventSpace = document.getElementById("log-events-area");
+            const eventSpace = document.getElementById("log-events-area");
             eventSpace.appendChild(newEntry);   
         }
     }
