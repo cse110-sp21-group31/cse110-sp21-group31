@@ -4,8 +4,24 @@
 implements tag selector functionality
 */
 document.getElementById("tag-selection").addEventListener("change", function() {
+    if(this.value == "default") {
+        return;
+    }
     if(this.value == "Add Tag Here...") {
         // open dialog to enter custom tag
+        this.value = "default";
+        return;
+    }
+    let tags = this.children;
+    for(let i = 0; i < tags.length; i++) {
+        if(tags[i].innerHTML == this.value) {
+            if(tags[i].innerHTML.includes("✓")) {
+                tags[i].innerHTML = this.value.substring(0, this.value.length - 2);
+            } else {
+                tags[i].innerHTML = this.value + " ✓";
+            }
+            this.value = "default";
+        }
     }
 });
 
@@ -24,8 +40,10 @@ document.getElementById("task-event-textbox").addEventListener("keypress", funct
         // console.log(document.getElementById("task-event-selector").value);
         let taskEventChoice = document.getElementById("task-event-selector").value;
         if(taskEventChoice == "default") {
-            // undecided behavior on if task/event option not selected
-        } else if(taskEventChoice == "Task") {
+            // default to task
+            taskEventChoice = "Task";
+        } 
+        if(taskEventChoice == "Task") {
             /*  entry should contain:
             *
             *   content: "Go on a run",
@@ -36,31 +54,22 @@ document.getElementById("task-event-textbox").addEventListener("keypress", funct
             entry.completed = false;
             entry.tags = []; 
             
-            // multiple tag behavior not implemented yet
-            let firstTag = document.getElementById("tag-selection");
-            if(firstTag.value != "Add Tag Here...") {
-                entry.tags.push(firstTag.value);
+            // collect selected tags from tag bar
+            let tags = document.getElementById("tag-selection").children;
+            for(let i = 0; i < tags.length; i++) {
+                if(tags[i].innerHTML.includes("✓")) {
+                    entry.tags.push(tags[i].innerHTML.substring(0, tags[i].innerHTML.length - 2));
+                }
             }
-             
+            
+            // initialize task element
             let newEntry = document.createElement("task-log");
             newEntry.content = entry;
 
-            let taskSpaces = document.getElementById("log-tasks-area").children;
-            for(let i = 0; i < taskSpaces.length; i++) {
-                console.log(taskSpaces[i]);
-
-                // a "label" element with the class "empty-space" needs to exist for a task to be inserted
-                if(taskSpaces[i].getAttribute("class") == "empty-space") {
-                    taskSpaces[i].setAttribute("class", "filled-space");
-                    taskSpaces[i].appendChild(newEntry);
-                    /*
-                        TODO: add task to local storage
-                    */
-                    return;
-                }
-            }
+            // Append task element to log (subject to change according to log css etc.)
+            let taskSpace = document.getElementById("log-tasks-area");
+            taskSpace.appendChild(newEntry);
         } else if(taskEventChoice == "Event") {
-
             /*  entry should contain:
             * 
             *   content: "CSE 110 Lecture",
@@ -68,11 +77,28 @@ document.getElementById("task-event-textbox").addEventListener("keypress", funct
             *   from: 1621308663,
             *   to: 1621367364
             */
+            entry.content = input.value;
+            entry.tags = []; 
+            
+            // collect selected tags from tag bar
+            let tags = document.getElementById("tag-selection").children;
+            for(let i = 0; i < tags.length; i++) {
+                if(tags[i].innerHTML.includes("✓")) {
+                    entry.tags.push(tags[i].innerHTML.substring(0, tags[i].innerHTML.length - 2));
+                }
+            }
 
-            /*
-                TODO:
-            */
+            // pull time info from clock icon (not implemented yet)
+            entry.from = "";
+            entry.to = "";
 
+            // initialize event element
+            let newEntry = document.createElement("event-log");
+            newEntry.content = entry;
+
+            // Append event element to log (subject to change)
+            let eventSpace = document.getElementById("log-events-area");
+            eventSpace.appendChild(newEntry);   
         }
     }
 });
