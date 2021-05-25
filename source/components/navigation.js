@@ -93,11 +93,33 @@ backward.addEventListener('click', () => {
     newDate.setDate(newDate.getDate() - 1);
     curDate = newDate;
     let key = getDaysKey(newDate);
+
     populate(getData(key), newDate);
+
 });
 >>>>>>> 2442e17 (Fixed event listeners and populate)
 
+<<<<<<< HEAD
     removeAll();
+=======
+function remove() {
+    
+    let taskChildren = taskArea.childNodes;
+    taskChildren.forEach((child) => {
+        child.remove();
+    });
+
+    let eveChildren = eventArea.childNodes;
+    eveChildren.forEach((child) => {
+        child.remove();
+    });
+
+    /* remove media and notepad */
+
+}
+
+function populate(item, key) {
+>>>>>>> 260775d (Added remove function, removed task labels to test)
 
 <<<<<<< HEAD
     const allTasks = log.tasks;
@@ -112,7 +134,15 @@ backward.addEventListener('click', () => {
     document.getElementsByTagName('h3')[0].innerText = getName(key);
 >>>>>>> 9ae140b (Fixed date misalignment, added dummy item)
 
+<<<<<<< HEAD
     noteArea.append(log.notepad);
+=======
+    /* remove current data and repopulate with new data shit idk how to remove*/
+    remove();
+
+    const allTasks = item["tasks"];
+    const allEve = item["events"];
+>>>>>>> 260775d (Added remove function, removed task labels to test)
 
     allTasks.forEach((task) => {
         const newTask = document.createElement('task-log');
