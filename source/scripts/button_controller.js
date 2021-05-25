@@ -18,7 +18,7 @@ document.getElementById("tag-selection").addEventListener("change", function() {
             if(tags[i].innerHTML.includes("✓")) {
                 tags[i].innerHTML = this.value.substring(0, this.value.length - 2);
             } else {
-                tags[i].innerHTML = this.value + " ✓";
+                tags[i].innerHTML = `${this.value  } ✓`;
             }
             this.value = "default";
         }
