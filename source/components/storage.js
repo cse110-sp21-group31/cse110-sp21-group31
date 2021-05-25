@@ -113,7 +113,7 @@ function addCustomTag(tagName){
     // add tag option to html list
     const newTag = document.createElement("option");
     newTag.innerHTML = tagName;
-    let addTagOption = document.querySelector("add-tag-option");
+    const addTagOption = document.querySelector("add-tag-option");
     document.querySelector("tag-selection").insertBefore(newTag, addTagOption);
 }
 
