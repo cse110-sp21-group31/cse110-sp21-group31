@@ -1,172 +1,245 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bullet Journal</title>
-    <link rel="stylesheet" href="./style.css">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bullet Journal</title>
+        <link rel="stylesheet" href="./style.css" />
 
-    <script src="./components/task.js" type="module"></script>
-    <script src="./components/event.js" type="module"></script>
-    <script src="./components/storage.js"></script>
-    <script src="./scripts/button_controller.js" type="module"></script>
+        <script src="./components/task.js" type="module"></script>
+        <script src="./components/event.js" type="module"></script>
+        <script src="./components/storage.js"></script>
+        <script src="./scripts/button_controller.js" type="module"></script>
 
-    <!-- Fonts -->
-    <!-- Sen -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <link href="https://fonts.googleapis.com/css2?family=Sen&display=swap" rel="stylesheet">
-    <!-- Roboto -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class='container'>
-        <div class='item-header'>
-            <div id='header-item-img'>
-                <a href="#"><img src="/source/images/nav_button.png" alt="Navigation Button" height='50' width='50'></a>
-            </div>
-            <div id='header-item-title'>
-                <h1 id='header' class="main-title">Daily Log</h1>
-            </div>
-            <div>
-                <!-- dummy div for alignment purposes -->
-            </div>
-        </div>
-        <div class='item-middle'>
-            <div class='middle-item-bar'>
-                <div id='left-arrow'>
-                    <a href="#"><img src="/source/images/arrow_left.png" alt="Left Arrow" height='25' width='25'></a>
+        <!-- Fonts -->
+        <!-- Sen -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Sen&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Roboto -->
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <div class="item-header">
+                <div id="header-item-img">
+                    <a href="#"
+                        ><img
+                            src="/source/images/nav_button.png"
+                            alt="Navigation Button"
+                            height="50"
+                            width="50"
+                    /></a>
                 </div>
-                <div id='date-text'>
-                    <h3 class='main-title'>May 18, 2021</h3>
+                <div id="header-item-title">
+                    <h1 id="header" class="main-title">Daily Log</h1>
                 </div>
-                <div id='right-arrow'>
-                    <a href="#"><img src="/source/images/arrow_right.png" alt="Right Arrow" height='25' width='25'></a>
+                <div>
+                    <!-- dummy div for alignment purposes -->
                 </div>
             </div>
-            <div id='middle-item-log'>
-                <div id='log-title'>
-                    <h2 class='main-title'>Log</h2>
+            <div class="item-middle">
+                <div class="middle-item-bar">
+                    <div id="left-arrow">
+                        <a href="#"
+                            ><img
+                                src="/source/images/arrow_left.png"
+                                alt="Left Arrow"
+                                height="25"
+                                width="25"
+                        /></a>
+                    </div>
+                    <div id="date-text">
+                        <h3 class="main-title">May 18, 2021</h3>
+                    </div>
+                    <div id="right-arrow">
+                        <a href="#"
+                            ><img
+                                src="/source/images/arrow_right.png"
+                                alt="Right Arrow"
+                                height="25"
+                                width="25"
+                        /></a>
+                    </div>
                 </div>
-                <div id='log-text-area'>
-                    <div id='log-tasks-area'> 
-                        <div class='task-event'>
-                            <label for=""><input type="checkbox">Task 1</label>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label UCSD-tag'>UCSD</small>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
+                <div id="middle-item-log">
+                    <div id="log-title">
+                        <h2 class="main-title">Log</h2>
+                    </div>
+                    <div id="log-text-area">
+                        <div id="log-tasks-area">
+                            <div class="task-event">
+                                <label for=""
+                                    ><input type="checkbox" />Task 1</label
+                                >
+                                <div class="tags-container">
+                                    <span class="tags">
+                                        <small class="tag-label UCSD-tag"
+                                            >UCSD</small
+                                        >
+                                        <small class="tag-label lecture-tag"
+                                            >Lecture</small
+                                        >
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="task-event">
+                                <label for=""
+                                    ><input type="checkbox" />Task 2</label
+                                >
+                                <div class="tags-container">
+                                    <span class="tags">
+                                        <small class="tag-label other-tag"
+                                            >Other</small
+                                        >
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="task-event">
+                                <label for=""
+                                    ><input type="checkbox" />Task 3</label
+                                >
+                                <div class="tags-container">
+                                    <span class="tags">
+                                        <small class="tag-label UCSD-tag"
+                                            >UCSD</small
+                                        >
+                                        <!-- <small class='tag-label'>Work</small> -->
+                                        <small class="tag-label other-tag"
+                                            >Other</small
+                                        >
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="task-event">
+                                <label for=""
+                                    ><input type="checkbox" />Task 4</label
+                                >
+                                <div class="tags-container">
+                                    <span class="tags">
+                                        <small class="tag-label lecture-tag"
+                                            >Lecture</small
+                                        >
+                                    </span>
+                                </div>
                             </div>
                         </div>
-                        <div class='task-event'>
-                            <label for=""><input type="checkbox">Task 2</label>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label other-tag'>Other</small>
-                                </span>
+                        <div id="log-events-area">
+                            <div class="task-event">
+                                <label for=""
+                                    ><input type="checkbox" />Event 1</label
+                                >
+                                <div class="tags-container">
+                                    <span class="tags">
+                                        <small class="tag-label lecture-tag"
+                                            >Lecture</small
+                                        >
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class='task-event'>
-                            <label for=""><input type="checkbox">Task 3</label>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label UCSD-tag'>UCSD</small>
-                                    <!-- <small class='tag-label'>Work</small> -->
-                                    <small class='tag-label other-tag'>Other</small>
-                                </span>
+                            <div class="task-event">
+                                <label for=""
+                                    ><input type="checkbox" />Event 2</label
+                                >
+                                <div class="tags-container">
+                                    <span class="tags">
+                                        <small class="tag-label lecture-tag"
+                                            >Lecture</small
+                                        >
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class='task-event'>
-                            <label for=""><input type="checkbox">Task 4</label>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
+                            <div class="task-event">
+                                <label for=""
+                                    ><input type="checkbox" />Event 3</label
+                                >
+                                <div class="tags-container">
+                                    <span class="tags">
+                                        <small class="tag-label lecture-tag"
+                                            >Lecture</small
+                                        >
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="task-event">
+                                <label for=""
+                                    ><input type="checkbox" />Event 4</label
+                                >
+                                <div class="tags-container">
+                                    <span class="tags">
+                                        <small class="tag-label lecture-tag"
+                                            >Lecture</small
+                                        >
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div id='log-events-area'>
-                        <div class='task-event'>
-                            <label for=""><input type="checkbox">Event 1</label>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <label for=""><input type="checkbox">Event 2</label>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <label for=""><input type="checkbox">Event 3</label>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <label for=""><input type="checkbox">Event 4</label>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
-                            </div>
-                        </div>
-                    </div>  
+                </div>
+                <div id="middle-item-notes">
+                    <div id="notes-title">
+                        <h2 class="main-title">Notes</h2>
+                    </div>
+                    <div id="notes-text-area"></div>
+                </div>
+                <div id="middle-item-media">
+                    <div id="media-title">
+                        <h2 class="main-title">Media</h2>
+                    </div>
+                    <div id="media-text-area"></div>
                 </div>
             </div>
-            <div id='middle-item-notes'>
-                <div id='notes-title'>
-                    <h2 class='main-title'>Notes</h2>
+            <div class="item-footer">
+                <div id="task-event-selector-area">
+                    <select name="task-event-selector" id="task-event-selector">
+                        <option value="default">Task or Event</option>
+                        <option value="Task">Task</option>
+                        <option value="Event">Event</option>
+                    </select>
                 </div>
-                <div id='notes-text-area'>
-                    
+                <div id="task-event-textbox-area">
+                    <input
+                        type="text"
+                        name="task-event-textbox"
+                        id="task-event-textbox"
+                        placeholder="Enter a Task or Event here!"
+                    />
                 </div>
-            </div>
-            <div id='middle-item-media'>
-                <div id='media-title'>
-                    <h2 class='main-title'>Media</h2>
-                </div>
-                <div id='media-text-area'>
-                    
-                </div>
-            </div>
-        </div>
-        <div class='item-footer'>
-            <div id='task-event-selector-area'>
-                <select name="task-event-selector" id="task-event-selector">
-                    <option value="default">Task or Event</option>
-                    <option value="Task">Task</option>
-                    <option value="Event">Event</option> 
-                </select>
-            </div>
-            <div id='task-event-textbox-area'>
-                <input type="text" name='task-event-textbox' id='task-event-textbox' placeholder='Enter a Task or Event here!'>
-            </div>
-            <div id='clock-tags-upload-area'>
-                <div id='clock-img'>
-                    <a href="#"><img src="/source/images/clock.png" alt="Right Arrow" height='40' width='40'></a>
-                </div>
-                <div id='tags-selector'>
-                    <select name="Tags" id="tag-selection">
-                        <option value="default">Apply Tags</option>
-                        <option>Lecture</option>
-                        <option>UCSD</option>
-                        <option>Other</option>
-                        <option id="add-tag-option">Add Tag Here...</option>
-                      </select>
-                </div>
-                <div id='upload-img'>
-                    <a href="#"><img src="/source/images/upload_button.png" alt="Right Arrow" height='40' width='40'></a>    
+                <div id="clock-tags-upload-area">
+                    <div id="clock-img">
+                        <a href="#"
+                            ><img
+                                src="/source/images/clock.png"
+                                alt="Right Arrow"
+                                height="40"
+                                width="40"
+                        /></a>
+                    </div>
+                    <div id="tags-selector">
+                        <select name="Tags" id="tag-selection">
+                            <option value="default">Apply Tags</option>
+                            <option>Lecture</option>
+                            <option>UCSD</option>
+                            <option>Other</option>
+                            <option id="add-tag-option">Add Tag Here...</option>
+                        </select>
+                    </div>
+                    <div id="upload-img">
+                        <a href="#"
+                            ><img
+                                src="/source/images/upload_button.png"
+                                alt="Right Arrow"
+                                height="40"
+                                width="40"
+                        /></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
