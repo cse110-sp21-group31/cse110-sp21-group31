@@ -100,20 +100,26 @@ backward.addEventListener('click', () => {
 >>>>>>> 2442e17 (Fixed event listeners and populate)
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     removeAll();
 =======
 function remove() {
+=======
+function removeAll() {
+>>>>>>> 0c95cc5 (Fixed remove elements function)
     
     let taskChildren = taskArea.childNodes;
-    taskChildren.forEach((child) => {
-        child.remove();
-    });
+    let taskLength = taskChildren.length;
+    for (let i = 0; i < taskLength; i++) {
+        taskArea.removeChild(taskArea.lastChild);
+    }
 
-    let eveChildren = eventArea.childNodes;
-    eveChildren.forEach((child) => {
-        child.remove();
-    });
-
+    const eveChildren = eventArea.childNodes;
+    const eveLength = eveChildren.length;
+    for (let i = 0; i < eveLength; i++) {
+        eventArea.removeChild(eventArea.lastChild);
+    }
+    
     /* remove media and notepad */
 
 }
@@ -138,7 +144,7 @@ function populate(item, key) {
     noteArea.append(log.notepad);
 =======
     /* remove current data and repopulate with new data shit idk how to remove*/
-    remove();
+    removeAll();
 
     const allTasks = item["tasks"];
     const allEve = item["events"];
@@ -195,12 +201,19 @@ document.addEventListener('DOMContentLoaded' , () => {
             }
         ],
         events: [
+            
             {
                 content: "CSE 110 Lecture",
                 tags: "Lecture",
                 from: 1621308663,
                 to: 1621367364,
             },
+            {
+                content: "SOCI 103M Lecture",
+                tags: "Lecture",
+                from: 1621308665,
+                to: 1621367366,
+            }
         ]
     }
     //let item = getData(curDate);
