@@ -111,11 +111,6 @@
     background-color: rgb(157, 207, 223);
 }
 
-.task-label {
-    padding-right: 50px;
-    justify-content: left;
-}
-
 .task-container {
     display: flex;
     flex-direction: row;
@@ -129,9 +124,9 @@
 .tag-label {
     font-family: 'Roboto', 'sans-serif';
     border-radius: 10px;
-    background-color: lightpink;
-    opacity: 90%;
     padding: 5px 5px 5px 5px;
+    box-shadow: 0px 1px 1px;
+    background-color: lightpink;   
 }
 
 #log-events-area {
