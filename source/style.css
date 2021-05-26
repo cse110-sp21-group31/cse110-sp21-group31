@@ -99,6 +99,35 @@
     overflow-y: scroll;
 }
 
+.task {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.task-label {
+    padding-right: 50px;
+    justify-content: left;
+}
+
+.task-container {
+    display: flex;
+    flex-direction: row;
+    padding-right: 5%;
+}
+
+.tags {
+    justify-content: end;
+}
+
+.tag-label {
+    font-family: 'Roboto', 'sans-serif';
+    border-radius: 5px;
+    background-color: pink;
+    opacity: 90%;
+    margin: 1px 1px 1px 1px;
+}
+
 #log-events-area {
     display: grid;
     grid-template-rows: repeat(4, 1fr);
