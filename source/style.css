@@ -91,13 +91,6 @@
     border-top: 1px solid black;
 }
 
-/* #log-tasks-area {
-    display: grid;
-    grid-template-rows: repeat(1fr);
-    align-items: center;
-    height: 100%;
-} */
-
 #log-tasks-area {
     display: flex;
     flex-direction: column;
@@ -183,9 +176,10 @@
 }
 
 #log-events-area {
-    display: grid;
-    grid-template-rows: repeat(4, 1fr);
-    align-items: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
     border-top: 1px solid black;
 }
 
