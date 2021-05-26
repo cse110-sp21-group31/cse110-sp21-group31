@@ -126,7 +126,32 @@
     border-radius: 10px;
     padding: 5px 5px 5px 5px;
     box-shadow: 0px 1px 1px;
-    background-color: lightpink;   
+    /* background-color: lightpink; */
+}
+
+/* Starting Tag Classes */
+.UCSD-tag {
+    font-family: 'Roboto', 'sans-serif';
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 0px 1px 1px;
+    background-color: limegreen;
+}
+
+.lecture-tag {
+    font-family: 'Roboto', 'sans-serif';
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 0px 1px 1px;
+    background-color: salmon;
+}
+
+.other-tag {
+    font-family: 'Roboto', 'sans-serif';
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 0px 1px 1px;
+    background-color: violet;
 }
 
 .tag-label:hover {
