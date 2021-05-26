@@ -20,9 +20,23 @@
 </head>
 <body>
     <div class='container'>
+        
+        <!-- Experimental Sidebar -->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <a href="#">Weekly Log</a>
+            <a href="#">Recent Days:</a>
+            <ul>
+                <small><a href="#">May 22, 2021</a></small>
+                <small><a href="#">May 21, 2021</a></small>
+            </ul>
+            
+        </div>
+        <!-- Sidebar Ends -->
+
         <div class='item-header'>
             <div id='header-item-img'>
-                <a href="#"><img src="/source/images/nav_button.png" alt="Navigation Button" height='50' width='50'></a>
+                <a href="#" class='openbtn' onclick="openNav()"><img src="/source/images/nav_button.png" alt="Navigation Button" height='50' width='50'></a>
             </div>
             <div id='header-item-title'>
                 <h1 id='header' class="main-title">Daily Log</h1>
@@ -228,3 +242,15 @@
     </div>
 </body>
 </html>
+
+<script>
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+    }
+</script>

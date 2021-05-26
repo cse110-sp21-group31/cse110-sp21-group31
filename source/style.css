@@ -353,3 +353,49 @@ body {
 #log-events-area label {
     font-family: 'Roboto', 'sans-serif';
 }
+
+
+/*
+    Experimental Sidebar Styling
+*/
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: lightblue;
+    box-shadow: 3px 0 30px;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+  }
+  
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: 'Sen', 'sans-serif';
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }  
