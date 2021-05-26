@@ -25,10 +25,24 @@
         />
     </head>
     <body>
+        <!-- Experimental Sidebar -->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"
+                >×</a
+            >
+            <a href="#">Weekly Log</a>
+            <a href="#">Recent Days:</a>
+            <ul>
+                <small><a href="#">May 22, 2021</a></small>
+                <small><a href="#">May 21, 2021</a></small>
+            </ul>
+        </div>
+        <!-- Sidebar Ends -->
+
         <div class="container">
             <div class="item-header">
                 <div id="header-item-img">
-                    <a href="#"
+                    <a href="#" class="openbtn" onclick="openNav()"
                         ><img
                             src="/source/images/nav_button.png"
                             alt="Navigation Button"
@@ -73,111 +87,32 @@
                     </div>
                     <div id="log-text-area">
                         <div id="log-tasks-area">
-                            <div class="task-event">
-                                <label for=""
-                                    ><input type="checkbox" />Task 1</label
-                                >
-                                <div class="tags-container">
-                                    <span class="tags">
-                                        <small class="tag-label UCSD-tag"
-                                            >UCSD</small
-                                        >
-                                        <small class="tag-label lecture-tag"
-                                            >Lecture</small
-                                        >
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="task-event">
-                                <label for=""
-                                    ><input type="checkbox" />Task 2</label
-                                >
-                                <div class="tags-container">
-                                    <span class="tags">
-                                        <small class="tag-label other-tag"
-                                            >Other</small
-                                        >
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="task-event">
-                                <label for=""
-                                    ><input type="checkbox" />Task 3</label
-                                >
-                                <div class="tags-container">
-                                    <span class="tags">
-                                        <small class="tag-label UCSD-tag"
-                                            >UCSD</small
-                                        >
-                                        <!-- <small class='tag-label'>Work</small> -->
-                                        <small class="tag-label other-tag"
-                                            >Other</small
-                                        >
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="task-event">
-                                <label for=""
-                                    ><input type="checkbox" />Task 4</label
-                                >
-                                <div class="tags-container">
-                                    <span class="tags">
-                                        <small class="tag-label lecture-tag"
-                                            >Lecture</small
-                                        >
-                                    </span>
-                                </div>
-                            </div>
+                            <label for=""
+                                ><input type="checkbox" />Task 1</label
+                            >
+                            <label for=""
+                                ><input type="checkbox" />Task 2</label
+                            >
+                            <label for=""
+                                ><input type="checkbox" />Task 3</label
+                            >
+                            <label for=""
+                                ><input type="checkbox" />Task 4</label
+                            >
                         </div>
                         <div id="log-events-area">
-                            <div class="task-event">
-                                <label for=""
-                                    ><input type="checkbox" />Event 1</label
-                                >
-                                <div class="tags-container">
-                                    <span class="tags">
-                                        <small class="tag-label lecture-tag"
-                                            >Lecture</small
-                                        >
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="task-event">
-                                <label for=""
-                                    ><input type="checkbox" />Event 2</label
-                                >
-                                <div class="tags-container">
-                                    <span class="tags">
-                                        <small class="tag-label lecture-tag"
-                                            >Lecture</small
-                                        >
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="task-event">
-                                <label for=""
-                                    ><input type="checkbox" />Event 3</label
-                                >
-                                <div class="tags-container">
-                                    <span class="tags">
-                                        <small class="tag-label lecture-tag"
-                                            >Lecture</small
-                                        >
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="task-event">
-                                <label for=""
-                                    ><input type="checkbox" />Event 4</label
-                                >
-                                <div class="tags-container">
-                                    <span class="tags">
-                                        <small class="tag-label lecture-tag"
-                                            >Lecture</small
-                                        >
-                                    </span>
-                                </div>
-                            </div>
+                            <label for=""
+                                ><input type="checkbox" />Event 1</label
+                            >
+                            <label for=""
+                                ><input type="checkbox" />Event 2</label
+                            >
+                            <label for=""
+                                ><input type="checkbox" />Event 3</label
+                            >
+                            <label for=""
+                                ><input type="checkbox" />Event 4</label
+                            >
                         </div>
                     </div>
                 </div>
@@ -243,3 +178,15 @@
         </div>
     </body>
 </html>
+
+<script>
+    function openNav() {
+        document.getElementById('mySidebar').style.width = '250px';
+        document.getElementById('main').style.marginLeft = '250px';
+    }
+
+    function closeNav() {
+        document.getElementById('mySidebar').style.width = '0';
+        document.getElementById('main').style.marginLeft = '0';
+    }
+</script>
