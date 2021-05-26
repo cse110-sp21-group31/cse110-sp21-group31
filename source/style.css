@@ -101,8 +101,14 @@
 
 .task {
     display: flex;
+    height: 100%;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+}
+
+.task:hover {
+    background-color: rgb(157, 207, 223);
 }
 
 .task-label {
@@ -117,15 +123,15 @@
 }
 
 .tags {
-    justify-content: end;
+    justify-content: center;
 }
 
 .tag-label {
     font-family: 'Roboto', 'sans-serif';
-    border-radius: 5px;
-    background-color: pink;
+    border-radius: 10px;
+    background-color: lightpink;
     opacity: 90%;
-    margin: 1px 1px 1px 1px;
+    padding: 5px 5px 5px 5px;
 }
 
 #log-events-area {
@@ -270,13 +276,9 @@ body {
 }
 
 #log-tasks-area label:hover {
-    background-color: rgb(157, 207, 223);
+    /* background-color: rgb(157, 207, 223); */
 }
 
 #log-events-area label {
     font-family: 'Roboto', 'sans-serif';
-}
-
-#log-events-area label:hover {
-    background-color: rgb(157, 207, 223);
 }
