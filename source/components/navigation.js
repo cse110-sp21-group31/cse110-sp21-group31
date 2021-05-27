@@ -28,8 +28,26 @@ backward.addEventListener('click', () => {
     newDate.setDate(newDate.getDate() - 1);
     curDate = newDate;
     let key = getDaysKey(newDate);
+
     populate(getData(key), newDate);
+
 });
+
+function remove() {
+    
+    let taskChildren = taskArea.childNodes;
+    taskChildren.forEach((child) => {
+        child.remove();
+    });
+
+    let eveChildren = eventArea.childNodes;
+    eveChildren.forEach((child) => {
+        child.remove();
+    });
+
+    /* remove media and notepad */
+
+}
 
 function populate(item, key) {
 
@@ -37,6 +55,8 @@ function populate(item, key) {
     document.getElementsByTagName('h3')[0].innerText = getName(key);
 
     /* remove current data and repopulate with new data shit idk how to remove*/
+    remove();
+
     const allTasks = item["tasks"];
     const allEve = item["events"];
 
