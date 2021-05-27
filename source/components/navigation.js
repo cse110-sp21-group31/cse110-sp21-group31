@@ -1,5 +1,4 @@
-
-import { getDaysKey, getData, getName } from './storage.js';
+import { getDaysKey, getData, getName } from './storage';
 
 /* date variables */
 let curDate = new Date();
@@ -15,19 +14,17 @@ const backward = document.getElementById('left-arrow');
  * Removes the current content from the log, notepad, and media tab
  */
 function removeAll() {
-    
     const taskChildren = taskArea.childNodes;
     const taskLength = taskChildren.length;
-    for (let i = 0; i < taskLength; i +=1) {
+    for (let i = 0; i < taskLength; i += 1) {
         taskArea.removeChild(taskArea.lastChild);
     }
 
     const eveChildren = eventArea.childNodes;
     const eveLength = eveChildren.length;
-    for (let i = 0; i < eveLength; i +=1) {
+    for (let i = 0; i < eveLength; i += 1) {
         eventArea.removeChild(eventArea.lastChild);
     }
-
 }
 
 /**
@@ -35,10 +32,10 @@ function removeAll() {
  * @param {string} link
  * @return true/false
  */
- function isLinkImage(link) {
+function isLinkImage(link) {
     let bool = false;
     const subscript = link.slice(link.lastIndexOf('.'));
-    possibleImageSubscripts.forEach((item)=> { 
+    possibleImageSubscripts.forEach((item) => {
         if (subscript === item) {
             bool = true;
         }
@@ -52,7 +49,6 @@ function removeAll() {
  * @param {string} key - The date of the journal
  */
 function populate(log, key) {
-
     document.getElementsByTagName('h3')[0].innerText = getName(key);
 
     removeAll();
@@ -65,7 +61,7 @@ function populate(log, key) {
         newTask.content = task;
         taskArea.appendChild(newTask);
     });
-    
+
     allEve.forEach((event) => {
         const newEvent = document.createElement('event-log');
         newEvent.content = event;
@@ -76,29 +72,25 @@ function populate(log, key) {
         let x;
         if (isLinkImage(item)) {
             x = 'img';
-        }
-        else {
+        } else {
             x = 'audio';
         }
         x = document.createElement(x);
         x.src = item;
         mediaDOM.appendChild(x);
     });
-    
 }
 
 /**
  * Increases date by one day, calls populate
  * @listens forward#click
  */
- forward.addEventListener('click', () => {
-
+forward.addEventListener('click', () => {
     newDate.setDate(newDate.getDate() + 1);
     curDate = newDate;
     const key = getDaysKey(newDate);
 
     populate(getData(key), newDate);
-
 });
 
 /**
@@ -106,48 +98,18 @@ function populate(log, key) {
  * @listens backward#click
  */
 backward.addEventListener('click', () => {
-
     newDate.setDate(newDate.getDate() - 1);
     curDate = newDate;
     const key = getDaysKey(newDate);
 
     populate(getData(key), newDate);
-
 });
-
 
 /**
  * When the initial document is loaded, call populate on today's journal content
  * @listens document#DOMContentLoaded
  */
-document.addEventListener('DOMContentLoaded' , () => {
-
-    const testLog = {
-        name: "Monday, May 24th",
-        notepad: "blan blah blah",
-        tasks: [
-            {
-                content: "Go on a run",
-                completed: true/false,
-                tags: ["Other", "UCSD"],
-            }
-        ],
-        events: [
-            
-            {
-                content: "CSE 110 Lecture",
-                tags: "Lecture",
-                from: 1621308663,
-                to: 1621367364,
-            },
-            {
-                content: "SOCI 103M Lecture",
-                tags: "Lecture",
-                from: 1621308665,
-                to: 1621367366,
-            }
-        ]
-    }
-    populate(testLog, curDate);
-
+document.addEventListener('DOMContentLoaded', () => {
+    const key = getDaysKey(curDate);
+    populate(getData(key), curDate);
 });

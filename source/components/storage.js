@@ -140,9 +140,9 @@ function test() {
     updateNotepad(getDaysKey(), 'note');
 }
 
-test();*/
+test();
 
-export {getDaysKey, getData, getName};
+export { getDaysKey, getData, getName };
 
 /*
 
