@@ -1,4 +1,4 @@
-export {getDaysKey, getData, getName};
+export { getDaysKey, getData, getName };
 
 /*
 storage.js
@@ -26,10 +26,13 @@ getName
 @param: key of that day
 @return: the name of that day "Thursday, May 13th"
 */
-function getName() {
+function getName(key) {
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    const now = new Date();
-    return now.toLocaleDateString('en-US', options);
+    if (key == null) {
+        const now = new Date();
+        return now.toLocaleDateString('en-US', options);
+    }
+    return key.toLocaleDateString('en-US', options);
 }
 
 /**
@@ -109,13 +112,13 @@ function addCustomTag(tagName) {
     const colorArr = ['blue', 'red', 'yellow', 'green'];
     const customTags = getData('custom-tags');
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
-    setData("custom-tags", customTags);
+    setData('custom-tags', customTags);
 
     // add tag option to html list
-    const newTag = document.createElement("option");
+    const newTag = document.createElement('option');
     newTag.innerHTML = tagName;
-    const addTagOption = document.querySelector("add-tag-option");
-    document.querySelector("tag-selection").insertBefore(newTag, addTagOption);
+    const addTagOption = document.querySelector('add-tag-option');
+    document.querySelector('tag-selection').insertBefore(newTag, addTagOption);
 }
 
 /**
