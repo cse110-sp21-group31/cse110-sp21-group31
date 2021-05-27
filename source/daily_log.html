@@ -12,6 +12,8 @@
     <!-- Roboto -->
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+    <script src="/source/clock.js"></script>
 </head>
 <body>
     <div class='container'>
@@ -78,21 +80,7 @@
                 <input type="text" name='task-event-textbox' id='task-event-textbox' placeholder='Enter a Task or Event here!'>
             </div>
             <div id='clock-tags-upload-area'>
-                <div id='clock-img'>
-                    <a href="#popup"><img src="/source/images/clock.png" alt="Right Arrow" height='40' width='40'></a>
-                </div>
-                <div id='popup'>
-                    <div class='window'>
-                        <button id='close'>X</button>
-                        <form id='time-selector'>
-                            <label for='startTime'>Start Time:</label>
-                            <input type='time' id='start-time' name='start-time'>
-                            <label for='endTime'>End Time:</label>
-                            <input type='time' id='end-time' name='end-time'>
-                            <input type='submit'>
-                        </form>
-                    </div>
-                </div>
+                <img id='clock-img' src="/source/images/clock.png" alt="Right Arrow" height='40' width='40'></a>
                 <div id='tags-selector'>
                     <select name="Tags" id="tag-selection">
                         <option value="default">Apply Tags</option>
@@ -107,6 +95,15 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div id='popup-clock'>
+        <form id='time-selector'>
+            <label for='startTime'>Start Time:</label>
+            <input type='time' id='start-time' name='start-time'>
+            <label for='endTime'>End Time:</label>
+            <input type='time' id='end-time' name='end-time'>
+            <button type='button' id="submit-button">Submit</button>
+        </form>
     </div>
 </body>
 </html>

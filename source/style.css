@@ -212,3 +212,16 @@ body {
     text-align: center;
 }
 
+#popup-clock {
+    display: none;
+    width: 13%;
+    height: 10%;
+    position: fixed;
+    bottom: 8%; 
+    right: 10%;
+    background-color: rgba(166, 239, 255, 0.551);
+}
+
+#popup-clock label {
+    text-align: center;
+}
