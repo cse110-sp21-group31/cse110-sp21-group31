@@ -1,5 +1,3 @@
-export { getDaysKey, getData, getName };
-
 /*
 storage.js
 functions to get/set local storage 
@@ -144,7 +142,10 @@ function test() {
 
 test();*/
 
+export {getDaysKey, getData, getName};
+
 /*
+
 
 LocalStorage: {
     
