@@ -1,5 +1,3 @@
-export {getDaysKey, getData, getName};
-
 /*
 storage.js
 functions to get/set local storage 
@@ -142,7 +140,7 @@ function test() {
     updateNotepad(getDaysKey(), 'note');
 }
 
-test();*/
+test();
 
 export { getDaysKey, getData, getName };
 
