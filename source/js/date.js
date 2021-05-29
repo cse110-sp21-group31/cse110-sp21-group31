@@ -28,7 +28,7 @@ getWeek
 */
  function getWeek(key) {
     
-    let msPerDay = 24 * 60 * 60 * 1000;
+    const msPerDay = 24 * 60 * 60 * 1000;
     
     // this defaults to browser timezone
     // monday is 1
