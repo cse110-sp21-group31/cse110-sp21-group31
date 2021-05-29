@@ -1,4 +1,4 @@
-import { getDaysKey, getData, getName } from './storage.js';
+import { getDaysKey, getData, getName } from './storage';
 
 /* date variables */
 let curDate = new Date();
