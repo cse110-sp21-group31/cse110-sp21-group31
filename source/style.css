@@ -1,4 +1,3 @@
-
 /* Grid Properties */
 .container {
     width: 100%;
@@ -8,12 +7,14 @@
     grid-gap: 5px;
 }
 
+/* Top Bar */
+
 .item-header {
     grid-row: 1 / 2;
     width: 100%;
     display: grid;
     grid-template-columns: 6% auto 6%;
-    background-color: lightcyan;
+    background-color: lightblue;
 }
 
 #header-item-img {
@@ -30,6 +31,8 @@
     text-align: center;
 }
 
+/* Middle Section */
+
 .item-middle {
     height: 100%;
     grid-row: 2 / 3;
@@ -45,7 +48,7 @@
     grid-row: 1 / 2;
     display: grid;
     grid-template-columns: 5% auto 5%;
-    background-color: lightgreen;
+    background-color: lightblue;
 }
 
 #left-arrow {
@@ -74,6 +77,7 @@
     background-color: lightblue;
     border: 1px solid black;
     border-radius: 25px;
+    overflow: hidden;
 }
 
 #log-title {
@@ -82,6 +86,129 @@
 
 #log-text-area {
     grid-row: 2 / 3;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    border-top: 1px solid black;
+}
+
+#log-tasks-area {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+}
+
+#log-tasks-area:hover {
+    overflow-y: scroll;
+}
+
+.task-event {
+    display: flex;
+    height: 25%;
+    width: 100%;
+    flex: none;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-event:hover {
+    background-color: rgb(157, 207, 223);
+}
+
+.checkbox-label-container {
+    padding: 0 0 0 1%;
+}
+
+.tags-container {
+    display: flex;
+    flex-direction: row;
+    width: 25%;
+    align-items: center;
+    height: 100%;
+    padding-right: 1%;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 50%;
+    width: 100%;
+    overflow-x: scroll;
+    /* padding: 0 5% 0 5%; */
+}
+
+.tag-label {
+    font-family: 'Roboto', 'sans-serif';
+    height: 40%;
+    border-radius: 10px;
+    padding: 5px 5px 5px 5px;
+    box-shadow: 0px 1px 1px;
+    margin: 0 5px 0 5px;
+}
+
+/* Starting Tag Classes */
+.UCSD-tag {
+    background-color: rgb(161, 183, 122);
+}
+
+.lecture-tag {
+    background-color: salmon;
+}
+
+.other-tag {
+    background-color: violet;
+}
+
+/* Color Tags */
+.red-tag {
+    background-color: rgb(166, 39, 0);
+}
+
+.blue-tag {
+    background-color: rgb(64, 129, 183);
+}
+
+.green-tag {
+    background-color: rgb(82, 173, 124);
+}
+
+.orange-tag {
+    background-color: rgb(244, 135, 45);
+}
+
+.violet-tag {
+    background-color: rgb(218, 189, 246);
+}
+
+.pink-tag {
+    background-color: rgb(255, 163, 163);
+}
+
+.tag-label:hover {
+    box-shadow: none;
+}
+
+#log-events-area {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: auto;
+    border-top: 1px solid black;
+}
+
+.event-time-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    padding: 0 0 0 1%;
+}
+
+.event-time {
+    font-family: 'Sen', 'sans-serif';
+    padding: 5% 0 0 0;
 }
 
 #middle-item-notes {
@@ -97,6 +224,7 @@
 
 #notes-title {
     grid-row: 1 / 2;
+    border-bottom: 1px solid black;
 }
 
 #notes-text-area {
@@ -108,7 +236,7 @@
     grid-row-start: 2;
     display: grid;
     grid-template-rows: 10% auto;
-    background-color: rgb(252, 183, 156);
+    background-color: rgb(178, 228, 189);
     border: 1px solid black;
     border-radius: 25px;
     margin-right: 5px;
@@ -116,6 +244,7 @@
 
 #media-title {
     grid-row: 1 / 2;
+    border-bottom: 1px solid black;
 }
 
 #media-text-area {
@@ -137,8 +266,9 @@
     padding: 0px 10px 0px 10px;
 }
 
-#task-event-selector, select {
-    font-family: 'Roboto', sans-serif; 
+#task-event-selector,
+select {
+    font-family: 'Roboto', sans-serif;
     font-size: 24px;
     text-align: center;
     border: 1px solid transparent;
@@ -231,7 +361,7 @@ body {
 }
 
 #popup-clock {
-    display: flex;
+    display: none;
     width: 14%;
     height: 15%;
     position: fixed;
@@ -252,14 +382,27 @@ body {
 }
 
 #start-time {
-    flex: 1
+    flex: 1;
 }
 
 #end-time {
-    flex: 1
+    flex: 1;
 }
 
 #clock-submit-button {
-    flex: 1
+    flex: 1;
     
 }
+
+#log-tasks-area label {
+    font-family: 'Roboto', 'sans-serif';
+}
+
+#log-tasks-area label:hover {
+    /* background-color: rgb(157, 207, 223); */
+}
+
+#log-events-area label {
+    font-family: 'Roboto', 'sans-serif';
+}
+

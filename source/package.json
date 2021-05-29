@@ -6,7 +6,7 @@
     "scripts": {
         "lint": "npx eslint . --ext .js",
         "test": "npx jest",
-        "docs": "npx jsdoc -c build/jsdocConf.json *.js"
+        "docs": "npx jsdoc . -r -c build/jsdocConf.json -d out"
     },
     "keywords": [],
     "author": "",
