@@ -51,12 +51,8 @@ function getWeek(key) {
 temporary test function to satisfy linter
 */
 function test() {
-    console.log('today is ');
-    console.log(getDaysKey());
-    console.log(' or ');
-    console.log(getName());
-    console.log('this week has ');
-    console.log(getWeek(getDaysKey()));
+    getName();
+    getWeek(getDaysKey());
 }
 
 test();
