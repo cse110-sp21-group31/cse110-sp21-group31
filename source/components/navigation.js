@@ -1,12 +1,15 @@
-import { getDaysKey, getData, getName } from './storage';
+import { getDaysKey, getData, getName } from './storage.js';
 
 /* date variables */
 let curDate = new Date();
 const newDate = curDate;
+const possibleImageSubscripts = ['.jpg', '.png'];
 
 /* access log components */
 const taskArea = document.getElementById('log-tasks-area');
 const eventArea = document.getElementById('log-events-area');
+const noteArea = document.getElementById('notes-text-area');
+const mediaArea = document.getElementById('media-text-area');
 const forward = document.getElementById('right-arrow');
 const backward = document.getElementById('left-arrow');
 
@@ -24,6 +27,18 @@ function removeAll() {
     const eveLength = eveChildren.length;
     for (let i = 0; i < eveLength; i += 1) {
         eventArea.removeChild(eventArea.lastChild);
+    }
+
+    const mediaChildren = mediaArea.childNodes;
+    const mediaLength = mediaChildren.length;
+    for (let i = 0; i < mediaLength; i += 1) {
+        mediaArea.removeChild(mediaArea.lastChild);
+    }
+
+    const noteChildren = noteArea.childNodes;
+    const noteLength = noteChildren.length;
+    for (let i = 0; i < noteLength; i += 1) {
+        noteArea.removeChild(noteArea.lastChild);
     }
 }
 
@@ -55,6 +70,9 @@ function populate(log, key) {
 
     const allTasks = log.tasks;
     const allEve = log.events;
+    const allMedia = log.media;
+
+    noteArea.append(log.notepad);
 
     allTasks.forEach((task) => {
         const newTask = document.createElement('task-log');
@@ -62,13 +80,7 @@ function populate(log, key) {
         taskArea.appendChild(newTask);
     });
 
-    allEve.forEach((event) => {
-        const newEvent = document.createElement('event-log');
-        newEvent.content = event;
-        eventArea.appendChild(newEvent);
-    });
-
-    data.media.forEach((item) => {
+    allMedia.forEach((item) => {
         let x;
         if (isLinkImage(item)) {
             x = 'img';
@@ -77,7 +89,13 @@ function populate(log, key) {
         }
         x = document.createElement(x);
         x.src = item;
-        mediaDOM.appendChild(x);
+        mediaArea.appendChild(x);
+    });
+
+    allEve.forEach((event) => {
+        const newEvent = document.createElement('event-log');
+        newEvent.content = event;
+        eventArea.appendChild(newEvent);
     });
 }
 
