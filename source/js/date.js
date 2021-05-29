@@ -36,7 +36,7 @@ getWeek
     
     let sundayTime = Date.now() - currentDayOfWeek * msPerDay;
 
-    let result = [];
+    const result = [];
     for(i = 0; i < 7; i++) { // days of week
         let date = new Date(sundayTime + (i * msPerDay));
         result.push(getDaysKey(date));
