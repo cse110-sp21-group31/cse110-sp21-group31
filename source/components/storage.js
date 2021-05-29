@@ -1,4 +1,6 @@
-/**
+export {getDaysKey, getData, getName};
+
+/*
 storage.js
 functions to get/set local storage 
 */
