@@ -9,6 +9,7 @@
     <script src="./components/event.js" type="module"></script>
     <script src="./components/storage.js"></script>
     <script src="./scripts/button_controller.js" type="module"></script>
+    <script src="/source/clock.js"></script>
 
     <!-- Fonts -->
     <!-- Sen -->
@@ -17,6 +18,7 @@
     <!-- Roboto -->
     <link rel="preconnect" href="https://fonts.gstatic.com"> 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <div class='container'>
@@ -198,7 +200,7 @@
         </div>
         <div class='item-footer'>
             <div id='task-event-selector-area'>
-                <select name="task-event-selector" id="task-event-selector">
+                <select name="Task Event Selector" id='task-event-selector'>
                     <option value="default">Task or Event</option>
                     <option value="Task">Task</option>
                     <option value="Event">Event</option> 
@@ -208,8 +210,15 @@
                 <input type="text" name='task-event-textbox' id='task-event-textbox' placeholder='Enter a Task or Event here!'>
             </div>
             <div id='clock-tags-upload-area'>
-                <div id='clock-img'>
-                    <a href="#"><img src="images/clock.png" alt="Right Arrow" height='40' width='40'></a>
+                <div class='clock-form'>
+                    <img id='clock-img' src="/source/images/clock.png" alt="Clock" height='40' width='40'></a>    
+                    <div id='popup-clock'>
+                        <form id='time-selector'>
+                            <label id='start-time' for='startTime'>Start Time:<input type='time' id='start-time' name='start-time'></label>
+                            <label id='end-time' for='endTime'>End Time:<input type='time' id='end-time' name='end-time'></label>
+                            <button type='button' id="clock-submit-button">Submit</button>
+                        </form>
+                    </div>
                 </div>
                 <div id='tags-selector'>
                     <select name="Tags" id="tag-selection">
