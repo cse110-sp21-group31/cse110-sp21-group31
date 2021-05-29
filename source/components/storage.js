@@ -13,9 +13,9 @@ returns a string that represents the key that corresponds to the current date
 function getDaysKey(now) {
     if (now === undefined) {
         const day = new Date();
-        return [day.getFullYear(), day.getMonth(), day.getDate()].join('-');
+        return [day.getFullYear(), day.getMonth() + 1, day.getDate()].join('-');
     }
-    return [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+    return [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-');
 }
 
 // https://www.digitalocean.com/community/tutorials/understanding-date-and-time-in-javascript
@@ -142,7 +142,7 @@ function test() {
     updateNotepad(getDaysKey(), 'note');
 }
 
-test();
+test();*/
 
 /*
 
