@@ -32,7 +32,7 @@ getWeek
     
     // this defaults to browser timezone
     // monday is 1
-    const currentDayOfWeek = new Date(key+"T00:00:00").getDay();    
+    const currentDayOfWeek = new Date(`${key}T00:00:00`).getDay(); 
     
     const sundayTime = Date.now() - currentDayOfWeek * msPerDay;
 
