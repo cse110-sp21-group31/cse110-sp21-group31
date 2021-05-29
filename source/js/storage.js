@@ -2,6 +2,7 @@
 storage.js
 functions to get/set local storage 
 */
+import { getDaysKey } from './date';
 
 /*
 get/set the relevant data for the day specified in key
@@ -62,13 +63,13 @@ function addCustomTag(tagName) {
     const colorArr = ['blue', 'red', 'yellow', 'green'];
     const customTags = getData('custom-tags');
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
-    setData("custom-tags", customTags);
+    setData('custom-tags', customTags);
 
     // add tag option to html list
-    const newTag = document.createElement("option");
+    const newTag = document.createElement('option');
     newTag.innerHTML = tagName;
-    const addTagOption = document.querySelector("add-tag-option");
-    document.querySelector("tag-selection").insertBefore(newTag, addTagOption);
+    const addTagOption = document.querySelector('add-tag-option');
+    document.querySelector('tag-selection').insertBefore(newTag, addTagOption);
 }
 
 /**
@@ -92,4 +93,3 @@ function test() {
 }
 
 test();
-
