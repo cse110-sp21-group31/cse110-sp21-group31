@@ -1,4 +1,4 @@
-export {getDaysKey, getData, getName};
+export { getDaysKey, getData, getName };
 
 /*
 storage.js
