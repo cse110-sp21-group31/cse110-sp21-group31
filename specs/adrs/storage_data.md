@@ -121,7 +121,7 @@ LocalStorage: {
 
     "2021-05-13": {
         name: "Thursday, May 13th",
-        notepad: <p></p>
+        notepad: "",
         tasks: [
             {
                 content: "Go on a run",
