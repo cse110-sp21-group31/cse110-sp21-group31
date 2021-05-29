@@ -1,5 +1,3 @@
-export {getDaysKey, getData, getName};
-
 /*
 storage.js
 functions to get/set local storage 
@@ -162,7 +160,7 @@ function test() {
 >>>>>>> 9ae140b (Fixed date misalignment, added dummy item)
 }
 
-test();*/
+test();
 
 export { getDaysKey, getData, getName };
 
