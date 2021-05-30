@@ -1,18 +1,9 @@
-<<<<<<< HEAD
 import { getDaysKey, getData, getName } from './storage';
 
 /* date variables */
 let curDate = new Date();
 const newDate = curDate;
 const possibleImageSubscripts = ['.jpg', '.png'];
-=======
-
-import { getDaysKey, getData, getName } from './storage.js';
-
-/* date variables */
-let curDate = new Date();
-let newDate = curDate;
->>>>>>> 2442e17 (Fixed event listeners and populate)
 
 /* access log components */
 const taskArea = document.getElementById('log-tasks-area');
@@ -22,7 +13,6 @@ const mediaArea = document.getElementById('media-text-area');
 const forward = document.getElementById('right-arrow');
 const backward = document.getElementById('left-arrow');
 
-<<<<<<< HEAD
 /**
  * Removes the current content from the log, notepad, and media tab
  */
@@ -75,80 +65,14 @@ function isLinkImage(link) {
  */
 function populate(log, key) {
     document.getElementsByTagName('h3')[0].innerText = getName(key);
-=======
-/* Increases date by one, gets data, calls populate */
-forward.addEventListener('click', () => {
-    /* gets tomorrow date key */
-    newDate.setDate(newDate.getDate() + 1);
-    curDate = newDate;
-    let key = getDaysKey(newDate);
 
-    populate(getData(key), newDate);
-
-});
-
-/* Decreases date by one, gets data, calls populate */
-backward.addEventListener('click', () => {
-    /* gets yesterday date key */
-    newDate.setDate(newDate.getDate() - 1);
-    curDate = newDate;
-    let key = getDaysKey(newDate);
-
-    populate(getData(key), newDate);
-
-});
->>>>>>> 2442e17 (Fixed event listeners and populate)
-
-<<<<<<< HEAD
-<<<<<<< HEAD
     removeAll();
-=======
-function remove() {
-=======
-function removeAll() {
->>>>>>> 0c95cc5 (Fixed remove elements function)
-    
-    let taskChildren = taskArea.childNodes;
-    let taskLength = taskChildren.length;
-    for (let i = 0; i < taskLength; i++) {
-        taskArea.removeChild(taskArea.lastChild);
-    }
 
-    const eveChildren = eventArea.childNodes;
-    const eveLength = eveChildren.length;
-    for (let i = 0; i < eveLength; i++) {
-        eventArea.removeChild(eventArea.lastChild);
-    }
-    
-    /* remove media and notepad */
-
-}
-
-function populate(item, key) {
->>>>>>> 260775d (Added remove function, removed task labels to test)
-
-<<<<<<< HEAD
     const allTasks = log.tasks;
     const allEve = log.events;
     const allMedia = log.media;
-=======
-    /* Sets new date at the top */
-<<<<<<< HEAD
-    let i = document.getElementsByTagName('h3')[0].innerText = getName(key);
->>>>>>> 2442e17 (Fixed event listeners and populate)
-=======
-    document.getElementsByTagName('h3')[0].innerText = getName(key);
->>>>>>> 9ae140b (Fixed date misalignment, added dummy item)
 
-<<<<<<< HEAD
     noteArea.append(log.notepad);
-=======
-    /* remove current data and repopulate with new data shit idk how to remove*/
-    removeAll();
-
-    const allTasks = item["tasks"];
-    const allEve = item["events"];
->>>>>>> 260775d (Added remove function, removed task labels to test)
 
     allTasks.forEach((task) => {
         const newTask = document.createElement('task-log');
@@ -175,7 +99,6 @@ function populate(item, key) {
     });
 }
 
-<<<<<<< HEAD
 /**
  * Increases date by one day, calls populate
  * @listens forward#click
@@ -187,39 +110,6 @@ forward.addEventListener('click', () => {
 
     populate(getData(key), newDate);
 });
-=======
-document.addEventListener('DOMContentLoaded' , () => {
-
-    let item = {
-        name: "Monday, May 24th",
-        notepad: "blan blah blah",
-        tasks: [
-            {
-                content: "Go on a run",
-                completed: true/false,
-                tags: ["Other", "UCSD"],
-            }
-        ],
-        events: [
-            
-            {
-                content: "CSE 110 Lecture",
-                tags: "Lecture",
-                from: 1621308663,
-                to: 1621367364,
-            },
-            {
-                content: "SOCI 103M Lecture",
-                tags: "Lecture",
-                from: 1621308665,
-                to: 1621367366,
-            }
-        ]
-    }
-    //let item = getData(curDate);
-    /* populate with current data */
-    populate(item, curDate);
->>>>>>> 2442e17 (Fixed event listeners and populate)
 
 /**
  * Decreases the date by one day, calls populate
