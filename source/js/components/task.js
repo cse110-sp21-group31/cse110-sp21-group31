@@ -1,29 +1,26 @@
-class Task extends HTMLElement {
+import Log from './log.js';
+
+class Task extends Log {
     constructor() {
         super();
+        const sha = this.shadowRoot;
 
-        const template = document.createElement('template');
-        template.innerHTML = `
-            <style>
-            </style>
-
-            <div class='task-event'>
-                <div class='checkbox-label-container'>
-                    <label for=""><input type="checkbox">Task 2</label>
-                </div>
-                <div class='tags-container'>
-                    <span class='tags'>
-                        <small class='tag-label other-tag'>Other</small>
-                        <small class='tag-label other-tag'>Other</small>
-                        <small class='tag-label other-tag'>Other</small>
-                        <small class='tag-label other-tag'>Other</small>
-                    </span>
-                </div>
+        // add divs to this shadow root
+        sha.innerHTML += `
+            <div class='checkbox-label-container'>
+                <label for="">
+                    <input type="checkbox">
+                    <span></span>
+                </label>
             </div>
-        `;
+            <div class='tags-container'>
+                <span class='tags'>
+                </span>
+            </div>`;
 
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
+        // DOM references to use in set/get
+        this.titleDOM = sha.querySelector('.checkbox-label-container span');
+        this.checkDOM = sha.querySelector('.checkbox-label-container input');
     }
 
     /**
@@ -37,23 +34,14 @@ class Task extends HTMLElement {
      *
      */
     set content(task) {
-        // set content
-        this.shadowRoot.querySelector('.task-log-content').innerText =
-            task.content;
+        // set title
+        this.titleDOM.innerText = task.content;
 
-        // set completed, and the status of the checkbox
-        this.shadowRoot.querySelector('.task-log-completed').checked =
-            task.completed;
+        // set status of the checkbox
+        this.checkDOM.checked = task.completed;
 
-        // append a tag element inside the tag div for each individual tag string
-        task.tags.forEach((tag) => {
-            const singleTag = document.createElement('p');
-            // can also set other attributes of element later if needed
-            singleTag.innerText = tag;
-            this.shadowRoot
-                .querySelector('.task-log-tags')
-                .appendChild(singleTag);
-        });
+        // append a tag element inside the tag div
+        this.setTags(task.tags);
     }
 
     /**
@@ -62,15 +50,14 @@ class Task extends HTMLElement {
     get content() {
         const returnObj = {};
 
-        returnObj.content =
-            this.shadowRoot.querySelector('.task-log-content').innerText; // get the content
-        returnObj.completed = this.shadowRoot.querySelector(
-            '.task-log-completed'
-        ).checked; // get the completion
-        returnObj.tags = [];
-        this.shadowRoot.querySelectorAll('.task-log-tags p').forEach((item) => {
-            returnObj.tags.push(item.innerText); // push tags in
-        });
+        // get the title
+        returnObj.content = this.titleDOM.innerText;
+
+        // get the checkmark status
+        returnObj.completed = this.checkDOM.checked;
+
+        // get the tags
+        returnObj.tags = this.getTags();
 
         return returnObj;
     }

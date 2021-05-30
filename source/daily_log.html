@@ -7,7 +7,7 @@
 
     <script src="./js/components/task.js" type="module"></script>
     <script src="./js/components/event.js" type="module"></script>
-    <script src="./js/storage.js"></script>
+    <script src="./js/storage.js" type="module"></script>
     <script src="./scripts/button_controller.js" type="module"></script>
     <script src="/source/clock.js"></script>
 
@@ -50,135 +50,8 @@
                     <h2 class='main-title'>Log</h2>
                 </div>
                 <div id='log-text-area'>
-                    <div id='log-tasks-area'> 
-                        <div class='task-event'>
-                            <div class='checkbox-label-container'>
-                                <label for=""><input type="checkbox">Task 1</label>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label UCSD-tag'>UCSD</small>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <div class='checkbox-label-container'>
-                                <label for=""><input type="checkbox">Task 2</label>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label other-tag'>Other</small>
-                                    <small class='tag-label other-tag'>Other</small>
-                                    <small class='tag-label other-tag'>Other</small>
-                                    <small class='tag-label other-tag'>Other</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <div class='checkbox-label-container'>
-                                <label for=""><input type="checkbox">Task 3</label>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label UCSD-tag'>UCSD</small>
-                                    <small class='tag-label other-tag'>Other</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <div class='checkbox-label-container'>
-                                <label for=""><input type="checkbox">Task 4</label>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <div class='checkbox-label-container'>
-                                <label for=""><input type="checkbox">Task 5</label>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <div class='checkbox-label-container'>
-                                <label for=""><input type="checkbox">Task 6</label>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div id='log-events-area'>
-                        <div class='task-event'>
-                            <div class='event-time-container'>
-                                <label for=""><span>&#8212;</span> Event 1</label>
-                                <small class='event-time'>11:00am - 12:30pm</small>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                    <small class='tag-label UCSD-tag'>UCSD</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <div class='event-time-container'>
-                                <label for=""><span>&#8212;</span> Event 2</label>
-                                <small class='event-time'>11:00am - 12:30pm</small>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                    <small class='tag-label other-tag'>Other</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <div class='event-time-container'>
-                                <label for=""><span>&#8212;</span> Event 3</label>
-                                <small class='event-time'>11:00am - 12:30pm</small>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label UCSD-tag'>UCSD</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <div class='event-time-container'>
-                                <label for=""><span>&#8212;</span> Event 4</label>
-                                <small class='event-time'>11:00am - 12:30pm</small>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
-                            </div>
-                        </div>
-                        <div class='task-event'>
-                            <div class='event-time-container'>
-                                <label for=""><span>&#8212;</span> Event 5</label>
-                                <small class='event-time'>11:00am - 12:30pm</small>
-                            </div>
-                            <div class='tags-container'>
-                                <span class='tags'>
-                                    <small class='tag-label other-tag'>Other</small>
-                                    <small class='tag-label lecture-tag'>Lecture</small>
-                                </span>
-                            </div>
-                        </div>
-                    </div>  
+                    <div id='log-tasks-area'></div>
+                    <div id='log-events-area'></div>  
                 </div>
             </div>
             <div id='middle-item-notes'>
