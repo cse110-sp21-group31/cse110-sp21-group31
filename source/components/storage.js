@@ -75,11 +75,9 @@ add a task into local storage
 */
 function addTask(key, task) {
     const dayData = getData(key);
-    if (dayData == null) return false;
-
+    if (dayData == null) return;
     dayData.tasks.push(task);
     setData(key, dayData);
-    return true;
 }
 
 /**
@@ -90,6 +88,7 @@ add an event into local storage
 */
 function addEvent(key, event) {
     const dayData = getData(key);
+    if (dayData == null) return;
     dayData.events.push(event);
     setData(key, dayData);
 }
@@ -99,6 +98,7 @@ addLink
 */
 function addLink(key, link) {
     const dayData = getData(key);
+    if (dayData == null) return;
     dayData.media.push(link);
     setData(key, dayData);
 }
@@ -109,6 +109,7 @@ add custom tag
 function addCustomTag(tagName) {
     const colorArr = ['blue', 'red', 'yellow', 'green'];
     const customTags = getData('custom-tags');
+    if (customTags == null) return;
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
     setData('custom-tags', customTags);
 
@@ -124,6 +125,7 @@ update paragraph
 */
 function updateNotepad(key, text) {
     const dayData = getData(key);
+    if (dayData == null) return;
     dayData.notepad = text;
     setData(key, dayData);
 }
