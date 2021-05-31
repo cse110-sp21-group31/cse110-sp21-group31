@@ -1,4 +1,4 @@
-/**
+/*
 storage.js
 functions to get/set local storage 
 */
@@ -11,9 +11,9 @@ returns a string that represents the key that corresponds to the current date
 function getDaysKey(now) {
     if (now === undefined) {
         const day = new Date();
-        return [day.getFullYear(), day.getMonth(), day.getDate()].join('-');
+        return [day.getFullYear(), day.getMonth() + 1, day.getDate()].join('-');
     }
-    return [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+    return [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-');
 }
 
 // https://www.digitalocean.com/community/tutorials/understanding-date-and-time-in-javascript
@@ -24,10 +24,13 @@ getName
 @param: key of that day
 @return: the name of that day "Thursday, May 13th"
 */
-function getName() {
+function getName(key) {
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    const now = new Date();
-    return now.toLocaleDateString('en-US', options);
+    if (key == null) {
+        const now = new Date();
+        return now.toLocaleDateString('en-US', options);
+    }
+    return key.toLocaleDateString('en-US', options);
 }
 
 /**
@@ -72,11 +75,9 @@ add a task into local storage
 */
 function addTask(key, task) {
     const dayData = getData(key);
-    if (dayData == null) return false;
-
+    if (dayData == null) return;
     dayData.tasks.push(task);
     setData(key, dayData);
-    return true;
 }
 
 /**
@@ -87,6 +88,7 @@ add an event into local storage
 */
 function addEvent(key, event) {
     const dayData = getData(key);
+    if (dayData == null) return;
     dayData.events.push(event);
     setData(key, dayData);
 }
@@ -96,6 +98,7 @@ addLink
 */
 function addLink(key, link) {
     const dayData = getData(key);
+    if (dayData == null) return;
     dayData.media.push(link);
     setData(key, dayData);
 }
@@ -106,14 +109,15 @@ add custom tag
 function addCustomTag(tagName) {
     const colorArr = ['blue', 'red', 'yellow', 'green'];
     const customTags = getData('custom-tags');
+    if (customTags == null) return;
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
-    setData("custom-tags", customTags);
+    setData('custom-tags', customTags);
 
     // add tag option to html list
-    const newTag = document.createElement("option");
+    const newTag = document.createElement('option');
     newTag.innerHTML = tagName;
-    const addTagOption = document.querySelector("add-tag-option");
-    document.querySelector("tag-selection").insertBefore(newTag, addTagOption);
+    const addTagOption = document.querySelector('add-tag-option');
+    document.querySelector('tag-selection').insertBefore(newTag, addTagOption);
 }
 
 /**
@@ -121,6 +125,7 @@ update paragraph
 */
 function updateNotepad(key, text) {
     const dayData = getData(key);
+    if (dayData == null) return;
     dayData.notepad = text;
     setData(key, dayData);
 }
@@ -139,7 +144,10 @@ function test() {
 
 test();
 
+export { getDaysKey, getData, getName };
+
 /*
+
 
 LocalStorage: {
     
