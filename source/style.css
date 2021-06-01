@@ -249,6 +249,20 @@
 
 #media-text-area {
     grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.media-item {
+    display: flex;
+    flex-direction: column;
+    flex: none;
+    height: 50%;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
 }
 
 .item-footer {
