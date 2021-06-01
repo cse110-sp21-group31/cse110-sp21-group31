@@ -42,6 +42,14 @@
     grid-gap: 10px;
 }
 
+.item-middle-wk {
+    height: 100%;
+    width: 100%;
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-rows: 7% auto;
+}
+
 .middle-item-bar {
     grid-column: span 3;
     grid-row: 1 / 2;
@@ -67,6 +75,52 @@
     height: 100%;
     justify-content: center;
     align-items: center;
+}
+
+#calendar-container {
+    height: 100%;
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 7% auto;
+}
+
+#time-column {
+    grid-column: 1 / 2;
+    height: 100%;
+    background-color: aquamarine;
+    display: grid;
+    grid-template-rows: 1fr 6fr 2fr;
+}
+
+#time-column > div {
+    height: 100%;
+    width: 100%;
+}
+
+.time-clm-label {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Sen', 'sans-serif';
+}
+
+#days-label {
+    grid-row: 1 / 2;
+}
+
+#time-label {
+    grid-row: 2 / 3;
+}
+
+#tasks-label {
+    grid-row: 3 / 4;
+}
+
+#calendar {
+    grid-column: 2 / 3;
+    height: 100%;
+    background-color: brown;
 }
 
 #middle-item-log {
@@ -408,3 +462,4 @@ body {
     font-family: 'Roboto', 'sans-serif';
 }
 
+/* Weekly Log */
