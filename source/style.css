@@ -43,30 +43,30 @@
 }
 
 .middle-item-bar {
-    height: 100%;
     grid-column: span 3;
     grid-row: 1 / 2;
-    display: grid;
-    grid-template-columns: 5% auto 5%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
     background-color: lightblue;
 }
 
 #left-arrow {
-    height: 100%;
-    grid-column: 1 / 2;
     display: flex;
     flex-direction: column;
+    flex: 1;
+    height: 100%;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
 
 #right-arrow {
-    height: 100%;
-    grid-column: 3 / 4;
     display: flex;
+    flex: 1;
     flex-direction: column;
+    height: 100%;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
 
 #middle-item-log {
