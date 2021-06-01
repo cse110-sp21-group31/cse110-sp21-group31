@@ -354,10 +354,12 @@ body {
 }
 
 #date-text {
+    display: flex;
     height: 100%;
-    grid-column: 2 / 3;
+    flex: 23;
     font-family: 'Sen', 'sans-serif';
-    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 #popup-clock {
