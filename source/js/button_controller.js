@@ -89,8 +89,8 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             }
 
             // pull time info from clock icon (not implemented yet)
-            entry.from = "";
-            entry.to = "";
+            entry.from = document.getElementById("start-time").children[0].value;
+            entry.to = document.getElementById("end-time").children[0].value;
 
             // initialize event element
             const newEntry = document.createElement("event-log");
