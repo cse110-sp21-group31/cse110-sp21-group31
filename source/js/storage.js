@@ -1,52 +1,8 @@
-/**
+/*
 storage.js
 functions to get/set local storage 
 */
-
-/**
-getDaysKey
-returns a string that represents the key that corresponds to the current date
-@returns 2021-05-17
-*/
-function getDaysKey(now) {
-    if (now === undefined) {
-        const day = new Date();
-        return [day.getFullYear(), day.getMonth(), day.getDate()].join('-');
-    }
-    return [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
-}
-
-// https://www.digitalocean.com/community/tutorials/understanding-date-and-time-in-javascript
-// https://www.w3schools.com/jsref/jsref_getday.as
-
-/**
-getName
-@param: key of that day
-@return: the name of that day "Thursday, May 13th"
-*/
-function getName() {
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    const now = new Date();
-    return now.toLocaleDateString('en-US', options);
-}
-
-/**
-getWeek
-@param key: input day key
-@return: an array of keys for each day in the week that key belongs in
-*/
-/* function getWeek(key) {
-    const msPerDay = 86400000;
-    let now = new Date(key);
-    let currentDay = now.getDay();
-    let sundayTime = Date.now() - currentDay * msPerDay;
-    let result = [];
-    for(i = 0; i < 7; i++) { // days of week
-        let date = new Date(sundayTime + (i * msPerDay));
-        result.push(getDaysKey(date));
-    }
-    return result;
-} */
+import { getDaysKey } from './date.js';
 
 /**
 get/set the relevant data for the day specified in key
@@ -68,12 +24,11 @@ addTask
 add a task into local storage
 @param key: 2021-05-17
 @param task: the json data returned from Task.content
-@return: whether or not the day exists
+@return true/false if successful
 */
 function addTask(key, task) {
     const dayData = getData(key);
     if (dayData == null) return false;
-
     dayData.tasks.push(task);
     setData(key, dayData);
     return true;
@@ -84,52 +39,80 @@ addEvent
 add an event into local storage
 @param key: 2021-05-17
 @param event: the json data returned from Event.content
+@return true/false if successful
 */
 function addEvent(key, event) {
     const dayData = getData(key);
+    if (dayData == null) return false;
     dayData.events.push(event);
     setData(key, dayData);
+    return true;
 }
 
 /**
 addLink
+@param key 2021-05-17
+@param link string that represents link of media
+@return true/false if successful
 */
 function addLink(key, link) {
     const dayData = getData(key);
+    if (dayData == null) return false;
     dayData.media.push(link);
     setData(key, dayData);
+    return true;
 }
 
 /**
 add custom tag
+@param tagName string for the name of tag
+@return true/false if successful
 */
 function addCustomTag(tagName) {
-    const colorArr = ['blue', 'red', 'yellow', 'green'];
+    const colorArr = ['blue', 'red', 'pink', 'green', 'violet', 'orange'];
     const customTags = getData('custom-tags');
+    if (customTags == null) return false;
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
-    setData("custom-tags", customTags);
+    setData('custom-tags', customTags);
 
     // add tag option to html list
-    const newTag = document.createElement("option");
+    const newTag = document.createElement('option');
     newTag.innerHTML = tagName;
-    const addTagOption = document.querySelector("add-tag-option");
-    document.querySelector("tag-selection").insertBefore(newTag, addTagOption);
+    const addTagOption = document.querySelector('add-tag-option');
+    document.querySelector('tag-selection').insertBefore(newTag, addTagOption);
+
+    return true;
+}
+
+/**
+get color for a custom tag
+@param tagName string for the name of tag
+@return the tag color
+*/
+function getCustomTagColor(tagName) {
+    const customTags = getData('custom-tags');
+    if (tagName in customTags === false) return '';
+    return customTags[tagName];
 }
 
 /**
 update paragraph
+@param key: 2021-05-17
+@param text: content of the notepad
+@return true/false if successful
 */
 function updateNotepad(key, text) {
     const dayData = getData(key);
+    if (dayData == null) return false;
     dayData.notepad = text;
     setData(key, dayData);
+    return true;
 }
 
 /**
 temporary test function to satisfy linter
 */
 function test() {
-    getName();
     addTask(getDaysKey(), 'task');
     addEvent(getDaysKey(), 'event');
     addLink(getDaysKey(), 'link');
@@ -138,6 +121,8 @@ function test() {
 }
 
 test();
+
+export { getData, getCustomTagColor };
 
 /*
 
