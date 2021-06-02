@@ -12,6 +12,7 @@ class Log extends HTMLElement {
             label {
                 font-family: 'Roboto', 'sans-serif';
             }
+            
             .task-event {
                 display: flex;
                 height: 25%;
@@ -45,11 +46,10 @@ class Log extends HTMLElement {
                 align-items: center;
                 height: 50%;
                 width: 100%;
-                overflow-x: scroll;
-                /* padding: 0 5% 0 5%; */
             }
             
             .tag-label {
+                flex: 0;
                 font-family: 'Roboto', 'sans-serif';
                 height: 40%;
                 border-radius: 10px;
