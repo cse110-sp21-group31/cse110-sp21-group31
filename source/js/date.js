@@ -56,3 +56,5 @@ function test() {
 }
 
 test();
+
+export { getDaysKey, getName };
