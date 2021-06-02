@@ -104,7 +104,7 @@
     
 
     
-    <h4 class="name" id="addCustomTag"><span class="type-signature"></span>addCustomTag<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addCustomTag"><span class="type-signature"></span>addCustomTag<span class="signature">(tagName:)</span><span class="type-signature"></span></h4>
     
 
     
@@ -112,7 +112,8 @@
 
 
 <div class="description">
-    add custom tag
+    addCustomTag
+add a new custom tag
 </div>
 
 
@@ -121,6 +122,50 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>tagName:</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">name of desired new tag</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -156,7 +201,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_storage.js.html">components/storage.js</a>, <a href="components_storage.js.html#line106">line 106</a>
+        <a href="js_storage.js.html">js/storage.js</a>, <a href="js_storage.js.html#line66">line 66</a>
     </li></ul></dd>
     
 
@@ -307,7 +352,7 @@ add an event into local storage
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_storage.js.html">components/storage.js</a>, <a href="components_storage.js.html#line88">line 88</a>
+        <a href="js_storage.js.html">js/storage.js</a>, <a href="js_storage.js.html#line41">line 41</a>
     </li></ul></dd>
     
 
@@ -343,7 +388,7 @@ add an event into local storage
     
 
     
-    <h4 class="name" id="addLink"><span class="type-signature"></span>addLink<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="addLink"><span class="type-signature"></span>addLink<span class="signature">(key:, link:)</span><span class="type-signature"></span></h4>
     
 
     
@@ -352,6 +397,7 @@ add an event into local storage
 
 <div class="description">
     addLink
+add a new link for a day
 </div>
 
 
@@ -360,6 +406,68 @@ add an event into local storage
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key:</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">2021-05-17</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>link:</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the link that will be added to media</td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -395,7 +503,7 @@ add an event into local storage
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_storage.js.html">components/storage.js</a>, <a href="components_storage.js.html#line97">line 97</a>
+        <a href="js_storage.js.html">js/storage.js</a>, <a href="js_storage.js.html#line54">line 54</a>
     </li></ul></dd>
     
 
@@ -546,7 +654,7 @@ add a task into local storage
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_storage.js.html">components/storage.js</a>, <a href="components_storage.js.html#line73">line 73</a>
+        <a href="js_storage.js.html">js/storage.js</a>, <a href="js_storage.js.html#line28">line 28</a>
     </li></ul></dd>
     
 
@@ -678,7 +786,7 @@ add a task into local storage
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_storage.js.html">components/storage.js</a>, <a href="components_storage.js.html#line56">line 56</a>
+        <a href="js_storage.js.html">js/storage.js</a>, <a href="js_storage.js.html#line12">line 12</a>
     </li></ul></dd>
     
 
@@ -723,6 +831,7 @@ add a task into local storage
 
 <div class="description">
     getDaysKey
+
 returns a string that represents the key that corresponds to the current date
 </div>
 
@@ -767,7 +876,7 @@ returns a string that represents the key that corresponds to the current date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_storage.js.html">components/storage.js</a>, <a href="components_storage.js.html#line11">line 11</a>
+        <a href="js_date.js.html">js/date.js</a>, <a href="js_date.js.html#line7">line 7</a>
     </li></ul></dd>
     
 
@@ -865,7 +974,534 @@ returns a string that represents the key that corresponds to the current date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_storage.js.html">components/storage.js</a>, <a href="components_storage.js.html#line27">line 27</a>
+        <a href="js_date.js.html">js/date.js</a>, <a href="js_date.js.html#line19">line 19</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="getWeek"><span class="type-signature"></span>getWeek<span class="signature">(key:)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    getWeek
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key:</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">input day key</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_date.js.html">js/date.js</a>, <a href="js_date.js.html#line32">line 32</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="isLinkImage"><span class="type-signature"></span>isLinkImage<span class="signature">(link)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Identify if the given string contains image subscripts
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>link</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_navigation.js.html">js/navigation.js</a>, <a href="js_navigation.js.html#line51">line 51</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    true/false
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="populate"><span class="type-signature"></span>populate<span class="signature">(log, key)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Changes the date title, removes existing content, populates page with current date's content
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>log</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The object that contains attributes of the day's journal</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>key</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">The date of the journal</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_navigation.js.html">js/navigation.js</a>, <a href="js_navigation.js.html#line67">line 67</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="removeAll"><span class="type-signature"></span>removeAll<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Removes the current content from the log, notepad, and media tab
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_navigation.js.html">js/navigation.js</a>, <a href="js_navigation.js.html#line20">line 20</a>
     </li></ul></dd>
     
 
@@ -909,7 +1545,7 @@ returns a string that represents the key that corresponds to the current date
 
 
 <div class="description">
-    Print information representing a student. This function will print the values given.
+    Print information representing a student. This function will print the values given. This documentation was updated on Thursday, May 27.
 </div>
 
 
@@ -1136,7 +1772,7 @@ returns a string that represents the key that corresponds to the current date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_storage.js.html">components/storage.js</a>, <a href="components_storage.js.html#line125">line 125</a>
+        <a href="js_date.js.html">js/date.js</a>, <a href="js_date.js.html#line53">line 53</a>
     </li></ul></dd>
     
 
@@ -1172,7 +1808,7 @@ returns a string that represents the key that corresponds to the current date
     
 
     
-    <h4 class="name" id="updateNotepad"><span class="type-signature"></span>updateNotepad<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="test"><span class="type-signature"></span>test<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -1180,7 +1816,7 @@ returns a string that represents the key that corresponds to the current date
 
 
 <div class="description">
-    update paragraph
+    temporary test function to satisfy linter
 </div>
 
 
@@ -1224,7 +1860,158 @@ returns a string that represents the key that corresponds to the current date
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_storage.js.html">components/storage.js</a>, <a href="components_storage.js.html#line116">line 116</a>
+        <a href="js_storage.js.html">js/storage.js</a>, <a href="js_storage.js.html#line96">line 96</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="updateNotepad"><span class="type-signature"></span>updateNotepad<span class="signature">(key:, text:)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    updateNotepad
+adds or updates the notepad for a day
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>key:</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">2021-05-17</td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>text:</code></td>
+            
+
+            <td class="type">
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">content of the notepad</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="js_storage.js.html">js/storage.js</a>, <a href="js_storage.js.html#line86">line 86</a>
     </li></ul></dd>
     
 
@@ -1270,13 +2057,13 @@ returns a string that represents the key that corresponds to the current date
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Mon May 24 2021 11:13:01 GMT-0700 (Pacific Daylight Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 00:55:00 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

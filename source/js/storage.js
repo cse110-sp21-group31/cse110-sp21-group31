@@ -1,10 +1,10 @@
-/**
+/*
 storage.js
 functions to get/set local storage 
 */
-import getDaysKey from './date.js';
+import { getDaysKey } from './date.js';
 
-/*
+/**
 get/set the relevant data for the day specified in key
 @param key: 2021-05-17
 @returns: {events: [], tasks: [], name: "", media: []}
@@ -29,7 +29,6 @@ add a task into local storage
 function addTask(key, task) {
     const dayData = getData(key);
     if (dayData == null) return false;
-
     dayData.tasks.push(task);
     setData(key, dayData);
     return true;
@@ -73,7 +72,6 @@ function addCustomTag(tagName) {
     const colorArr = ['blue', 'red', 'pink', 'green', 'violet', 'orange'];
     const customTags = getData('custom-tags');
     if (customTags == null) return false;
-
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
     setData('custom-tags', customTags);
 
@@ -86,6 +84,11 @@ function addCustomTag(tagName) {
     return true;
 }
 
+/**
+get color for a custom tag
+@param tagName string for the name of tag
+@return the tag color
+*/
 function getCustomTagColor(tagName) {
     const customTags = getData('custom-tags');
     if (tagName in customTags === false) return '';
@@ -94,6 +97,8 @@ function getCustomTagColor(tagName) {
 
 /**
 update paragraph
+@param key: 2021-05-17
+@param text: content of the notepad
 @return true/false if successful
 */
 function updateNotepad(key, text) {
@@ -117,4 +122,44 @@ function test() {
 
 test();
 
-export default getCustomTagColor;
+export { getData, getCustomTagColor };
+
+/*
+
+LocalStorage: {
+    
+    "custom-tags": {
+        "Lecture": "blue",
+        "Assignment": "red",
+        "Other": "yellow"
+    },
+
+    "2021-05-13": {
+        name: "Thursday, May 13th",
+        notepad: "blan blah blah",
+        tasks: [
+            {
+                content: "Go on a run",
+                completed: true/false,
+                tags: ["Other", ...],
+            }, task2, ...
+        ],
+        events: [
+            {
+                content: "CSE 110 Lecture",
+                tags: "Lecture",
+                from: 1621308663,
+                to: 1621367364,
+            }, event2, ...
+        ],
+        media: [
+            "link1", "link2", ...
+        ],
+    }
+
+    "2021-05-14": {...},
+
+    "2021-05-15": {...},
+}
+
+*/

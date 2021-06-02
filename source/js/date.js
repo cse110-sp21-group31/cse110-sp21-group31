@@ -57,4 +57,4 @@ function test() {
 
 test();
 
-export default getDaysKey;
+export { getDaysKey, getName };

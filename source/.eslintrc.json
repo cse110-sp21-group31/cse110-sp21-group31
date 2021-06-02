@@ -12,5 +12,5 @@
     },
     "rules": {
         "import/extensions": ["error", "always"]
-    }    
+    }
 }
