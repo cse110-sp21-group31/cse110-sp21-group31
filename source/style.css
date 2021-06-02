@@ -376,11 +376,11 @@ body {
 
 #popup-clock {
     display: none;
-    width: 14%;
+    width: 10%;
     height: 15%;
     position: fixed;
     bottom: 9%; 
-    right: 9%;
+    right: 14.5%;
     background-color: rgba(166, 239, 255, 0.551);
 }
 
@@ -404,8 +404,7 @@ body {
 }
 
 #clock-submit-button {
-    flex: 1;
-    
+    flex: 1; 
 }
 
 #log-tasks-area label {
@@ -420,3 +419,17 @@ body {
     font-family: 'Roboto', 'sans-serif';
 }
 
+#popup-media {
+    display: none;
+    width: 13%;
+    height: 7%;
+    position: fixed;
+    bottom: 9%; 
+    right: 1.2%;
+    background-color: rgba(166, 239, 255, 0.551);
+}
+
+#popup-media label {
+    font-family: 'Roboto', 'sans-serif';
+    text-align: center;
+}

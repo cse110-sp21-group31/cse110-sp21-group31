@@ -1,0 +1,26 @@
+// Popup for the media button
+document.addEventListener('DOMContentLoaded', () => {
+    const mediaImg = document.getElementById('media-img');
+    const submitButton = document.getElementById('media-submit-button');
+
+    /**
+     * Toggle the display of the HTML element with elementID between displayType and none   
+     * @param {string} elementID - The ID for the HTML element
+     * @param {string} displayType - The desired dispaly type
+     */
+    function toggle(elementID, displayType) {
+        const element = document.getElementById(elementID); 
+        if(element.style.display === displayType) {
+            element.style.display = 'none';
+        } else {
+            element.style.display = displayType;
+        }
+    }
+
+    mediaImg.addEventListener('click', () => { toggle('popup-media', 'flex'); });
+    
+    submitButton.addEventListener('click', () => { 
+        toggle('popup-media', 'flex');
+        document.getElementById('media-uploader').reset(); 
+    });
+});

@@ -11,6 +11,7 @@
     <script src="./components/storage.js" type="module"></script>
     <script src="./scripts/button_controller.js" type="module"></script>
     <script src="/source/clock.js"></script>
+    <script src="/source/media.js"></script>
 
     <!-- Fonts -->
     <!-- Sen -->
@@ -242,10 +243,18 @@
                       </select>
                 </div>
                 <div id='upload-img'>
-                    <a href="#"><img src="images/upload_button.png" alt="Right Arrow" height='40' width='40'></a>    
+                    <a href="#"><img id='media-img' src="images/upload_button.png" alt="Right Arrow" height='40' width='40'></a>
+                    <div id='popup-media'>
+                        <form id='media-uploader'>
+                            <label id='media-text'>Please upload your files to a hosting service like Imgur or YouTube:<input type='text' id='media-url'></label>
+                            <button type='button' id='media-submit-button'>Submit</button>
+                        </form>
+                    </div>    
                 </div>
             </div>
         </div>
     </div>
+    <iframe width="420" height="315" src="https://www.youtube.com/embed/watch?v=HmZKgaHa3Fg&t=1s" allowfullscreen></iframe>
+    <iframe width="420" height="315" src='//s.imgur.com/min/embed.js'></iframe>
 </body>
 </html>
