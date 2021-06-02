@@ -1,5 +1,8 @@
 // button_controller.js
+import { addTask, addEvent } from '../js/storage.js'
+import { getDaysKey } from '../js/date.js';
 
+const curDate = new Date();
 /*
 implements tag selector functionality
 */
@@ -35,7 +38,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
         if(!input.value.replace(/\s/g, "").length) { return; }
 
         // grab event/tag/time info
-        const entry = [];
+        const entry = {};
 
         // console.log(document.getElementById("task-event-selector").value);
         let taskEventChoice = document.getElementById("task-event-selector").value;
@@ -69,6 +72,28 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             // Append task element to log (subject to change according to log css etc.)
             const taskSpace = document.getElementById("log-tasks-area");
             taskSpace.appendChild(newEntry);
+            /*let item = {
+                name: "Wednesday, June 2",
+                notepad: "blan blah blah",
+                tasks: [
+                    {
+                        content: "Go on a run",
+                        completed: true/false,
+                        tags: ["Other"]
+                    }
+                ],
+                events: [
+                    {
+                        content: "CSE 110 Lecture",
+                        tags: "Lecture",
+                        from: 1621308663,
+                        to: 1621367364,
+                    }
+                ]
+            }
+            setData(getDaysKey(curDate), item);*/
+            addTask(getDaysKey(curDate), entry);
+
         } else if(taskEventChoice === "Event") {
             /*  entry should contain:
             * 
@@ -99,6 +124,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             // Append event element to log (subject to change)
             const eventSpace = document.getElementById("log-events-area");
             eventSpace.appendChild(newEntry);   
+            addEvent(getDaysKey(curDate), entry);
         }
     }
 });
