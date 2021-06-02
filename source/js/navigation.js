@@ -130,6 +130,7 @@ backward.addEventListener('click', () => {
  * @listens document#DOMContentLoaded
  */
 document.addEventListener('DOMContentLoaded', () => {
+    //window.localStorage.clear();
     const key = getDaysKey(curDate);
     populate(getData(key), curDate);
 });

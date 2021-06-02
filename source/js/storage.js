@@ -2,7 +2,7 @@
 storage.js
 functions to get/set local storage 
 */
-import { getDaysKey } from './date.js';
+import { getDaysKey, getName } from './date.js';
 
 /**
 get/set the relevant data for the day specified in key
@@ -19,6 +19,21 @@ function setData(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
+/* NEW STUFFFFFCFFFF
+called when there is no data for passed in key
+*/
+function newDay(key) {
+    const arr = new Array();
+    let item = {
+        name: getName(),
+        notepad: '',
+        tasks: arr,
+        events: arr,
+        media: arr
+    }
+    setData(key, item);
+}
+
 /**
 addTask
 add a task into local storage
@@ -27,8 +42,12 @@ add a task into local storage
 @return true/false if successful
 */
 function addTask(key, task) {
-    const dayData = getData(key);
-    if (dayData == null) return false;
+    let dayData = getData(key);
+    if (dayData == null) {
+        newDay(key);
+        dayData = getData(key);
+    }
+    //return false;
     dayData.tasks.push(task);
     setData(key, dayData);
     return true;
@@ -42,8 +61,12 @@ add an event into local storage
 @return true/false if successful
 */
 function addEvent(key, event) {
-    const dayData = getData(key);
-    if (dayData == null) return false;
+    let dayData = getData(key);
+    if (dayData == null) {
+        newDay(key);
+        dayData = getData(key);
+    }
+    //return false;
     dayData.events.push(event);
     setData(key, dayData);
     return true;
@@ -56,8 +79,12 @@ addLink
 @return true/false if successful
 */
 function addLink(key, link) {
-    const dayData = getData(key);
-    if (dayData == null) return false;
+    let dayData = getData(key);
+    if (dayData == null) {
+        newDay(key);
+        dayData = getData(key);
+    }
+    //return false;
     dayData.media.push(link);
     setData(key, dayData);
     return true;
@@ -120,9 +147,9 @@ function test() {
     updateNotepad(getDaysKey(), 'note');
 }
 
-test();
+//test();
 
-export { getData, getCustomTagColor };
+export { getData, getCustomTagColor, addTask, addEvent };
 
 /*
 
