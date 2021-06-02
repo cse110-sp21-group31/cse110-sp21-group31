@@ -1,4 +1,4 @@
-import getCustomTagColor from '../storage.js';
+import { getCustomTagColor } from '../storage.js';
 
 class Log extends HTMLElement {
     constructor() {
