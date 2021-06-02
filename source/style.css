@@ -88,7 +88,7 @@
 #time-column {
     grid-column: 1 / 2;
     height: 100%;
-    background-color: aquamarine;
+    background-color:burlywood;
     display: grid;
     grid-template-rows: 1fr 6fr 2fr;
 }
@@ -104,14 +104,6 @@
     justify-content: center;
     align-items: center;
     font-family: 'Sen', 'sans-serif';
-}
-
-#days-label {
-    grid-row: 1 / 2;
-}
-
-#time-label {
-    grid-row: 2 / 3;
 }
 
 #tasks-label {
@@ -163,6 +155,24 @@
 /* 
     Dates in Calendar date row 
 */
+#calendar-days-row div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-label {
+    flex: 3;
+    font-family: 'Sen', 'sans-serif';
+    font-size: x-large;
+}
+
+.date {
+    flex: 1;
+    font-family: 'Roboto', 'sans-serif';
+}
+
 #cal-date-sun {
     border-right: 1px solid black;
 }
@@ -213,6 +223,15 @@
 
 #cal-mon {
     border-right: 1px solid black;
+}
+
+#cal-mon div {
+    border-bottom: 1px solid black; 
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
 }
 
 #cal-tues {
@@ -605,12 +624,11 @@ body {
     font-family: 'Roboto', 'sans-serif';
 }
 
-#log-tasks-area label:hover {
-    /* background-color: rgb(157, 207, 223); */
-}
-
 #log-events-area label {
     font-family: 'Roboto', 'sans-serif';
 }
 
 /* Weekly Log */
+#header {
+    font-size: xx-large;
+}
