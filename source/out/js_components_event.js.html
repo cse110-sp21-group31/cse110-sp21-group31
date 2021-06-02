@@ -26,31 +26,33 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>class Event extends HTMLElement {
+            <pre class="prettyprint source linenums"><code>import Log from './log.js';
+
+class Event extends Log {
     constructor() {
         super();
+        const sha = this.shadowRoot;
 
-        const template = document.createElement('template');
-        template.innerHTML = `
-            &lt;style>
-            &lt;/style>
-
-            &lt;div class='task-event'>
-                &lt;div class='event-time-container'>
-                    &lt;label for="">&lt;input type="checkbox">Event 1&lt;/label>
-                    &lt;small class='event-time'>11:00am - 12:30pm&lt;/small>
-                &lt;/div>
-                &lt;div class='tags-container'>
-                    &lt;span class='tags'>
-                        &lt;small class='tag-label lecture-tag'>Lecture&lt;/small>
-                        &lt;small class='tag-label UCSD-tag'>UCSD&lt;/small>
-                    &lt;/span>
-                &lt;/div>
+        // add divs to this shadow root
+        this.shadowRoot.innerHTML += `
+            &lt;div class='event-time-container'>
+                &lt;label for="">
+                    &amp;#8212;
+                    &lt;span>&lt;/span>
+                &lt;/label>
+                &lt;small class='event-time'>&lt;/small>
             &lt;/div>
-        `;
+            &lt;div class='tags-container'>
+                &lt;span class='tags'>
+                &lt;/span>
+            &lt;/div>`;
 
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
+        // DOM references to use in set/get
+        this.titleDOM = sha.querySelector('.event-time-container span');
+        this.timeDOM = sha.querySelector('.event-time-container .event-time');
+
+        // string separator between from-time and to-time in the text
+        this.timeStrSeparator = ' - ';
     }
 
     /**
@@ -62,42 +64,34 @@
      *        from: 1621308663,
      *        to: 1621367364
      *    }
-     *
-     *
      */
     set content(event) {
-        // set content
-        this.shadowRoot.querySelector('.event-log-content').innerText =
-            event.content;
+        // set title
+        this.titleDOM.innerText = event.content;
 
-        this.shadowRoot.querySelector('.event-log-from').innerText = event.from;
-        this.shadowRoot.querySelector('.event-log-to').innerText = event.to;
+        // set time
+        this.timeDOM.innerText = event.from + this.timeStrSeparator + event.to;
+        if (this.timeDOM.innerText === this.timeStrSeparator)
+            this.timeDOM.innerText = 'no time specified';
 
-        // append a tag element inside the tag div for each individual tag string
-        event.tags.forEach((tag) => {
-            const singleTag = document.createElement('p');
-            // can also set other attributes of element later if needed
-            singleTag.innerText = tag;
-            this.shadowRoot
-                .querySelector('.event-log-tags')
-                .appendChild(singleTag);
-        });
+        // append a tag element inside the tag div
+        this.setTags(event.tags);
     }
 
     get content() {
         const returnObj = {};
-        returnObj.content =
-            this.shadowRoot.querySelector('.event-log-content').innerText;
-        returnObj.from =
-            this.shadowRoot.querySelector('.event-log-from').innerText;
-        returnObj.to = this.shadowRoot.querySelector('.event-log-to').innerText;
 
-        returnObj.tags = [];
-        this.shadowRoot
-            .querySelectorAll('.event-log-tags p')
-            .forEach((item) => {
-                returnObj.tags.push(item.innerText);
-            });
+        // get the title
+        returnObj.content = this.titleDOM.innerText;
+
+        // get the from and to time
+        const timeStr = this.timeDOM.innerText;
+        const tsInd = timeStr.indexOf(this.timeStrSeparator);
+        returnObj.from = timeStr.slice(0, tsInd);
+        returnObj.to = timeStr.slice(tsInd + this.timeStrSeparator.length);
+
+        // get the tags
+        returnObj.tags = this.getTags();
 
         return returnObj;
     }
@@ -114,13 +108,13 @@ customElements.define('event-log', Event);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#getCustomTagColor">getCustomTagColor</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 00:55:00 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 01:12:27 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
