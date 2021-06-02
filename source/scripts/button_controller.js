@@ -72,27 +72,8 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             // Append task element to log (subject to change according to log css etc.)
             const taskSpace = document.getElementById("log-tasks-area");
             taskSpace.appendChild(newEntry);
-            /*let item = {
-                name: "Wednesday, June 2",
-                notepad: "blan blah blah",
-                tasks: [
-                    {
-                        content: "Go on a run",
-                        completed: true/false,
-                        tags: ["Other"]
-                    }
-                ],
-                events: [
-                    {
-                        content: "CSE 110 Lecture",
-                        tags: "Lecture",
-                        from: 1621308663,
-                        to: 1621367364,
-                    }
-                ]
-            }
-            setData(getDaysKey(curDate), item);*/
-            addTask(getDaysKey(curDate), entry);
+
+            addTask('2021-06-02', entry);
 
         } else if(taskEventChoice === "Event") {
             /*  entry should contain:
