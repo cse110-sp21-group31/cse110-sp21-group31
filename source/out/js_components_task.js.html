@@ -26,32 +26,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>class Task extends HTMLElement {
+            <pre class="prettyprint source linenums"><code>import Log from './log.js';
+
+class Task extends Log {
     constructor() {
         super();
+        const sha = this.shadowRoot;
 
-        const template = document.createElement('template');
-        template.innerHTML = `
-            &lt;style>
-            &lt;/style>
-
-            &lt;div class='task-event'>
-                &lt;div class='checkbox-label-container'>
-                    &lt;label for="">&lt;input type="checkbox">Task 2&lt;/label>
-                &lt;/div>
-                &lt;div class='tags-container'>
-                    &lt;span class='tags'>
-                        &lt;small class='tag-label other-tag'>Other&lt;/small>
-                        &lt;small class='tag-label other-tag'>Other&lt;/small>
-                        &lt;small class='tag-label other-tag'>Other&lt;/small>
-                        &lt;small class='tag-label other-tag'>Other&lt;/small>
-                    &lt;/span>
-                &lt;/div>
+        // add divs to this shadow root
+        sha.innerHTML += `
+            &lt;div class='checkbox-label-container'>
+                &lt;label for="">
+                    &lt;input type="checkbox">
+                    &lt;span>&lt;/span>
+                &lt;/label>
             &lt;/div>
-        `;
+            &lt;div class='tags-container'>
+                &lt;span class='tags'>
+                &lt;/span>
+            &lt;/div>`;
 
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
+        // DOM references to use in set/get
+        this.titleDOM = sha.querySelector('.checkbox-label-container span');
+        this.checkDOM = sha.querySelector('.checkbox-label-container input');
     }
 
     /**
@@ -65,23 +62,14 @@
      *
      */
     set content(task) {
-        // set content
-        this.shadowRoot.querySelector('.task-log-content').innerText =
-            task.content;
+        // set title
+        this.titleDOM.innerText = task.content;
 
-        // set completed, and the status of the checkbox
-        this.shadowRoot.querySelector('.task-log-completed').checked =
-            task.completed;
+        // set status of the checkbox
+        this.checkDOM.checked = task.completed;
 
-        // append a tag element inside the tag div for each individual tag string
-        task.tags.forEach((tag) => {
-            const singleTag = document.createElement('p');
-            // can also set other attributes of element later if needed
-            singleTag.innerText = tag;
-            this.shadowRoot
-                .querySelector('.task-log-tags')
-                .appendChild(singleTag);
-        });
+        // append a tag element inside the tag div
+        this.setTags(task.tags);
     }
 
     /**
@@ -90,15 +78,14 @@
     get content() {
         const returnObj = {};
 
-        returnObj.content =
-            this.shadowRoot.querySelector('.task-log-content').innerText; // get the content
-        returnObj.completed = this.shadowRoot.querySelector(
-            '.task-log-completed'
-        ).checked; // get the completion
-        returnObj.tags = [];
-        this.shadowRoot.querySelectorAll('.task-log-tags p').forEach((item) => {
-            returnObj.tags.push(item.innerText); // push tags in
-        });
+        // get the title
+        returnObj.content = this.titleDOM.innerText;
+
+        // get the checkmark status
+        returnObj.completed = this.checkDOM.checked;
+
+        // get the tags
+        returnObj.tags = this.getTags();
 
         return returnObj;
     }
@@ -115,13 +102,13 @@ customElements.define('task-log', Task);
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#getCustomTagColor">getCustomTagColor</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 00:55:00 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 01:17:40 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

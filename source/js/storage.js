@@ -24,12 +24,14 @@ addTask
 add a task into local storage
 @param key: 2021-05-17
 @param task: the json data returned from Task.content
+@return true/false if successful
 */
 function addTask(key, task) {
     const dayData = getData(key);
-    if (dayData == null) return;
+    if (dayData == null) return false;
     dayData.tasks.push(task);
     setData(key, dayData);
+    return true;
 }
 
 /**
@@ -37,36 +39,39 @@ addEvent
 add an event into local storage
 @param key: 2021-05-17
 @param event: the json data returned from Event.content
+@return true/false if successful
 */
 function addEvent(key, event) {
     const dayData = getData(key);
-    if (dayData == null) return;
+    if (dayData == null) return false;
     dayData.events.push(event);
     setData(key, dayData);
+    return true;
 }
 
 /**
 addLink
-add a new link for a day
-@param key: 2021-05-17
-@param link: the link that will be added to media
+@param key 2021-05-17
+@param link string that represents link of media
+@return true/false if successful
 */
 function addLink(key, link) {
     const dayData = getData(key);
-    if (dayData == null) return;
+    if (dayData == null) return false;
     dayData.media.push(link);
     setData(key, dayData);
+    return true;
 }
 
 /**
-addCustomTag
-add a new custom tag
-@param tagName: name of desired new tag
+add custom tag
+@param tagName string for the name of tag
+@return true/false if successful
 */
 function addCustomTag(tagName) {
-    const colorArr = ['blue', 'red', 'yellow', 'green'];
+    const colorArr = ['blue', 'red', 'pink', 'green', 'violet', 'orange'];
     const customTags = getData('custom-tags');
-    if (customTags == null) return;
+    if (customTags == null) return false;
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
     setData('custom-tags', customTags);
 
@@ -75,19 +80,33 @@ function addCustomTag(tagName) {
     newTag.innerHTML = tagName;
     const addTagOption = document.querySelector('add-tag-option');
     document.querySelector('tag-selection').insertBefore(newTag, addTagOption);
+
+    return true;
 }
 
 /**
-updateNotepad
-adds or updates the notepad for a day
+get color for a custom tag
+@param tagName string for the name of tag
+@return the tag color
+*/
+function getCustomTagColor(tagName) {
+    const customTags = getData('custom-tags');
+    if (tagName in customTags === false) return '';
+    return customTags[tagName];
+}
+
+/**
+update paragraph
 @param key: 2021-05-17
 @param text: content of the notepad
+@return true/false if successful
 */
 function updateNotepad(key, text) {
     const dayData = getData(key);
-    if (dayData == null) return;
+    if (dayData == null) return false;
     dayData.notepad = text;
     setData(key, dayData);
+    return true;
 }
 
 /**
@@ -103,7 +122,7 @@ function test() {
 
 test();
 
-export default getData;
+export { getData, getCustomTagColor };
 
 /*
 

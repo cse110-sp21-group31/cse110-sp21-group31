@@ -1,28 +1,30 @@
-class Event extends HTMLElement {
+import Log from './log.js';
+
+class Event extends Log {
     constructor() {
         super();
+        const sha = this.shadowRoot;
 
-        const template = document.createElement('template');
-        template.innerHTML = `
-            <style>
-            </style>
-
-            <div class='task-event'>
-                <div class='event-time-container'>
-                    <label for=""><input type="checkbox">Event 1</label>
-                    <small class='event-time'>11:00am - 12:30pm</small>
-                </div>
-                <div class='tags-container'>
-                    <span class='tags'>
-                        <small class='tag-label lecture-tag'>Lecture</small>
-                        <small class='tag-label UCSD-tag'>UCSD</small>
-                    </span>
-                </div>
+        // add divs to this shadow root
+        this.shadowRoot.innerHTML += `
+            <div class='event-time-container'>
+                <label for="">
+                    &#8212;
+                    <span></span>
+                </label>
+                <small class='event-time'></small>
             </div>
-        `;
+            <div class='tags-container'>
+                <span class='tags'>
+                </span>
+            </div>`;
 
-        this.attachShadow({ mode: 'open' });
-        this.shadowRoot.appendChild(template.content.cloneNode(true));
+        // DOM references to use in set/get
+        this.titleDOM = sha.querySelector('.event-time-container span');
+        this.timeDOM = sha.querySelector('.event-time-container .event-time');
+
+        // string separator between from-time and to-time in the text
+        this.timeStrSeparator = ' - ';
     }
 
     /**
@@ -34,42 +36,34 @@ class Event extends HTMLElement {
      *        from: 1621308663,
      *        to: 1621367364
      *    }
-     *
-     *
      */
     set content(event) {
-        // set content
-        this.shadowRoot.querySelector('.event-log-content').innerText =
-            event.content;
+        // set title
+        this.titleDOM.innerText = event.content;
 
-        this.shadowRoot.querySelector('.event-log-from').innerText = event.from;
-        this.shadowRoot.querySelector('.event-log-to').innerText = event.to;
+        // set time
+        this.timeDOM.innerText = event.from + this.timeStrSeparator + event.to;
+        if (this.timeDOM.innerText === this.timeStrSeparator)
+            this.timeDOM.innerText = 'no time specified';
 
-        // append a tag element inside the tag div for each individual tag string
-        event.tags.forEach((tag) => {
-            const singleTag = document.createElement('p');
-            // can also set other attributes of element later if needed
-            singleTag.innerText = tag;
-            this.shadowRoot
-                .querySelector('.event-log-tags')
-                .appendChild(singleTag);
-        });
+        // append a tag element inside the tag div
+        this.setTags(event.tags);
     }
 
     get content() {
         const returnObj = {};
-        returnObj.content =
-            this.shadowRoot.querySelector('.event-log-content').innerText;
-        returnObj.from =
-            this.shadowRoot.querySelector('.event-log-from').innerText;
-        returnObj.to = this.shadowRoot.querySelector('.event-log-to').innerText;
 
-        returnObj.tags = [];
-        this.shadowRoot
-            .querySelectorAll('.event-log-tags p')
-            .forEach((item) => {
-                returnObj.tags.push(item.innerText);
-            });
+        // get the title
+        returnObj.content = this.titleDOM.innerText;
+
+        // get the from and to time
+        const timeStr = this.timeDOM.innerText;
+        const tsInd = timeStr.indexOf(this.timeStrSeparator);
+        returnObj.from = timeStr.slice(0, tsInd);
+        returnObj.to = timeStr.slice(tsInd + this.timeStrSeparator.length);
+
+        // get the tags
+        returnObj.tags = this.getTags();
 
         return returnObj;
     }

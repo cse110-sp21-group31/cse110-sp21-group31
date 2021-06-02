@@ -1,4 +1,4 @@
-import getData from './storage.js';
+import { getData } from './storage.js';
 import { getDaysKey, getName } from './date.js';
 
 /* date variables */
