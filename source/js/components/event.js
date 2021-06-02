@@ -7,11 +7,17 @@ class Event extends HTMLElement {
             <style>
             </style>
 
-            <div class="event-log">
-                <h2 class="event-log-content"></h2>
-                <h3 class="event-log-from"></h3>
-                <h4 class="event-log-to"></h4>
-                <div class="event-log-tags"></div>
+            <div class='task-event'>
+                <div class='event-time-container'>
+                    <label for=""><input type="checkbox">Event 1</label>
+                    <small class='event-time'>11:00am - 12:30pm</small>
+                </div>
+                <div class='tags-container'>
+                    <span class='tags'>
+                        <small class='tag-label lecture-tag'>Lecture</small>
+                        <small class='tag-label UCSD-tag'>UCSD</small>
+                    </span>
+                </div>
             </div>
         `;
 

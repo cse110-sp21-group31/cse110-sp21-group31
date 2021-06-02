@@ -7,10 +7,18 @@ class Task extends HTMLElement {
             <style>
             </style>
 
-            <div class="task-log">
-                <h2 class="task-log-content"></h2>
-                <input class="task-log-completed" type="checkbox"></input>
-                <div class="task-log-tags"></div>
+            <div class='task-event'>
+                <div class='checkbox-label-container'>
+                    <label for=""><input type="checkbox">Task 2</label>
+                </div>
+                <div class='tags-container'>
+                    <span class='tags'>
+                        <small class='tag-label other-tag'>Other</small>
+                        <small class='tag-label other-tag'>Other</small>
+                        <small class='tag-label other-tag'>Other</small>
+                        <small class='tag-label other-tag'>Other</small>
+                    </span>
+                </div>
             </div>
         `;
 
