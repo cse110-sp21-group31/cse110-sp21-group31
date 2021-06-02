@@ -18,6 +18,7 @@
 }
 
 #header-item-img {
+    grid-column: 1 / 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,6 +26,7 @@
 }
 
 #header-item-title {
+    grid-column: 2 / 3;
     display: flex;
     flex-direction: column;
     justify-content: center;
