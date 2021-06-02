@@ -43,30 +43,30 @@
 }
 
 .middle-item-bar {
-    height: 100%;
     grid-column: span 3;
     grid-row: 1 / 2;
-    display: grid;
-    grid-template-columns: 5% auto 5%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
     background-color: lightblue;
 }
 
 #left-arrow {
-    height: 100%;
-    grid-column: 1 / 2;
     display: flex;
     flex-direction: column;
+    flex: 1;
+    height: 100%;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
 
 #right-arrow {
-    height: 100%;
-    grid-column: 3 / 4;
     display: flex;
+    flex: 1;
     flex-direction: column;
+    height: 100%;
     justify-content: center;
-    text-align: center;
+    align-items: center;
 }
 
 #middle-item-log {
@@ -253,10 +253,12 @@ body {
 }
 
 #date-text {
+    display: flex;
     height: 100%;
-    grid-column: 2 / 3;
+    flex: 23;
     font-family: 'Sen', 'sans-serif';
-    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 #popup-clock {
@@ -303,3 +305,59 @@ task-log {
     justify-content: space-between;
     align-items: center;
 }
+
+
+/*
+    Experimental Sidebar Styling
+*/
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: aqua;
+    box-shadow: 3px 0 30px;
+    overflow-x: hidden;
+    transition: 0.3s;
+    padding-top: 60px;
+  }
+  
+  .sidebar p {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: 'Sen', 'sans-serif';
+    font-size: 35px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-family: 'Sen', 'sans-serif';
+    font-size: 25px;
+    color: #000000;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidebar a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }  

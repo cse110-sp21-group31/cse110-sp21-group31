@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,18 +16,34 @@
 
     <!-- Fonts -->
     <!-- Sen -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sen&display=swap" rel="stylesheet">
     <!-- Roboto -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
     <div class='container'>
+
+        <!-- Experimental Sidebar -->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <p>Index</p>
+            <a href="#">- Daily Log</a>
+            <ul>
+                <small><a href="#">May 22, 2021</a></small>
+                <small><a href="#">May 21, 2021</a></small>
+            </ul>
+            <a href="#">- Weekly Log</a>
+        </div>
+        <!-- Sidebar Ends -->
+
         <div class='item-header'>
             <div id='header-item-img'>
-                <a href="#"><img src="images/nav_button.png" alt="Navigation Button" height='50' width='50'></a>
+                <a href="#" class='openbtn' onclick="openNav()"><img src="/source/images/nav_button.png"
+                        alt="Navigation Button" height='50' width='50'></a>
             </div>
             <div id='header-item-title'>
                 <h1 id='header' class="main-title">Daily Log</h1>
@@ -53,7 +70,7 @@
                 </div>
                 <div id='log-text-area'>
                     <div id='log-tasks-area'></div>
-                    <div id='log-events-area'></div>  
+                    <div id='log-events-area'></div>
                 </div>
             </div>
             <div id='middle-item-notes'>
@@ -61,7 +78,7 @@
                     <h2 class='main-title'>Notes</h2>
                 </div>
                 <div id='notes-text-area'>
-                    
+
                 </div>
             </div>
             <div id='middle-item-media'>
@@ -69,7 +86,7 @@
                     <h2 class='main-title'>Media</h2>
                 </div>
                 <div id='media-text-area'>
-                    
+
                 </div>
             </div>
         </div>
@@ -78,11 +95,12 @@
                 <select name="Task Event Selector" id='task-event-selector'>
                     <option value="default">Task or Event</option>
                     <option value="Task">Task</option>
-                    <option value="Event">Event</option> 
+                    <option value="Event">Event</option>
                 </select>
             </div>
             <div id='task-event-textbox-area'>
-                <input type="text" name='task-event-textbox' id='task-event-textbox' placeholder='Enter a Task or Event here!'>
+                <input type="text" name='task-event-textbox' id='task-event-textbox'
+                    placeholder='Enter a Task or Event here!'>
             </div>
             <div id='clock-tags-upload-area'>
                 <div class='clock-form'>
@@ -102,13 +120,26 @@
                         <option>UCSD</option>
                         <option>Other</option>
                         <option id="add-tag-option">Add Tag Here...</option>
-                      </select>
+                    </select>
                 </div>
                 <div id='upload-img'>
-                    <a href="#"><img src="images/upload_button.png" alt="Right Arrow" height='40' width='40'></a>    
+                    <a href="#"><img src="images/upload_button.png" alt="Upload Button" height='40' width='40'></a>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>
