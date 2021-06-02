@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: js/storage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: js/storage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
+storage.js
+functions to get/set local storage 
+*/
+import { getDaysKey } from './date.js';
+
+/**
+get/set the relevant data for the day specified in key
+@param key: 2021-05-17
+@returns: {events: [], tasks: [], name: "", media: []}
+*/
+function getData(key) {
+    const res = localStorage.getItem(key);
+    if (res == null) return null;
+    return JSON.parse(res);
+}
+
+function setData(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+/**
+addTask
+add a task into local storage
+@param key: 2021-05-17
+@param task: the json data returned from Task.content
+*/
+function addTask(key, task) {
+    const dayData = getData(key);
+    if (dayData == null) return;
+    dayData.tasks.push(task);
+    setData(key, dayData);
+}
+
+/**
+addEvent
+add an event into local storage
+@param key: 2021-05-17
+@param event: the json data returned from Event.content
+*/
+function addEvent(key, event) {
+    const dayData = getData(key);
+    if (dayData == null) return;
+    dayData.events.push(event);
+    setData(key, dayData);
+}
+
+/**
+addLink
+add a new link for a day
+@param key: 2021-05-17
+@param link: the link that will be added to media
+*/
+function addLink(key, link) {
+    const dayData = getData(key);
+    if (dayData == null) return;
+    dayData.media.push(link);
+    setData(key, dayData);
+}
+
+/**
+addCustomTag
+add a new custom tag
+@param tagName: name of desired new tag
+*/
+function addCustomTag(tagName) {
+    const colorArr = ['blue', 'red', 'yellow', 'green'];
+    const customTags = getData('custom-tags');
+    if (customTags == null) return;
+    customTags[tagName] = colorArr[customTags.length % colorArr.length];
+    setData('custom-tags', customTags);
+
+    // add tag option to html list
+    const newTag = document.createElement('option');
+    newTag.innerHTML = tagName;
+    const addTagOption = document.querySelector('add-tag-option');
+    document.querySelector('tag-selection').insertBefore(newTag, addTagOption);
+}
+
+/**
+updateNotepad
+adds or updates the notepad for a day
+@param key: 2021-05-17
+@param text: content of the notepad
+*/
+function updateNotepad(key, text) {
+    const dayData = getData(key);
+    if (dayData == null) return;
+    dayData.notepad = text;
+    setData(key, dayData);
+}
+
+/**
+temporary test function to satisfy linter
+*/
+function test() {
+    addTask(getDaysKey(), 'task');
+    addEvent(getDaysKey(), 'event');
+    addLink(getDaysKey(), 'link');
+    addCustomTag('newTag');
+    updateNotepad(getDaysKey(), 'note');
+}
+
+test();
+
+export default getData;
+
+/*
+
+LocalStorage: {
+    
+    "custom-tags": {
+        "Lecture": "blue",
+        "Assignment": "red",
+        "Other": "yellow"
+    },
+
+    "2021-05-13": {
+        name: "Thursday, May 13th",
+        notepad: "blan blah blah",
+        tasks: [
+            {
+                content: "Go on a run",
+                completed: true/false,
+                tags: ["Other", ...],
+            }, task2, ...
+        ],
+        events: [
+            {
+                content: "CSE 110 Lecture",
+                tags: "Lecture",
+                from: 1621308663,
+                to: 1621367364,
+            }, event2, ...
+        ],
+        media: [
+            "link1", "link2", ...
+        ],
+    }
+
+    "2021-05-14": {...},
+
+    "2021-05-15": {...},
+}
+
+*/
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 00:50:47 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
