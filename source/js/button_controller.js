@@ -96,7 +96,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
                 }
             }
 
-            // pull time info from clock icon (not implemented yet)
+            // pull time info from clock icon
             entry.from = document.getElementById("start-time").children[0].value;
             let startHour = entry.from.split(":", 2)[0];
             const startMin = entry.from.split(":", 2)[1];
