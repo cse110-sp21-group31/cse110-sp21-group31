@@ -23,7 +23,7 @@ getName
 function getName(key) {
     let now;
     if (key === undefined) now = new Date(getDaysKey() + 'T00:00:00');
-    else now = now = new Date(key + 'T00:00:00');
+    else now = now = new Date(`${key  }T00:00:00`);
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
     return now.toLocaleDateString('en-US', options);
 }
