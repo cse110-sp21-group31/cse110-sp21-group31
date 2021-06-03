@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
     const mediaImg = document.getElementById('media-img');
     const submitButton = document.getElementById('media-submit-button');
+    const url = document.getElementById('media-url');
+    const youtubeTest = document.getElementById('youtube-test');
 
     /**
      * Toggle the display of the HTML element with elementID between displayType and none   
@@ -21,6 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     submitButton.addEventListener('click', () => { 
         toggle('popup-media', 'flex');
+        if (url.value.includes('youtube')) {
+            console.log('https://www.youtube.com/embed/' + url.value.substring(32));
+            youtubeTest.src = 'https://www.youtube.com/embed/' + url.value.substring(32);
+        }
         document.getElementById('media-uploader').reset(); 
     });
 });
