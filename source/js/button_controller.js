@@ -41,7 +41,7 @@ implements upload button functionality
 */
 document.getElementById("task-event-textbox").addEventListener("keypress", button => {
     if(button.key === "Enter") {
-        let input = document.getElementById("task-event-textbox");
+        const input = document.getElementById("task-event-textbox");
         // ensure bar is not empty
         if(!input.value.replace(/\s/g, "").length) { return; }
 
