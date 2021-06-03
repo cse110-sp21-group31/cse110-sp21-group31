@@ -8,7 +8,11 @@ function getDaysKey(dateObj) {
     let now;
     if (dateObj === undefined) now = new Date();
     else now = dateObj;
-    return [now.getFullYear(), ("0" + (now.getMonth() + 1)).slice(-2), ("0" + now.getDate()).slice(-2)].join('-');
+    return [
+        now.getFullYear(),
+        ['0', now.getMonth() + 1].join('').slice(-2),
+        ['0', now.getDate()].join('').slice(-2),
+    ].join('-');
 }
 /**
  * SUBJECT TO CHANGE:
@@ -16,9 +20,14 @@ function getDaysKey(dateObj) {
  * @param {string} name "Wednesday, June 2"
  */
 function parseName(name) {
-    let now = new Date();
-    let [day, month, date] = name.split(/[ ,]+/);
-    let months = {
+    const now = new Date();
+    const nameSub = name.substr(name.indexOf(',') + 2, name.length - 1);
+
+    // month and date names
+    const month = nameSub.split(' ')[0];
+    let date = nameSub.split(' ')[1];
+
+    const months = {
         January: '01',
         February: '02',
         March: '03',
@@ -31,9 +40,9 @@ function parseName(name) {
         October: '10',
         November: '11',
         December: '12',
-    }
+    };
     if (date < 10) {
-        date = "0" + date;
+        date = ['0', date].join('');
     }
     return [now.getFullYear(), months[month], date].join('-');
 }

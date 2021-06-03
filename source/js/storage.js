@@ -2,7 +2,7 @@
 storage.js
 functions to get/set local storage 
 */
-import { getDaysKey, getName } from './date.js';
+import { getDaysKey } from './date.js';
 
 /**
 get/set the relevant data for the day specified in key
@@ -19,35 +19,20 @@ function setData(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
-/* NEW STUFFFFFCFFFF
-called when there is no data for passed in key
-*/
-function newDay(key) {
-    const arr = new Array();
-    let item = {
-        name: getName(),
-        notepad: '',
-        tasks: arr,
-        events: arr,
-        media: arr
-    }
-    setData(key, item);
-}
-
 /**
  * If there is no object with matching date key, create a new object with date key
  * Set object in local storage
- * @param {string} key: 2021-05-17 
+ * @param {string} key: 2021-05-17
  */
 function newDay(key) {
-    const arr = new Array();
-    let item = {
+    const arr = [];
+    const item = {
         name: document.getElementsByTagName('h3')[0].innerText,
         notepad: '',
         tasks: arr,
         events: arr,
-        media: arr
-    }
+        media: arr,
+    };
     setData(key, item);
 }
 
@@ -64,7 +49,6 @@ function addTask(key, task) {
         newDay(key);
         dayData = getData(key);
     }
-    //return false;
     dayData.tasks.push(task);
     setData(key, dayData);
     return true;
@@ -83,7 +67,6 @@ function addEvent(key, event) {
         newDay(key);
         dayData = getData(key);
     }
-    //return false;
     dayData.events.push(event);
     setData(key, dayData);
     return true;
@@ -101,7 +84,7 @@ function addLink(key, link) {
         newDay(key);
         dayData = getData(key);
     }
-    //return false;
+    // return false;
     dayData.media.push(link);
     setData(key, dayData);
     return true;
@@ -164,7 +147,7 @@ function test() {
     updateNotepad(getDaysKey(), 'note');
 }
 
-//test();
+test();
 
 export { getData, getCustomTagColor, addTask, addEvent };
 
