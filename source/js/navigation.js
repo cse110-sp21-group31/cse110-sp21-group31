@@ -72,7 +72,7 @@ function populate(key) {
 
     removeAll();
 
-    //if (key == null) return;
+    // if (key == null) return;
     const allTasks = log.tasks;
     const allEve = log.events;
     const allMedia = log.media;
