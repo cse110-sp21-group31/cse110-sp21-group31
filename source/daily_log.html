@@ -13,7 +13,6 @@
     <script src="./js/storage.js" type="module"></script>
     <script src="./js/clock.js" type="module"></script>
     <script src="./scripts/button_controller.js" type="module"></script>
-    <script src="./js/router.js" type="module"></script>
 
     <!-- Fonts -->
     <!-- Sen -->
@@ -134,13 +133,18 @@
 </html>
 
 <script>
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
+    function openNav(event) {
+        event.preventDefault();
+        document.getElementById('mySidebar').style.width = '250px';
+        //document.getElementById("main").style.marginLeft = "250px"; line has error
     }
 
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
+    function closeNav(event) {
+        event.preventDefault();
+        document.getElementById('mySidebar').style.width = '0';
+        //document.getElementById("main").style.marginLeft = "0"; line has error
     }
+
+    document.querySelector('.openbtn').onclick = openNav;
+    document.querySelector('.closebtn').onclick = closeNav;    
 </script>

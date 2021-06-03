@@ -1,9 +1,10 @@
-import { getData } from './storage.js';
+import { getDaysData } from './storage.js';
 import { getDaysKey, getName } from './date.js';
+import { setState } from './router.js';
 
 /* date variables */
-let curDate = new Date();
-const newDate = curDate;
+window.curDate = new Date();
+//const newDate = window.curDate;
 const possibleImageSubscripts = ['.jpg', '.png'];
 
 /* access log components */
@@ -61,15 +62,17 @@ function isLinkImage(link) {
 
 /**
  * Changes the date title, removes existing content, populates page with current date's content
- * @param {object} log - The object that contains attributes of the day's journal
  * @param {string} key - The date of the journal
  */
-function populate(log, key) {
-    document.getElementsByTagName('h3')[0].innerText = getName(key);
+function populate(key) {
+    let log = getDaysData(key);
+
+    //document.getElementsByTagName('h3')[0].innerText = log['name'];
+    document.getElementsByTagName('h3')[0].innerText = log['name'];
 
     removeAll();
 
-    if (log == null) return;
+    //if (key == null) return;
     const allTasks = log.tasks;
     const allEve = log.events;
     const allMedia = log.media;
@@ -105,24 +108,28 @@ function populate(log, key) {
  * Increases date by one day, calls populate
  * @listens forward#click
  */
-forward.addEventListener('click', () => {
-    newDate.setDate(newDate.getDate() + 1);
-    curDate = newDate;
-    const key = getDaysKey(newDate);
+forward.addEventListener('click', (event) => {
+    event.preventDefault();
 
-    populate(getData(key), newDate);
+    window.curDate.setDate(window.curDate.getDate() + 1);
+    //window.curDate = newDate;
+    const key = getDaysKey(window.curDate);
+
+    setState(key);
 });
 
 /**
  * Decreases the date by one day, calls populate
  * @listens backward#click
  */
-backward.addEventListener('click', () => {
-    newDate.setDate(newDate.getDate() - 1);
-    curDate = newDate;
-    const key = getDaysKey(newDate);
+backward.addEventListener('click', (event) => {
+    event.preventDefault();
 
-    populate(getData(key), newDate);
+    window.curDate.setDate(window.curDate.getDate() - 1);
+    //window.curDate = newDate;
+    const key = getDaysKey(window.curDate);
+
+    setState(key);
 });
 
 /**
@@ -131,6 +138,8 @@ backward.addEventListener('click', () => {
  */
 document.addEventListener('DOMContentLoaded', () => {
     //window.localStorage.clear();
-    const key = getDaysKey(curDate);
-    populate(getData(key), curDate);
+    const key = getDaysKey(window.curDate);
+    setState(key);
 });
+
+export { populate };

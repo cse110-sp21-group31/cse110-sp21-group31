@@ -10,7 +10,7 @@ get/set the relevant data for the day specified in key
 @returns: {events: [], tasks: [], name: "", media: []}
 */
 function getData(key) {
-    const res = localStorage.getItem(key);
+    let res = localStorage.getItem(key);
     if (res == null) return null;
     return JSON.parse(res);
 }
@@ -19,19 +19,27 @@ function setData(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
+function getDaysData(key) {
+    let res = getData(key);
+    if (res == null) res = newDay(key);
+    return res;
+}
+
 /* NEW STUFFFFFCFFFF
 called when there is no data for passed in key
 */
 function newDay(key) {
     const arr = new Array();
     let item = {
-        name: getName(),
+        name: getName(key),
         notepad: '',
         tasks: arr,
         events: arr,
-        media: arr
-    }
+        media: arr,
+    };
+
     setData(key, item);
+    return item;
 }
 
 /**
@@ -149,7 +157,7 @@ function test() {
 
 //test();
 
-export { getData, getCustomTagColor, addTask, addEvent };
+export { getDaysData, getCustomTagColor, addTask, addEvent };
 
 /*
 
