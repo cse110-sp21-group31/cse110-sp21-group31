@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // side bar navigate
-// .forEach replaced to satisfy linter
+// .forEach replaced to satisfy linter hi
 
 const arr = document.querySelectorAll('#mySidebar small a');
 for (let i = 0; i < arr.length; i += 1) {
