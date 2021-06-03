@@ -112,6 +112,10 @@ class Log extends HTMLElement {
                 font-family: 'Sen', 'sans-serif';
                 padding: 5% 0 0 0;
             }
+
+            [contenteditable] {
+                outline: 0px solid transparent;
+            }
             </style>
         `;
 

@@ -10,7 +10,7 @@ class Task extends Log {
             <div class='checkbox-label-container'>
                 <label for="">
                     <input type="checkbox">
-                    <span></span>
+                    <span contenteditable=true></span>
                 </label>
             </div>
             <div class='tags-container'>
@@ -21,6 +21,11 @@ class Task extends Log {
         // DOM references to use in set/get
         this.titleDOM = sha.querySelector('.checkbox-label-container span');
         this.checkDOM = sha.querySelector('.checkbox-label-container input');
+
+        // prevent adding new line breaks for the task title (can't press enter)
+        this.titleDOM.addEventListener('keypress', (k) => {
+            if (k.keyCode === 13) k.preventDefault();
+        });
     }
 
     /**
