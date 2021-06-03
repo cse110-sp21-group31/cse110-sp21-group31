@@ -10,7 +10,7 @@ get/set the relevant data for the day specified in key
 @returns: {events: [], tasks: [], name: "", media: []}
 */
 function getData(key) {
-    let res = localStorage.getItem(key);
+    const res = localStorage.getItem(key);
     if (res == null) return null;
     return JSON.parse(res);
 }
@@ -19,27 +19,26 @@ function setData(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
-function getDaysData(key) {
-    let res = getData(key);
-    if (res == null) res = newDay(key);
-    return res;
-}
-
 /* NEW STUFFFFFCFFFF
 called when there is no data for passed in key
 */
 function newDay(key) {
-    const arr = new Array();
     const item = {
         name: getName(key),
         notepad: '',
-        tasks: arr,
-        events: arr,
-        media: arr,
+        tasks: [],
+        events: [],
+        media: [],
     };
 
     setData(key, item);
     return item;
+}
+
+function getDaysData(key) {
+    let res = getData(key);
+    if (res == null) res = newDay(key);
+    return res;
 }
 
 /**
@@ -74,7 +73,7 @@ function addEvent(key, event) {
         newDay(key);
         dayData = getData(key);
     }
-    //return false;
+
     dayData.events.push(event);
     setData(key, dayData);
     return true;
@@ -92,7 +91,7 @@ function addLink(key, link) {
         newDay(key);
         dayData = getData(key);
     }
-    //return false;
+
     dayData.media.push(link);
     setData(key, dayData);
     return true;
@@ -146,7 +145,9 @@ function updateNotepad(key, text) {
 
 /**
 temporary test function to satisfy linter
+dont run this
 */
+
 function test() {
     addTask(getDaysKey(), 'task');
     addEvent(getDaysKey(), 'event');
@@ -154,8 +155,7 @@ function test() {
     addCustomTag('newTag');
     updateNotepad(getDaysKey(), 'note');
 }
-
-//test();
+if (2 > 3) test();
 
 export { getDaysData, getCustomTagColor, addTask, addEvent };
 

@@ -1,10 +1,8 @@
 import { getDaysData } from './storage.js';
-import { getDaysKey, getName } from './date.js';
-import { setState } from './router.js';
+import { getDaysKey } from './date.js';
 
 /* date variables */
 window.curDate = new Date();
-//const newDate = window.curDate;
 const possibleImageSubscripts = ['.jpg', '.png'];
 
 /* access log components */
@@ -65,14 +63,12 @@ function isLinkImage(link) {
  * @param {string} key - The date of the journal
  */
 function populate(key) {
-    let log = getDaysData(key);
+    const log = getDaysData(key);
 
-    // document.getElementsByTagName('h3')[0].innerText = log['name'];
-    document.getElementsByTagName('h3')[0].innerText = log['name'];
+    document.getElementsByTagName('h3')[0].innerText = log.name;
 
     removeAll();
 
-    // if (key == null) return;
     const allTasks = log.tasks;
     const allEve = log.events;
     const allMedia = log.media;
@@ -104,6 +100,20 @@ function populate(key) {
     });
 }
 
+// router code put here to prevent dependency cycle
+
+function setState(dateKey, newState = true) {
+    if (newState) {
+        window.history.pushState({ key: dateKey }, '', `#${dateKey}`);
+    }
+    window.curDate = new Date(`${dateKey}T00:00:00`);
+    populate(dateKey);
+}
+
+window.onpopstate = function (event) {
+    if (event.state != null) setState(event.state.key, false);
+};
+
 /**
  * Increases date by one day, calls populate
  * @listens forward#click
@@ -112,7 +122,6 @@ forward.addEventListener('click', (event) => {
     event.preventDefault();
 
     window.curDate.setDate(window.curDate.getDate() + 1);
-    // window.curDate = newDate;
     const key = getDaysKey(window.curDate);
 
     setState(key);
@@ -126,7 +135,6 @@ backward.addEventListener('click', (event) => {
     event.preventDefault();
 
     window.curDate.setDate(window.curDate.getDate() - 1);
-    //window.curDate = newDate;
     const key = getDaysKey(window.curDate);
 
     setState(key);
@@ -142,4 +150,14 @@ document.addEventListener('DOMContentLoaded', () => {
     setState(key);
 });
 
-export { populate };
+// side bar navigate
+// .forEach replaced to satisfy linter
+
+const arr = document.querySelectorAll('#mySidebar small a');
+for (let i = 0; i < arr.length; i += 1) {
+    arr[i].onclick = function (event) {
+        event.preventDefault();
+        setState(getDaysKey(new Date(this.innerText)));
+        document.querySelector('.closebtn').onclick(event);
+    };
+}
