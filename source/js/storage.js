@@ -2,7 +2,7 @@
 storage.js
 functions to get/set local storage 
 */
-import { getDaysKey } from './date.js';
+import { getDaysKey, getName } from './date.js';
 
 /**
 get/set the relevant data for the day specified in key
@@ -11,7 +11,11 @@ get/set the relevant data for the day specified in key
 */
 function getData(key) {
     const res = localStorage.getItem(key);
-    if (res == null) return null;
+    if (res == null) {
+        newDay(key);
+        getData(key);
+    }
+    // return null;
     return JSON.parse(res);
 }
 
@@ -26,8 +30,10 @@ function setData(key, data) {
  */
 function newDay(key) {
     const arr = [];
+    const [y, m, d] = key.split('-');
+    const dateObj = new Date(y, m - 1, d);
     const item = {
-        name: document.getElementsByTagName('h3')[0].innerText,
+        name: getName(dateObj),
         notepad: '',
         tasks: arr,
         events: arr,
@@ -147,7 +153,7 @@ function test() {
     updateNotepad(getDaysKey(), 'note');
 }
 
-test();
+// test();
 
 export { getData, getCustomTagColor, addTask, addEvent };
 
