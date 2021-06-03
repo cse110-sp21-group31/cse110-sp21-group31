@@ -3,7 +3,7 @@ import { populate } from './navigation.js';
 
 function setState(dateKey, newState = true) {
     if (newState) {
-        history.pushState({ key: dateKey }, '', '#' + dateKey);
+        history.pushState({ key: dateKey }, '', `#${  dateKey}`);
     }
     window.curDate = new Date(`${dateKey  }T00:00:00`);
     populate(dateKey);
