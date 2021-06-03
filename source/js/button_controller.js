@@ -107,7 +107,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
                 let startSuffix = "";
                 if(startHour > 12) {
                     startHour -= 12;
-                    startHour = "0" + startHour;
+                startHour = `0${  startHour}`;
                     startSuffix = "PM";
                 } else {
                     startSuffix = "AM";
