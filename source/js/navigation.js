@@ -110,9 +110,10 @@ function setState(dateKey, newState = true) {
     populate(dateKey);
 }
 
-window.onpopstate = function (event) {
+function popState(event) {
     if (event.state != null) setState(event.state.key, false);
-};
+}
+window.onpopstate = popState;
 
 /**
  * Increases date by one day, calls populate
@@ -153,11 +154,13 @@ document.addEventListener('DOMContentLoaded', () => {
 // side bar navigate
 // .forEach replaced to satisfy linter
 
+function sideBarClick(event) {
+    event.preventDefault();
+    setState(getDaysKey(new Date(this.innerText)));
+    document.querySelector('.closebtn').onclick(event);
+}
+
 const arr = document.querySelectorAll('#mySidebar small a');
 for (let i = 0; i < arr.length; i += 1) {
-    arr[i].onclick = function (event) {
-        event.preventDefault();
-        setState(getDaysKey(new Date(this.innerText)));
-        document.querySelector('.closebtn').onclick(event);
-    };
+    arr[i].onclick = sideBarClick;
 }
