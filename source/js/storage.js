@@ -19,6 +19,21 @@ function setData(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
 
+/* NEW STUFFFFFCFFFF
+called when there is no data for passed in key
+*/
+function newDay(key) {
+    const arr = new Array();
+    let item = {
+        name: getName(),
+        notepad: '',
+        tasks: arr,
+        events: arr,
+        media: arr
+    }
+    setData(key, item);
+}
+
 /**
  * If there is no object with matching date key, create a new object with date key
  * Set object in local storage
