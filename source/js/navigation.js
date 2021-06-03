@@ -65,7 +65,7 @@ function isLinkImage(link) {
  * @param {string} key - The date of the journal
  */
 function populate(log, key) {
-    document.getElementsByTagName('h3')[0].innerText = getName(key);
+    document.getElementsByTagName('h3')[0].innerHTML = getName(key);
 
     removeAll();
 
@@ -130,7 +130,7 @@ backward.addEventListener('click', () => {
  * @listens document#DOMContentLoaded
  */
 document.addEventListener('DOMContentLoaded', () => {
-    //window.localStorage.clear();
+    // window.localStorage.clear();
     const key = getDaysKey(curDate);
     populate(getData(key), curDate);
 });

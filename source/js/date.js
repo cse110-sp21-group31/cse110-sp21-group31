@@ -10,6 +10,33 @@ function getDaysKey(dateObj) {
     else now = dateObj;
     return [now.getFullYear(), ("0" + (now.getMonth() + 1)).slice(-2), ("0" + now.getDate()).slice(-2)].join('-');
 }
+/**
+ * SUBJECT TO CHANGE:
+ * Takes current title of the day, parses it into usable date key
+ * @param {string} name "Wednesday, June 2"
+ */
+function parseName(name) {
+    let now = new Date();
+    let [day, month, date] = name.split(/[ ,]+/);
+    let months = {
+        January: '01',
+        February: '02',
+        March: '03',
+        April: '04',
+        May: '05',
+        June: '06',
+        July: '07',
+        August: '08',
+        September: '09',
+        October: '10',
+        November: '11',
+        December: '12',
+    }
+    if (date < 10) {
+        date = "0" + date;
+    }
+    return [now.getFullYear(), months[month], date].join('-');
+}
 
 /**
 getName
@@ -57,4 +84,4 @@ function test() {
 
 test();
 
-export { getDaysKey, getName };
+export { getDaysKey, getName, parseName };

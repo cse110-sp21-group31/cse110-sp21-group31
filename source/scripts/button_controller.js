@@ -1,6 +1,6 @@
 // button_controller.js
 import { addTask, addEvent } from '../js/storage.js'
-import { getDaysKey } from '../js/date.js';
+import { parseName } from '../js/date.js';
 
 const curDate = new Date();
 /*
@@ -34,6 +34,7 @@ implements upload button functionality
 document.getElementById("task-event-textbox").addEventListener("keypress", button => {
     if(button.key === "Enter") {
         const input = document.getElementById("task-event-textbox");
+        const curName = document.getElementsByTagName('h3')[0].innerHTML;
         // ensure bar is not empty
         if(!input.value.replace(/\s/g, "").length) { return; }
 
@@ -72,8 +73,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             // Append task element to log (subject to change according to log css etc.)
             const taskSpace = document.getElementById("log-tasks-area");
             taskSpace.appendChild(newEntry);
-
-            addTask('2021-06-02', entry);
+            addTask(parseName(curName), entry);
 
         } else if(taskEventChoice === "Event") {
             /*  entry should contain:
@@ -105,7 +105,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             // Append event element to log (subject to change)
             const eventSpace = document.getElementById("log-events-area");
             eventSpace.appendChild(newEntry);   
-            addEvent(getDaysKey(curDate), entry);
+            addEvent(parseName(curName), entry);
         }
     }
 });
