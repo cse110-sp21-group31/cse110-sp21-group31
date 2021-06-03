@@ -25,12 +25,20 @@ document.getElementById("tag-selection").addEventListener("change", function han
     }
 });
 
+document.addEventListener("keypress", button => {
+    if(button.key === "y") {
+        const tags = document.getElementById("tag-selection");
+        console.dirxml(tags);
+        tags.click();
+    }
+});
+
 /*
 implements upload button functionality
 */
 document.getElementById("task-event-textbox").addEventListener("keypress", button => {
     if(button.key === "Enter") {
-        const input = document.getElementById("task-event-textbox");
+        let input = document.getElementById("task-event-textbox");
         // ensure bar is not empty
         if(!input.value.replace(/\s/g, "").length) { return; }
 
@@ -74,8 +82,8 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             * 
             *   content: "CSE 110 Lecture",
             *   tags: ["Lecture", ...],
-            *   from: 1621308663,
-            *   to: 1621367364
+            *   from: 1621308663,   (currently contains hh:mm A/PM)
+            *   to: 1621367364      (currently contains hh:mm A/PM)
             */
             entry.content = input.value;
             entry.tags = []; 
@@ -90,7 +98,30 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
 
             // pull time info from clock icon (not implemented yet)
             entry.from = document.getElementById("start-time").children[0].value;
+            let startHour = entry.from.split(":", 2)[0];
+            const startMin = entry.from.split(":", 2)[1];
+            let startSuffix = "";
+            if(startHour > 12) {
+                startHour -= 12;
+                startHour = "0" + startHour;
+                startSuffix = "PM";
+            } else {
+                startSuffix = "AM";
+            }
+            entry.from = startHour + ":" + startMin + " " + startSuffix;
+
             entry.to = document.getElementById("end-time").children[0].value;
+            let endHour = entry.to.split(":", 2)[0];
+            const endMin = entry.to.split(":", 2)[1];
+            let endSuffix = "";
+            if(endHour > 12) {
+                endHour -= 12;
+                endHour = "0" + endHour;
+                endSuffix = "PM";
+            } else {
+                endSuffix = "AM";
+            }
+            entry.to = endHour + ":" + endMin + " " + endSuffix;
 
             // initialize event element
             const newEntry = document.createElement("event-log");
@@ -100,5 +131,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             const eventSpace = document.getElementById("log-events-area");
             eventSpace.appendChild(newEntry);   
         }
+        // clear input bar
+        input.value = "";
     }
 });
