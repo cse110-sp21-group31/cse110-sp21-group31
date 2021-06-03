@@ -122,7 +122,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
                 let endSuffix = "";
                 if(endHour > 12) {
                     endHour -= 12;
-                    endHour = "0" + endHour;
+                endHour = `0${  endHour}`;
                     endSuffix = "PM";
                 } else {
                     endSuffix = "AM";
