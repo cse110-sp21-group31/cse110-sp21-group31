@@ -18,6 +18,7 @@
 }
 
 #header-item-img {
+    grid-column: 1 / 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -25,6 +26,7 @@
 }
 
 #header-item-title {
+    grid-column: 2 / 3;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,6 +42,16 @@
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 7% auto;
     grid-gap: 10px;
+    overflow-y: hidden;
+}
+
+.item-middle-wk {
+    height: 100%;
+    width: 100%;
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-rows: 7% auto;
+    grid-gap: 5px;
 }
 
 .middle-item-bar {
@@ -69,6 +81,223 @@
     align-items: center;
 }
 
+#calendar-container {
+    height: 100%;
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 4% auto;
+}
+
+#time-column {
+    grid-column: 1 / 2;
+    height: 100%;
+    background-color:burlywood;
+    display: grid;
+    grid-template-rows: 1fr 6fr 2fr;
+}
+
+#time-column > div {
+    height: 100%;
+    width: 100%;
+}
+
+.time-clm-label {
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Sen', 'sans-serif';
+}
+
+#tasks-label {
+    grid-row: 3 / 4;
+}
+
+#calendar {
+    grid-column: 2 / 3;
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 6fr 2fr;
+}
+
+#calendar-time-column {
+    grid-column: 1 / 2;
+    /* background-color: lightskyblue; */
+    border-right: 1px solid black;
+}
+
+.calendar-dummy {
+    grid-column: 1 / 2;
+    border-right: 1px solid black;
+}
+
+#calendar-days-row {
+    grid-row: 1 / 2;
+    display: grid;
+    grid-template-columns: 0.2fr repeat(7, 1fr);
+    border-bottom: 1px solid black;
+    background-color: mistyrose;
+}
+
+#calendar-events-row {
+    grid-row: 2 / 3;
+    display: grid;
+    grid-template-columns: 0.2fr repeat(7, 1fr);
+    border-bottom: 1px solid black;
+    background-color: rgb(242,243,244);
+    overflow-y: scroll;
+}
+
+#calendar-tasks-row {
+    grid-row: 3 / 4;
+    display: grid;
+    grid-template-columns: 0.2fr repeat(7, 1fr);
+    background-color: lightyellow;
+}
+
+/* 
+    Dates in Calendar date row 
+*/
+#calendar-days-row div {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.date-label {
+    flex: 3;
+    font-family: 'Sen', 'sans-serif';
+    font-size: x-large;
+}
+
+.date {
+    flex: 1;
+    font-family: 'Roboto', 'sans-serif';
+}
+
+#cal-date-sun {
+    border-right: 1px solid black;
+}
+
+#cal-date-mon {
+    border-right: 1px solid black;
+}
+
+#cal-date-tues {
+    border-right: 1px solid black;
+}
+
+#cal-date-wed {
+    border-right: 1px solid black;
+}
+
+#cal-date-thurs {
+    border-right: 1px solid black;
+}
+
+#cal-date-fri {
+    border-right: 1px solid black;
+}
+
+#cal-date-sat {
+}
+
+/* 
+    Days in Calendar Event Row 
+*/
+#calendar-events-row div {
+    display: flex;
+    flex-direction: column;  
+}
+
+#cal-sun {
+    border-right: 1px solid black;
+}
+
+#cal-sun div {
+    border-bottom: 1px solid black; 
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
+}
+
+#cal-mon {
+    border-right: 1px solid black;
+}
+
+#cal-mon div {
+    border-bottom: 1px solid black; 
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
+}
+
+#cal-tues {
+    border-right: 1px solid black;
+}
+
+#cal-wed {
+    border-right: 1px solid black;
+}
+
+#cal-thurs {
+    border-right: 1px solid black;
+}
+
+#cal-fri {
+    border-right: 1px solid black;
+}
+
+#cal-sat {
+
+}
+
+.hour {
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
+}
+
+/* 
+    Tasks in Calendar Task row 
+*/
+#cal-task-sun {
+    border-right: 1px solid black;
+}
+
+#cal-task-mon {
+    border-right: 1px solid black;
+}
+
+#cal-task-tues {
+    border-right: 1px solid black;
+}
+
+#cal-task-wed {
+    border-right: 1px solid black;
+}
+
+#cal-task-thurs {
+    border-right: 1px solid black;
+}
+
+#cal-task-fri {
+    border-right: 1px solid black;
+}
+
+#cal-task-sat {
+
+}
+
 #middle-item-log {
     grid-column: 2 / 3;
     grid-row-start: 2;
@@ -89,6 +318,7 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     border-top: 1px solid black;
+    overflow-y: hidden;
 }
 
 #log-tasks-area {
@@ -96,10 +326,6 @@
     flex-direction: column;
     height: 100%;
     overflow-y: auto;
-}
-
-#log-tasks-area:hover {
-    overflow-y: scroll;
 }
 
 #log-events-area {
@@ -295,8 +521,7 @@ body {
 
 /* custom element in the middle section stylizing */
 
-event-log,
-task-log {
+event-log, task-log {
     display: flex;
     height: 25%;
     width: 100%;
@@ -304,13 +529,17 @@ task-log {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 }
 
+event-log:hover, task-log:hover {
+    background-color: rgb(157, 207, 223);
+    overflow: hidden;
+}
 
 /*
     Experimental Sidebar Styling
 */
-
 #main {
     transition: margin-left .5s;
     padding: 16px;
@@ -328,9 +557,9 @@ task-log {
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 60px;
-  }
+}
   
-  .sidebar p {
+.sidebar p {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-family: 'Sen', 'sans-serif';
@@ -338,9 +567,9 @@ task-log {
     color: #000000;
     display: block;
     transition: 0.3s;
-  }
+}
 
-  .sidebar a {
+.sidebar a {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-family: 'Sen', 'sans-serif';
@@ -348,16 +577,25 @@ task-log {
     color: #000000;
     display: block;
     transition: 0.3s;
-  }
+}
   
-  .sidebar a:hover {
+.sidebar a:hover {
     color: #f1f1f1;
-  }
+}
   
-  .sidebar .closebtn {
+.sidebar .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-  }  
+}  
+
+#log-events-area label {
+    font-family: 'Roboto', 'sans-serif';
+}
+
+/* Weekly Log */
+#header {
+    font-size: xx-large;
+}
