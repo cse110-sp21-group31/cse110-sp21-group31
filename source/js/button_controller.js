@@ -1,4 +1,7 @@
-// button_controller.js
+/* 
+button_controller.js
+contains tag selection and input bar upload funcionality
+*/
 
 /*
 implements tag selector functionality
@@ -98,30 +101,36 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
 
             // pull time info from clock icon
             entry.from = document.getElementById("start-time").children[0].value;
-            let startHour = entry.from.split(":", 2)[0];
-            const startMin = entry.from.split(":", 2)[1];
-            let startSuffix = "";
-            if(startHour > 12) {
-                startHour -= 12;
-                startHour = "0" + startHour;
-                startSuffix = "PM";
-            } else {
-                startSuffix = "AM";
+            if(entry.from != "") {
+                let startHour = entry.from.split(":", 2)[0];
+                const startMin = entry.from.split(":", 2)[1];
+                let startSuffix = "";
+                if(startHour > 12) {
+                    startHour -= 12;
+                    startHour = "0" + startHour;
+                    startSuffix = "PM";
+                } else {
+                    startSuffix = "AM";
+                }
+                entry.from = startHour + ":" + startMin + " " + startSuffix;
             }
-            entry.from = startHour + ":" + startMin + " " + startSuffix;
-
+            
             entry.to = document.getElementById("end-time").children[0].value;
-            let endHour = entry.to.split(":", 2)[0];
-            const endMin = entry.to.split(":", 2)[1];
-            let endSuffix = "";
-            if(endHour > 12) {
-                endHour -= 12;
-                endHour = "0" + endHour;
-                endSuffix = "PM";
+            if(entry.to != "") {
+                let endHour = entry.to.split(":", 2)[0];
+                const endMin = entry.to.split(":", 2)[1];
+                let endSuffix = "";
+                if(endHour > 12) {
+                    endHour -= 12;
+                    endHour = "0" + endHour;
+                    endSuffix = "PM";
+                } else {
+                    endSuffix = "AM";
+                }
+                entry.to = endHour + ":" + endMin + " " + endSuffix;
             } else {
-                endSuffix = "AM";
+                entry.to = "";
             }
-            entry.to = endHour + ":" + endMin + " " + endSuffix;
 
             // initialize event element
             const newEntry = document.createElement("event-log");
