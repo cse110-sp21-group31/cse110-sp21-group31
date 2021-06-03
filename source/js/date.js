@@ -10,7 +10,7 @@ function getDaysKey(dateObj) {
     else now = dateObj;
     return [
         now.getFullYear(),
-        ('0' + (now.getMonth() + 1)).slice(-2),
+        (`0${  now.getMonth() + 1}`).slice(-2),
         (`0${  now.getDate()}`).slice(-2),
     ].join('-');
 }
