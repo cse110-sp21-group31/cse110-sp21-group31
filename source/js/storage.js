@@ -55,7 +55,7 @@ function addTask(key, task) {
         newDay(key);
         dayData = getData(key);
     }
-    //return false;
+    // return false;
     dayData.tasks.push(task);
     setData(key, dayData);
     return true;
