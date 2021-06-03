@@ -30,7 +30,7 @@ called when there is no data for passed in key
 */
 function newDay(key) {
     const arr = new Array();
-    let item = {
+    const item = {
         name: getName(key),
         notepad: '',
         tasks: arr,
