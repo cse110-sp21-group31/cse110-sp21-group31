@@ -12,10 +12,22 @@ Team Page: [Link](admin/team.md)
 
 [Function Documentation](https://cse110-sp21-group31-docs.netlify.app/)
 
+## Progress
+
+[Meeting Notes](admin/meetings)
+
+[Pitch Info](specs/pitch)
+
+[Team Status Video](admin/videos/statusvideo1.mp4)
+
 ## Design Documents
 
-[Figma Board](https://www.figma.com/file/w8yygGnYP3y9xvH1ceAN0w/CSE-110-Team-31?node-id=0%3A1)
+### Figma
+- [Link to Figma Board](https://www.figma.com/file/w8yygGnYP3y9xvH1ceAN0w/CSE-110-Team-31?node-id=0%3A1)
+- [Figma Screenshots](/specs/figma)
 
-[Miro Board](https://miro.com/app/board/o9J_lJcScCQ=/)
+### Miro
+- [Miro Board](https://miro.com/app/board/o9J_lJcScCQ=/)
+- [PDF version](/specs/brainstorm/Miro_Brainstorm.pdf)
 
 [ADRs](specs/adrs)
