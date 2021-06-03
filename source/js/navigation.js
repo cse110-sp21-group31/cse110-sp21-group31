@@ -65,7 +65,7 @@ function isLinkImage(link) {
 function populate(key) {
     const log = getDaysData(key);
 
-    document.getElementsByTagName('h3')[0].innerText = log.name;
+    document.getElementsByTagName('h3')[0].innerText = log['name'];
 
     removeAll();
 
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // side bar navigate
-// .forEach replaced to satisfy linter hi
+// .forEach replaced to satisfy linter
 
 const arr = document.querySelectorAll('#mySidebar small a');
 for (let i = 0; i < arr.length; i += 1) {
