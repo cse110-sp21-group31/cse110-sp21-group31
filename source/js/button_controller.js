@@ -112,7 +112,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
                 } else {
                     startSuffix = "AM";
                 }
-                entry.from = startHour + ":" + startMin + " " + startSuffix;
+            entry.from = `${startHour  }:${  startMin  } ${  startSuffix}`;
             }
             
             entry.to = document.getElementById("end-time").children[0].value;
