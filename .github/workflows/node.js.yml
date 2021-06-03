@@ -44,3 +44,9 @@ jobs:
         working-directory: ./source
       - run: npm run docs
         working-directory: ./source
+      - uses: EndBug/add-and-commit@v7
+        with:
+          cwd: ./source
+          add: out
+          default_author: github_actor
+          message: 'Update generated documentation'

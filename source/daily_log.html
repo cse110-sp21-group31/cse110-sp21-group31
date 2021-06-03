@@ -1,27 +1,49 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bullet Journal</title>
     <link rel="stylesheet" href="./style.css">
 
-    <script src="./components/task.js" type="module"></script>
-    <script src="./components/event.js" type="module"></script>
-    <script src="./components/storage.js"></script>
+    <script src="./js/components/task.js" type="module"></script>
+    <script src="./js/components/event.js" type="module"></script>
+    <script src="./js/navigation.js" type="module"></script>
+    <script src="./js/date.js" type="module"></script>
+    <script src="./js/storage.js" type="module"></script>
+    <script src="./js/clock.js" type="module"></script>
+    <script src="./scripts/button_controller.js" type="module"></script>
 
     <!-- Fonts -->
     <!-- Sen -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sen&display=swap" rel="stylesheet">
     <!-- Roboto -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
     <div class='container'>
+
+        <!-- Experimental Sidebar -->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <p>Index</p>
+            <a href="#">- Daily Log</a>
+            <ul>
+                <small><a href="#">May 22, 2021</a></small>
+                <small><a href="#">May 21, 2021</a></small>
+            </ul>
+            <a href="#">- Weekly Log</a>
+        </div>
+        <!-- Sidebar Ends -->
+
         <div class='item-header'>
             <div id='header-item-img'>
-                <a href="#"><img src="/source/images/nav_button.png" alt="Navigation Button" height='50' width='50'></a>
+                <a href="#" class='openbtn' onclick="openNav()"><img src="/source/images/nav_button.png"
+                        alt="Navigation Button" height='50' width='50'></a>
             </div>
             <div id='header-item-title'>
                 <h1 id='header' class="main-title">Daily Log</h1>
@@ -33,13 +55,13 @@
         <div class='item-middle'>
             <div class='middle-item-bar'>
                 <div id='left-arrow'>
-                    <a href="#"><img src="/source/images/arrow_left.png" alt="Left Arrow" height='25' width='25'></a>
+                    <a href="#"><img src="images/arrow_left.png" alt="Left Arrow" height='25' width='25'></a>
                 </div>
                 <div id='date-text'>
                     <h3 class='main-title'>May 18, 2021</h3>
                 </div>
                 <div id='right-arrow'>
-                    <a href="#"><img src="/source/images/arrow_right.png" alt="Right Arrow" height='25' width='25'></a>
+                    <a href="#"><img src="images/arrow_right.png" alt="Right Arrow" height='25' width='25'></a>
                 </div>
             </div>
             <div id='middle-item-log'>
@@ -47,49 +69,49 @@
                     <h2 class='main-title'>Log</h2>
                 </div>
                 <div id='log-text-area'>
-                    <div id='log-tasks-area'>
-                        <label contenteditable=true for=""><input type="checkbox">Task 1</label>
-                        <label contenteditable=true for=""><input type="checkbox">Task 2</label>
-                        <label contenteditable=true for=""><input type="checkbox">Task 3</label>
-                        <label contenteditable=true for=""><input type="checkbox">Task 4</label>
-                    </div>
-                    <div id='log-events-area'>
-                        <label contenteditable=true for=""><input type="checkbox">Event 1</label>
-                        <label contenteditable=true for=""><input type="checkbox">Event 2</label>
-                        <label contenteditable=true for=""><input type="checkbox">Event 3</label>
-                        <label contenteditable=true for=""><input type="checkbox">Event 4</label>
-                    </div>
+                    <div id='log-tasks-area'></div>
+                    <div id='log-events-area'></div>
                 </div>
             </div>
             <div id='middle-item-notes'>
                 <div id='notes-title'>
                     <h2 class='main-title'>Notes</h2>
                 </div>
-                <div contenteditable=true data-text="Write any ideas here..." id='notes-text-area'></div>
+                <div contenteditable=true data-text="Write your ideas here..." id='notes-text-area'>
+
+                </div>
             </div>
             <div id='middle-item-media'>
                 <div id='media-title'>
                     <h2 class='main-title'>Media</h2>
                 </div>
                 <div id='media-text-area'>
-                    
+
                 </div>
             </div>
         </div>
         <div class='item-footer'>
             <div id='task-event-selector-area'>
-                <select name="task-event-selector">
+                <select name="Task Event Selector" id='task-event-selector'>
                     <option value="default">Task or Event</option>
                     <option value="Task">Task</option>
-                    <option value="Event">Event</option> 
+                    <option value="Event">Event</option>
                 </select>
             </div>
             <div id='task-event-textbox-area'>
-                <input type="text" name='task-event-textbox' id='task-event-textbox' placeholder='Enter a Task or Event here!'>
+                <input type="text" name='task-event-textbox' id='task-event-textbox'
+                    placeholder='Enter a Task or Event here!'>
             </div>
             <div id='clock-tags-upload-area'>
-                <div id='clock-img'>
-                    <a href="#"><img src="/source/images/clock.png" alt="Right Arrow" height='40' width='40'></a>
+                <div class='clock-form'>
+                    <img id='clock-img' src="/source/images/clock.png" alt="Clock" height='40' width='40'></a>    
+                    <div id='popup-clock'>
+                        <form id='time-selector'>
+                            <label id='start-time' for='startTime'>Start Time:<input type='time' id='start-time' name='start-time'></label>
+                            <label id='end-time' for='endTime'>End Time:<input type='time' id='end-time' name='end-time'></label>
+                            <button type='button' id="clock-submit-button">Submit</button>
+                        </form>
+                    </div>
                 </div>
                 <div id='tags-selector'>
                     <select name="Tags" id="tag-selection">
@@ -97,14 +119,27 @@
                         <option>Lecture</option>
                         <option>UCSD</option>
                         <option>Other</option>
-                        <option>Add Tag Here...</option>
-                      </select>
+                        <option id="add-tag-option">Add Tag Here...</option>
+                    </select>
                 </div>
                 <div id='upload-img'>
-                    <a href="#"><img src="/source/images/upload_button.png" alt="Right Arrow" height='40' width='40'></a>    
+                    <a href="#"><img src="images/upload_button.png" alt="Upload Button" height='40' width='40'></a>
                 </div>
             </div>
         </div>
     </div>
 </body>
+
 </html>
+
+<script>
+    function openNav() {
+        document.getElementById("mySidebar").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+    }
+
+    function closeNav() {
+        document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("main").style.marginLeft = "0";
+    }
+</script>
