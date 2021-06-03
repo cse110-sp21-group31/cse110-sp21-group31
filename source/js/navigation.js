@@ -65,7 +65,7 @@ function isLinkImage(link) {
 function populate(key) {
     const log = getDaysData(key);
 
-    document.getElementsByTagName('h3')[0].innerText = log['name'];
+    document.getElementsByTagName('h3')[0].innerText = log.name;
 
     removeAll();
 
