@@ -112,7 +112,7 @@ forward.addEventListener('click', (event) => {
     event.preventDefault();
 
     window.curDate.setDate(window.curDate.getDate() + 1);
-    //window.curDate = newDate;
+    // window.curDate = newDate;
     const key = getDaysKey(window.curDate);
 
     setState(key);
