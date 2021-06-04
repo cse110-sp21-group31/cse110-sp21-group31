@@ -100,7 +100,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
 
             // pull time info from clock icon
             entry.from = document.getElementById("start-time").children[0].value;
-            if(entry.from != "") {
+            if(entry.from !== "") {
                 let startHour = entry.from.split(":", 2)[0];
                 const startMin = entry.from.split(":", 2)[1];
                 let startSuffix = "";
@@ -117,7 +117,7 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             }
             
             entry.to = document.getElementById("end-time").children[0].value;
-            if(entry.to != "") {
+            if(entry.to !== "") {
                 let endHour = entry.to.split(":", 2)[0];
                 const endMin = entry.to.split(":", 2)[1];
                 let endSuffix = "";
