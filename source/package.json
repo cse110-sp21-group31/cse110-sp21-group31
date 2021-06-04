@@ -6,7 +6,7 @@
     "scripts": {
         "lint": "npx eslint . --ext .js",
         "test": "cross-env NODE_OPTIONS=--experimental-vm-modules npx jest",
-        "docs": "npx jsdoc . -r -c build/jsdocConf.json -d out"
+        "docs": "npx jsdoc . -r -c ci-cd/jsdocConf.json -d out"
     },
     "keywords": [],
     "author": "",
