@@ -12,6 +12,7 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
+        "cross-env": "^7.0.3",
         "eslint": "^7.26.0",
         "eslint-config-airbnb-base": "^14.2.1",
         "eslint-plugin-import": "^2.23.4",
