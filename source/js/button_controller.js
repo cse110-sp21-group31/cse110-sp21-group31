@@ -107,12 +107,14 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
                 let startSuffix = "";
                 if(startHour > 12) {
                     startHour -= 12;
-                startHour = `0${  startHour}`;
+                    if(startHour < 10)  {
+                        startHour = `0${  startHour}`;
+                    }
                     startSuffix = "PM";
                 } else {
                     startSuffix = "AM";
                 }
-            entry.from = `${startHour  }:${  startMin  } ${  startSuffix}`;
+                entry.from = `${startHour  }:${  startMin  } ${  startSuffix}`;
             }
             
             entry.to = document.getElementById("end-time").children[0].value;
@@ -122,12 +124,14 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
                 let endSuffix = "";
                 if(endHour > 12) {
                     endHour -= 12;
-                endHour = `0${  endHour}`;
+                    if(endHour < 10) {
+                        endHour = `0${  endHour}`; 
+                    }
                     endSuffix = "PM";
                 } else {
                     endSuffix = "AM";
                 }
-            entry.to = `${endHour  }:${  endMin  } ${  endSuffix}`;
+                entry.to = `${endHour  }:${  endMin  } ${  endSuffix}`;
             } else {
                 entry.to = "";
             }
