@@ -17,6 +17,7 @@ function getData(key) {
 
 function setData(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
+    return data;
 }
 
 /* NEW STUFFFFFCFFFF
@@ -97,15 +98,44 @@ function addLink(key, link) {
     return true;
 }
 
+/*
+get the custom tag array from storage
+if it doesn't exist, then create the default one
+*/
+function getCustomTags() {
+    let res = getData('custom-tags');
+
+    // obj that maps displayed tag name on website options
+    // to the class name that options have to have
+    // for css to work, which is in log.js
+    const defaultTags = {
+        UCSD: 'ucsd',
+        Lecture: 'lecture',
+        Other: 'other',
+    };
+
+    // if custom-tags don't exist, create the default ones
+    if (res == null) res = setData('custom-tags', defaultTags);
+
+    return res;
+}
+
 /**
 add custom tag
 @param tagName string for the name of tag
 @return true/false if successful
 */
 function addCustomTag(tagName) {
-    const colorArr = ['blue', 'red', 'pink', 'green', 'violet', 'orange'];
-    const customTags = getData('custom-tags');
-    if (customTags == null) return false;
+    const colorArr = ['red', 'blue', 'pink', 'green', 'violet', 'orange'];
+    const customTags = getCustomTags();
+
+    // return false if customTags don't exist (shouldn't happen actually)
+    // return false if tagName exists in customTags already
+    if (customTags == null || tagName in customTags === false) {
+        return false;
+    }
+
+    // pick a color for the new tag
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
     setData('custom-tags', customTags);
 
@@ -124,8 +154,13 @@ get color for a custom tag
 @return the tag color
 */
 function getCustomTagColor(tagName) {
-    const customTags = getData('custom-tags');
-    if (tagName in customTags === false) return '';
+    const customTags = getCustomTags();
+
+    // false checks: if tags don't exist or if tagName isn't in there
+    if (customTags == null || tagName in customTags === false) {
+        return '';
+    }
+
     return customTags[tagName];
 }
 

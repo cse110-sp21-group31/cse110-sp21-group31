@@ -146,6 +146,7 @@ backward.addEventListener('click', (event) => {
  * @listens document#DOMContentLoaded
  */
 document.addEventListener('DOMContentLoaded', () => {
+    // set the current state
     // window.localStorage.clear();
     const key = getDaysKey(window.curDate);
     setState(key);
