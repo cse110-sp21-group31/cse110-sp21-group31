@@ -31,7 +31,6 @@ document.getElementById("tag-selection").addEventListener("change", function han
 document.addEventListener("keypress", button => {
     if(button.key === "y") {
         const tags = document.getElementById("tag-selection");
-        console.dirxml(tags);
         tags.click();
     }
 });
