@@ -54,7 +54,8 @@ function getWeek(key) {
 /**
 temporary test function to satisfy linter
 */
-function test() {
+function test(arg = true) {
+    if (arg) return;
     getName();
     getWeek(getDaysKey());
 }

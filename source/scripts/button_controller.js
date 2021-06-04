@@ -108,7 +108,7 @@ document
                 ]
             }
             setData(getDaysKey(curDate), item); */
-                addTask(getDaysKey(curDate), entry);
+                addTask(getDaysKey(window.curDate), entry);
             } else if (taskEventChoice === 'Event') {
                 /*  entry should contain:
                  *
