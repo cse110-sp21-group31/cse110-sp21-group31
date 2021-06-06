@@ -77,7 +77,7 @@
     background-color: lightblue;
     border: 1px solid black;
     border-radius: 25px;
-    overflow: hidden;
+    overflow: auto;
 }
 
 #log-title {
