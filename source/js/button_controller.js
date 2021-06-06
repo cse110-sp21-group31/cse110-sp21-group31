@@ -65,12 +65,6 @@ tagSelectorDOM.addEventListener('change', function handleTags() {
     // skip over the last option which is padding
     if (this.value === '') return;
 
-    /* if (this.value === 'Add Tag Here...') {
-        // open dialog to enter custom tag
-
-        this.value = 'default';
-        return;
-    } */
     const tags = this.children;
     for (let i = 0; i < tags.length; i += 1) {
         if (tags[i].innerHTML === this.value) {
@@ -84,13 +78,6 @@ tagSelectorDOM.addEventListener('change', function handleTags() {
             }
             this.value = 'default';
         }
-    }
-});
-
-document.addEventListener('keypress', (button) => {
-    if (button.key === 'y') {
-        const tags = document.getElementById('tag-selection');
-        tags.click();
     }
 });
 
@@ -110,7 +97,6 @@ document
             // grab event/tag/time info
             const entry = [];
 
-            // console.log(document.getElementById("task-event-selector").value);
             let taskEventChoice = document.getElementById(
                 'task-event-selector'
             ).value;
