@@ -461,7 +461,19 @@ select {
 #tag-selection {
     position: absolute;
     bottom: 1.5%;
-    right: 5%;
+    right: 4.5%;
+}
+
+.all-tags {
+    width: 120px;
+}
+
+#tags-selector input {
+    position: absolute;
+    right: 4.5%;
+    bottom: 1.5%;
+    height: 30px;
+    width: 125px;
 }
 
 #upload-img {

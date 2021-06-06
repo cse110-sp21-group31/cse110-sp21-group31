@@ -112,12 +112,13 @@
                 </div>
                 <div id='tags-selector'>
                     <select name="Tags" id="tag-selection" multiple size="1">
-                        <option id="apply-tags-option" value="default">Apply Tags</option>
-                        <option>Lecture</option>
-                        <option>UCSD</option>
-                        <option>Other</option>
-                        <option id="add-tag-option">Add Tag Here...</option>
+                        <option class="all-tags" id="apply-tags-option" value="default">Apply Tags</option>
+                        <option class="all-tags">Lecture</option>
+                        <option class="all-tags">UCSD</option>
+                        <option class="all-tags">Other</option>
+                        <option class="all-tags"></option>
                     </select>
+                    <input class="all-tags" id="add-tag-option" type="text" placeholder="Add Tag Here...">
                 </div>
                 <div id='upload-img'>
                     <a href="#"><img src="images/upload_button.png" alt="Upload Button" height='40' width='40'></a>

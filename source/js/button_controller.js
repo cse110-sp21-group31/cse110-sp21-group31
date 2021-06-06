@@ -1,44 +1,73 @@
+import { addCustomTag } from './storage.js';
+
 /* 
 button_controller.js
 contains tag selection and input bar upload funcionality
 */
 
-/*
-implements tag selector functionality
-*/
 const tagSelectorDOM = document.getElementById('tag-selection');
+const applyTagsDOM = tagSelectorDOM.querySelector('#apply-tags-option');
+const optionArr = document.querySelectorAll('.all-tags');
+const newHeight = '150px'; // new height of tag selection box when clicked on
 
+/**
+ * toggle the css display value
+ * for the tag selection options
+ */
 function toggleOptionsDisplay() {
-    const optionArr = tagSelectorDOM.querySelectorAll('option');
+    // loop over all the options in the array to toggle the display
     for (let i = 0; i < optionArr.length; i += 1) {
         const item = optionArr[i];
         item.style.display = item.style.display === '' ? 'none' : '';
         item.selected = false;
     }
 }
-// initialize the display of the tag selection options
-tagSelectorDOM.querySelector('#apply-tags-option').style.display = 'none';
+
+// the Apply Tags should be visible at the start while others are hidden
+applyTagsDOM.style.display = 'none';
 toggleOptionsDisplay();
 
-tagSelectorDOM.onclick = function () {
-    const newHeight = '150px';
-    if (this.style.height === newHeight) return;
-    this.style.height = newHeight;
-    toggleOptionsDisplay();
-};
+/**
+ * handling the click events on the document
+ */
+document.addEventListener('click', (event) => {
+    // onclick tag selector, display the elements and
+    // expand the height of tag selector
+    if (event.target == applyTagsDOM) {
+        if (tagSelectorDOM.style.height === newHeight) return;
+        tagSelectorDOM.style.height = newHeight;
+        toggleOptionsDisplay();
+    }
 
-tagSelectorDOM.onmouseleave = function () {
-    if (this.style.height === '') return;
-    this.style.height = '';
-    toggleOptionsDisplay();
-};
+    // onclick other places, hide the elements and
+    // decrease the height of tag selector
+    else if (event.target.getAttribute('class') != 'all-tags') {
+        if (tagSelectorDOM.style.height === '') return;
+        tagSelectorDOM.style.height = '';
+        toggleOptionsDisplay();
+    }
+});
 
+const addTagDOM = document.getElementById('add-tag-option');
+addTagDOM.addEventListener('keypress', (button) => {
+    if (button.key === 'Enter') {
+        // addCustomTag(addTagDOM.value);
+        const newTag = document.createElement('option');
+        newTag.innerText = addTagDOM.value;
+        newTag.setAttribute('class', 'all-tags');
+        tagSelectorDOM.insertBefore(newTag, tagSelectorDOM.lastElementChild);
+        addTagDOM.value = '';
+    }
+});
+
+// tag selecting tags onclick
 tagSelectorDOM.addEventListener('change', function handleTags() {
     if (this.value === 'default') {
         return;
     }
     if (this.value === 'Add Tag Here...') {
         // open dialog to enter custom tag
+
         this.value = 'default';
         return;
     }

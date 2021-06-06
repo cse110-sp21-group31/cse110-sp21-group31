@@ -123,7 +123,7 @@ function test(run = false) {
 
 test();
 
-export { getData, getCustomTagColor };
+export { getData, getCustomTagColor, addCustomTag };
 
 /*
 
