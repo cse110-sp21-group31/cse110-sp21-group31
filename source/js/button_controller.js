@@ -51,11 +51,7 @@ document.addEventListener('click', (event) => {
 const addTagDOM = document.getElementById('add-tag-option');
 addTagDOM.addEventListener('keypress', (button) => {
     if (button.key === 'Enter') {
-        // addCustomTag(addTagDOM.value);
-        const newTag = document.createElement('option');
-        newTag.innerText = addTagDOM.value;
-        newTag.setAttribute('class', 'all-tags');
-        tagSelectorDOM.insertBefore(newTag, tagSelectorDOM.lastElementChild);
+        addCustomTag(addTagDOM.value);
         addTagDOM.value = '';
     }
 });
@@ -65,12 +61,16 @@ tagSelectorDOM.addEventListener('change', function handleTags() {
     if (this.value === 'default') {
         return;
     }
-    if (this.value === 'Add Tag Here...') {
+
+    // skip over the last option which is padding
+    if (this.value === '') return;
+
+    /* if (this.value === 'Add Tag Here...') {
         // open dialog to enter custom tag
 
         this.value = 'default';
         return;
-    }
+    } */
     const tags = this.children;
     for (let i = 0; i < tags.length; i += 1) {
         if (tags[i].innerHTML === this.value) {
