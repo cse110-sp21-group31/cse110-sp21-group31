@@ -53,10 +53,7 @@ document
             let taskEventChoice = document.getElementById(
                 'task-event-selector'
             ).value;
-            if (taskEventChoice === 'default') {
-                // default to task
-                taskEventChoice = 'Task';
-            }
+
             if (taskEventChoice === 'Task') {
                 /*  entry should contain:
                  *
