@@ -162,14 +162,11 @@ document.addEventListener('DOMContentLoaded', () => {
     setState(key);
 
     // get the tags
-    const tagSelectorDOM = document.getElementById('tag-selection');
     let tagObj = getCustomTags();
     if (Object.keys(tagObj).length === 0) tagObj = defaultTags;
-    Object.keys(tagObj).forEach((key) => {
-        addCustomTag(key);
+    Object.keys(tagObj).forEach((item) => {
+        addCustomTag(item);
     });
-
-    tagSelectorDOM;
 });
 
 // side bar navigate

@@ -33,7 +33,7 @@ toggleOptionsDisplay();
 document.addEventListener('click', (event) => {
     // onclick tag selector, display the elements and
     // expand the height of tag selector
-    if (event.target == applyTagsDOM) {
+    if (event.target === applyTagsDOM) {
         if (tagSelectorDOM.style.height === newHeight) return;
         tagSelectorDOM.style.height = newHeight;
         toggleOptionsDisplay();
@@ -41,7 +41,7 @@ document.addEventListener('click', (event) => {
 
     // onclick other places, hide the elements and
     // decrease the height of tag selector
-    else if (event.target.getAttribute('class') != 'all-tags') {
+    else if (event.target.getAttribute('class') !== 'all-tags') {
         if (tagSelectorDOM.style.height === '') return;
         tagSelectorDOM.style.height = '';
         toggleOptionsDisplay();
