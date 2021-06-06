@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,13 +16,14 @@
 
     <!-- Fonts -->
     <!-- Sen -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Sen&display=swap" rel="stylesheet">
     <!-- Roboto -->
-    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
     <div class='container'>
         <div class='item-header'>
@@ -52,7 +54,7 @@
                     <h2 class='main-title'>Log</h2>
                 </div>
                 <div id='log-text-area'>
-                    <div id='log-tasks-area'> 
+                    <div id='log-tasks-area'>
                         <div class='task-event'>
                             <div class='checkbox-label-container'>
                                 <label for=""><input type="checkbox">Task 1</label>
@@ -180,7 +182,7 @@
                                 </span>
                             </div>
                         </div>
-                    </div>  
+                    </div>
                 </div>
             </div>
             <div id='middle-item-notes'>
@@ -188,7 +190,7 @@
                     <h2 class='main-title'>Notes</h2>
                 </div>
                 <div id='notes-text-area'>
-                    
+
                 </div>
             </div>
             <div id='middle-item-media'>
@@ -197,16 +199,17 @@
                 </div>
                 <div id='media-text-area'>
                     <div class='media-item'>
-                        <img src="#" alt="">
-                        <small>Caption</small>
+                        <iframe id='youtube-test' width="320" height="180"
+                            src="https://www.youtube.com/embed/HmZKgaHa3Fg"></iframe>
+                        <strong>Video</strong>
                     </div>
                     <div class='media-item'>
                         <img src="#" alt="">
-                        <small>Caption</small>
+                        <strong>Image</strong>
                     </div>
                     <div class='media-item'>
                         <img src="#" alt="">
-                        <small>Caption</small>
+                        <strong>Audio</strong>
                     </div>
                 </div>
             </div>
@@ -216,19 +219,22 @@
                 <select name="Task Event Selector" id='task-event-selector'>
                     <option value="default">Task or Event</option>
                     <option value="Task">Task</option>
-                    <option value="Event">Event</option> 
+                    <option value="Event">Event</option>
                 </select>
             </div>
             <div id='task-event-textbox-area'>
-                <input type="text" name='task-event-textbox' id='task-event-textbox' placeholder='Enter a Task or Event here!'>
+                <input type="text" name='task-event-textbox' id='task-event-textbox'
+                    placeholder='Enter a Task or Event here!'>
             </div>
             <div id='clock-tags-upload-area'>
                 <div class='clock-form'>
-                    <img id='clock-img' src="/source/images/clock.png" alt="Clock" height='40' width='40'></a>    
+                    <img id='clock-img' src="/source/images/clock.png" alt="Clock" height='40' width='40'></a>
                     <div id='popup-clock'>
                         <form id='time-selector'>
-                            <label id='start-time' for='startTime'>Start Time:<input type='time' id='start-time' name='start-time'></label>
-                            <label id='end-time' for='endTime'>End Time:<input type='time' id='end-time' name='end-time'></label>
+                            <label id='start-time' for='startTime'>Start Time:<input type='time' id='start-time'
+                                    name='start-time'></label>
+                            <label id='end-time' for='endTime'>End Time:<input type='time' id='end-time'
+                                    name='end-time'></label>
                             <button type='button' id="clock-submit-button">Submit</button>
                         </form>
                     </div>
@@ -240,21 +246,24 @@
                         <option>UCSD</option>
                         <option>Other</option>
                         <option id="add-tag-option">Add Tag Here...</option>
-                      </select>
+                    </select>
                 </div>
                 <div id='upload-img'>
-                    <a href="#"><img id='media-img' src="images/upload_button.png" alt="Right Arrow" height='40' width='40'></a>
+                    <a href="#"><img id='media-img' src="images/upload_button.png" alt="Right Arrow" height='40'
+                            width='40'></a>
                     <div id='popup-media'>
                         <form id='media-uploader'>
-                            <label id='media-text'>Please upload your files to a hosting service like Imgur or YouTube:<input type='text' id='media-url'></label>
+                            <label id='media-text'>Please upload your files to a hosting service like Imgur or
+                                YouTube:<input type='text' id='media-url'></label>
                             <button type='button' id='media-submit-button'>Submit</button>
                         </form>
-                    </div>    
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <iframe id='youtube-test' width="420" height="315" src="https://www.youtube.com/embed/HmZKgaHa3Fg" allowfullscreen></iframe>
-    <iframe width="420" height="315" src='//s.imgur.com/min/embed.js'></iframe>
+    <!--<iframe id='youtube-test' width="420" height="315" src="https://www.youtube.com/embed/HmZKgaHa3Fg"></iframe>-->
+    <!--<iframe width="420" height="315" src='//s.imgur.com/min/embed.js'></iframe>-->
 </body>
+
 </html>
