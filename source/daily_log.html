@@ -42,7 +42,7 @@
 
         <div class='item-header'>
             <div id='header-item-img'>
-                <a href="#" class='openbtn' onclick="openNav()"><img src="/source/images/nav_button.png"
+                <a href="#" class='openbtn' onclick="openNav()"><img src="images/nav_button.png"
                         alt="Navigation Button" height='50' width='50'></a>
             </div>
             <div id='header-item-title'>
@@ -101,7 +101,7 @@
             </div>
             <div id='clock-tags-upload-area'>
                 <div class='clock-form'>
-                    <img id='clock-img' src="/source/images/clock.png" alt="Clock" height='40' width='40'></a>    
+                    <img id='clock-img' src="images/clock.png" alt="Clock" height='40' width='40'></a>    
                     <div id='popup-clock'>
                         <form id='time-selector'>
                             <label id='start-time' for='startTime'>Start Time:<input type='time' id='start-time' name='start-time'></label>
@@ -131,13 +131,18 @@
 </html>
 
 <script>
-    function openNav() {
-        document.getElementById("mySidebar").style.width = "250px";
-        document.getElementById("main").style.marginLeft = "250px";
+    function openNav(event) {
+        event.preventDefault();
+        document.getElementById('mySidebar').style.width = '250px';
+        //document.getElementById("main").style.marginLeft = "250px"; line has error
     }
 
-    function closeNav() {
-        document.getElementById("mySidebar").style.width = "0";
-        document.getElementById("main").style.marginLeft = "0";
+    function closeNav(event) {
+        event.preventDefault();
+        document.getElementById('mySidebar').style.width = '0';
+        //document.getElementById("main").style.marginLeft = "0"; line has error
     }
+
+    document.querySelector('.openbtn').onclick = openNav;
+    document.querySelector('.closebtn').onclick = closeNav;    
 </script>
