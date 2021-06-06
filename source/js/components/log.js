@@ -12,32 +12,6 @@ class Log extends HTMLElement {
             label {
                 font-family: 'Roboto', 'sans-serif';
             }
-            .task-event {
-                display: flex;
-                height: 25%;
-                width: 100%;
-                flex: none;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-            }
-            
-            .task-event:hover {
-                background-color: rgb(157, 207, 223);
-            }
-            
-            .checkbox-label-container {
-                padding: 0 0 0 1%;
-            }
-            
-            .tags-container {
-                display: flex;
-                flex-direction: row;
-                width: 25%;
-                align-items: center;
-                height: 100%;
-                padding-right: 1%;
-            }
             
             .tags {
                 display: flex;
@@ -45,11 +19,10 @@ class Log extends HTMLElement {
                 align-items: center;
                 height: 50%;
                 width: 100%;
-                overflow-x: scroll;
-                /* padding: 0 5% 0 5%; */
             }
             
             .tag-label {
+                flex: 0;
                 font-family: 'Roboto', 'sans-serif';
                 height: 40%;
                 border-radius: 10px;
@@ -100,9 +73,26 @@ class Log extends HTMLElement {
                 box-shadow: none;
             }
             
+            .checkbox-label-container {
+                display: flex;
+                flex: 5;
+                padding: 0 0 0 1%;
+            }
+            
+            .tags-container {
+                display: flex;
+                flex-direction: row;
+                flex: 1;
+                height: 100%;
+                width: 25%;
+                align-items: center;
+                padding: 0 0 0 1%;
+            }
+
             .event-time-container {
                 display: flex;
                 flex-direction: column;
+                flex: 5;
                 height: 100%;
                 justify-content: center;
                 padding: 0 0 0 1%;
@@ -110,7 +100,7 @@ class Log extends HTMLElement {
             
             .event-time {
                 font-family: 'Sen', 'sans-serif';
-                padding: 5% 0 0 0;
+                padding: 1% 0 0 0;
             }
             </style>
         `;

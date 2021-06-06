@@ -42,6 +42,7 @@
     grid-template-columns: 1fr 2fr 1fr;
     grid-template-rows: 7% auto;
     grid-gap: 10px;
+    overflow-y: hidden;
 }
 
 .item-middle-wk {
@@ -317,6 +318,7 @@
     display: grid;
     grid-template-rows: 1fr 1fr;
     border-top: 1px solid black;
+    overflow-y: hidden;
 }
 
 #log-tasks-area {
@@ -324,10 +326,6 @@
     flex-direction: column;
     height: 100%;
     overflow-y: auto;
-}
-
-#log-tasks-area:hover {
-    overflow-y: scroll;
 }
 
 #log-events-area {
@@ -523,8 +521,7 @@ body {
 
 /* custom element in the middle section stylizing */
 
-event-log,
-task-log {
+event-log, task-log {
     display: flex;
     height: 25%;
     width: 100%;
@@ -532,13 +529,17 @@ task-log {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    overflow: hidden;
 }
 
+event-log:hover, task-log:hover {
+    background-color: rgb(157, 207, 223);
+    overflow: hidden;
+}
 
 /*
     Experimental Sidebar Styling
 */
-
 #main {
     transition: margin-left .5s;
     padding: 16px;
