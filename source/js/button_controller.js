@@ -7,7 +7,7 @@ contains tag selection and input bar upload funcionality
 
 const tagSelectorDOM = document.getElementById('tag-selection');
 const applyTagsDOM = tagSelectorDOM.querySelector('#apply-tags-option');
-const optionArr = document.querySelectorAll('.all-tags');
+
 const newHeight = '150px'; // new height of tag selection box when clicked on
 
 /**
@@ -15,6 +15,8 @@ const newHeight = '150px'; // new height of tag selection box when clicked on
  * for the tag selection options
  */
 function toggleOptionsDisplay() {
+    const optionArr = document.querySelectorAll('.all-tags');
+
     // loop over all the options in the array to toggle the display
     for (let i = 0; i < optionArr.length; i += 1) {
         const item = optionArr[i];
@@ -23,14 +25,12 @@ function toggleOptionsDisplay() {
     }
 }
 
-// the Apply Tags should be visible at the start while others are hidden
-applyTagsDOM.style.display = 'none';
-toggleOptionsDisplay();
-
 /**
  * handling the click events on the document
  */
 document.addEventListener('click', (event) => {
+    const eleClass = event.target.getAttribute('class');
+
     // onclick tag selector, display the elements and
     // expand the height of tag selector
     if (event.target === applyTagsDOM) {
@@ -41,7 +41,7 @@ document.addEventListener('click', (event) => {
 
     // onclick other places, hide the elements and
     // decrease the height of tag selector
-    else if (event.target.getAttribute('class') !== 'all-tags') {
+    else if (eleClass === null || eleClass.indexOf('all-tags') === -1) {
         if (tagSelectorDOM.style.height === '') return;
         tagSelectorDOM.style.height = '';
         toggleOptionsDisplay();
@@ -224,3 +224,5 @@ document
             input.value = '';
         }
     });
+
+export default toggleOptionsDisplay;

@@ -1,4 +1,4 @@
-import { addCustomTag, getDaysData, getCustomTags } from './storage.js';
+import { getDaysData } from './storage.js';
 import { getDaysKey } from './date.js';
 
 /* date variables */
@@ -141,37 +141,8 @@ backward.addEventListener('click', (event) => {
     setState(key);
 });
 
-/**
- * When the initial document is loaded, call populate on today's journal content
- * @listens document#DOMContentLoaded
- */
-
-// obj that maps displayed tag name on website options
-// to the class name that options have to have
-// for css to work, which is in log.js
-const defaultTags = {
-    UCSD: 'ucsd',
-    Lecture: 'lecture',
-    Other: 'other',
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-    // set the current state
-    // window.localStorage.clear();
-    const key = getDaysKey(window.curDate);
-    setState(key);
-
-    // get the tags
-    let tagObj = getCustomTags();
-    if (Object.keys(tagObj).length === 0) tagObj = defaultTags;
-    Object.keys(tagObj).forEach((item) => {
-        addCustomTag(item);
-    });
-});
-
 // side bar navigate
 // .forEach replaced to satisfy linter
-
 function sideBarClick(event) {
     event.preventDefault();
     setState(getDaysKey(new Date(this.innerText)));
@@ -182,3 +153,5 @@ const arr = document.querySelectorAll('#mySidebar small a');
 for (let i = 0; i < arr.length; i += 1) {
     arr[i].onclick = sideBarClick;
 }
+
+export default setState;

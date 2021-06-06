@@ -616,3 +616,40 @@ task-log:hover {
 #header {
     font-size: xx-large;
 }
+
+.UCSD-tag {
+    background-color: rgb(161, 183, 122);
+}
+
+.lecture-tag {
+    background-color: salmon;
+}
+
+.other-tag {
+    background-color: violet;
+}
+
+/* Color Tags */
+.red-tag {
+    background-color: rgb(166, 39, 0);
+}
+
+.blue-tag {
+    background-color: rgb(64, 129, 183);
+}
+
+.green-tag {
+    background-color: rgb(82, 173, 124);
+}
+
+.orange-tag {
+    background-color: rgb(244, 135, 45);
+}
+
+.violet-tag {
+    background-color: rgb(218, 189, 246);
+}
+
+.pink-tag {
+    background-color: rgb(255, 163, 163);
+}
