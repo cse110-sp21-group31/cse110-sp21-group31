@@ -2,7 +2,8 @@
 import { addTask, addEvent } from '../js/storage.js';
 import { getDaysKey } from '../js/date.js';
 
-const curDate = new Date();
+// const curDate = new Date();
+
 /*
 implements tag selector functionality
 */
@@ -50,7 +51,7 @@ document
             const entry = {};
 
             // console.log(document.getElementById("task-event-selector").value);
-            let taskEventChoice = document.getElementById(
+            const taskEventChoice = document.getElementById(
                 'task-event-selector'
             ).value;
 
@@ -105,7 +106,7 @@ document
                 ]
             }
             setData(getDaysKey(curDate), item); */
-                addTask(getDaysKey(curDate), entry);
+                addTask(getDaysKey(window.curDate), entry);
             } else if (taskEventChoice === 'Event') {
                 /*  entry should contain:
                  *
@@ -141,7 +142,7 @@ document
                 // Append event element to log (subject to change)
                 const eventSpace = document.getElementById('log-events-area');
                 eventSpace.appendChild(newEntry);
-                addEvent(getDaysKey(curDate), entry);
+                addEvent(getDaysKey(window.curDate), entry);
             }
         }
     });
