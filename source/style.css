@@ -90,7 +90,7 @@
 #time-column {
     grid-column: 1 / 2;
     height: 100%;
-    background-color:burlywood;
+    background-color: burlywood;
     display: grid;
     grid-template-rows: 1fr 6fr 2fr;
 }
@@ -143,7 +143,7 @@
     display: grid;
     grid-template-columns: 0.2fr repeat(7, 1fr);
     border-bottom: 1px solid black;
-    background-color: rgb(242,243,244);
+    background-color: rgb(242, 243, 244);
     overflow-y: scroll;
 }
 
@@ -209,7 +209,7 @@
 */
 #calendar-events-row div {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
 }
 
 #cal-sun {
@@ -217,7 +217,7 @@
 }
 
 #cal-sun div {
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid black;
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -230,7 +230,7 @@
 }
 
 #cal-mon div {
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid black;
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -255,7 +255,6 @@
 }
 
 #cal-sat {
-
 }
 
 .hour {
@@ -294,7 +293,6 @@
 }
 
 #cal-task-sat {
-
 }
 
 #middle-item-log {
@@ -460,6 +458,12 @@ select {
     margin: 0px 5px 0px 5px;
 }
 
+#tag-selection {
+    position: absolute;
+    bottom: 1.5%;
+    right: 5%;
+}
+
 #upload-img {
     display: flex;
     flex-direction: row;
@@ -534,13 +538,12 @@ task-log {
     align-items: center;
 }
 
-
 /*
     Experimental Sidebar Styling
 */
 
 #main {
-    transition: margin-left .5s;
+    transition: margin-left 0.5s;
     padding: 16px;
 }
 
@@ -557,7 +560,7 @@ task-log {
     transition: 0.3s;
     padding-top: 60px;
 }
-  
+
 .sidebar p {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -577,18 +580,18 @@ task-log {
     display: block;
     transition: 0.3s;
 }
-  
+
 .sidebar a:hover {
     color: #f1f1f1;
 }
-  
+
 .sidebar .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-}  
+}
 
 #log-events-area label {
     font-family: 'Roboto', 'sans-serif';

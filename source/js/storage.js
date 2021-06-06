@@ -112,7 +112,8 @@ function updateNotepad(key, text) {
 /**
 temporary test function to satisfy linter
 */
-function test() {
+function test(run = false) {
+    if (!run) return;
     addTask(getDaysKey(), 'task');
     addEvent(getDaysKey(), 'event');
     addLink(getDaysKey(), 'link');
