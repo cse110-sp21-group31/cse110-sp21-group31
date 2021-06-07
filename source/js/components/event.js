@@ -51,7 +51,35 @@ class Event extends Log {
     }
 
     /**
-     * @return 
+     *
+     * @param {"hh:mm AM"} oldTime
+     * @returns  "hh:mm" (24hr)
+     */
+    static convert12To24(oldTime) {
+        // if AM
+        let newTime = '';
+        if (oldTime.substring(oldTime.length - 2, oldTime.length) === 'AM') {
+            // change 12AM to 00
+            if (oldTime.substring(0, 2) === '12') {
+                newTime = `00:${oldTime.substring(3, 5)}`;
+            } else {
+                newTime = oldTime.substring(0, 5);
+            }
+        } else if (oldTime.substring(0, 2) === '12') {
+            // PM
+            // keep 12 at 12PM
+            newTime = oldTime.substring(0, 5);
+        } else {
+            // add 12 otherwise
+            newTime = `${
+                parseInt(oldTime.substring(0, 2), 10) + 12
+            }${oldTime.substring(2, 5)}`;
+        }
+        return newTime;
+    }
+
+    /**
+     * @return
      *  {
      *      content: "CSE 110 Lecture",
      *      tags: ["Lecture", ...],
@@ -80,33 +108,6 @@ class Event extends Log {
 
         return returnObj;
     }
-
-    /**
-     * 
-     * @param {"hh:mm AM"} oldTime 
-     * @returns  "hh:mm" (24hr)
-     */
-    convert12To24(oldTime) {
-        // if AM
-        let newTime = '';
-        if(oldTime.substring(oldTime.length - 2, oldTime.length) === 'AM') {
-            // change 12AM to 00
-            if(oldTime.substring(0,2) === '12') {
-                newTime = `00:${  oldTime.substring(3, 5)}`
-            } else {
-                newTime = oldTime.substring(0,5);
-            }
-        } else { // PM
-            // keep 12 at 12PM
-            if(oldTime.substring(0,2) === '12') { 
-                newTime = oldTime.substring(0,5);
-            } else {
-                // add 12 otherwise
-                newTime = `${parseInt(oldTime.substring(0,2), 10) + 12}${  oldTime.substring(2, 5)}`
-            }
-        }
-        return newTime;
-    }
 }
-    
+
 customElements.define('event-log', Event);
