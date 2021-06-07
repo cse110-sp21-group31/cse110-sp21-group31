@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: js/date.js</title>
+    <title>JSDoc: Source: ci-cd/jsDocDemo.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: js/date.js</h1>
+    <h1 class="page-title">Source: ci-cd/jsDocDemo.js</h1>
 
     
 
@@ -27,69 +27,16 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
-getDaysKey
-
-returns a string that represents the key that corresponds to the current date
-@returns 2021-05-17
-*/
-function getDaysKey(dateObj) {
-    let now;
-    if (dateObj === undefined) now = new Date();
-    else now = dateObj;
-    return [
-        now.getFullYear(),
-        `0${now.getMonth() + 1}`.slice(-2),
-        `0${now.getDate()}`.slice(-2),
-    ].join('-');
+ * Print information representing a student. This function will print the values given. This documentation was updated on Thursday, May 27.
+ * @param {string} name - The name of the student.
+ * @param {string} major - The student's major.
+ * @param {number} gpa - The student's GPA.
+ */
+function returnStudentInfo(name, major, gpa) {
+    return `${name} ${major} ${gpa}`;
 }
 
-/**
-getName
-@param: key of that day
-@return: the name of that day "Thursday, May 13th"
-*/
-function getName(key) {
-    let now;
-    if (key === undefined) now = new Date(`${getDaysKey()}T00:00:00`);
-    else now = new Date(`${key}T00:00:00`);
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    return now.toLocaleDateString('en-US', options);
-}
-
-/**
-getWeek
-@param key: input day key
-@return: an array of keys for each day in the week that key belongs in
-*/
-function getWeek(key) {
-    const msPerDay = 24 * 60 * 60 * 1000;
-
-    // this defaults to browser timezone
-    // monday is 1
-    const currentDayOfWeek = new Date(`${key}T00:00:00`).getDay();
-
-    const sundayTime = Date.now() - currentDayOfWeek * msPerDay;
-
-    const result = [];
-    for (let i = 0; i &lt; 7; i += 1) {
-        // days of week
-        const date = new Date(sundayTime + i * msPerDay);
-        result.push(getDaysKey(date));
-    }
-    return result;
-}
-
-/**
-temporary test function to satisfy linter
-*/
-function test() {
-    getName();
-    getWeek(getDaysKey());
-}
-
-test();
-
-export { getDaysKey, getName };
+returnStudentInfo('Billy Bob', 'Computer Science', 3.75);
 </code></pre>
         </article>
     </section>

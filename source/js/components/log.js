@@ -120,11 +120,12 @@ class Log extends HTMLElement {
     setTags(tagArr) {
         tagArr.forEach((name) => {
             // get the color of this tag
-            let colorClass = '';
+            const colorClass =
+                /* ';
             if (name === 'Lecture') colorClass = 'lecture';
             else if (name === 'UCSD') colorClass = 'ucsd';
             else if (name === 'Other') colorClass = 'other';
-            else colorClass = getCustomTagColor(name);
+            else colorClass = */ getCustomTagColor(name);
 
             // create the tag
             // <small class='tag-label UCSD-label'>Lecture</small>

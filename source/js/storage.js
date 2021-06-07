@@ -2,7 +2,7 @@
 storage.js
 functions to get/set local storage 
 */
-import { getDaysKey } from './date.js';
+import { getDaysKey, getName } from './date.js';
 
 /**
 get/set the relevant data for the day specified in key
@@ -17,6 +17,29 @@ function getData(key) {
 
 function setData(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
+    return data;
+}
+
+/* NEW STUFFFFFCFFFF
+called when there is no data for passed in key
+*/
+function newDay(key) {
+    const item = {
+        name: getName(key),
+        notepad: '',
+        tasks: [],
+        events: [],
+        media: [],
+    };
+
+    setData(key, item);
+    return item;
+}
+
+function getDaysData(key) {
+    let res = getData(key);
+    if (res == null) res = newDay(key);
+    return res;
 }
 
 /**
@@ -27,8 +50,12 @@ add a task into local storage
 @return true/false if successful
 */
 function addTask(key, task) {
-    const dayData = getData(key);
-    if (dayData == null) return false;
+    let dayData = getData(key);
+    if (dayData == null) {
+        newDay(key);
+        dayData = getData(key);
+    }
+    // return false;
     dayData.tasks.push(task);
     setData(key, dayData);
     return true;
@@ -42,8 +69,12 @@ add an event into local storage
 @return true/false if successful
 */
 function addEvent(key, event) {
-    const dayData = getData(key);
-    if (dayData == null) return false;
+    let dayData = getData(key);
+    if (dayData == null) {
+        newDay(key);
+        dayData = getData(key);
+    }
+
     dayData.events.push(event);
     setData(key, dayData);
     return true;
@@ -56,11 +87,37 @@ addLink
 @return true/false if successful
 */
 function addLink(key, link) {
-    const dayData = getData(key);
-    if (dayData == null) return false;
+    let dayData = getData(key);
+    if (dayData == null) {
+        newDay(key);
+        dayData = getData(key);
+    }
+
     dayData.media.push(link);
     setData(key, dayData);
     return true;
+}
+
+/*
+get the custom tag array from storage
+if it doesn't exist, then create the default one
+*/
+function getCustomTags() {
+    let res = getData('custom-tags');
+
+    // obj that maps displayed tag name on website options
+    // to the class name that options have to have
+    // for css to work, which is in log.js
+    const defaultTags = {
+        UCSD: 'ucsd',
+        Lecture: 'lecture',
+        Other: 'other',
+    };
+
+    // if custom-tags don't exist, create the default ones
+    if (res == null) res = setData('custom-tags', defaultTags);
+
+    return res;
 }
 
 /**
@@ -69,9 +126,16 @@ add custom tag
 @return true/false if successful
 */
 function addCustomTag(tagName) {
-    const colorArr = ['blue', 'red', 'pink', 'green', 'violet', 'orange'];
-    const customTags = getData('custom-tags');
-    if (customTags == null) return false;
+    const colorArr = ['red', 'blue', 'pink', 'green', 'violet', 'orange'];
+    const customTags = getCustomTags();
+
+    // return false if customTags don't exist (shouldn't happen actually)
+    // return false if tagName exists in customTags already
+    if (customTags == null || tagName in customTags === false) {
+        return false;
+    }
+
+    // pick a color for the new tag
     customTags[tagName] = colorArr[customTags.length % colorArr.length];
     setData('custom-tags', customTags);
 
@@ -90,8 +154,13 @@ get color for a custom tag
 @return the tag color
 */
 function getCustomTagColor(tagName) {
-    const customTags = getData('custom-tags');
-    if (tagName in customTags === false) return '';
+    const customTags = getCustomTags();
+
+    // false checks: if tags don't exist or if tagName isn't in there
+    if (customTags == null || tagName in customTags === false) {
+        return '';
+    }
+
     return customTags[tagName];
 }
 
@@ -111,7 +180,9 @@ function updateNotepad(key, text) {
 
 /**
 temporary test function to satisfy linter
+dont run this
 */
+
 function test() {
     addTask(getDaysKey(), 'task');
     addEvent(getDaysKey(), 'event');
@@ -120,9 +191,10 @@ function test() {
     updateNotepad(getDaysKey(), 'note');
 }
 
+// to satisfy linter, comment this line out
 test();
 
-export { getData, getCustomTagColor };
+export { getDaysData, getCustomTagColor, addTask, addEvent };
 
 /*
 
