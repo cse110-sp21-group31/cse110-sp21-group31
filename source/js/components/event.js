@@ -78,15 +78,6 @@ class Event extends Log {
         return newTime;
     }
 
-    /**
-     * @returns
-     *  {
-     *      content: "CSE 110 Lecture",
-     *      tags: ["Lecture", ...],
-     *      from: hh:mm, (24hr)
-     *      to: hh:mm (24hr)
-     *  }
-     */
     get content() {
         const returnObj = {};
 
