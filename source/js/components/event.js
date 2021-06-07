@@ -102,7 +102,7 @@ class Event extends Log {
                 newTime = oldTime.substring(0,5);
             } else {
                 // add 12 otherwise
-                newTime = `${parseInt(oldTime.substring(0,2)) + 12}${  oldTime.substring(2, 5)}`
+                newTime = `${parseInt(oldTime.substring(0,2), 10) + 12}${  oldTime.substring(2, 5)}`
             }
         }
         return newTime;
