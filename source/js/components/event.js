@@ -52,7 +52,7 @@ class Event extends Log {
 
     /**
      *
-     * @param {"hh:mm AM"} oldTime
+     * @param {string} oldTime - "hh:mm AM"
      * @returns  "hh:mm" (24hr)
      */
     static convert12To24(oldTime) {

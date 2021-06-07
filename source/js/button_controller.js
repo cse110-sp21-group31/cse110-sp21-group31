@@ -35,7 +35,7 @@ document
 
 /**
  *
- * @param {"hh:hh" (24hr)} oldTime
+ * @param {string} oldTime - "hh:mm (24hr)"
  * @returns "hh:mm AM" (12hr)
  */
 function convert24To12(oldTime) {
