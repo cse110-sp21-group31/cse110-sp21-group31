@@ -99,41 +99,8 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             }
 
             // pull time info from clock icon
-            entry.from = document.getElementById("start-time").children[0].value;
-            if(entry.from !== "") {
-                let startHour = entry.from.split(":", 2)[0];
-                const startMin = entry.from.split(":", 2)[1];
-                let startSuffix = "";
-                if(startHour > 12) {
-                    startHour -= 12;
-                    if(startHour < 10)  {
-                        startHour = `0${  startHour}`;
-                    }
-                    startSuffix = "PM";
-                } else {
-                    startSuffix = "AM";
-                }
-                entry.from = `${startHour  }:${  startMin  } ${  startSuffix}`;
-            }
-            
-            entry.to = document.getElementById("end-time").children[0].value;
-            if(entry.to !== "") {
-                let endHour = entry.to.split(":", 2)[0];
-                const endMin = entry.to.split(":", 2)[1];
-                let endSuffix = "";
-                if(endHour > 12) {
-                    endHour -= 12;
-                    if(endHour < 10) {
-                        endHour = `0${  endHour}`; 
-                    }
-                    endSuffix = "PM";
-                } else {
-                    endSuffix = "AM";
-                }
-                entry.to = `${endHour  }:${  endMin  } ${  endSuffix}`;
-            } else {
-                entry.to = "";
-            }
+            entry.from = convert24To12(document.getElementById("start-time").children[0].value);   
+            entry.to = convert24To12(document.getElementById("end-time").children[0].value);
 
             // initialize event element
             const newEntry = document.createElement("event-log");
@@ -141,9 +108,42 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
 
             // Append event element to log (subject to change)
             const eventSpace = document.getElementById("log-events-area");
-            eventSpace.appendChild(newEntry);   
+            eventSpace.appendChild(newEntry);
+            console.dirxml(newEntry.content);
         }
         // clear input bar
         input.value = "";
     }
 });
+
+/**
+ * 
+ * @param {"hh:hh" (24hr)} oldTime 
+ * @returns "hh:mm AM" (12hr)
+ */
+function convert24To12(oldTime) {
+    if(oldTime !== "") {
+        let endHour = oldTime.split(":", 2)[0];
+        const endMin = oldTime.split(":", 2)[1];
+        let endSuffix = "";
+        if(endHour > 12) {
+            endHour -= 12;
+            if(endHour < 10) {
+                endHour = `0${  endHour}`; 
+            }
+            endSuffix = "PM";
+        } else {
+            if(endHour === "12") {
+                endSuffix = "PM";
+            } else {
+                endSuffix = "AM";
+            }               
+            if(endHour === "00") {
+                endHour = "12";
+            }
+        }
+        return `${endHour  }:${  endMin  } ${  endSuffix}`;
+    } else {
+        return "";
+    }
+}

@@ -33,8 +33,8 @@ class Event extends Log {
      *    {
      *        content: "CSE 110 Lecture",
      *        tags: ["Lecture", ...],
-     *        from: 1621308663,
-     *        to: 1621367364
+     *        from: hh:mm AM, (12hr)
+     *        to: hh:mm PM (12hr)
      *    }
      */
     set content(event) {
@@ -50,6 +50,15 @@ class Event extends Log {
         this.setTags(event.tags);
     }
 
+    /**
+     * @return 
+     *  {
+     *      content: "CSE 110 Lecture",
+     *      tags: ["Lecture", ...],
+     *      from: hh:mm, (24hr)
+     *      to: hh:mm (24hr)
+     *  }
+     */
     get content() {
         const returnObj = {};
 
@@ -59,14 +68,45 @@ class Event extends Log {
         // get the from and to time
         const timeStr = this.timeDOM.innerText;
         const tsInd = timeStr.indexOf(this.timeStrSeparator);
-        returnObj.from = timeStr.slice(0, tsInd);
-        returnObj.to = timeStr.slice(tsInd + this.timeStrSeparator.length);
+        // convert 12hr to 24hr
+        const oldFrom = timeStr.slice(0, tsInd);
+        const oldTo = timeStr.slice(tsInd + this.timeStrSeparator.length);
+
+        returnObj.from = this.convert12To24(oldFrom);
+        returnObj.to = this.convert12To24(oldTo);
 
         // get the tags
-        returnObj.tags = this.getTags();
+        // returnObj.tags = this.getTags();
 
         return returnObj;
     }
-}
 
+    /**
+     * 
+     * @param {"hh:mm AM"} oldTime 
+     * @returns  "hh:mm" (24hr)
+     */
+    convert12To24(oldTime) {
+        // if AM
+        let newTime = '';
+        if(oldTime.substring(oldTime.length - 2, oldTime.length) === 'AM') {
+            // change 12AM to 00
+            if(oldTime.substring(0,2) === '12') {
+                newTime = `00:${  oldTime.substring(3, 5)}`
+            } else {
+                newTime = oldTime.substring(0,5);
+            }
+        } else { // PM
+            // keep 12 at 12PM
+            if(oldTime.substring(0,2) === '12') { 
+                newTime = oldTime.substring(0,5);
+            } else {
+                // add 12 otherwise
+                newTime = `${parseInt(oldTime.substring(0,2)) + 12}${  oldTime.substring(2, 5)}`
+            }
+        }
+        return newTime;
+    }
+}
+    
 customElements.define('event-log', Event);
