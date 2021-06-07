@@ -109,7 +109,6 @@ document.getElementById("task-event-textbox").addEventListener("keypress", butto
             // Append event element to log (subject to change)
             const eventSpace = document.getElementById("log-events-area");
             eventSpace.appendChild(newEntry);
-            console.dirxml(newEntry.content);
         }
         // clear input bar
         input.value = "";
