@@ -79,7 +79,7 @@ class Event extends Log {
     }
 
     /**
-     * @return
+     * @returns
      *  {
      *      content: "CSE 110 Lecture",
      *      tags: ["Lecture", ...],
