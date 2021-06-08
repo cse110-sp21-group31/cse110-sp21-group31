@@ -1,4 +1,6 @@
 import Log from './log.js';
+import { updateTaskChecked } from '../storage.js';
+import { getDaysKey } from '../date.js';
 
 class Task extends Log {
     constructor() {
@@ -22,6 +24,16 @@ class Task extends Log {
         // DOM references to use in set/get
         this.titleDOM = sha.querySelector('.checkbox-label-container span');
         this.checkDOM = sha.querySelector('.checkbox-label-container input');
+
+        // set checkbox onclick event to update things
+        this.checkDOM.setAttribute(
+            'data-ind',
+            document.querySelector('#log-tasks-area').children.length
+        );
+        this.checkDOM.onclick = () => {
+            const key = getDaysKey(window.curDate);
+            updateTaskChecked(key, this.getAttribute('data-ind'), this.checked);
+        };
     }
 
     /**

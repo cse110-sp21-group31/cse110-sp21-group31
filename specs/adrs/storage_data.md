@@ -114,9 +114,12 @@ consider: we want to display the string "Tuesday, May 4th" on top of every day. 
 LocalStorage: {
     
     "custom-tags": {
-        "Lecture": "blue",
-        "Assignment": "red",
-        "Other": "yellow"
+        "UCSD": "ucsd",
+        "Lecture": "lecture",
+        "Other": "other",
+        "customtag1": "red",
+        "customtag2": "orange",
+        ...
     },
 
     "2021-05-13": {
@@ -131,10 +134,10 @@ LocalStorage: {
         ],
         events: [
             {
-                content: "CSE 110 Lecture",
-                tags: "Lecture",
-                from: 1621308663,
-                to: 1621367364,
+                content: "CSE 110",
+                tags: ["Lecture", ...],     // the first one is the color on weekly view
+                from: "10:23 AM",
+                to: "2:05 PM",
             }, event2, ...
         ],
         media: [
