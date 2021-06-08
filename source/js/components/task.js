@@ -32,7 +32,17 @@ class Task extends Log {
         );
         this.checkDOM.onclick = () => {
             const key = getDaysKey(window.curDate);
-            updateTaskChecked(key, this.getAttribute('data-ind'), this.checked);
+            updateTaskChecked(key, this.getAttribute('data-ind'), this.checkDOM.checked);
+        };
+
+        // make task title strikethrough if the checkbox is clicked (and vice-versa)
+        this.checkDOM.onchange = () => {
+            const title = sha.querySelector('.checkbox-label-container span');
+            if (this.checkDOM.checked === true) {
+                this.titleDOM.innerHTML = title.innerText.strike();
+            }else {
+                this.titleDOM.innerHTML = title.innerText;
+            }
         };
     }
 
