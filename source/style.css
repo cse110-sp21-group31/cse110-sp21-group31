@@ -243,20 +243,65 @@
     border-right: 1px solid black;
 }
 
+#cal-tues div {
+    border-bottom: 1px solid black; 
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
+}
+
 #cal-wed {
     border-right: 1px solid black;
+}
+
+#cal-wed div {
+    border-bottom: 1px solid black; 
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
 }
 
 #cal-thurs {
     border-right: 1px solid black;
 }
 
+#cal-thurs div {
+    border-bottom: 1px solid black; 
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
+}
+
 #cal-fri {
     border-right: 1px solid black;
 }
 
+#cal-fri div {
+    border-bottom: 1px solid black; 
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
+}
+
 #cal-sat {
 
+}
+
+#cal-sat div {
+    border-bottom: 1px solid black; 
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
 }
 
 .hour {
