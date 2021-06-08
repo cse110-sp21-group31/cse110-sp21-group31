@@ -91,7 +91,7 @@
 #side-label-column {
     grid-column: 1 / 2;
     height: 100%;
-    background-color:burlywood;
+    background-color:lightblue;
     display: grid;
     grid-template-rows: 1fr 6fr 2fr;
 }
