@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitButton = document.getElementById('media-submit-button');
     const url = document.getElementById('media-url');
     const youtubeTest = document.getElementById('youtube-test');
+    const pinterestTest = document.getElementById('pinterest-test');
 
     /**
      * Toggle the display of the HTML element with elementID between displayType and none
@@ -31,6 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 32
             )}`;
         }
+        if (url.value.includes('pinterest')) {
+            pinterestTest.src = 'https://assets.pinterest.com/ext/embed.html?id=' + url.value.substring(30, 46);
+        }    
         document.getElementById('media-uploader').reset();
     });
 });
