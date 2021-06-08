@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toggle('popup-media', 'flex');
         if (url.value.includes('youtube')) {
             console.log(`https://www.youtube.com/embed/${  url.value.substring(32)}`);
-            youtubeTest.src = 'https://www.youtube.com/embed/' + url.value.substring(32);
+            youtubeTest.src = `https://www.youtube.com/embed/${  url.value.substring(32)}`;
         }
         document.getElementById('media-uploader').reset(); 
     });
