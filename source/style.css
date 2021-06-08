@@ -123,19 +123,26 @@
 #calendar-time-column {
     grid-column: 1 / 2;
     /* background-color: lightskyblue; */
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(183, 185, 187);
 }
 
 .calendar-dummy {
     grid-column: 1 / 2;
-    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-dummy-div2 {
+    flex: 1;
+    width: 100%;
+    border-right: 1px solid rgb(183, 185, 187);
 }
 
 #calendar-days-row {
     grid-row: 1 / 2;
     display: grid;
     grid-template-columns: 0.2fr repeat(7, 1fr);
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(183, 185, 187);
     background-color: mistyrose;
 }
 
@@ -144,7 +151,6 @@
     display: grid;
     grid-template-columns: 0.2fr repeat(7, 1fr);
     border-bottom: 1px solid black;
-    background-color: rgb(242,243,244);
     overflow-y: scroll;
 }
 
@@ -175,34 +181,39 @@
 
 .date {
     flex: 1;
+    width: 100%;
     font-family: 'Roboto', 'sans-serif';
+    border-right: 1px solid rgb(183, 185, 187);
 }
-
+.calendar-days-row div {
+    display: flex;
+}
 #cal-date-sun {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-mon {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-tues {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-wed {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-thurs {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-fri {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-sat {
+
 }
 
 /* 
@@ -214,11 +225,11 @@
 }
 
 #cal-sun {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(183, 185, 187);
 }
 
 #cal-sun div {
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid rgb(183, 185, 187); 
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -227,11 +238,11 @@
 }
 
 #cal-mon {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(183, 185, 187);
 }
 
 #cal-mon div {
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid rgb(183, 185, 187);
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -240,11 +251,11 @@
 }
 
 #cal-tues {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(183, 185, 187);
 }
 
 #cal-tues div {
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid rgb(183, 185, 187); 
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -253,11 +264,11 @@
 }
 
 #cal-wed {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(183, 185, 187);
 }
 
 #cal-wed div {
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid rgb(183, 185, 187); 
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -266,11 +277,11 @@
 }
 
 #cal-thurs {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(183, 185, 187);
 }
 
 #cal-thurs div {
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid rgb(183, 185, 187); 
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -279,11 +290,11 @@
 }
 
 #cal-fri {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(183, 185, 187);
 }
 
 #cal-fri div {
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid rgb(183, 185, 187); 
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -296,7 +307,7 @@
 }
 
 #cal-sat div {
-    border-bottom: 1px solid black; 
+    border-bottom: 1px solid rgb(183, 185, 187); 
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
