@@ -8,7 +8,11 @@ function getDaysKey(dateObj) {
     let now;
     if (dateObj === undefined) now = new Date();
     else now = dateObj;
-    return [now.getFullYear(), now.getMonth() + 1, now.getDate()].join('-');
+    return [
+        now.getFullYear(),
+        `0${now.getMonth() + 1}`.slice(-2),
+        `0${now.getDate()}`.slice(-2),
+    ].join('-');
 }
 
 /**
@@ -16,10 +20,10 @@ getName
 @param: key of that day
 @return: the name of that day "Thursday, May 13th"
 */
-function getName(dateObj) {
+function getName(key) {
     let now;
-    if (dateObj === undefined) now = new Date();
-    else now = dateObj;
+    if (key === undefined) now = new Date(`${getDaysKey()}T00:00:00`);
+    else now = new Date(`${key}T00:00:00`);
     const options = { weekday: 'long', month: 'long', day: 'numeric' };
     return now.toLocaleDateString('en-US', options);
 }

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: js/components/task.js</title>
+    <title>JSDoc: Source: ci-cd/jsDocDemo.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: js/components/task.js</h1>
+    <h1 class="page-title">Source: ci-cd/jsDocDemo.js</h1>
 
     
 
@@ -26,73 +26,17 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import Log from './log.js';
-
-class Task extends Log {
-    constructor() {
-        super();
-        const sha = this.shadowRoot;
-
-        // add divs to this shadow root
-        sha.innerHTML += `
-            &lt;div class='checkbox-label-container'>
-                &lt;label for="">
-                    &lt;input type="checkbox">
-                    &lt;span>&lt;/span>
-                &lt;/label>
-            &lt;/div>
-            &lt;div class='tags-container'>
-                &lt;span class='tags'>
-                &lt;/span>
-            &lt;/div>
-            `;
-
-        // DOM references to use in set/get
-        this.titleDOM = sha.querySelector('.checkbox-label-container span');
-        this.checkDOM = sha.querySelector('.checkbox-label-container input');
-    }
-
-    /**
-     * @param task - json data for the task
-     * @example
-     *    {
-     *        content: "Go on a run",
-     *        completed: true/false,
-     *        tags: ["Other", ...]
-     *    }
-     *
-     */
-    set content(task) {
-        // set title
-        this.titleDOM.innerText = task.content;
-
-        // set status of the checkbox
-        this.checkDOM.checked = task.completed;
-
-        // append a tag element inside the tag div
-        this.setTags(task.tags);
-    }
-
-    /**
-     *   returns the content to store in the database
-     */
-    get content() {
-        const returnObj = {};
-
-        // get the title
-        returnObj.content = this.titleDOM.innerText;
-
-        // get the checkmark status
-        returnObj.completed = this.checkDOM.checked;
-
-        // get the tags
-        returnObj.tags = this.getTags();
-
-        return returnObj;
-    }
+            <pre class="prettyprint source linenums"><code>/**
+ * Print information representing a student. This function will print the values given. This documentation was updated on Thursday, May 27.
+ * @param {string} name - The name of the student.
+ * @param {string} major - The student's major.
+ * @param {number} gpa - The student's GPA.
+ */
+function returnStudentInfo(name, major, gpa) {
+    return `${name} ${major} ${gpa}`;
 }
 
-customElements.define('task-log', Task);
+returnStudentInfo('Billy Bob', 'Computer Science', 3.75);
 </code></pre>
         </article>
     </section>

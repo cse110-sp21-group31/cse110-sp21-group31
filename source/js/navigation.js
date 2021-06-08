@@ -1,9 +1,8 @@
-import { getData } from './storage.js';
-import { getDaysKey, getName } from './date.js';
+import { getDaysData } from './storage.js';
+import { getDaysKey } from './date.js';
 
 /* date variables */
-let curDate = new Date();
-const newDate = curDate;
+window.curDate = new Date();
 const possibleImageSubscripts = ['.jpg', '.png'];
 
 /* access log components */
@@ -61,15 +60,15 @@ function isLinkImage(link) {
 
 /**
  * Changes the date title, removes existing content, populates page with current date's content
- * @param {object} log - The object that contains attributes of the day's journal
  * @param {string} key - The date of the journal
  */
-function populate(log, key) {
-    document.getElementsByTagName('h3')[0].innerText = getName(key);
+function populate(key) {
+    const log = getDaysData(key);
+
+    document.getElementsByTagName('h3')[0].innerText = log.name;
 
     removeAll();
 
-    if(log == null) return;
     const allTasks = log.tasks;
     const allEve = log.events;
     const allMedia = log.media;
@@ -101,35 +100,58 @@ function populate(log, key) {
     });
 }
 
+// router code put here to prevent dependency cycle
+
+function setState(dateKey, newState = true) {
+    if (newState) {
+        window.history.pushState({ key: dateKey }, '', `#${dateKey}`);
+    }
+    window.curDate = new Date(`${dateKey}T00:00:00`);
+    populate(dateKey);
+}
+
+function popState(event) {
+    if (event.state != null) setState(event.state.key, false);
+}
+window.onpopstate = popState;
+
 /**
  * Increases date by one day, calls populate
  * @listens forward#click
  */
-forward.addEventListener('click', () => {
-    newDate.setDate(newDate.getDate() + 1);
-    curDate = newDate;
-    const key = getDaysKey(newDate);
+forward.addEventListener('click', (event) => {
+    event.preventDefault();
 
-    populate(getData(key), newDate);
+    window.curDate.setDate(window.curDate.getDate() + 1);
+    const key = getDaysKey(window.curDate);
+
+    setState(key);
 });
 
 /**
  * Decreases the date by one day, calls populate
  * @listens backward#click
  */
-backward.addEventListener('click', () => {
-    newDate.setDate(newDate.getDate() - 1);
-    curDate = newDate;
-    const key = getDaysKey(newDate);
+backward.addEventListener('click', (event) => {
+    event.preventDefault();
 
-    populate(getData(key), newDate);
+    window.curDate.setDate(window.curDate.getDate() - 1);
+    const key = getDaysKey(window.curDate);
+
+    setState(key);
 });
 
-/**
- * When the initial document is loaded, call populate on today's journal content
- * @listens document#DOMContentLoaded
- */
-document.addEventListener('DOMContentLoaded', () => {
-    const key = getDaysKey(curDate);
-    populate(getData(key), curDate);
-});
+// side bar navigate
+// .forEach replaced to satisfy linter
+function sideBarClick(event) {
+    event.preventDefault();
+    setState(getDaysKey(new Date(this.innerText)));
+    document.querySelector('.closebtn').onclick(event);
+}
+
+const arr = document.querySelectorAll('#mySidebar small a');
+for (let i = 0; i < arr.length; i += 1) {
+    arr[i].onclick = sideBarClick;
+}
+
+export default setState;

@@ -1,0 +1,379 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bullet Journal</title>
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="./components/task.js" type="module"></script>
+    <script src="./components/event.js" type="module"></script>
+    <script src="./components/navigation.js" type="module"></script>
+    <script src="./components/storage.js" type="module"></script>
+    <script src="./scripts/button_controller.js" type="module"></script>
+    <script src="./js/clock.js"></script>
+
+    <!-- Fonts -->
+    <!-- Sen -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Sen&display=swap" rel="stylesheet">
+    <!-- Roboto -->
+    <link rel="preconnect" href="https://fonts.gstatic.com"> 
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div class='container'>
+        <div class='item-header'>
+            <div id='header-item-img'>
+                <a href="#"><img src="images/nav_button.png" alt="Navigation Button" height='50' width='50'></a>
+            </div>
+            <div id='header-item-title'>
+                <h1 id='header' class="main-title">Weekly Log</h1>
+            </div>
+        </div>
+        <div class='item-middle-wk'>
+            <div class='middle-item-bar'>
+                <div id='left-arrow'>
+                    <a href="#"><img src="images/arrow_left.png" alt="Left Arrow" height='25' width='25'></a>
+                </div>
+                <div id='date-text'>
+                    <h3 class='main-title'>Week of June 1, 2021</h3>
+                </div>
+                <div id='right-arrow'>
+                    <a href="#"><img src="images/arrow_right.png" alt="Right Arrow" height='25' width='25'></a>
+                </div>
+            </div>
+            <div id='calendar-container'>
+                <div id='time-column'>
+                    <div id='days-label'>
+
+                    </div>
+                    <div id='time-label' >
+
+                    </div>
+                    <div id='tasks-label' >
+                        <label class='time-clm-label' for="">Tasks</label>
+                    </div>
+                </div>
+                <div id='calendar'>
+                        <div id='calendar-days-row'>
+                            <div class='calendar-dummy'></div>
+                            <div id='cal-date-sun'>
+                                <div class='date-label'>
+                                    Sunday
+                                </div>
+                                <div id='date-sun' class='date'>
+                                    May 30
+                                </div>
+                            </div>
+                            <div id='cal-date-mon'>
+                                <div class='date-label'>
+                                    Monday
+                                </div>
+                                <div id='date-mon' class='date'>
+                                    May 31
+                                </div>
+                            </div>
+                            <div id='cal-date-tues'>
+                                <div class='date-label'>
+                                    Tuesday
+                                </div>
+                                <div id='date-tues' class='date'>
+                                    June 1
+                                </div>
+                            </div>
+                            <div id='cal-date-wed'>
+                                <div class='date-label'>
+                                    Wednesday
+                                </div>
+                                <div id='date-wed' class='date'>
+                                    June 2
+                                </div>
+                            </div>
+                            <div id='cal-date-thurs'>
+                                <div class='date-label'>
+                                    Thursday
+                                </div>
+                                <div id='date-thurs' class='date'>
+                                    June 3
+                                </div>
+                            </div>
+                            <div id='cal-date-fri'>
+                                <div class='date-label'>
+                                    Friday
+                                </div>
+                                <div id='date-fri' class='date'>
+                                    June 4
+                                </div>
+                            </div>
+                            <div id='cal-date-sat'>
+                                <div class='date-label'>
+                                    Saturday
+                                </div>
+                                <div id='date-sat' class='date'>
+                                    June 5
+                                </div>
+                            </div>
+                        </div>
+                        <div id='calendar-events-row'>
+                            <div id='calendar-time-column'>
+                                <div class='hour'><small>12 AM</small></div>
+                                <div class='hour'><small>1 AM</small></div>
+                                <div class='hour'><small>2 AM</small></div>
+                                <div class='hour'><small>3 AM</small></div>
+                                <div class='hour'><small>4 AM</small></div>
+                                <div class='hour'><small>5 AM</small></div>
+                                <div class='hour'><small>6 AM</small></div>
+                                <div class='hour'><small>7 AM</small></div>
+                                <div class='hour'><small>8 AM</small></div>
+                                <div class='hour'><small>9 AM</small></div>
+                                <div class='hour'><small>10 AM</small></div>
+                                <div class='hour'><small>11 AM</small></div>
+                                <div class='hour'><small>12 PM</small></div>
+                                <div class='hour'><small>1 PM</small></div>
+                                <div class='hour'><small>2 PM</small></div>
+                                <div class='hour'><small>3 PM</small></div>
+                                <div class='hour'><small>4 PM</small></div>
+                                <div class='hour'><small>5 PM</small></div>
+                                <div class='hour'><small>6 PM</small></div>
+                                <div class='hour'><small>7 PM</small></div>
+                                <div class='hour'><small>8 PM</small></div>
+                                <div class='hour'><small>9 PM</small></div>
+                                <div class='hour'><small>10 PM</small></div>
+                                <div class='hour'><small>11 PM</small></div>
+                            </div>
+                            <div id='cal-sun'>
+                                <div class='sun-hour-12am'></div>
+                                <div class='sun-hour-1am'></div>
+                                <div class='sun-hour-2am'></div>
+                                <div class='sun-hour-3am'></div>
+                                <div class='sun-hour-4am'></div>
+                                <div class='sun-hour-5am'></div>
+                                <div class='sun-hour-6am'></div>
+                                <div class='sun-hour-7am'></div>
+                                <div class='sun-hour-8am'></div>
+                                <div class='sun-hour-9am'></div>
+                                <div class='sun-hour-10am'></div>
+                                <div class='sun-hour-11am'></div>
+                                <div class='sun-hour-12pm'></div>
+                                <div class='sun-hour-1pm'></div>
+                                <div class='sun-hour-2pm'></div>
+                                <div class='sun-hour-3pm'></div>
+                                <div class='sun-hour-4pm'></div>
+                                <div class='sun-hour-5pm'></div>
+                                <div class='sun-hour-6pm'></div>
+                                <div class='sun-hour-7pm'></div>
+                                <div class='sun-hour-8pm'></div>
+                                <div class='sun-hour-9pm'></div>
+                                <div class='sun-hour-10pm'></div>
+                                <div class='sun-hour-11pm'></div>
+                            </div>
+                            <div id='cal-mon'>
+                                <div class='mon-hour-12am'></div>
+                                <div class='mon-hour-1am'></div>
+                                <div class='mon-hour-2am'></div>
+                                <div class='mon-hour-3am'></div>
+                                <div class='mon-hour-4am'></div>
+                                <div class='mon-hour-5am'></div>
+                                <div class='mon-hour-6am'></div>
+                                <div class='mon-hour-7am'></div>
+                                <div class='mon-hour-8am'></div>
+                                <div class='mon-hour-9am'></div>
+                                <div class='mon-hour-10am'></div>
+                                <div class='mon-hour-11am'></div>
+                                <div class='mon-hour-12pm'></div>
+                                <div class='mon-hour-1pm'></div>
+                                <div class='mon-hour-2pm'></div>
+                                <div class='mon-hour-3pm'></div>
+                                <div class='mon-hour-4pm'></div>
+                                <div class='mon-hour-5pm'></div>
+                                <div class='mon-hour-6pm'></div>
+                                <div class='mon-hour-7pm'></div>
+                                <div class='mon-hour-8pm'></div>
+                                <div class='mon-hour-9pm'></div>
+                                <div class='mon-hour-10pm'></div>
+                                <div class='mon-hour-11pm'></div>
+                            </div>
+                            <div id='cal-tues'>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                            </div>
+                            <div id='cal-wed'>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                            </div>
+                            <div id='cal-thurs'>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                            </div>
+                            <div id='cal-fri'>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                            </div>
+                            <div id='cal-sat'>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                                <div class='hour'></div>
+                            </div>
+                        </div>
+                        <div id='calendar-tasks-row'>
+                            <div class='calendar-dummy'></div>
+                            <div id='cal-task-sun'></div>
+                            <div id='cal-task-mon'></div>
+                            <div id='cal-task-tues'></div>
+                            <div id='cal-task-wed'></div>
+                            <div id='cal-task-thurs'></div>
+                            <div id='cal-task-fri'></div>
+                            <div id='cal-task-sat'></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <div class='item-footer'>
+            <div id='task-event-selector-area'>
+                <select name="Task Event Selector" id='task-event-selector'>
+                    <option value="default">Task or Event</option>
+                    <option value="Task">Task</option>
+                    <option value="Event">Event</option> 
+                </select>
+            </div>
+            <div id='task-event-textbox-area'>
+                <input type="text" name='task-event-textbox' id='task-event-textbox' placeholder='Enter a Task or Event here!'>
+            </div>
+            <div id='clock-tags-upload-area'>
+                <div class='clock-form'>
+                    <img id='clock-img' src="images/clock.png" alt="Clock" height='40' width='40'></a>    
+                    <div id='popup-clock'>
+                        <form id='time-selector'>
+                            <label id='start-time' for='startTime'>Start Time:<input type='time' id='start-time' name='start-time'></label>
+                            <label id='end-time' for='endTime'>End Time:<input type='time' id='end-time' name='end-time'></label>
+                            <button type='button' id="clock-submit-button">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div id='tags-selector'>
+                    <select name="Tags" id="tag-selection">
+                        <option value="default">Apply Tags</option>
+                        <option>Lecture</option>
+                        <option>UCSD</option>
+                        <option>Other</option>
+                        <option id="add-tag-option">Add Tag Here...</option>
+                      </select>
+                </div>
+                <div id='upload-img'>
+                    <a href="#"><img src="images/upload_button.png" alt="Right Arrow" height='40' width='40'></a>    
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -16,7 +16,8 @@ class Task extends Log {
             <div class='tags-container'>
                 <span class='tags'>
                 </span>
-            </div>`;
+            </div>
+            `;
 
         // DOM references to use in set/get
         this.titleDOM = sha.querySelector('.checkbox-label-container span');

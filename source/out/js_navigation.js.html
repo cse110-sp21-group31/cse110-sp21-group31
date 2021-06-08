@@ -26,12 +26,11 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import { getData } from './storage.js';
-import { getDaysKey, getName } from './date.js';
+            <pre class="prettyprint source linenums"><code>import { addCustomTag, getDaysData, getCustomTags } from './storage.js';
+import { getDaysKey } from './date.js';
 
 /* date variables */
-let curDate = new Date();
-const newDate = curDate;
+window.curDate = new Date();
 const possibleImageSubscripts = ['.jpg', '.png'];
 
 /* access log components */
@@ -89,15 +88,15 @@ function isLinkImage(link) {
 
 /**
  * Changes the date title, removes existing content, populates page with current date's content
- * @param {object} log - The object that contains attributes of the day's journal
  * @param {string} key - The date of the journal
  */
-function populate(log, key) {
-    document.getElementsByTagName('h3')[0].innerText = getName(key);
+function populate(key) {
+    const log = getDaysData(key);
+
+    document.getElementsByTagName('h3')[0].innerText = log.name;
 
     removeAll();
 
-    if(log == null) return;
     const allTasks = log.tasks;
     const allEve = log.events;
     const allMedia = log.media;
@@ -129,38 +128,88 @@ function populate(log, key) {
     });
 }
 
+// router code put here to prevent dependency cycle
+
+function setState(dateKey, newState = true) {
+    if (newState) {
+        window.history.pushState({ key: dateKey }, '', `#${dateKey}`);
+    }
+    window.curDate = new Date(`${dateKey}T00:00:00`);
+    populate(dateKey);
+}
+
+function popState(event) {
+    if (event.state != null) setState(event.state.key, false);
+}
+window.onpopstate = popState;
+
 /**
  * Increases date by one day, calls populate
  * @listens forward#click
  */
-forward.addEventListener('click', () => {
-    newDate.setDate(newDate.getDate() + 1);
-    curDate = newDate;
-    const key = getDaysKey(newDate);
+forward.addEventListener('click', (event) => {
+    event.preventDefault();
 
-    populate(getData(key), newDate);
+    window.curDate.setDate(window.curDate.getDate() + 1);
+    const key = getDaysKey(window.curDate);
+
+    setState(key);
 });
 
 /**
  * Decreases the date by one day, calls populate
  * @listens backward#click
  */
-backward.addEventListener('click', () => {
-    newDate.setDate(newDate.getDate() - 1);
-    curDate = newDate;
-    const key = getDaysKey(newDate);
+backward.addEventListener('click', (event) => {
+    event.preventDefault();
 
-    populate(getData(key), newDate);
+    window.curDate.setDate(window.curDate.getDate() - 1);
+    const key = getDaysKey(window.curDate);
+
+    setState(key);
 });
 
 /**
  * When the initial document is loaded, call populate on today's journal content
  * @listens document#DOMContentLoaded
  */
+
+// obj that maps displayed tag name on website options
+// to the class name that options have to have
+// for css to work, which is in log.js
+const defaultTags = {
+    UCSD: 'ucsd',
+    Lecture: 'lecture',
+    Other: 'other',
+};
+
 document.addEventListener('DOMContentLoaded', () => {
-    const key = getDaysKey(curDate);
-    populate(getData(key), curDate);
+    // set the current state
+    // window.localStorage.clear();
+    const key = getDaysKey(window.curDate);
+    setState(key);
+
+    // get the tags
+    let tagObj = getCustomTags();
+    if (Object.keys(tagObj).length === 0) tagObj = defaultTags;
+    Object.keys(tagObj).forEach((item) => {
+        addCustomTag(item);
+    });
 });
+
+// side bar navigate
+// .forEach replaced to satisfy linter
+
+function sideBarClick(event) {
+    event.preventDefault();
+    setState(getDaysKey(new Date(this.innerText)));
+    document.querySelector('.closebtn').onclick(event);
+}
+
+const arr = document.querySelectorAll('#mySidebar small a');
+for (let i = 0; i &lt; arr.length; i += 1) {
+    arr[i].onclick = sideBarClick;
+}
 </code></pre>
         </article>
     </section>
@@ -171,13 +220,13 @@ document.addEventListener('DOMContentLoaded', () => {
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#getCustomTagColor">getCustomTagColor</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#defaultTags">defaultTags</a></li><li><a href="global.html#getCustomTagColor">getCustomTagColor</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#toggleOptionsDisplay">toggleOptionsDisplay</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 02 2021 04:30:56 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jun 06 2021 19:34:29 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>
