@@ -88,7 +88,7 @@
     grid-template-columns: 4% auto;
 }
 
-#time-column {
+#side-label-column {
     grid-column: 1 / 2;
     height: 100%;
     background-color:burlywood;
@@ -96,7 +96,7 @@
     grid-template-rows: 1fr 6fr 2fr;
 }
 
-#time-column > div {
+#side-label-column > div {
     height: 100%;
     width: 100%;
 }
