@@ -124,6 +124,7 @@
     grid-column: 1 / 2;
     /* background-color: lightskyblue; */
     border-right: 1px solid rgb(183, 185, 187);
+    display: flex;
 }
 
 .calendar-dummy {
@@ -185,9 +186,11 @@
     font-family: 'Roboto', 'sans-serif';
     border-right: 1px solid rgb(183, 185, 187);
 }
+
 .calendar-days-row div {
     display: flex;
 }
+
 #cal-date-sun {
 
 }
@@ -226,6 +229,7 @@
 
 #cal-sun {
     border-right: 1px solid rgb(183, 185, 187);
+    display: flex;
 }
 
 #cal-sun div {
