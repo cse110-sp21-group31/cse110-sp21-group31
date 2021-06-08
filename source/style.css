@@ -101,7 +101,7 @@
     width: 100%;
 }
 
-.time-clm-label {
+.side-clm-label {
     display: flex;
     height: 100%;
     justify-content: center;
@@ -123,8 +123,15 @@
 #calendar-time-column {
     grid-column: 1 / 2;
     /* background-color: lightskyblue; */
-    border-right: 1px solid rgb(183, 185, 187);
     display: flex;
+    border-right: 1px solid rgb(213, 215, 220);
+}
+
+#calendar-time-column div {
+    flex: none;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
 }
 
 .calendar-dummy {
@@ -133,17 +140,21 @@
     flex-direction: column;
 }
 
+#calendar-task-dummy {
+    background-color: white;
+}
+
 .calendar-dummy-div2 {
     flex: 1;
     width: 100%;
-    border-right: 1px solid rgb(183, 185, 187);
+    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #calendar-days-row {
     grid-row: 1 / 2;
     display: grid;
     grid-template-columns: 0.2fr repeat(7, 1fr);
-    border-bottom: 1px solid rgb(183, 185, 187);
+    border-bottom: 1px solid rgb(213, 215, 220);
     background-color: mistyrose;
 }
 
@@ -184,7 +195,7 @@
     flex: 1;
     width: 100%;
     font-family: 'Roboto', 'sans-serif';
-    border-right: 1px solid rgb(183, 185, 187);
+    border-right: 1px solid rgb(213, 215, 220);
 }
 
 .calendar-days-row div {
@@ -228,12 +239,12 @@
 }
 
 #cal-sun {
-    border-right: 1px solid rgb(183, 185, 187);
+    border-right: 1px solid rgb(213, 215, 220);
     display: flex;
 }
 
 #cal-sun div {
-    border-bottom: 1px solid rgb(183, 185, 187); 
+    border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -242,11 +253,11 @@
 }
 
 #cal-mon {
-    border-right: 1px solid rgb(183, 185, 187);
+    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #cal-mon div {
-    border-bottom: 1px solid rgb(183, 185, 187);
+    border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -255,11 +266,11 @@
 }
 
 #cal-tues {
-    border-right: 1px solid rgb(183, 185, 187);
+    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #cal-tues div {
-    border-bottom: 1px solid rgb(183, 185, 187); 
+    border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -268,11 +279,11 @@
 }
 
 #cal-wed {
-    border-right: 1px solid rgb(183, 185, 187);
+    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #cal-wed div {
-    border-bottom: 1px solid rgb(183, 185, 187); 
+    border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -281,11 +292,11 @@
 }
 
 #cal-thurs {
-    border-right: 1px solid rgb(183, 185, 187);
+    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #cal-thurs div {
-    border-bottom: 1px solid rgb(183, 185, 187); 
+    border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -294,11 +305,11 @@
 }
 
 #cal-fri {
-    border-right: 1px solid rgb(183, 185, 187);
+    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #cal-fri div {
-    border-bottom: 1px solid rgb(183, 185, 187); 
+    border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -311,7 +322,7 @@
 }
 
 #cal-sat div {
-    border-bottom: 1px solid rgb(183, 185, 187); 
+    border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
