@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const url = document.getElementById('media-url');
     const youtubeTest = document.getElementById('youtube-test');
     const pinterestTest = document.getElementById('pinterest-test');
+    const soundcloudTest = document.getElementById('soundcloud-test');
 
     /**
      * Toggle the display of the HTML element with elementID between displayType and none
@@ -34,6 +35,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         if (url.value.includes('pinterest')) {
             pinterestTest.src = 'https://assets.pinterest.com/ext/embed.html?id=' + url.value.substring(30, 46);
+        }
+        if (url.value.includes('soundcloud')) {
+            soundcloudTest.src = 'https://w.soundcloud.com/player/?url=' + url.value;
         }    
         document.getElementById('media-uploader').reset();
     });
