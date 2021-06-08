@@ -3,7 +3,7 @@ button_controller.js
 contains tag selection and input bar upload funcionality
 */
 
-import { addTask } from './storage.js';
+import { addEvent, addTask } from './storage.js';
 import { getDaysKey } from './date.js';
 
 /*
@@ -182,6 +182,7 @@ document
                 // Append event element to log (subject to change)
                 const eventSpace = document.getElementById('log-events-area');
                 eventSpace.appendChild(newEntry);
+                addEvent(getDaysKey(window.curDate), entry);
             }
             // clear input bar
             input.value = '';

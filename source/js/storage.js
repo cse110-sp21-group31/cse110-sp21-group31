@@ -51,7 +51,7 @@ add a task into local storage
 */
 function addTask(key, task) {
     const dayData = getDaysData(key);
-    dayData.tasks.push(task);
+    dayData.tasks.push({...task});
     setData(key, dayData);
     return true;
 }
@@ -86,6 +86,7 @@ function addLink(key, link) {
 function updateTaskChecked(key, taskInd, newVal) {
     const dayData = getDaysData(key);
     dayData.tasks[taskInd].completed = newVal;
+    if (newVal === true) dayData.tasks[taskInd].content.innerHTML = dayData.tasks[taskInd].content.strike();
     setData(key, dayData);
 }
 

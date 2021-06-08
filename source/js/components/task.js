@@ -32,7 +32,7 @@ class Task extends Log {
         );
         this.checkDOM.onclick = () => {
             const key = getDaysKey(window.curDate);
-            updateTaskChecked(key, this.getAttribute('data-ind'), this.checkDOM.checked);
+            updateTaskChecked(key, this.checkDOM.getAttribute('data-ind'), this.checkDOM.checked);
         };
 
         // make task title strikethrough if the checkbox is clicked (and vice-versa)
