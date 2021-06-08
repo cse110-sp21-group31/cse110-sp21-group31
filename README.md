@@ -1,8 +1,10 @@
 # CSE 110 Spring 2021 Group 31
 
-## Here we will track the progress of our project!
+## Here we will track the progress of our project
 
-Team Page: [Link](admin/team.md)
+[Team Page](admin/team.md)
+
+[Onboarding Documentation](admin/misc/onboarding.md)
 
 ## Web Application Links
 
@@ -23,10 +25,12 @@ Team Page: [Link](admin/team.md)
 ## Design Documents
 
 ### Figma
+
 - [Link to Figma Board](https://www.figma.com/file/w8yygGnYP3y9xvH1ceAN0w/CSE-110-Team-31?node-id=0%3A1)
 - [Figma Screenshots](/specs/figma)
 
 ### Miro
+
 - [Miro Board](https://miro.com/app/board/o9J_lJcScCQ=/)
 - [PDF version](/specs/brainstorm/Miro_Brainstorm.pdf)
 
