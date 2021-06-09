@@ -26,7 +26,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          source-directory: 'out'
+          source-directory: 'source/out'
           destination-github-username: cse110-sp21-group31
           destination-repository-name: cse110-sp21-group31-docs
           user-email: btsuyuki1@gmail.com
