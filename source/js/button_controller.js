@@ -124,12 +124,11 @@ if (tagSelectorDOM !== null) {
                         0,
                         this.value.length - 2
                     );
+                } else if (selectedCount < 3) {
+                    // add tag if check not present and less that 3 selected currently
+                    tags[i].innerHTML = `${this.value} ✓`;
                 } else {
-                    if (selectedCount < 3) {
-                        tags[i].innerHTML = `${this.value} ✓`;
-                    } else {
-                        addTagDOM.placeholder = '3 Tags Max!';
-                    }
+                    addTagDOM.placeholder = '3 Tags Max!';
                 }
             }
         }
