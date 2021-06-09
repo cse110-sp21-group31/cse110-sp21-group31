@@ -84,8 +84,15 @@ if (tagSelectorDOM !== null) {
     const addTagDOM = document.getElementById('add-tag-option');
     addTagDOM.addEventListener('keypress', (button) => {
         if (button.key === 'Enter') {
-            addCustomTag(addTagDOM.value);
-            addTagDOM.value = '';
+            // ensure bar is not empty
+            if (addTagDOM.value.replace(/\s/g, '').length) {
+                // replace spaces and dashes with underscores
+                let tagText = addTagDOM.value;
+                tagText = tagText.replace(/\s/g, '_');
+                tagText = tagText.replace('-', '_');
+                addCustomTag(tagText);
+                addTagDOM.value = '';
+            }
         }
     });
 
@@ -96,9 +103,20 @@ if (tagSelectorDOM !== null) {
         }
 
         // skip over the last option which is padding
-        if (this.value === '') return;
+        if (this.value === '') {
+            this.value = 'default';
+            return;
+        }
 
         const tags = this.children;
+        let selectedCount = 0;
+        for (let i = 0; i < tags.length; i += 1) {
+            if (tags[i].innerHTML.includes('✓')) {
+                selectedCount += 1;
+            }
+        }
+
+        addTagDOM.placeholder = 'Add Tag Here...';
         for (let i = 0; i < tags.length; i += 1) {
             if (tags[i].innerHTML === this.value) {
                 if (tags[i].innerHTML.includes('✓')) {
@@ -107,11 +125,15 @@ if (tagSelectorDOM !== null) {
                         this.value.length - 2
                     );
                 } else {
-                    tags[i].innerHTML = `${this.value} ✓`;
+                    if (selectedCount < 3) {
+                        tags[i].innerHTML = `${this.value} ✓`;
+                    } else {
+                        addTagDOM.placeholder = '3 Tags Max!';
+                    }
                 }
-                this.value = 'default';
             }
         }
+        this.value = 'default';
     });
 
     /*
