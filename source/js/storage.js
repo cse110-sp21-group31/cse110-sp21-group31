@@ -102,12 +102,7 @@ function getCustomTags() {
     return res;
 }
 
-/**
-add custom tag
-@param tagName string for the name of tag
-@return true/false if successful
-*/
-function addCustomTag(tagName) {
+function addCustomTagStorage(tagName) {
     const colorArr = ['red', 'blue', 'pink', 'green', 'violet', 'orange'];
     const customTags = getCustomTags();
 
@@ -117,6 +112,15 @@ function addCustomTag(tagName) {
             colorArr[Object.keys(customTags).length % colorArr.length];
         setData('custom-tags', customTags);
     }
+}
+
+/**
+add custom tag
+@param tagName string for the name of tag
+@return true/false if successful
+*/
+function addCustomTag(tagName) {
+    addCustomTagStorage(tagName);
 
     // add tag option to html list
     const newTag = document.createElement('option');
