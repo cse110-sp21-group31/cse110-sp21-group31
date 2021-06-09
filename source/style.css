@@ -91,11 +91,9 @@
 #side-label-column {
     grid-column: 1 / 2;
     height: 100%;
-<<<<<<< HEAD
-    background-color: burlywood;
-=======
+
     background-color:lightblue;
->>>>>>> main
+
     display: grid;
     grid-template-rows: 1fr 6fr 2fr;
 }
@@ -167,10 +165,9 @@
     display: grid;
     grid-template-columns: 0.2fr repeat(7, 1fr);
     border-bottom: 1px solid black;
-<<<<<<< HEAD
+
     background-color: rgb(242, 243, 244);
-=======
->>>>>>> main
+
     overflow-y: scroll;
 }
 
@@ -252,11 +249,9 @@
 }
 
 #cal-sun div {
-<<<<<<< HEAD
-    border-bottom: 1px solid black;
-=======
+
     border-bottom: 1px solid rgb(213, 215, 220);
->>>>>>> main
+
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -269,11 +264,7 @@
 }
 
 #cal-mon div {
-<<<<<<< HEAD
-    border-bottom: 1px solid black;
-=======
     border-bottom: 1px solid rgb(213, 215, 220);
->>>>>>> main
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -334,6 +325,7 @@
 }
 
 #cal-sat {
+
 }
 
 #cal-sat div {
@@ -343,6 +335,7 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+
 }
 
 .hour {
