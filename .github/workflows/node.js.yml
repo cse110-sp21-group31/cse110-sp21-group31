@@ -34,19 +34,22 @@ jobs:
         working-directory: ./source
       - run: npm run test
         working-directory: ./source
-  gen_docs:
-    name: JSDoc Documentation
-    needs: [lint, test]
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-        working-directory: ./source
-      - run: npm run docs
-        working-directory: ./source
-      - uses: EndBug/add-and-commit@v7
-        with:
-          cwd: ./source
-          add: out
-          default_author: github_actor
-          message: 'Update generated documentation'
+  # gen_docs:
+  #   name: JSDoc Documentation
+  #   needs: [lint, test]
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - run: npm install
+  #       working-directory: ./source
+  #     - run: npm run docs
+  #       working-directory: ./source
+  #     - uses: cpina/github-action-push-to-another-repository@main
+  #       working-directory: ./source
+  #       env:
+  #         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+  #       with:
+  #         source-directory: 'out'
+  #         destination-github-username: cse110-sp21-group31
+  #         destination-repository-name: cse110-sp21-group31-docs
+  #         commit-message: 'Update generated documentation'
