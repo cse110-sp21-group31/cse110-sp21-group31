@@ -27,15 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
         youtubeDiv.setAttribute('class', 'media-item');
         let youtubeIfr = document.createElement('iframe');
         youtubeIfr.setAttribute('src', `https://www.youtube.com/embed/${url.value.substring(32)}`);
-        youtubeIfr.style.width = '560';
-        youtubeIfr.style.height = '315';
+        youtubeIfr.style.width = '100%';
+        youtubeIfr.style.height = '50%';
         youtubeDiv.appendChild(youtubeIfr);
         mediaDiv.appendChild(youtubeDiv);
     }
 
     function pinterestUpload() {
         let pinterestDiv = document.createElement('div');
-        pinterestDiv.setAttribute('class', 'media-item');
+        pinterestDiv.setAttribute('class', 'iframe');
         let pinterestIfr = document.createElement('iframe');
         let pinterestUrl = `https://assets.pinterest.com/ext/embed.html?id=${  url.value.substring(30)}`;
         pinterestIfr.setAttribute('src', pinterestUrl.substr(0, pinterestUrl.length - 1));
