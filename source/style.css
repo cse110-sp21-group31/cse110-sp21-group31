@@ -436,6 +436,7 @@
     border: 1px solid black;
     border-radius: 25px;
     margin-right: 5px;
+    overflow: hidden;
 }
 
 #media-title {
@@ -445,6 +446,20 @@
 
 #media-text-area {
     grid-row: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+}
+
+.media-item {
+    display: flex;
+    flex: none;
+    margin: 2% 0 0 0;
+    justify-content: center;
+    align-items: center;
+    height: 40%;
+    width: 100%;
 }
 
 .item-footer {
@@ -670,3 +685,19 @@ event-log:hover, task-log:hover {
 #header {
     font-size: xx-large;
 }
+
+/* #popup-media {
+    display: none;
+    width: 13%;
+    height: 7%;
+    position: fixed;
+    bottom: 9%; 
+    right: 1.2%;
+    background-color: rgba(166, 239, 255, 0.551);
+}
+
+#popup-media label {
+    font-family: 'Roboto', 'sans-serif';
+    text-align: center;
+} */
+
