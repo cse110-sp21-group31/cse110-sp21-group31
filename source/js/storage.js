@@ -183,7 +183,7 @@ function test(arg = true) {
 }
 
 // to satisfy linter, comment this line out
-// test();
+test();
 
 export { getDaysData, getCustomTagColor, addTask, addEvent, updateTaskChecked };
 
