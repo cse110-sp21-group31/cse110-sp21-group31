@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
             )}`;
         }
         if (url.value.includes('pinterest')) {
-            pinterestTest.src = 'https://assets.pinterest.com/ext/embed.html?id=' + url.value.substring(30, 46);
+            pinterestTest.src = `https://assets.pinterest.com/ext/embed.html?id=${  url.value.substring(30, 46)}`;
         }
         if (url.value.includes('soundcloud')) {
             soundcloudTest.src = `https://w.soundcloud.com/player/?url=${  url.value}`;
