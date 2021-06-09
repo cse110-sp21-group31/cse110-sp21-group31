@@ -1,62 +1,47 @@
 import { getDaysData } from './storage.js';
-import { getDaysKey, getName } from './date.js';
+import { getDaysKey, getWeek, getName } from './date.js';
 
 /* date variables */
 window.curDate = new Date();
-const possibleImageSubscripts = ['.jpg', '.png'];
 
 /* access log components */
 const taskArea = document.getElementById('log-tasks-area');
 const eventArea = document.getElementById('log-events-area');
-const noteArea = document.getElementById('notes-text-area');
-const mediaArea = document.getElementById('media-text-area');
+// const noteArea = document.getElementById('notes-text-area');
+// const mediaArea = document.getElementById('media-text-area');
 const forward = document.getElementById('right-arrow');
 const backward = document.getElementById('left-arrow');
+// const sunday = document.getElementById('cal-sun');
+// const monday = document.getElementById('cal-mon');
+// const tueday = document.getElementById('cal-tues');
+// const wednesday = document.getElementById('cal-wed');
+// const thursday = document.getElementById('cal-thurs');
+// const friday = document.getElementById('cal-fri');
+// const saturday = document.getElementById('cal-sat');
+const sideBar = document.querySelector('#mySideBar ul');
 
-/**
- * Removes the current content from the log, notepad, and media tab
+
+/** TODO:
+ * Removes the current content from the weekly log 
  */
-function removeAll() {
-    const taskChildren = taskArea.childNodes;
-    const taskLength = taskChildren.length;
-    for (let i = 0; i < taskLength; i += 1) {
-        taskArea.removeChild(taskArea.lastChild);
-    }
+// function removeAll() {
+//     const taskChildren = taskArea.childNodes;
+//     const taskLength = taskChildren.length;
+//     for (let i = 0; i < taskLength; i += 1) {
+//         taskArea.removeChild(taskArea.lastChild);
+//     }
+// 
+//     const eveChildren = eventArea.childNodes;
+//     const eveLength = eveChildren.length;
+//     for (let i = 0; i < eveLength; i += 1) {
+//         eventArea.removeChild(eventArea.lastChild);
+//     }
+// }
 
-    const eveChildren = eventArea.childNodes;
-    const eveLength = eveChildren.length;
-    for (let i = 0; i < eveLength; i += 1) {
-        eventArea.removeChild(eventArea.lastChild);
-    }
-
-    const mediaChildren = mediaArea.childNodes;
-    const mediaLength = mediaChildren.length;
-    for (let i = 0; i < mediaLength; i += 1) {
-        mediaArea.removeChild(mediaArea.lastChild);
-    }
-
-    const noteChildren = noteArea.childNodes;
-    const noteLength = noteChildren.length;
-    for (let i = 0; i < noteLength; i += 1) {
-        noteArea.removeChild(noteArea.lastChild);
-    }
-}
-
-/**
- * Identify if the given string contains image subscripts
- * @param {string} link
- * @return true/false
- */
-function isLinkImage(link) {
-    let bool = false;
-    const subscript = link.slice(link.lastIndexOf('.'));
-    possibleImageSubscripts.forEach((item) => {
-        if (subscript === item) {
-            bool = true;
-        }
-    });
-    return bool;
-}
+// this function is here just as a reference
+// so i can use it in populate()
+// the function content is at the bottom of the file
+let sideBarClick = function sideBarClickedTemp() {};
 
 /**
  * Changes the date title, removes existing content, populates page with current date's content
@@ -86,13 +71,10 @@ function populate(key) {
 
     // Reset curDate to beginning of week
     window.curDate.setDate(window.curDate.getDate() - 7);
-    removeAll();
+    // removeAll();
 
     const allTasks = log.tasks;
     const allEve = log.events;
-    const allMedia = log.media;
-
-    noteArea.append(log.notepad);
 
     allTasks.forEach((task) => {
         const newTask = document.createElement('task-log');
@@ -100,23 +82,22 @@ function populate(key) {
         taskArea.appendChild(newTask);
     });
 
-    allMedia.forEach((item) => {
-        let x;
-        if (isLinkImage(item)) {
-            x = 'img';
-        } else {
-            x = 'audio';
-        }
-        x = document.createElement(x);
-        x.src = item;
-        mediaArea.appendChild(x);
-    });
-
     allEve.forEach((event) => {
         const newEvent = document.createElement('event-log');
         newEvent.content = event;
         eventArea.appendChild(newEvent);
     });
+
+    // update the sidebar
+    const allDays = getWeek();
+    for (let i = 0; i < 7; i += 1) {
+        const newDayLink = document.createElement('a');
+       newDayLink.innerText = getName(allDays[i]);
+        newDayLink.setAttribute('href', '#');
+        newDayLink.setAttribute('data-key', allDays[i]);
+        newDayLink.onclick = sideBarClick;
+        sideBar.appendChild(newDayLink);
+    }
 }
 
 // router code put here to prevent dependency cycle
@@ -179,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // side bar navigate
 // .forEach replaced to satisfy linter
 
-function sideBarClick(event) {
+sideBarClick = function sideBarClickActual(event) {
     event.preventDefault();
     setState(getDaysKey(new Date(this.innerText)));
     document.querySelector('.closebtn').onclick(event);

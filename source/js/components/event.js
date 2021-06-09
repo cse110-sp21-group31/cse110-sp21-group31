@@ -19,6 +19,8 @@ export default class Event extends Log {
                 </span>
             </div>`;
 
+        
+
         // DOM references to use in set/get
         this.titleDOM = sha.querySelector('.event-time-container span');
         this.timeDOM = sha.querySelector('.event-time-container .event-time');
