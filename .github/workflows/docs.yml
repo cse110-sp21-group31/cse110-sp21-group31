@@ -30,6 +30,6 @@ jobs:
           destination-github-username: cse110-sp21-group31
           destination-repository-name: cse110-sp21-group31-docs
           user-email: btsuyuki1@gmail.com
-          user-name: 'Bryce Tsuyuki'
+          user-name: default_author
           commit-message: 'Update generated documentation'
           target-branch: 'main'
