@@ -3,7 +3,6 @@ import {
     getCustomTagColor,
     addTask,
     addEvent,
-    updateTaskChecked,
 } from '../js/storage.js';
 
 // define variables that will be used throughout this test suite
@@ -61,21 +60,4 @@ test('getDaysData returns the data for the specified day', () => {
     expect(dayData.events).toContainEqual(event2Json);
     expect(dayData.tasks).toContainEqual(task1Json);
     expect(dayData.tasks).toContainEqual(task2Json);
-});
-
-test('updateTaskChecked updates the completion status of the task successfully - incomplete to complete', () => {
-    updateTaskChecked(daysKey, 0, true);
-    const dayData = getDaysData(daysKey);
-    expect(dayData.tasks[0].completed).toBe(true);
-});
-
-test('updateTaskChecked does not touch the other task', () => {
-    const dayData = getDaysData(daysKey);
-    expect(dayData.tasks[1].completed).toBe(false);
-});
-
-test('updateTaskChecked updates the completion status of the task successfully', () => {
-    updateTaskChecked(daysKey, 0, false);
-    const dayData = getDaysData(daysKey);
-    expect(dayData.tasks[0].completed).toBe(false);
 });
