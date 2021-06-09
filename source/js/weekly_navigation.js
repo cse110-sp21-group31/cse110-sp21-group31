@@ -64,6 +64,16 @@ function isLinkImage(link) {
  */
 function populate(key) {
     const log = getDaysData(key);
+    const name = getName(key);
+
+    const title = [
+        'Week of ',
+        name.split(',')[1],
+        ', ',
+        window.curDate.getFullYear(),
+    ].join('');
+
+    document.getElementsByTagName('h3')[0].innerText = title;
 
     removeAll();
 
@@ -120,7 +130,7 @@ window.onpopstate = popState;
 forward.addEventListener('click', (event) => {
     event.preventDefault();
 
-    window.curDate.setDate(window.curDate.getDate() + 1);
+    window.curDate.setDate(window.curDate.getDate() + 7);
     const key = getDaysKey(window.curDate);
 
     setState(key);
@@ -133,7 +143,7 @@ forward.addEventListener('click', (event) => {
 backward.addEventListener('click', (event) => {
     event.preventDefault();
 
-    window.curDate.setDate(window.curDate.getDate() - 1);
+    window.curDate.setDate(window.curDate.getDate() - 7);
     const key = getDaysKey(window.curDate);
 
     setState(key);
@@ -146,9 +156,12 @@ backward.addEventListener('click', (event) => {
 document.addEventListener('DOMContentLoaded', () => {
     // set the current state
     // window.localStorage.clear();
+    if (window.curDate.getDay() !== 0) {
+        window.curDate.setDate(
+            window.curDate.getDate() - window.curDate.getDay()
+        );
+    }
     const key = getDaysKey(window.curDate);
-    const title = ['Week of ', getName(key).split(' ')].join();
-    document.getElementsByTagName('h3')[0].innerText = title;
     setState(key);
 });
 
