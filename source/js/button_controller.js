@@ -1,10 +1,14 @@
+<<<<<<< HEAD
 import { addCustomTag } from './storage.js';
 
+=======
+>>>>>>> main
 /* 
 button_controller.js
 contains tag selection and input bar upload funcionality
 */
 
+<<<<<<< HEAD
 const tagSelectorDOM = document.getElementById('tag-selection');
 const applyTagsDOM = tagSelectorDOM.querySelector('#apply-tags-option');
 
@@ -81,18 +85,80 @@ tagSelectorDOM.addEventListener('change', function handleTags() {
                 );
             } else {
                 tags[i].innerHTML = `${this.value} ✓`;
+=======
+import { addTask } from './storage.js';
+import { getDaysKey } from './date.js';
+
+/*
+implements tag selector functionality
+*/
+document
+    .getElementById('tag-selection')
+    .addEventListener('change', function handleTags() {
+        if (this.value === 'default') {
+            return;
+        }
+        if (this.value === 'Add Tag Here...') {
+            // open dialog to enter custom tag
+            this.value = 'default';
+            return;
+        }
+        const tags = this.children;
+        for (let i = 0; i < tags.length; i += 1) {
+            if (tags[i].innerHTML === this.value) {
+                if (tags[i].innerHTML.includes('✓')) {
+                    tags[i].innerHTML = this.value.substring(
+                        0,
+                        this.value.length - 2
+                    );
+                } else {
+                    tags[i].innerHTML = `${this.value} ✓`;
+                }
+                this.value = 'default';
+>>>>>>> main
             }
             this.value = 'default';
         }
     }
 });
 
+<<<<<<< HEAD
 document.addEventListener('keypress', (button) => {
     if (button.key === 'y') {
         const tags = document.getElementById('tag-selection');
         tags.click();
+=======
+/**
+ *
+ * @param {string} oldTime - "hh:mm (24hr)"
+ * @returns "hh:mm AM" (12hr)
+ */
+function convert24To12(oldTime) {
+    if (oldTime !== '') {
+        let endHour = oldTime.split(':', 2)[0];
+        const endMin = oldTime.split(':', 2)[1];
+        let endSuffix = '';
+        if (endHour > 12) {
+            endHour -= 12;
+            if (endHour < 10) {
+                endHour = `0${endHour}`;
+            }
+            endSuffix = 'PM';
+        } else {
+            if (endHour === '12') {
+                endSuffix = 'PM';
+            } else {
+                endSuffix = 'AM';
+            }
+            if (endHour === '00') {
+                endHour = '12';
+            }
+        }
+        return `${endHour}:${endMin} ${endSuffix}`;
+>>>>>>> main
     }
-});
+    return '';
+}
 
 /*
 implements upload button functionality
@@ -149,6 +215,30 @@ document
                 // Append task element to log (subject to change according to log css etc.)
                 const taskSpace = document.getElementById('log-tasks-area');
                 taskSpace.appendChild(newEntry);
+<<<<<<< HEAD
+=======
+                /* let item = {
+                name: "Wednesday, June 2",
+                notepad: "blan blah blah",
+                tasks: [
+                    {
+                        content: "Go on a run",
+                        completed: true/false,
+                        tags: ["Other"]
+                    }
+                ],
+                events: [
+                    {
+                        content: "CSE 110 Lecture",
+                        tags: "Lecture",
+                        from: 1621308663,
+                        to: 1621367364,
+                    }
+                ]
+                }
+                setData(getDaysKey(curDate), item); */
+                addTask(getDaysKey(window.curDate), entry);
+>>>>>>> main
             } else if (taskEventChoice === 'Event') {
                 /*  entry should contain:
                  *
@@ -174,6 +264,7 @@ document
                 }
 
                 // pull time info from clock icon
+<<<<<<< HEAD
                 entry.from =
                     document.getElementById('start-time').children[0].value;
                 if (entry.from !== '') {
@@ -211,6 +302,14 @@ document
                 } else {
                     entry.to = '';
                 }
+=======
+                entry.from = convert24To12(
+                    document.getElementById('start-time').children[0].value
+                );
+                entry.to = convert24To12(
+                    document.getElementById('end-time').children[0].value
+                );
+>>>>>>> main
 
                 // initialize event element
                 const newEntry = document.createElement('event-log');
@@ -224,5 +323,8 @@ document
             input.value = '';
         }
     });
+<<<<<<< HEAD
 
 export default toggleOptionsDisplay;
+=======
+>>>>>>> main

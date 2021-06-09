@@ -122,6 +122,7 @@ class Log extends HTMLElement {
      * @param tagArr array of tag names to add in this log
      */
     setTags(tagArr) {
+        if (tagArr == null) return false;
         tagArr.forEach((name) => {
             // get the color of this tag
             const colorClass =
@@ -142,6 +143,7 @@ class Log extends HTMLElement {
                 .querySelector('.tags-container .tags')
                 .appendChild(ele);
         });
+        return true;
     }
 
     /**

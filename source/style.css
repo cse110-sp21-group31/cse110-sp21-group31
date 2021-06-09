@@ -88,20 +88,24 @@
     grid-template-columns: 4% auto;
 }
 
-#time-column {
+#side-label-column {
     grid-column: 1 / 2;
     height: 100%;
+<<<<<<< HEAD
     background-color: burlywood;
+=======
+    background-color:lightblue;
+>>>>>>> main
     display: grid;
     grid-template-rows: 1fr 6fr 2fr;
 }
 
-#time-column > div {
+#side-label-column > div {
     height: 100%;
     width: 100%;
 }
 
-.time-clm-label {
+.side-clm-label {
     display: flex;
     height: 100%;
     justify-content: center;
@@ -123,19 +127,38 @@
 #calendar-time-column {
     grid-column: 1 / 2;
     /* background-color: lightskyblue; */
-    border-right: 1px solid black;
+    display: flex;
+    border-right: 1px solid rgb(213, 215, 220);
+}
+
+#calendar-time-column div {
+    flex: none;
+    height: 10%;
+    justify-content: center;
+    align-items: center;
 }
 
 .calendar-dummy {
     grid-column: 1 / 2;
-    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+}
+
+#calendar-task-dummy {
+    background-color: white;
+}
+
+.calendar-dummy-div2 {
+    flex: 1;
+    width: 100%;
+    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #calendar-days-row {
     grid-row: 1 / 2;
     display: grid;
     grid-template-columns: 0.2fr repeat(7, 1fr);
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(213, 215, 220);
     background-color: mistyrose;
 }
 
@@ -144,7 +167,10 @@
     display: grid;
     grid-template-columns: 0.2fr repeat(7, 1fr);
     border-bottom: 1px solid black;
+<<<<<<< HEAD
     background-color: rgb(242, 243, 244);
+=======
+>>>>>>> main
     overflow-y: scroll;
 }
 
@@ -175,34 +201,41 @@
 
 .date {
     flex: 1;
+    width: 100%;
     font-family: 'Roboto', 'sans-serif';
+    border-right: 1px solid rgb(213, 215, 220);
+}
+
+.calendar-days-row div {
+    display: flex;
 }
 
 #cal-date-sun {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-mon {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-tues {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-wed {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-thurs {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-fri {
-    border-right: 1px solid black;
+
 }
 
 #cal-date-sat {
+
 }
 
 /* 
@@ -214,11 +247,16 @@
 }
 
 #cal-sun {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(213, 215, 220);
+    display: flex;
 }
 
 #cal-sun div {
+<<<<<<< HEAD
     border-bottom: 1px solid black;
+=======
+    border-bottom: 1px solid rgb(213, 215, 220);
+>>>>>>> main
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -227,11 +265,15 @@
 }
 
 #cal-mon {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #cal-mon div {
+<<<<<<< HEAD
     border-bottom: 1px solid black;
+=======
+    border-bottom: 1px solid rgb(213, 215, 220);
+>>>>>>> main
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -240,22 +282,67 @@
 }
 
 #cal-tues {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(213, 215, 220);
+}
+
+#cal-tues div {
+    border-bottom: 1px solid rgb(213, 215, 220);
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
 }
 
 #cal-wed {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(213, 215, 220);
+}
+
+#cal-wed div {
+    border-bottom: 1px solid rgb(213, 215, 220);
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
 }
 
 #cal-thurs {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(213, 215, 220);
+}
+
+#cal-thurs div {
+    border-bottom: 1px solid rgb(213, 215, 220);
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
 }
 
 #cal-fri {
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(213, 215, 220);
+}
+
+#cal-fri div {
+    border-bottom: 1px solid rgb(213, 215, 220);
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
 }
 
 #cal-sat {
+}
+
+#cal-sat div {
+    border-bottom: 1px solid rgb(213, 215, 220);
+    flex: none;
+    height: 10%;
+    font-family: 'Roboto', 'sans-serif';
+    justify-content: center;
+    align-items: center;
 }
 
 .hour {
