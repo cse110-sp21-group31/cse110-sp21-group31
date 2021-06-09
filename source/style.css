@@ -91,7 +91,9 @@
 #side-label-column {
     grid-column: 1 / 2;
     height: 100%;
+
     background-color:lightblue;
+
     display: grid;
     grid-template-rows: 1fr 6fr 2fr;
 }
@@ -163,6 +165,9 @@
     display: grid;
     grid-template-columns: 0.2fr repeat(7, 1fr);
     border-bottom: 1px solid black;
+
+    background-color: rgb(242, 243, 244);
+
     overflow-y: scroll;
 }
 
@@ -235,7 +240,7 @@
 */
 #calendar-events-row div {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
 }
 
 #cal-sun {
@@ -244,7 +249,9 @@
 }
 
 #cal-sun div {
+
     border-bottom: 1px solid rgb(213, 215, 220);
+
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -328,6 +335,7 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+
 }
 
 .hour {
@@ -366,7 +374,6 @@
 }
 
 #cal-task-sat {
-
 }
 
 #middle-item-log {
@@ -423,8 +430,19 @@
     border-bottom: 1px solid black;
 }
 
+[contenteditable] {
+    outline: 0px solid transparent;
+}
+
 #notes-text-area {
     grid-row: 2 / 3;
+    font-family: 'Sen', 'sans-serif';
+    padding: 15px;
+}
+
+#notes-text-area:empty:before{
+    content:attr(data-text);
+    color: gray;
 }
 
 #middle-item-media {
@@ -529,6 +547,24 @@ select {
     margin: 0px 5px 0px 5px;
 }
 
+#tag-selection {
+    position: absolute;
+    bottom: 1.5%;
+    right: 4.5%;
+}
+
+.all-tags {
+    width: 120px;
+}
+
+#tags-selector input {
+    position: absolute;
+    right: 4.5%;
+    bottom: 1.5%;
+    height: 30px;
+    width: 125px;
+}
+
 #upload-img {
     display: flex;
     flex-direction: row;
@@ -592,7 +628,8 @@ body {
 
 /* custom element in the middle section stylizing */
 
-event-log, task-log {
+event-log,
+task-log {
     display: flex;
     height: 25%;
     width: 100%;
@@ -603,16 +640,16 @@ event-log, task-log {
     overflow: hidden;
 }
 
-event-log:hover, task-log:hover {
+event-log:hover,
+task-log:hover {
     background-color: rgb(157, 207, 223);
     overflow: hidden;
 }
-
 /*
     Experimental Sidebar Styling
 */
 #main {
-    transition: margin-left .5s;
+    transition: margin-left 0.5s;
     padding: 16px;
 }
 
@@ -629,7 +666,7 @@ event-log:hover, task-log:hover {
     transition: 0.3s;
     padding-top: 60px;
 }
-  
+
 .sidebar p {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
@@ -649,18 +686,18 @@ event-log:hover, task-log:hover {
     display: block;
     transition: 0.3s;
 }
-  
+
 .sidebar a:hover {
     color: #f1f1f1;
 }
-  
+
 .sidebar .closebtn {
     position: absolute;
     top: 0;
     right: 25px;
     font-size: 36px;
     margin-left: 50px;
-}  
+}
 
 #log-events-area label {
     font-family: 'Roboto', 'sans-serif';
@@ -669,4 +706,41 @@ event-log:hover, task-log:hover {
 /* Weekly Log */
 #header {
     font-size: xx-large;
+}
+
+.UCSD-tag {
+    background-color: rgb(161, 183, 122);
+}
+
+.lecture-tag {
+    background-color: salmon;
+}
+
+.other-tag {
+    background-color: violet;
+}
+
+/* Color Tags */
+.red-tag {
+    background-color: rgb(166, 39, 0);
+}
+
+.blue-tag {
+    background-color: rgb(64, 129, 183);
+}
+
+.green-tag {
+    background-color: rgb(82, 173, 124);
+}
+
+.orange-tag {
+    background-color: rgb(244, 135, 45);
+}
+
+.violet-tag {
+    background-color: rgb(218, 189, 246);
+}
+
+.pink-tag {
+    background-color: rgb(255, 163, 163);
 }
