@@ -7,36 +7,36 @@ window.curDate = new Date();
 /* access log components */
 const taskArea = document.getElementById('log-tasks-area');
 const eventArea = document.getElementById('log-events-area');
-const noteArea = document.getElementById('notes-text-area');
-const mediaArea = document.getElementById('media-text-area');
+// const noteArea = document.getElementById('notes-text-area');
+// const mediaArea = document.getElementById('media-text-area');
 const forward = document.getElementById('right-arrow');
 const backward = document.getElementById('left-arrow');
-const sunday = document.getElementById('cal-sun');
-const monday = document.getElementById('cal-mon');
-const tueday = document.getElementById('cal-tues');
-const wednesday = document.getElementById('cal-wed');
-const thursday = document.getElementById('cal-thurs');
-const friday = document.getElementById('cal-fri');
-const saturday = document.getElementById('cal-sat');
+// const sunday = document.getElementById('cal-sun');
+// const monday = document.getElementById('cal-mon');
+// const tueday = document.getElementById('cal-tues');
+// const wednesday = document.getElementById('cal-wed');
+// const thursday = document.getElementById('cal-thurs');
+// const friday = document.getElementById('cal-fri');
+// const saturday = document.getElementById('cal-sat');
 const sideBar = document.querySelector('#mySideBar ul');
 
 
-/**
- * Removes the current content from the log, notepad, and media tab
+/** TODO:
+ * Removes the current content from the weekly log 
  */
-function removeAll() {
-    const taskChildren = taskArea.childNodes;
-    const taskLength = taskChildren.length;
-    for (let i = 0; i < taskLength; i += 1) {
-        taskArea.removeChild(taskArea.lastChild);
-    }
-
-    const eveChildren = eventArea.childNodes;
-    const eveLength = eveChildren.length;
-    for (let i = 0; i < eveLength; i += 1) {
-        eventArea.removeChild(eventArea.lastChild);
-    }
-}
+// function removeAll() {
+//     const taskChildren = taskArea.childNodes;
+//     const taskLength = taskChildren.length;
+//     for (let i = 0; i < taskLength; i += 1) {
+//         taskArea.removeChild(taskArea.lastChild);
+//     }
+// 
+//     const eveChildren = eventArea.childNodes;
+//     const eveLength = eveChildren.length;
+//     for (let i = 0; i < eveLength; i += 1) {
+//         eventArea.removeChild(eventArea.lastChild);
+//     }
+// }
 
 // this function is here just as a reference
 // so i can use it in populate()
