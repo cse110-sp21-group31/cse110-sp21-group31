@@ -24,7 +24,6 @@ jobs:
       - run: npm run docs
         working-directory: ./source
       - uses: cpina/github-action-push-to-another-repository@main
-        working-directory: ./source
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
