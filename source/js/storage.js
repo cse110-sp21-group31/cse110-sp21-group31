@@ -182,7 +182,7 @@ export {
     addEvent,
     addCustomTag,
     getCustomTags,
-    updateTaskChecked
+    updateTaskChecked,
 };
 
 /*

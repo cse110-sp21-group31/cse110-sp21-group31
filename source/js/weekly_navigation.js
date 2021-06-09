@@ -1,33 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Source: js/navigation.js</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Source: js/navigation.js</h1>
-
-    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>import { getDaysData } from './storage.js';
-import { getDaysKey } from './date.js';
+import { getDaysData } from './storage.js';
+import { getDaysKey, getName } from './date.js';
 
 /* date variables */
 window.curDate = new Date();
@@ -47,25 +19,25 @@ const backward = document.getElementById('left-arrow');
 function removeAll() {
     const taskChildren = taskArea.childNodes;
     const taskLength = taskChildren.length;
-    for (let i = 0; i &lt; taskLength; i += 1) {
+    for (let i = 0; i < taskLength; i += 1) {
         taskArea.removeChild(taskArea.lastChild);
     }
 
     const eveChildren = eventArea.childNodes;
     const eveLength = eveChildren.length;
-    for (let i = 0; i &lt; eveLength; i += 1) {
+    for (let i = 0; i < eveLength; i += 1) {
         eventArea.removeChild(eventArea.lastChild);
     }
 
     const mediaChildren = mediaArea.childNodes;
     const mediaLength = mediaChildren.length;
-    for (let i = 0; i &lt; mediaLength; i += 1) {
+    for (let i = 0; i < mediaLength; i += 1) {
         mediaArea.removeChild(mediaArea.lastChild);
     }
 
     const noteChildren = noteArea.childNodes;
     const noteLength = noteChildren.length;
-    for (let i = 0; i &lt; noteLength; i += 1) {
+    for (let i = 0; i < noteLength; i += 1) {
         noteArea.removeChild(noteArea.lastChild);
     }
 }
@@ -92,9 +64,28 @@ function isLinkImage(link) {
  */
 function populate(key) {
     const log = getDaysData(key);
+    const name = getName(key);
 
-    document.getElementsByTagName('h3')[0].innerText = log.name;
+    const title = [
+        'Week of ',
+        name.split(',')[1],
+        ', ',
+        window.curDate.getFullYear(),
+    ].join('');
 
+    document.getElementsByTagName('h3')[0].innerText = title;
+
+    // Sets all dates for each day
+    const days = document.getElementsByClassName('date');
+    for (let i = 0; i < 7; i += 1) {
+        const tempKey = getDaysKey(window.curDate);
+        // eslint-disable-next-line prefer-destructuring
+        days[i].innerText = getName(tempKey).split(',')[1];
+        window.curDate.setDate(window.curDate.getDate() + 1);
+    }
+
+    // Reset curDate to beginning of week
+    window.curDate.setDate(window.curDate.getDate() - 7);
     removeAll();
 
     const allTasks = log.tasks;
@@ -150,7 +141,7 @@ window.onpopstate = popState;
 forward.addEventListener('click', (event) => {
     event.preventDefault();
 
-    window.curDate.setDate(window.curDate.getDate() + 1);
+    window.curDate.setDate(window.curDate.getDate() + 7);
     const key = getDaysKey(window.curDate);
 
     setState(key);
@@ -163,14 +154,31 @@ forward.addEventListener('click', (event) => {
 backward.addEventListener('click', (event) => {
     event.preventDefault();
 
-    window.curDate.setDate(window.curDate.getDate() - 1);
+    window.curDate.setDate(window.curDate.getDate() - 7);
     const key = getDaysKey(window.curDate);
 
     setState(key);
 });
 
+/**
+ * When the initial document is loaded, call populate on today's journal content
+ * @listens document#DOMContentLoaded
+ */
+document.addEventListener('DOMContentLoaded', () => {
+    // set the current state
+    // window.localStorage.clear();
+    if (window.curDate.getDay() !== 0) {
+        window.curDate.setDate(
+            window.curDate.getDate() - window.curDate.getDay()
+        );
+    }
+    const key = getDaysKey(window.curDate);
+    setState(key);
+});
+
 // side bar navigate
 // .forEach replaced to satisfy linter
+
 function sideBarClick(event) {
     event.preventDefault();
     setState(getDaysKey(new Date(this.innerText)));
@@ -178,33 +186,6 @@ function sideBarClick(event) {
 }
 
 const arr = document.querySelectorAll('#mySidebar small a');
-for (let i = 0; i &lt; arr.length; i += 1) {
+for (let i = 0; i < arr.length; i += 1) {
     arr[i].onclick = sideBarClick;
 }
-
-export default setState;
-</code></pre>
-        </article>
-    </section>
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#getCustomTagColor">getCustomTagColor</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#toggleOptionsDisplay">toggleOptionsDisplay</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 09 2021 02:24:31 GMT+0000 (Coordinated Universal Time)
-
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
-</html>
