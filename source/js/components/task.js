@@ -36,7 +36,7 @@ class Task extends Log {
         };
 
         // make task title strikethrough if the checkbox is clicked (and vice-versa)
-        this.checkDOM.onclick = () => {
+        this.checkDOM.onchange = () => {
             if (this.checkDOM.checked === true) {
                 this.titleDOM.innerHTML = this.titleDOM.innerText.strike();
             }else {
