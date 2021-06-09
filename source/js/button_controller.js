@@ -6,6 +6,7 @@ button_controller.js
 contains tag selection and input bar upload funcionality
 */
 
+
 const tagSelectorDOM = document.getElementById('tag-selection');
 const applyTagsDOM = tagSelectorDOM.querySelector('#apply-tags-option');
 const newHeight = '150px'; // new height of tag selection box when clicked on
@@ -110,7 +111,7 @@ tagSelectorDOM.addEventListener('change', function handleTags() {
  * @param {string} oldTime - "hh:mm (24hr)"
  * @returns "hh:mm AM" (12hr)
  */
-function convert24To12(oldTime) {
+export function convert24To12(oldTime) {
     if (oldTime !== '') {
         let endHour = oldTime.split(':', 2)[0];
         const endMin = oldTime.split(':', 2)[1];
@@ -136,106 +137,109 @@ function convert24To12(oldTime) {
     return '';
 }
 
-/*
+    /*
 implements upload button functionality
 */
-document
-    .getElementById('task-event-textbox')
-    .addEventListener('keypress', (button) => {
-        if (button.key === 'Enter') {
-            const input = document.getElementById('task-event-textbox');
-            // ensure bar is not empty
-            if (!input.value.replace(/\s/g, '').length) {
-                return;
-            }
-
-            // grab event/tag/time info
-            const entry = {};
-
-            let taskEventChoice = document.getElementById(
-                'task-event-selector'
-            ).value;
-            if (taskEventChoice === 'default') {
-                // default to task
-                taskEventChoice = 'Task';
-            }
-            if (taskEventChoice === 'Task') {
-                /*  entry should contain:
-                 *
-                 *   content: "Go on a run",
-                 *   completed: true/false,
-                 *   tags: ["Other", ...]
-                 */
-                entry.content = input.value;
-                entry.completed = false;
-                entry.tags = [];
-
-                // collect selected tags from tag bar
-                const tags = document.getElementById('tag-selection').children;
-                for (let i = 0; i < tags.length; i += 1) {
-                    if (tags[i].innerHTML.includes('✓')) {
-                        entry.tags.push(
-                            tags[i].innerHTML.substring(
-                                0,
-                                tags[i].innerHTML.length - 2
-                            )
-                        );
-                    }
+    document
+        .getElementById('task-event-textbox')
+        .addEventListener('keypress', (button) => {
+            if (button.key === 'Enter') {
+                const input = document.getElementById('task-event-textbox');
+                // ensure bar is not empty
+                if (!input.value.replace(/\s/g, '').length) {
+                    return;
                 }
 
-                // initialize task element
-                const newEntry = document.createElement('task-log');
-                newEntry.content = entry;
+                // grab event/tag/time info
+                const entry = {};
 
-                // Append task element to log (subject to change according to log css etc.)
-                const taskSpace = document.getElementById('log-tasks-area');
-                taskSpace.appendChild(newEntry);
-
-                addTask(getDaysKey(window.curDate), entry);
-            } else if (taskEventChoice === 'Event') {
-                /*  entry should contain:
-                 *
-                 *   content: "CSE 110 Lecture",
-                 *   tags: ["Lecture", ...],
-                 *   from: 1621308663,   (currently contains hh:mm A/PM)
-                 *   to: 1621367364      (currently contains hh:mm A/PM)
-                 */
-                entry.content = input.value;
-                entry.tags = [];
-
-                // collect selected tags from tag bar
-                const tags = document.getElementById('tag-selection').children;
-                for (let i = 0; i < tags.length; i += 1) {
-                    if (tags[i].innerHTML.includes('✓')) {
-                        entry.tags.push(
-                            tags[i].innerHTML.substring(
-                                0,
-                                tags[i].innerHTML.length - 2
-                            )
-                        );
-                    }
+                let taskEventChoice = document.getElementById(
+                    'task-event-selector'
+                ).value;
+                if (taskEventChoice === 'default') {
+                    // default to task
+                    taskEventChoice = 'Task';
                 }
+                if (taskEventChoice === 'Task') {
+                    /*  entry should contain:
+                     *
+                     *   content: "Go on a run",
+                     *   completed: true/false,
+                     *   tags: ["Other", ...]
+                     */
+                    entry.content = input.value;
+                    entry.completed = false;
+                    entry.tags = [];
 
-                // pull time info from clock icon
-                entry.from = convert24To12(
-                    document.getElementById('start-time').children[0].value
-                );
-                entry.to = convert24To12(
-                    document.getElementById('end-time').children[0].value
-                );
+                    // collect selected tags from tag bar
+                    const tags =
+                        document.getElementById('tag-selection').children;
+                    for (let i = 0; i < tags.length; i += 1) {
+                        if (tags[i].innerHTML.includes('✓')) {
+                            entry.tags.push(
+                                tags[i].innerHTML.substring(
+                                    0,
+                                    tags[i].innerHTML.length - 2
+                                )
+                            );
+                        }
+                    }
 
-                // initialize event element
-                const newEntry = document.createElement('event-log');
-                newEntry.content = entry;
+                    // initialize task element
+                    const newEntry = document.createElement('task-log');
+                    newEntry.content = entry;
 
-                // Append event element to log (subject to change)
-                const eventSpace = document.getElementById('log-events-area');
-                eventSpace.appendChild(newEntry);
-                addEvent(getDaysKey(window.curDate), entry);
+                    // Append task element to log (subject to change according to log css etc.)
+                    const taskSpace = document.getElementById('log-tasks-area');
+                    taskSpace.appendChild(newEntry);
+
+                    addTask(getDaysKey(window.curDate), entry);
+                } else if (taskEventChoice === 'Event') {
+                    /*  entry should contain:
+                     *
+                     *   content: "CSE 110 Lecture",
+                     *   tags: ["Lecture", ...],
+                     *   from: 1621308663,   (currently contains hh:mm A/PM)
+                     *   to: 1621367364      (currently contains hh:mm A/PM)
+                     */
+                    entry.content = input.value;
+                    entry.tags = [];
+
+                    // collect selected tags from tag bar
+                    const tags =
+                        document.getElementById('tag-selection').children;
+                    for (let i = 0; i < tags.length; i += 1) {
+                        if (tags[i].innerHTML.includes('✓')) {
+                            entry.tags.push(
+                                tags[i].innerHTML.substring(
+                                    0,
+                                    tags[i].innerHTML.length - 2
+                                )
+                            );
+                        }
+                    }
+
+                    // pull time info from clock icon
+                    entry.from = convert24To12(
+                        document.getElementById('start-time').children[0].value
+                    );
+                    entry.to = convert24To12(
+                        document.getElementById('end-time').children[0].value
+                    );
+
+                    // initialize event element
+                    const newEntry = document.createElement('event-log');
+                    newEntry.content = entry;
+
+                    // Append event element to log (subject to change)
+                    const eventSpace =
+                        document.getElementById('log-events-area');
+                    eventSpace.appendChild(newEntry);
+                    addEvent(getDaysKey(window.curDate), entry);
+                }
+                // clear input bar
+                input.value = '';
             }
-            // clear input bar
-            input.value = '';
-        }
-    });
-
+        });
+}
 export default toggleOptionsDisplay;
