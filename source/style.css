@@ -458,7 +458,7 @@
     margin: 2% 1% 2% 1%;
     justify-content: center;
     align-items: center;
-    height: 40%;
+    height: 80%;
     width: 95%;
     border: 1px solid transparent;
     border-radius: 15px;
@@ -585,12 +585,12 @@ body {
 
 #popup-clock {
     display: none;
-    width: 14%;
+    width: 10%;
     height: 15%;
     position: fixed;
-    bottom: 9%;
-    right: 9%;
-    background-color: rgba(166, 239, 255, 0.551);
+    bottom: 9%; 
+    right: 14.5%;
+    background-color: rgba(166, 239, 255);
 }
 
 #popup-clock label {
@@ -703,7 +703,7 @@ event-log:hover, task-log:hover {
     position: fixed;
     bottom: 9%; 
     right: 1.2%;
-    background-color: rgba(166, 239, 255, 0.551);
+    background-color: rgba(166, 239, 255);
 }
 
 #popup-media label {
