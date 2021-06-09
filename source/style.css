@@ -354,6 +354,7 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
 }
 
 #cal-wed div label {
@@ -382,6 +383,7 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
 }
 
 #cal-thurs div label {
@@ -409,6 +411,7 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
 }
 
 #cal-fri div label {
@@ -435,6 +438,7 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
 }
 
 #cal-sat div label {
