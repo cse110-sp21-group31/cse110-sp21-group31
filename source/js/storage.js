@@ -187,6 +187,7 @@ export {
     addCustomTag,
     getCustomTags,
     updateTaskChecked,
+    addCustomTagStorage,
 };
 
 /*
