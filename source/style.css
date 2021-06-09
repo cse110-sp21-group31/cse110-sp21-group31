@@ -455,11 +455,21 @@
 .media-item {
     display: flex;
     flex: none;
-    margin: 2% 0 0 0;
+    margin: 2% 1% 2% 1%;
     justify-content: center;
     align-items: center;
     height: 40%;
-    width: 100%;
+    width: 95%;
+    border: 1px solid transparent;
+    border-radius: 15px;
+}
+
+.iframe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    height: 100%;
 }
 
 .item-footer {
@@ -686,7 +696,7 @@ event-log:hover, task-log:hover {
     font-size: xx-large;
 }
 
-/* #popup-media {
+#popup-media {
     display: none;
     width: 13%;
     height: 7%;
@@ -699,5 +709,5 @@ event-log:hover, task-log:hover {
 #popup-media label {
     font-family: 'Roboto', 'sans-serif';
     text-align: center;
-} */
+}
 
