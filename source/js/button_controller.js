@@ -81,7 +81,7 @@ document
             }
 
             // grab event/tag/time info
-            const entry = [];
+            const entry = {};
 
             // console.log(document.getElementById("task-event-selector").value);
             let taskEventChoice = document.getElementById(
