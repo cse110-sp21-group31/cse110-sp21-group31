@@ -1,3 +1,5 @@
+import { addTask } from './storage.js';
+import { getDaysKey } from './date.js';
 import { addCustomTag } from './storage.js';
 
 /* 
@@ -149,6 +151,8 @@ document
                 // Append task element to log (subject to change according to log css etc.)
                 const taskSpace = document.getElementById('log-tasks-area');
                 taskSpace.appendChild(newEntry);
+
+                addTask(getDaysKey(window.curDate), entry);
             } else if (taskEventChoice === 'Event') {
                 /*  entry should contain:
                  *
