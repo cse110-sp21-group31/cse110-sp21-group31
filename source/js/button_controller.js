@@ -29,23 +29,47 @@ function toggleOptionsDisplay() {
  * handling the click events on the document
  */
 document.addEventListener('click', (event) => {
-    const eleClass = event.target.getAttribute('class');
+    const elements = document.elementsFromPoint(event.clientX, event.clientY);
 
-    // onclick tag selector, display the elements and
-    // expand the height of tag selector
-    if (event.target === applyTagsDOM) {
-        if (tagSelectorDOM.style.height === newHeight) return;
-        tagSelectorDOM.style.height = newHeight;
-        toggleOptionsDisplay();
+    let closeSideBar = true;
+    let openTagWindow = true;
+    let closeTagWindow = true;
+
+    for (let i = 0; i < elements.length; i += 1) {
+        const eleClass = elements[i].getAttribute('class');
+        const eleId = elements[i].getAttribute('id');
+
+        // onclick tag selector, display the elements and
+        // expand the height of tag selector
+        if (openTagWindow && elements[i] === applyTagsDOM) {
+            if (tagSelectorDOM.style.height !== newHeight) {
+                tagSelectorDOM.style.height = newHeight;
+                toggleOptionsDisplay();
+                openTagWindow = false;
+            }
+        }
+
+        // if you clicked on a element that has class 'all-tags'
+        // then you cant close tag window
+        if (eleClass !== null && eleClass.indexOf('all-tags') !== -1)
+            closeTagWindow = false;
+
+        // if you clicked on the sidebar itself
+        // or the opensidebar button, dont close side bar
+        if (eleId === 'mySidebar' || eleClass === 'openbtn')
+            closeSideBar = false;
     }
 
-    // onclick other places, hide the elements and
-    // decrease the height of tag selector
-    else if (eleClass === null || eleClass.indexOf('all-tags') === -1) {
-        if (tagSelectorDOM.style.height === '') return;
+    if (closeTagWindow && tagSelectorDOM.style.height !== '') {
         tagSelectorDOM.style.height = '';
         toggleOptionsDisplay();
     }
+
+    if (
+        closeSideBar &&
+        document.getElementById('mySidebar').style.width !== '0px'
+    )
+        document.querySelector('.closebtn').onclick(event);
 });
 
 const addTagDOM = document.getElementById('add-tag-option');
