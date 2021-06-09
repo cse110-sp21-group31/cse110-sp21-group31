@@ -699,7 +699,7 @@ event-log:hover, task-log:hover {
 #popup-media {
     display: none;
     width: 13%;
-    height: 7%;
+    height: 9%;
     position: fixed;
     bottom: 9%; 
     right: 1.2%;
