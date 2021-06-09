@@ -30,3 +30,4 @@ jobs:
           destination-github-username: cse110-sp21-group31
           destination-repository-name: cse110-sp21-group31-docs
           commit-message: 'Update generated documentation'
+          target-branch: 'main'
