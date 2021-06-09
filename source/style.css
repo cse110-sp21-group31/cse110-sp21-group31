@@ -92,7 +92,7 @@
     grid-column: 1 / 2;
     height: 100%;
 
-    background-color:lightblue;
+    background-color: lightblue;
 
     display: grid;
     grid-template-rows: 1fr 6fr 2fr;
@@ -208,31 +208,24 @@
 }
 
 #cal-date-sun {
-
 }
 
 #cal-date-mon {
-
 }
 
 #cal-date-tues {
-
 }
 
 #cal-date-wed {
-
 }
 
 #cal-date-thurs {
-
 }
 
 #cal-date-fri {
-
 }
 
 #cal-date-sat {
-
 }
 
 /* 
@@ -249,7 +242,6 @@
 }
 
 #cal-sun div {
-
     border-bottom: 1px solid rgb(213, 215, 220);
 
     flex: none;
@@ -325,7 +317,6 @@
 }
 
 #cal-sat {
-
 }
 
 #cal-sat div {
@@ -335,7 +326,6 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
-
 }
 
 .hour {
@@ -440,8 +430,8 @@
     padding: 15px;
 }
 
-#notes-text-area:empty:before{
-    content:attr(data-text);
+#notes-text-area:empty:before {
+    content: attr(data-text);
     color: gray;
 }
 
@@ -681,7 +671,7 @@ task-log:hover {
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-family: 'Sen', 'sans-serif';
-    font-size: 25px;
+    font-size: 18px;
     color: #000000;
     display: block;
     transition: 0.3s;
