@@ -1,6 +1,6 @@
 import Log from './log.js';
 
-export default class Event extends Log {
+class Event extends Log {
     constructor() {
         super();
         const sha = this.shadowRoot;

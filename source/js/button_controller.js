@@ -86,7 +86,7 @@ tagSelectorDOM.addEventListener('change', function handleTags() {
  * @param {string} oldTime - "hh:mm (24hr)"
  * @returns "hh:mm AM" (12hr)
  */
-export function convert24To12(oldTime) {
+function convert24To12(oldTime) {
     if (oldTime !== '') {
         let endHour = oldTime.split(':', 2)[0];
         const endMin = oldTime.split(':', 2)[1];
