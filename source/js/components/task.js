@@ -25,23 +25,22 @@ class Task extends Log {
         this.titleDOM = sha.querySelector('.checkbox-label-container span');
         this.checkDOM = sha.querySelector('.checkbox-label-container input');
 
-        // set checkbox onclick event to update things
+        // set checkbox onclick event to update localStorage
         this.checkDOM.setAttribute(
             'data-ind',
             document.querySelector('#log-tasks-area').children.length
         );
-        this.checkDOM.onclick = () => {
+        this.checkDOM.onclick = function check() {
             const key = getDaysKey(window.curDate);
-            updateTaskChecked(key, this.checkDOM.getAttribute('data-ind'), this.checkDOM.checked);
+            updateTaskChecked(key, this.getAttribute('data-ind'), this.checked);
         };
 
         // make task title strikethrough if the checkbox is clicked (and vice-versa)
-        this.checkDOM.onchange = () => {
-            const title = sha.querySelector('.checkbox-label-container span');
+        this.checkDOM.onclick = () => {
             if (this.checkDOM.checked === true) {
-                this.titleDOM.innerHTML = title.innerText.strike();
+                this.titleDOM.innerHTML = this.titleDOM.innerText.strike();
             }else {
-                this.titleDOM.innerHTML = title.innerText;
+                this.titleDOM.innerHTML = this.titleDOM.innerText;
             }
         };
     }
@@ -57,8 +56,8 @@ class Task extends Log {
      *
      */
     set content(task) {
-        // set title
-        this.titleDOM.innerText = task.content;
+        // set title (strikethrough if checkbox is checked)
+        this.titleDOM.innerHTML = (task.completed) ? task.content.strike() : task.content;
 
         // set status of the checkbox
         this.checkDOM.checked = task.completed;
