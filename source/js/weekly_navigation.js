@@ -75,6 +75,17 @@ function populate(key) {
 
     document.getElementsByTagName('h3')[0].innerText = title;
 
+    // Sets all dates for each day
+    const days = document.getElementsByClassName('date');
+    for (let i = 0; i < 7; i += 1) {
+        const tempKey = getDaysKey(window.curDate);
+        // eslint-disable-next-line prefer-destructuring
+        days[i].innerText = getName(tempKey).split(',')[1];
+        window.curDate.setDate(window.curDate.getDate() + 1);
+    }
+
+    // Reset curDate to beginning of week
+    window.curDate.setDate(window.curDate.getDate() - 7);
     removeAll();
 
     const allTasks = log.tasks;
