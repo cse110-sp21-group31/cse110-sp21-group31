@@ -136,7 +136,105 @@ export function convert24To12(oldTime) {
     return '';
 }
 
-/*
+/**
+ * toggle the css display value
+ * for the tag selection options
+ */
+function toggleOptionsDisplay() {
+    const optionArr = document.querySelectorAll('.all-tags');
+
+    // loop over all the options in the array to toggle the display
+    for (let i = 0; i < optionArr.length; i += 1) {
+        const item = optionArr[i];
+        item.style.display = item.style.display === '' ? 'none' : '';
+        item.selected = false;
+    }
+}
+
+const tagSelectorDOM = document.getElementById('tag-selection');
+
+if (tagSelectorDOM !== null) {
+    const applyTagsDOM = tagSelectorDOM.querySelector('#apply-tags-option');
+    const newHeight = '150px'; // new height of tag selection box when clicked on
+
+    /**
+     * handling the click events on the document
+     */
+    document.addEventListener('click', (event) => {
+        const eleClass = event.target.getAttribute('class');
+
+        // onclick tag selector, display the elements and
+        // expand the height of tag selector
+        if (event.target === applyTagsDOM) {
+            if (tagSelectorDOM.style.height === newHeight) return;
+            tagSelectorDOM.style.height = newHeight;
+            toggleOptionsDisplay();
+        }
+
+        // onclick other places, hide the elements and
+        // decrease the height of tag selector
+        else if (eleClass === null || eleClass.indexOf('all-tags') === -1) {
+            if (tagSelectorDOM.style.height === '') return;
+            tagSelectorDOM.style.height = '';
+            toggleOptionsDisplay();
+        }
+    });
+
+    const addTagDOM = document.getElementById('add-tag-option');
+    addTagDOM.addEventListener('keypress', (button) => {
+        if (button.key === 'Enter') {
+            // ensure bar is not empty
+            if (addTagDOM.value.replace(/\s/g, '').length) {
+                // replace spaces and dashes with underscores
+                let tagText = addTagDOM.value;
+                tagText = tagText.replace(/\s/g, '_');
+                tagText = tagText.replace('-', '_');
+                addCustomTag(tagText);
+                addTagDOM.value = '';
+            }
+        }
+    });
+
+    // tag selecting tags onclick
+    tagSelectorDOM.addEventListener('change', function handleTags() {
+        if (this.value === 'default') {
+            return;
+        }
+
+        // skip over the last option which is padding
+        if (this.value === '') {
+            this.value = 'default';
+            return;
+        }
+
+        const tags = this.children;
+        let selectedCount = 0;
+        for (let i = 0; i < tags.length; i += 1) {
+            if (tags[i].innerHTML.includes('✓')) {
+                selectedCount += 1;
+            }
+        }
+
+        addTagDOM.placeholder = 'Add Tag Here...';
+        for (let i = 0; i < tags.length; i += 1) {
+            if (tags[i].innerHTML === this.value) {
+                if (tags[i].innerHTML.includes('✓')) {
+                    tags[i].innerHTML = this.value.substring(
+                        0,
+                        this.value.length - 2
+                    );
+                } else if (selectedCount < 3) {
+                    // add tag if check not present and less that 3 selected currently
+                    tags[i].innerHTML = `${this.value} ✓`;
+                } else {
+                    addTagDOM.placeholder = '3 Tags Max!';
+                }
+            }
+        }
+        this.value = 'default';
+    });
+
+    /*
 implements upload button functionality
 */
 document
