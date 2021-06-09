@@ -3,6 +3,14 @@
     width: 100%;
     height: 100%;
     display: grid;
+    grid-template-rows: 10% auto 7%;
+    grid-gap: 5px;
+}
+
+.container-weekly {
+    width: 100%;
+    height: 100%;
+    display: grid;
     grid-template-rows: 10% auto;
     grid-gap: 5px;
 }
@@ -456,6 +464,12 @@
     grid-row: 2 / 3;
 }
 
+.item-footer {
+    grid-row: 3 / 4;
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    background-color: lightpink;
+}
 
 #task-event-selector-area {
     grid-column: 1 / 2;
