@@ -26,21 +26,16 @@
     
     <section>
         <article>
-<<<<<<< HEAD
-            <pre class="prettyprint source linenums"><code>import { addCustomTag } from './storage.js';
-
+            <pre class="prettyprint source linenums"><code>import { addTask, addCustomTag } from './storage.js';
+import { getDaysKey } from './date.js';
 /* 
-=======
-            <pre class="prettyprint source linenums"><code>/* 
->>>>>>> main
 button_controller.js
 contains tag selection and input bar upload funcionality
 */
 
-<<<<<<< HEAD
 const tagSelectorDOM = document.getElementById('tag-selection');
 const applyTagsDOM = tagSelectorDOM.querySelector('#apply-tags-option');
-const optionArr = document.querySelectorAll('.all-tags');
+
 const newHeight = '150px'; // new height of tag selection box when clicked on
 
 /**
@@ -48,6 +43,8 @@ const newHeight = '150px'; // new height of tag selection box when clicked on
  * for the tag selection options
  */
 function toggleOptionsDisplay() {
+    const optionArr = document.querySelectorAll('.all-tags');
+
     // loop over all the options in the array to toggle the display
     for (let i = 0; i &lt; optionArr.length; i += 1) {
         const item = optionArr[i];
@@ -56,14 +53,12 @@ function toggleOptionsDisplay() {
     }
 }
 
-// the Apply Tags should be visible at the start while others are hidden
-applyTagsDOM.style.display = 'none';
-toggleOptionsDisplay();
-
 /**
  * handling the click events on the document
  */
 document.addEventListener('click', (event) => {
+    const eleClass = event.target.getAttribute('class');
+
     // onclick tag selector, display the elements and
     // expand the height of tag selector
     if (event.target === applyTagsDOM) {
@@ -74,7 +69,7 @@ document.addEventListener('click', (event) => {
 
     // onclick other places, hide the elements and
     // decrease the height of tag selector
-    else if (event.target.getAttribute('class') !== 'all-tags') {
+    else if (eleClass === null || eleClass.indexOf('all-tags') === -1) {
         if (tagSelectorDOM.style.height === '') return;
         tagSelectorDOM.style.height = '';
         toggleOptionsDisplay();
@@ -126,71 +121,6 @@ document.addEventListener('keypress', (button) => {
         tags.click();
     }
 });
-=======
-import { addTask } from './storage.js';
-import { getDaysKey } from './date.js';
-
-/*
-implements tag selector functionality
-*/
-document
-    .getElementById('tag-selection')
-    .addEventListener('change', function handleTags() {
-        if (this.value === 'default') {
-            return;
-        }
-        if (this.value === 'Add Tag Here...') {
-            // open dialog to enter custom tag
-            this.value = 'default';
-            return;
-        }
-        const tags = this.children;
-        for (let i = 0; i &lt; tags.length; i += 1) {
-            if (tags[i].innerHTML === this.value) {
-                if (tags[i].innerHTML.includes('✓')) {
-                    tags[i].innerHTML = this.value.substring(
-                        0,
-                        this.value.length - 2
-                    );
-                } else {
-                    tags[i].innerHTML = `${this.value} ✓`;
-                }
-                this.value = 'default';
-            }
-        }
-    });
-
-/**
- *
- * @param {string} oldTime - "hh:mm (24hr)"
- * @returns "hh:mm AM" (12hr)
- */
-function convert24To12(oldTime) {
-    if (oldTime !== '') {
-        let endHour = oldTime.split(':', 2)[0];
-        const endMin = oldTime.split(':', 2)[1];
-        let endSuffix = '';
-        if (endHour > 12) {
-            endHour -= 12;
-            if (endHour &lt; 10) {
-                endHour = `0${endHour}`;
-            }
-            endSuffix = 'PM';
-        } else {
-            if (endHour === '12') {
-                endSuffix = 'PM';
-            } else {
-                endSuffix = 'AM';
-            }
-            if (endHour === '00') {
-                endHour = '12';
-            }
-        }
-        return `${endHour}:${endMin} ${endSuffix}`;
-    }
-    return '';
-}
->>>>>>> main
 
 /*
 implements upload button functionality
@@ -206,7 +136,7 @@ document
             }
 
             // grab event/tag/time info
-            const entry = [];
+            const entry = {};
 
             // console.log(document.getElementById("task-event-selector").value);
             let taskEventChoice = document.getElementById(
@@ -247,30 +177,8 @@ document
                 // Append task element to log (subject to change according to log css etc.)
                 const taskSpace = document.getElementById('log-tasks-area');
                 taskSpace.appendChild(newEntry);
-<<<<<<< HEAD
-=======
-                /* let item = {
-                name: "Wednesday, June 2",
-                notepad: "blan blah blah",
-                tasks: [
-                    {
-                        content: "Go on a run",
-                        completed: true/false,
-                        tags: ["Other"]
-                    }
-                ],
-                events: [
-                    {
-                        content: "CSE 110 Lecture",
-                        tags: "Lecture",
-                        from: 1621308663,
-                        to: 1621367364,
-                    }
-                ]
-                }
-                setData(getDaysKey(curDate), item); */
+
                 addTask(getDaysKey(window.curDate), entry);
->>>>>>> main
             } else if (taskEventChoice === 'Event') {
                 /*  entry should contain:
                  *
@@ -296,7 +204,6 @@ document
                 }
 
                 // pull time info from clock icon
-<<<<<<< HEAD
                 entry.from =
                     document.getElementById('start-time').children[0].value;
                 if (entry.from !== '') {
@@ -334,14 +241,6 @@ document
                 } else {
                     entry.to = '';
                 }
-=======
-                entry.from = convert24To12(
-                    document.getElementById('start-time').children[0].value
-                );
-                entry.to = convert24To12(
-                    document.getElementById('end-time').children[0].value
-                );
->>>>>>> main
 
                 // initialize event element
                 const newEntry = document.createElement('event-log');
@@ -355,6 +254,8 @@ document
             input.value = '';
         }
     });
+
+export default toggleOptionsDisplay;
 </code></pre>
         </article>
     </section>
@@ -365,21 +266,13 @@ document
 </div>
 
 <nav>
-<<<<<<< HEAD
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#defaultTags">defaultTags</a></li><li><a href="global.html#getCustomTagColor">getCustomTagColor</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#toggleOptionsDisplay">toggleOptionsDisplay</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
-=======
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#convert24To12">convert24To12</a></li><li><a href="global.html#getCustomTagColor">getCustomTagColor</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
->>>>>>> main
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addCustomTag">addCustomTag</a></li><li><a href="global.html#addEvent">addEvent</a></li><li><a href="global.html#addLink">addLink</a></li><li><a href="global.html#addTask">addTask</a></li><li><a href="global.html#getCustomTagColor">getCustomTagColor</a></li><li><a href="global.html#getData">getData</a></li><li><a href="global.html#getDaysKey">getDaysKey</a></li><li><a href="global.html#getName">getName</a></li><li><a href="global.html#getWeek">getWeek</a></li><li><a href="global.html#isLinkImage">isLinkImage</a></li><li><a href="global.html#populate">populate</a></li><li><a href="global.html#removeAll">removeAll</a></li><li><a href="global.html#returnStudentInfo">returnStudentInfo</a></li><li><a href="global.html#test">test</a></li><li><a href="global.html#toggleOptionsDisplay">toggleOptionsDisplay</a></li><li><a href="global.html#updateNotepad">updateNotepad</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-<<<<<<< HEAD
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Sun Jun 06 2021 19:34:29 GMT+0000 (Coordinated Universal Time)
-=======
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Wed Jun 09 2021 00:55:49 GMT+0000 (Coordinated Universal Time)
->>>>>>> main
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 18:59:25 GMT-0700 (Pacific Daylight Time)
 </footer>
 
 <script> prettyPrint(); </script>
