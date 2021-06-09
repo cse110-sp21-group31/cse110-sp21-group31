@@ -30,24 +30,19 @@ function getName(key) {
 
 /**
 getWeek
-@param key: input day key
 @return: an array of keys for each day in the week that key belongs in
 */
-function getWeek(key) {
-    const msPerDay = 24 * 60 * 60 * 1000;
-
-    // this defaults to browser timezone
-    // monday is 1
-    const currentDayOfWeek = new Date(`${key}T00:00:00`).getDay();
-
-    const sundayTime = Date.now() - currentDayOfWeek * msPerDay;
+function getWeek() {
+    const currentDayOfWeek = window.curDate.getDay();
+    const date = new Date();
+    date.setDate(window.curDate.getDate() - currentDayOfWeek);
 
     const result = [];
     for (let i = 0; i < 7; i += 1) {
-        // days of week
-        const date = new Date(sundayTime + i * msPerDay);
         result.push(getDaysKey(date));
+        date.setDate(date.getDate() + 1);
     }
+
     return result;
 }
 
@@ -62,4 +57,4 @@ function test(arg = true) {
 
 test();
 
-export { getDaysKey, getName };
+export { getDaysKey, getName, getWeek };
