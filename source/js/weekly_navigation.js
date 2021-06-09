@@ -85,7 +85,7 @@ function populate(key) {
             ]
         },
 
-        '2021-06-07': {
+        '2021-06-08': {
             name: "Thursday, May 13th",
             notepad: "blan blah blah",
             tasks: [
@@ -165,10 +165,20 @@ function populate(key) {
         const allTasks = log.tasks;
         // const allEve = log.events;
         
-        // CHANGE BELOW TO ONLY HAVE ONE DAY INSTEAD OF ALL
-        const allEve = test_events
-        
+        const allEve = test_events[tempKey].events;
+        const day = test_events[tempKey].name;
         console.log(allEve);
+
+        // content: "CSE 110 Lecture",
+        // tags: "Lecture",
+        // from: "4:00 AM",
+        // to: "5:30 AM"
+
+        for(let j = 0; j < allEve.length; j += 1 ){
+            if
+            let content = allEve[j].content;
+            
+        }
 
         // eslint-disable-next-line prefer-destructuring
         days[i].innerText = getName(tempKey).split(',')[1];
