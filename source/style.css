@@ -241,9 +241,21 @@
 /* 
     Days in Calendar Event Row 
 */
+
+/* Hide scrollbar for IE, Edge and Firefox */
+#calendar-events-row {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
 #calendar-events-row div {
     display: flex;
     flex-direction: column;
+}
+
+/* Hides scroll bar */
+#calendar-events-row::-webkit-scrollbar {
+    display: none;
 }
 
 #cal-sun {
