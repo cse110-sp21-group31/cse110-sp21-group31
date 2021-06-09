@@ -15,7 +15,6 @@ on:
 jobs:
   gen_docs:
     name: JSDoc Documentation
-    needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
