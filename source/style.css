@@ -270,6 +270,21 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+}
+
+#cal-sun div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    /* background-color: teal;
+    top: 50%; */
 }
 
 #cal-mon {
@@ -286,18 +301,18 @@
     overflow-y: hidden;
 }
 
-#mon-event-4am {
+#cal-mon div label {
     display: flex;
     flex-direction: row;
-    background-color: teal;
     color: white;
     justify-content: center;
     align-content: center;
-    align-items: center;
     position: relative;
     width: 100%;
     height: 100%;
-    top: 50%;
+    
+    /* background-color: teal;
+    top: 50%; */
 }
 
 #cal-tues {
@@ -311,6 +326,21 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+}
+
+#cal-tues div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    background-color: teal;
+    /* top: 50%; */
 }
 
 #cal-wed {
@@ -324,6 +354,20 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+}
+
+#cal-wed div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    /* background-color: teal;
+    top: 50%; */
 }
 
 #cal-thurs {
@@ -340,6 +384,20 @@
     align-items: center;
 }
 
+#cal-thurs div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    /* background-color: teal;
+    top: 50%; */
+}
+
 #cal-fri {
 }
 
@@ -353,6 +411,20 @@
     align-items: center;
 }
 
+#cal-fri div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    /* background-color: teal;
+    top: 50%; */
+}
+
 #cal-sat {
 }
 
@@ -363,6 +435,20 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+}
+
+#cal-sat div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    /* background-color: teal;
+    top: 50%; */
 }
 
 .hour {
