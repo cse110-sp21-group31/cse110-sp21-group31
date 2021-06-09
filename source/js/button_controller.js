@@ -57,28 +57,6 @@ export function convert24To12(oldTime) {
 if (tagSelectorDOM !== null) {
     const applyTagsDOM = tagSelectorDOM.querySelector('#apply-tags-option');
     const newHeight = '150px'; // new height of tag selection box when clicked on
-    /**
-     * handling the click events on the document
-     */
-    document.addEventListener('click', (event) => {
-        const eleClass = event.target.getAttribute('class');
-
-        // onclick tag selector, display the elements and
-        // expand the height of tag selector
-        if (event.target === applyTagsDOM) {
-            if (tagSelectorDOM.style.height === newHeight) return;
-            tagSelectorDOM.style.height = newHeight;
-            toggleOptionsDisplay();
-        }
-
-        // onclick other places, hide the elements and
-        // decrease the height of tag selector
-        else if (eleClass === null || eleClass.indexOf('all-tags') === -1) {
-            if (tagSelectorDOM.style.height === '') return;
-            tagSelectorDOM.style.height = '';
-            toggleOptionsDisplay();
-        }
-    });
 
     /**
      * handling the click events on the document
