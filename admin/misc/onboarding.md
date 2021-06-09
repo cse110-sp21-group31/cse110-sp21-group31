@@ -19,9 +19,6 @@ So you want to contribute to this project! Welcome to the team, let's get you or
     - `images` contains any icons and images that are used in our repository.
     - `js` contains all of the JavaScript necessary to make our application work.
         - `components` contains the definitions of the components that are used in our application. We use Web Components.
-    - `out` contains the generated JSDoc documentation. See the following for more details:
-        - [NPM Scripts Docs](../../specs/adrs/npm_scripts.md)
-        - [DevOps Pipeline Docs](../../specs/adrs/devops_pipeline.md)
 - `specs` contains the specifications for our project.
     - `adrs` contains the Architectural Decision Records for our projects. We have ADRs for most of our major decisions.
     - `brainstorm` contains some documents related to brainstorming on Miro.
@@ -61,4 +58,4 @@ Ensure that you are inside the `source` folder, then run `npm run test`. This wi
 
 Before you run this for the first time, you will need to run `npm install` inside the `source` folder if you have not already done so.
 
-Ensure that you are inside the `source` folder, then run `npm run docs`. This will use JSDoc to generate documentation that is stored in `source/out`. For more details, see [NPM Scripts Docs](../../specs/adrs/npm_scripts.md).
+Ensure that you are inside the `source` folder, then run `npm run docs`. This will use JSDoc to generate documentation that is stored in `source/out`. For more details, see [NPM Scripts Docs](../../specs/adrs/npm_scripts.md) and [DevOps Pipeline Docs](../../specs/adrs/devops_pipeline.md).
