@@ -50,12 +50,7 @@ add a task into local storage
 @return true/false if successful
 */
 function addTask(key, task) {
-    let dayData = getData(key);
-    if (dayData == null) {
-        newDay(key);
-        dayData = getData(key);
-    }
-    // return false;
+    const dayData = getDaysData(key);
     dayData.tasks.push(task);
     setData(key, dayData);
     return true;
@@ -69,12 +64,7 @@ add an event into local storage
 @return true/false if successful
 */
 function addEvent(key, event) {
-    let dayData = getData(key);
-    if (dayData == null) {
-        newDay(key);
-        dayData = getData(key);
-    }
-
+    const dayData = getDaysData(key);
     dayData.events.push(event);
     setData(key, dayData);
     return true;
@@ -87,15 +77,16 @@ addLink
 @return true/false if successful
 */
 function addLink(key, link) {
-    let dayData = getData(key);
-    if (dayData == null) {
-        newDay(key);
-        dayData = getData(key);
-    }
-
+    const dayData = getDaysData(key);
     dayData.media.push(link);
     setData(key, dayData);
     return true;
+}
+
+function updateTaskChecked(key, taskInd, newVal) {
+    const dayData = getDaysData(key);
+    dayData.tasks[taskInd].completed = newVal;
+    setData(key, dayData);
 }
 
 /*
@@ -160,8 +151,7 @@ update paragraph
 @return true/false if successful
 */
 function updateNotepad(key, text) {
-    const dayData = getData(key);
-    if (dayData == null) return false;
+    const dayData = getDaysData(key);
     dayData.notepad = text;
     setData(key, dayData);
     return true;
@@ -192,6 +182,7 @@ export {
     addEvent,
     addCustomTag,
     getCustomTags,
+    updateTaskChecked
 };
 
 /*
