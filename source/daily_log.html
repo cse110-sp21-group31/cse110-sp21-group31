@@ -13,6 +13,7 @@
     <script src="./js/storage.js" type="module"></script>
     <script src="./js/clock.js" type="module"></script>
     <script src="./js/button_controller.js" type="module"></script>
+    <script src="/source/media.js"></script>
 
     <!-- Fonts -->
     <!-- Sen -->
@@ -98,27 +99,24 @@
                             src="https://w.soundcloud.com/player/?url=https://soundcloud.com/polo-g/polo-g-rapstar"></iframe>
                     </div> -->
 
-                    <div class='media-item'>
+                    <!--<div class='media-item'>
                         <iframe id='youtube-test' class='iframe'
                             src="https://www.youtube.com/embed/HmZKgaHa3Fg"></iframe>
-                    </div>
+                    </div>-->
                     <!-- <div class='media-item'>
                         <iframe id='pinterest-test' class='iframe'
                             src="https://assets.pinterest.com/ext/embed.html?id=9710955437703048" frameborder="0"
                             scrolling="no"></iframe>
                     </div> -->
 
-                    <div class='media-item'>
-                        <iframe src="https://imgur.com/gallery/OWErKJK/embed" frameborder="0"></iframe>
-                    </div>
-                    <div class=' media-item'>
+                    <!--<div class=' media-item'>
                         <iframe id='soundcloud-test' class='iframe' scrolling="no" frameborder="no" allow="autoplay"
                             src="https://w.soundcloud.com/player/?url=https://soundcloud.com/polo-g/polo-g-rapstar"></iframe>
                     </div>
                     <div class='media-item'>
                         <iframe id='soundcloud-test' scrolling="no" class='iframe' frameborder="no" allow="autoplay"
                             src="https://w.soundcloud.com/player/?url=https://soundcloud.com/polo-g/polo-g-rapstar"></iframe>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         </div>
@@ -156,7 +154,8 @@
                     </select>
                 </div>
                 <div id='upload-img'>
-                    <a href="#"><img src="images/upload_button.png" alt="Upload Button" height='40' width='40'></a>
+                    <a href="#"><img id='media-img' src="images/upload_button.png" alt="Right Arrow" height='40'
+                            width='40'></a>
                     <div id='popup-media'>
                         <form id='media-uploader'>
                             <label id='media-text'>Please upload your files to a hosting service like Imgur or
