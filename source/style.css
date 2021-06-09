@@ -134,7 +134,7 @@
     grid-column: 1 / 2;
     /* background-color: lightskyblue; */
     display: flex;
-    border-right: 1px solid rgb(213, 215, 220);
+    
 }
 
 #calendar-time-column div {
@@ -143,6 +143,7 @@
     justify-content: center;
     align-items: center;
     margin: 0 0 1px 0;
+    border-right: 1px solid rgb(213, 215, 220);
 }
 
 .calendar-dummy {
@@ -246,13 +247,12 @@
 }
 
 #cal-sun {
-    border-right: 1px solid rgb(213, 215, 220);
-    display: flex;
+    
 }
 
 #cal-sun div {
+    border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
-
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
@@ -261,10 +261,10 @@
 }
 
 #cal-mon {
-    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #cal-mon div {
+    border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
@@ -274,10 +274,10 @@
 }
 
 #cal-tues {
-    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #cal-tues div {
+    border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
@@ -287,10 +287,10 @@
 }
 
 #cal-wed {
-    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #cal-wed div {
+    border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
@@ -300,10 +300,11 @@
 }
 
 #cal-thurs {
-    border-right: 1px solid rgb(213, 215, 220);
+    
 }
 
 #cal-thurs div {
+    border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
@@ -313,10 +314,10 @@
 }
 
 #cal-fri {
-    border-right: 1px solid rgb(213, 215, 220);
 }
 
 #cal-fri div {
+    border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
