@@ -1,7 +1,5 @@
-import { addTask } from './storage.js';
+import { addTask, addCustomTag } from './storage.js';
 import { getDaysKey } from './date.js';
-import { addCustomTag } from './storage.js';
-
 /* 
 button_controller.js
 contains tag selection and input bar upload funcionality

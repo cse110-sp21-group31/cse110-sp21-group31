@@ -85,7 +85,6 @@ function addLink(key, link) {
 
 function updateTaskChecked(key, taskInd, newVal) {
     const dayData = getDaysData(key);
-    console.log(key, taskInd, newVal);
     dayData.tasks[taskInd].completed = newVal;
     setData(key, dayData);
 }

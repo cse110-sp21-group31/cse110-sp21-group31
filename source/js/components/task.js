@@ -35,7 +35,7 @@ class Task extends Log {
             'data-ind',
             document.querySelector('#log-tasks-area').children.length
         );
-        this.checkDOM.onclick = function () {
+        this.checkDOM.onclick = function checkBoxClick() {
             const key = getDaysKey(window.curDate);
             updateTaskChecked(key, this.getAttribute('data-ind'), this.checked);
         };
