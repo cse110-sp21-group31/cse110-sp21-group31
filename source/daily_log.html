@@ -13,6 +13,7 @@
     <script src="./js/storage.js" type="module"></script>
     <script src="./js/clock.js" type="module"></script>
     <script src="./js/button_controller.js" type="module"></script>
+    <script src="./js/main.js" type="module"></script>
 
     <!-- Fonts -->
     <!-- Sen -->
@@ -74,7 +75,7 @@
                 <div id='notes-title'>
                     <h2 class='main-title'>Notes</h2>
                 </div>
-                <div id='notes-text-area'>
+                <div contenteditable=true data-text="Write your ideas here..." id='notes-text-area'>
 
                 </div>
             </div>
@@ -110,13 +111,11 @@
                     </div>
                 </div>
                 <div id='tags-selector'>
-                    <select name="Tags" id="tag-selection">
-                        <option value="default">Apply Tags</option>
-                        <option>Lecture</option>
-                        <option>UCSD</option>
-                        <option>Other</option>
-                        <option id="add-tag-option">Add Tag Here...</option>
+                    <select name="Tags" id="tag-selection" multiple size="1">
+                        <option class="all-tags" id="apply-tags-option" value="default">Apply Tags</option>
+                        <option class="all-tags"></option>
                     </select>
+                    <input class="all-tags" id="add-tag-option" type="text" placeholder="Add Tag Here...">
                 </div>
                 <div id='upload-img'>
                     <a href="#"><img src="images/upload_button.png" alt="Upload Button" height='40' width='40'></a>

@@ -1,8 +1,8 @@
+import { getDaysKey, getName } from './date.js';
 /*
 storage.js
 functions to get/set local storage 
 */
-import { getDaysKey, getName } from './date.js';
 
 /**
 get/set the relevant data for the day specified in key
@@ -96,17 +96,8 @@ if it doesn't exist, then create the default one
 function getCustomTags() {
     let res = getData('custom-tags');
 
-    // obj that maps displayed tag name on website options
-    // to the class name that options have to have
-    // for css to work, which is in log.js
-    const defaultTags = {
-        UCSD: 'ucsd',
-        Lecture: 'lecture',
-        Other: 'other',
-    };
-
     // if custom-tags don't exist, create the default ones
-    if (res == null) res = setData('custom-tags', defaultTags);
+    if (res == null) res = setData('custom-tags', {});
 
     return res;
 }
@@ -120,21 +111,19 @@ function addCustomTag(tagName) {
     const colorArr = ['red', 'blue', 'pink', 'green', 'violet', 'orange'];
     const customTags = getCustomTags();
 
-    // return false if customTags don't exist (shouldn't happen actually)
-    // return false if tagName exists in customTags already
-    if (customTags == null || tagName in customTags === false) {
-        return false;
-    }
-
     // pick a color for the new tag
-    customTags[tagName] = colorArr[customTags.length % colorArr.length];
-    setData('custom-tags', customTags);
+    if (tagName in customTags === false) {
+        customTags[tagName] =
+            colorArr[Object.keys(customTags).length % colorArr.length];
+        setData('custom-tags', customTags);
+    }
 
     // add tag option to html list
     const newTag = document.createElement('option');
     newTag.innerHTML = tagName;
-    const addTagOption = document.querySelector('add-tag-option');
-    document.querySelector('tag-selection').insertBefore(newTag, addTagOption);
+    newTag.setAttribute('class', 'all-tags');
+    const tagSelectionDOM = document.querySelector('#tag-selection');
+    tagSelectionDOM.insertBefore(newTag, tagSelectionDOM.lastElementChild);
 
     return true;
 }
@@ -173,8 +162,9 @@ temporary test function to satisfy linter
 dont run this
 */
 
-function test(arg = true) {
-    if (arg) return;
+function test(run = false) {
+    if (!run) return;
+
     addTask(getDaysKey(), 'task');
     addEvent(getDaysKey(), 'event');
     addLink(getDaysKey(), 'link');
@@ -185,7 +175,15 @@ function test(arg = true) {
 // to satisfy linter, comment this line out
 test();
 
-export { getDaysData, getCustomTagColor, addTask, addEvent, updateTaskChecked };
+export {
+    getDaysData,
+    getCustomTagColor,
+    addTask,
+    addEvent,
+    addCustomTag,
+    getCustomTags,
+    updateTaskChecked,
+};
 
 /*
 
