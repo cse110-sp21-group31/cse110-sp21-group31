@@ -283,6 +283,21 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+}
+
+#mon-event-4am {
+    display: flex;
+    flex-direction: row;
+    background-color: teal;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 50%;
 }
 
 #cal-tues {
