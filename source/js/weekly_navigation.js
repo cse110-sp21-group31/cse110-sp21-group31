@@ -36,10 +36,10 @@ function removeAll(taskBox) {
         taskBox.removeChild(taskBox.lastChild);
     }
 
-    // event remover
-    // cont eventBoxLen = eventBox.childNodes.length;
-    // for (let i = 0; i < eventBoxLen; i +=1) {
-    //   eventBox.removeChild(eventBox.lastChild);
+    // event remover /* const eventBox = document.getElementById('cal-sun'); */
+    // const eventBoxLen = eventBox.querySelectorAll('label').length;
+    // for (let i = 0; i < eventBoxLen; i += 1) {
+    //    eventBox.querySelector('label').remove();
     // }
 }
 
