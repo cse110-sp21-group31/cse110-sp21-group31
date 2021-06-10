@@ -1,4 +1,4 @@
-import { getDaysData, updateNotepad } from './storage.js';
+import { getDaysData } from './storage.js';
 import { getDaysKey, getWeek, getName } from './date.js';
 
 /* date variables */
@@ -141,9 +141,6 @@ window.onpopstate = popState;
  * @listens forward#click
  */
 forward.addEventListener('click', (event) => {
-    // updates notepad content in localStorage
-    updateNotepad(getDaysKey(window.curDate), noteArea.innerText);
-
     event.preventDefault();
     window.curDate.setDate(window.curDate.getDate() + 1);
     const key = getDaysKey(window.curDate);
@@ -156,9 +153,6 @@ forward.addEventListener('click', (event) => {
  * @listens backward#click
  */
 backward.addEventListener('click', (event) => {
-    // updates notepad content in localStorage
-    updateNotepad(getDaysKey(window.curDate), noteArea.innerText);
-
     event.preventDefault();
     window.curDate.setDate(window.curDate.getDate() - 1);
     const key = getDaysKey(window.curDate);
