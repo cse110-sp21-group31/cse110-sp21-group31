@@ -185,19 +185,18 @@ function populate(key) {
         const tempKey = getDaysKey(window.curDate);
         const log = getDaysData(tempKey);
         const allTasks = log.tasks;
+        const allEve = log.events;
+        const day = log.name;
+    
         window.curDate.setDate(window.curDate.getDate() + 1);
-        
-        if(test_events[tempKey] == undefined){ 
-            continue;
-        }
-        console.log(tempKey + ", " + test_events[tempKey].name);
-        const allEve = test_events[tempKey].events;
-        const day = test_events[tempKey].name;
-        console.log(allEve);
-
+       
+        // eslint-disable-next-line prefer-destructuring
+        days[i].innerText = getName(tempKey).split(',')[1];
+    
         for(let j = 0; j < allEve.length; j += 1 ){
             const event_label = document.createElement('label');
 
+            // Get start and end times (hours and minutes) of event
             const start_time = allEve[j].from;
             const end_time = allEve[j].to;
 
@@ -209,8 +208,6 @@ function populate(key) {
             
             const start_time_ampm = start_time.slice(-2);
             const end_time_ampm = end_time.slice(-2);
-
-            console.log(`start time hr:min: ${start_time_hr}:${start_time_minutes} ${start_time_ampm} end time hr:min ${end_time_hr}:${end_time_minutes} ${end_time_ampm}`);
             
             // Constant attributes
             event_label.style.position = 'absolute';
@@ -223,15 +220,29 @@ function populate(key) {
             event_label.style.alignItems = 'center';
             event_label.style.backgroundColor = 'lightpink';
             event_label.textContent = allEve[j].content;
+            event_label.style.border = '1px solid black';
             
             /*
                 Use start time to calculate 'top'
             */
             let top = start_time_hr + 10*(start_time_minutes/60);
-            if(start_time_ampm == 'AM') { 
+            
+            // If 12 AM
+            if(start_time_hr == '12' && start_time_ampm == 'AM') {
+                top = 10*(start_time_minutes/60);
                 top += '%';
-                event_label.style.top = top; 
-            } else {
+                event_label.style.top = top;
+            } 
+            else if(start_time_ampm == 'AM') {
+                top += '%';
+                event_label.style.top = top;
+            }
+            else if(start_time_hr == '12' && start_time_ampm == 'PM') {
+                top = 120 + 10*(start_time_minutes/60);
+                top += '%';
+                event_label.style.top = top;
+            }
+            else if(start_time_ampm == 'PM') {
                 top = parseFloat(top) + 120;
                 top += '%';
                 event_label.style.top = top;
@@ -244,30 +255,26 @@ function populate(key) {
             */
             let bottom;
             if(end_time_hr < 10 && end_time_ampm == 'AM') { 
-                
                 bottom = 10*(10-end_time_hr) - 10*(end_time_minutes/60);
                 bottom += '%';
                 event_label.style.bottom = bottom; 
-            } else if(end_time_hr > 10 && end_time_ampm == 'PM') {
-                console.log('CASE 2');
-                bottom = 10 + 10*(end_time_minutes/60);
+            } else if(end_time_hr >= 10 && end_time_ampm == 'AM') {
+                bottom = 10*end_time_hr%10 + 10*(end_time_minutes/60);
+                bottom = '-' + bottom + '%';
+                event_label.style.bottom = bottom; 
+            } else if(end_time_hr == 12 && end_time_ampm == 'PM') {
+                bottom = 20 + 10*(end_time_minutes/60);
                 bottom = '-' + bottom + '%';
                 event_label.style.bottom = bottom; 
             } else {
-                console.log('CASE 3');
-                bottom = 20 + 10*(10-end_time_hr) + 10*(end_time_minutes/60);
+                bottom = 20 + 10*(end_time_hr) + 10*(end_time_minutes/60);
                 bottom = '-' + bottom + '%';
                 event_label.style.bottom = bottom;
             }
             
             const id = 'cal-' + day.slice(0, 3).toLowerCase();
             document.getElementById(id).appendChild(event_label);
-            console.log(`id=${id}, top=${event_label.style.top}, bottom=${event_label.style.bottom}`);
-            console.log(`parent=${event_label.parentElement.id}`);
         }
-
-        // eslint-disable-next-line prefer-destructuring
-        days[i].innerText = getName(tempKey).split(',')[1];
     }
 
     // Reset curDate to beginning of week
