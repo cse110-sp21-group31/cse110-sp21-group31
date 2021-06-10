@@ -20,9 +20,8 @@ const backward = document.getElementById('left-arrow');
 // const saturday = document.getElementById('cal-sat');
 const sideBar = document.querySelector('#mySideBar ul');
 
-
 /** TODO:
- * Removes the current content from the weekly log 
+ * Removes the current content from the weekly log
  */
 // function removeAll() {
 //     const taskChildren = taskArea.childNodes;
@@ -30,7 +29,7 @@ const sideBar = document.querySelector('#mySideBar ul');
 //     for (let i = 0; i < taskLength; i += 1) {
 //         taskArea.removeChild(taskArea.lastChild);
 //     }
-// 
+//
 //     const eveChildren = eventArea.childNodes;
 //     const eveLength = eveChildren.length;
 //     for (let i = 0; i < eveLength; i += 1) {
@@ -47,7 +46,7 @@ let sideBarClick = function sideBarClickedTemp() {};
  * Changes the date title, removes existing content, populates page with current date's content
  * @param {string} key - The date of the journal
  */
-function populate(key) {
+function populateW(key) {
     const log = getDaysData(key);
     const name = getName(key);
 
@@ -66,6 +65,13 @@ function populate(key) {
         const tempKey = getDaysKey(window.curDate);
         // eslint-disable-next-line prefer-destructuring
         days[i].innerText = getName(tempKey).split(',')[1];
+
+        days[i].setAttribute('data-key', tempKey);
+
+        days[i].onclick = function goToDailyLog() {
+            window.location.href = `daily_log.html?day=${tempKey}`;
+        };
+
         window.curDate.setDate(window.curDate.getDate() + 1);
     }
 
@@ -92,7 +98,7 @@ function populate(key) {
     const allDays = getWeek();
     for (let i = 0; i < 7; i += 1) {
         const newDayLink = document.createElement('a');
-       newDayLink.innerText = getName(allDays[i]);
+        newDayLink.innerText = getName(allDays[i]);
         newDayLink.setAttribute('href', '#');
         newDayLink.setAttribute('data-key', allDays[i]);
         newDayLink.onclick = sideBarClick;
@@ -102,16 +108,26 @@ function populate(key) {
 
 // router code put here to prevent dependency cycle
 
-function setState(dateKey, newState = true) {
-    if (newState) {
-        window.history.pushState({ key: dateKey }, '', `#${dateKey}`);
-    }
+function setStateW(dateKey, newState = true) {
+    // get the new url address...
+    // first rid of anything after ? or #
+    // then append the dateKey after a #
+    let url = window.location.href;
+    const indQ = url.indexOf('?');
+    if (indQ !== -1) url = url.slice(0, indQ);
+    const indH = url.indexOf('#');
+    if (indH !== -1) url = url.slice(0, indH);
+    url = `${url}#${dateKey}`;
+
+    if (newState) window.history.pushState({ key: dateKey }, '', url);
+    else window.history.replaceState({ key: dateKey }, '', url);
+
     window.curDate = new Date(`${dateKey}T00:00:00`);
-    populate(dateKey);
+    populateW(dateKey);
 }
 
 function popState(event) {
-    if (event.state != null) setState(event.state.key, false);
+    if (event.state != null) setStateW(event.state.key, false);
 }
 window.onpopstate = popState;
 
@@ -125,7 +141,7 @@ forward.addEventListener('click', (event) => {
     window.curDate.setDate(window.curDate.getDate() + 7);
     const key = getDaysKey(window.curDate);
 
-    setState(key);
+    setStateW(key);
 });
 
 /**
@@ -138,7 +154,7 @@ backward.addEventListener('click', (event) => {
     window.curDate.setDate(window.curDate.getDate() - 7);
     const key = getDaysKey(window.curDate);
 
-    setState(key);
+    setStateW(key);
 });
 
 /**
@@ -146,15 +162,31 @@ backward.addEventListener('click', (event) => {
  * @listens document#DOMContentLoaded
  */
 document.addEventListener('DOMContentLoaded', () => {
-    // set the current state
-    // window.localStorage.clear();
+    // the key of the date that we want to load
+    let key = '';
+    const url = window.location.href;
+    const searchStr = '?day=';
+    const indexQ = url.indexOf(searchStr);
+    const indexH = url.indexOf('#');
+
+    // if the url contians ?day=2021-06-02 (came from weekly log button click)
+    if (indexQ !== -1) key = url.slice(indexQ + searchStr.length);
+    // if the url contains #2021-06-02 (came from weekly log pressing browser for/back)
+    else if (indexH !== -1) key = url.slice(indexH + 1);
+    // otherwise go to curDate
+    else key = getDaysKey(window.curDate);
+
+    // change date to sunday if need be
+    window.curDate = new Date(`${key}T00:00:00`);
+
     if (window.curDate.getDay() !== 0) {
         window.curDate.setDate(
             window.curDate.getDate() - window.curDate.getDay()
         );
+        key = getDaysKey(window.curDate);
     }
-    const key = getDaysKey(window.curDate);
-    setState(key);
+
+    setStateW(key, false);
 });
 
 // side bar navigate
@@ -162,9 +194,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 sideBarClick = function sideBarClickActual(event) {
     event.preventDefault();
-    setState(getDaysKey(new Date(this.innerText)));
+    setStateW(getDaysKey(new Date(this.innerText)));
     document.querySelector('.closebtn').onclick(event);
-}
+};
 
 const arr = document.querySelectorAll('#mySidebar small a');
 for (let i = 0; i < arr.length; i += 1) {

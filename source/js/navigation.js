@@ -2,7 +2,6 @@ import { getDaysData } from './storage.js';
 import { getDaysKey, getWeek, getName } from './date.js';
 
 /* date variables */
-window.curDate = new Date();
 const possibleImageSubscripts = ['.jpg', '.png'];
 
 /* access log components */
@@ -124,8 +123,22 @@ function populate(key) {
 // router code put here to prevent dependency cycle
 
 function setState(dateKey, newState = true) {
+    // get the new url address...
+    // first rid of anything after ? or #
+    // then append the dateKey after a #
+    let url = window.location.href;
+    const indQ = url.indexOf('?');
+    if (indQ !== -1) url = url.slice(0, indQ);
+    const indH = url.indexOf('#');
+    if (indH !== -1) url = url.slice(0, indH);
+    url = `${url}#${dateKey}`;
+
+    // if newState, we pushState
+    // otherwise we replaceState
     if (newState) {
-        window.history.pushState({ key: dateKey }, '', `#${dateKey}`);
+        window.history.pushState({ key: dateKey }, '', url);
+    } else {
+        window.history.replaceState({ key: dateKey }, '', url);
     }
     window.curDate = new Date(`${dateKey}T00:00:00`);
     populate(dateKey);
