@@ -72,6 +72,7 @@ if (tagSelectorDOM !== null) {
         let openTagWindow = true;
         let closeTagWindow = true;
         let closeClock = true;
+        let closeUpload = true;
 
         for (let i = 0; i < elements.length; i += 1) {
             const eleClass = elements[i].getAttribute('class');
@@ -97,10 +98,14 @@ if (tagSelectorDOM !== null) {
             if (eleId === 'mySidebar' || eleClass === 'openbtn')
                 closeSideBar = false;
 
-            // if you clicked inside the clock
-            // then you shouldn't close it
+            // if you clicked inside the clock then you shouldn't close it
             if (eleId === 'popup-clock' || eleId === 'clock-img')
                 closeClock = false;
+
+            // if you clicked inside the uplaod area
+            // or on the button itself, then no close
+            if (eleId === 'popup-media' || eleId === 'media-img')
+                closeUpload = false;
         }
 
         if (closeTagWindow && tagSelectorDOM.style.height !== '') {
@@ -118,6 +123,18 @@ if (tagSelectorDOM !== null) {
             const clockDOM = document.getElementById('popup-clock');
             if (clockDOM.style.display !== 'none')
                 clockDOM.style.display = 'none';
+        }
+
+        if (closeClock) {
+            const clockDOM = document.getElementById('popup-clock');
+            if (clockDOM.style.display !== 'none')
+                clockDOM.style.display = 'none';
+        }
+
+        if (closeUpload) {
+            const uploadDOM = document.getElementById('popup-media');
+            if (uploadDOM.style.display !== 'none')
+                uploadDOM.style.display = 'none';
         }
     });
 
