@@ -12,7 +12,7 @@ class Task extends Log {
             <div class='checkbox-label-container'>
                 <label for="">
                     <input type="checkbox">
-                    <span></span>
+                    <span contenteditable=true></span>
                 </label>
             </div>
             <div class='tags-container'>
@@ -25,14 +25,30 @@ class Task extends Log {
         this.titleDOM = sha.querySelector('.checkbox-label-container span');
         this.checkDOM = sha.querySelector('.checkbox-label-container input');
 
-        // set checkbox onclick event to update things
+        // prevent adding new line breaks for the task title (can't press enter)
+        this.titleDOM.addEventListener('keypress', (k) => {
+            if (k.keyCode === 13) k.preventDefault();
+        });
+
+        // set attribute for task index in localStorage
         this.checkDOM.setAttribute(
             'data-ind',
             document.querySelector('#log-tasks-area').children.length
         );
-        this.checkDOM.onclick = () => {
+        
+        // set checkbox onclick event to update localStorage
+        this.checkDOM.onclick = function checkBoxClick() {
             const key = getDaysKey(window.curDate);
             updateTaskChecked(key, this.getAttribute('data-ind'), this.checked);
+        };
+
+        // make task title strikethrough if the checkbox is clicked (and vice-versa)
+        this.checkDOM.onchange = () => {
+            if (this.checkDOM.checked === true) {
+                this.titleDOM.innerHTML = this.titleDOM.innerText.strike();
+            }else {
+                this.titleDOM.innerHTML = this.titleDOM.innerText;
+            }
         };
     }
 
@@ -47,8 +63,8 @@ class Task extends Log {
      *
      */
     set content(task) {
-        // set title
-        this.titleDOM.innerText = task.content;
+        // set title (strikethrough if checkbox is checked)
+        this.titleDOM.innerHTML = (task.completed) ? task.content.strike() : task.content;
 
         // set status of the checkbox
         this.checkDOM.checked = task.completed;

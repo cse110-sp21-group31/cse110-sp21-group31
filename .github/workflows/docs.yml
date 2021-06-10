@@ -1,13 +1,11 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Node CI
+name: Documentation
 
 # Controls when the action will run.
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [main]
-  pull_request:
     branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
@@ -15,22 +13,23 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  lint:
-    name: ESLint Linting - Airbnb
+  gen_docs:
+    name: JSDoc Documentation
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - run: npm install
         working-directory: ./source
-      - run: npm run lint
+      - run: npm run docs
         working-directory: ./source
-  test:
-    name: Jest Tests
-    needs: lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: npm install
-        working-directory: ./source
-      - run: npm run test
-        working-directory: ./source
+      - uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source-directory: 'source/out'
+          destination-github-username: cse110-sp21-group31
+          destination-repository-name: cse110-sp21-group31-docs
+          user-email: btsuyuki1@gmail.com
+          user-name: default_author
+          commit-message: 'Update generated documentation'
+          target-branch: 'main'

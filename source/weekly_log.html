@@ -5,11 +5,11 @@
     <title>Bullet Journal</title>
     <link rel="stylesheet" href="./style.css">
 
-    <script src="./components/task.js" type="module"></script>
-    <script src="./components/event.js" type="module"></script>
-    <script src="./components/navigation.js" type="module"></script>
-    <script src="./components/storage.js" type="module"></script>
-    <script src="./scripts/button_controller.js" type="module"></script>
+    <script src="./js/components/task.js" type="module"></script>
+    <script src="./js/components/event.js" type="module"></script>
+    <script src="./js/weekly_navigation.js" type="module"></script>
+    <script src="./js/storage.js" type="module"></script>
+    <script src="./js/button_controller.js" type="module"></script>
     <script src="./js/clock.js"></script>
 
     <!-- Fonts -->
@@ -22,10 +22,23 @@
 
 </head>
 <body>
-    <div class='container'>
+    <div class='container-weekly'>
+        
+        <!-- Experimental Sidebar -->
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+            <p>Index</p>
+            <a href="daily_log.html">- Daily Log</a>
+            <ul>
+            </ul>
+            <a href="#">- Weekly Log</a>
+        </div>
+        <!-- Sidebar Ends -->
+
         <div class='item-header'>
             <div id='header-item-img'>
-                <a href="#"><img src="images/nav_button.png" alt="Navigation Button" height='50' width='50'></a>
+                <a href="#" class='openbtn' onclick="openNav()"><img src="images/nav_button.png"
+                        alt="Navigation Button" height='50' width='50'></a>
             </div>
             <div id='header-item-title'>
                 <h1 id='header' class="main-title">Weekly Log</h1>
@@ -341,42 +354,23 @@
                 </div>
             </div>
         </div>
-        <div class='item-footer'>
-            <div id='task-event-selector-area'>
-                <select name="Task Event Selector" id='task-event-selector'>
-                    <option value="default">Task or Event</option>
-                    <option value="Task">Task</option>
-                    <option value="Event">Event</option> 
-                </select>
-            </div>
-            <div id='task-event-textbox-area'>
-                <input type="text" name='task-event-textbox' id='task-event-textbox' placeholder='Enter a Task or Event here!'>
-            </div>
-            <div id='clock-tags-upload-area'>
-                <div class='clock-form'>
-                    <img id='clock-img' src="images/clock.png" alt="Clock" height='40' width='40'></a>    
-                    <div id='popup-clock'>
-                        <form id='time-selector'>
-                            <label id='start-time' for='startTime'>Start Time:<input type='time' id='start-time' name='start-time'></label>
-                            <label id='end-time' for='endTime'>End Time:<input type='time' id='end-time' name='end-time'></label>
-                            <button type='button' id="clock-submit-button">Submit</button>
-                        </form>
-                    </div>
-                </div>
-                <div id='tags-selector'>
-                    <select name="Tags" id="tag-selection">
-                        <option value="default">Apply Tags</option>
-                        <option>Lecture</option>
-                        <option>UCSD</option>
-                        <option>Other</option>
-                        <option id="add-tag-option">Add Tag Here...</option>
-                      </select>
-                </div>
-                <div id='upload-img'>
-                    <a href="#"><img src="images/upload_button.png" alt="Right Arrow" height='40' width='40'></a>    
-                </div>
-            </div>
-        </div>
     </div>
 </body>
 </html>
+
+<script>
+    function openNav(event) {
+        event.preventDefault();
+        document.getElementById('mySidebar').style.width = '250px';
+        //document.getElementById("main").style.marginLeft = "250px"; line has error
+    }
+
+    function closeNav(event) {
+        event.preventDefault();
+        document.getElementById('mySidebar').style.width = '0';
+        //document.getElementById("main").style.marginLeft = "0"; line has error
+    }
+
+    document.querySelector('.openbtn').onclick = openNav;
+    document.querySelector('.closebtn').onclick = closeNav;    
+</script>

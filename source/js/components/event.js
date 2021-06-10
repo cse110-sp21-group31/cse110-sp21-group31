@@ -1,6 +1,6 @@
 import Log from './log.js';
 
-class Event extends Log {
+export default class Event extends Log {
     constructor() {
         super();
         const sha = this.shadowRoot;
@@ -10,7 +10,7 @@ class Event extends Log {
             <div class='event-time-container'>
                 <label for="">
                     &#8212;
-                    <span></span>
+                    <span contenteditable=true></span>
                 </label>
                 <small class='event-time'></small>
             </div>
@@ -19,9 +19,16 @@ class Event extends Log {
                 </span>
             </div>`;
 
+        
+
         // DOM references to use in set/get
         this.titleDOM = sha.querySelector('.event-time-container span');
         this.timeDOM = sha.querySelector('.event-time-container .event-time');
+
+        // prevent adding new line breaks for the event title (can't press enter)
+        this.titleDOM.addEventListener('keypress', (k) => {
+            if (k.keyCode === 13) k.preventDefault();
+        });
 
         // string separator between from-time and to-time in the text
         this.timeStrSeparator = ' - ';
