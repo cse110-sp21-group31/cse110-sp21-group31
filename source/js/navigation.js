@@ -3,6 +3,7 @@ import { getDaysKey, getWeek, getName } from './date.js';
 import { youtubeUpload, pinterestUpload, soundcloudUpload } from './media.js';
 
 /* date variables */
+
 window.curDate = new Date();
 
 /* access log components */
@@ -84,7 +85,7 @@ function populate(key) {
         }
         if (item.includes('soundcloud')) {
             soundcloudUpload(item);
-        }    
+        }
     });
 
     allEve.forEach((event) => {
@@ -95,6 +96,7 @@ function populate(key) {
 
     // update the sidebar
     const allDays = getWeek();
+
     for (let i = 0; i < 7; i += 1) {
         const newDayLink = document.createElement('a');
         newDayLink.innerText = getName(allDays[i]);
@@ -108,8 +110,22 @@ function populate(key) {
 // router code put here to prevent dependency cycle
 
 function setState(dateKey, newState = true) {
+    // get the new url address...
+    // first rid of anything after ? or #
+    // then append the dateKey after a #
+    let url = window.location.href;
+    const indQ = url.indexOf('?');
+    if (indQ !== -1) url = url.slice(0, indQ);
+    const indH = url.indexOf('#');
+    if (indH !== -1) url = url.slice(0, indH);
+    url = `${url}#${dateKey}`;
+
+    // if newState, we pushState
+    // otherwise we replaceState
     if (newState) {
-        window.history.pushState({ key: dateKey }, '', `#${dateKey}`);
+        window.history.pushState({ key: dateKey }, '', url);
+    } else {
+        window.history.replaceState({ key: dateKey }, '', url);
     }
     window.curDate = new Date(`${dateKey}T00:00:00`);
     populate(dateKey);

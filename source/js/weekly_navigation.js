@@ -18,11 +18,11 @@ const backward = document.getElementById('left-arrow');
 // const saturday = document.getElementById('cal-sat');
 const sideBar = document.querySelector('#mySideBar ul');
 
-
 /** TODO:
- * Removes the current content from the weekly log 
+ * Removes the current content from the weekly log
  */
- function removeAll(taskBox, eventBox) {
+
+function removeAll(taskBox, eventBox) {
     // sideBar remover
     const sideBarLen = sideBar.childNodes.length;
     for (let i = 0; i < sideBarLen; i += 1) {
@@ -36,7 +36,7 @@ const sideBar = document.querySelector('#mySideBar ul');
     // event remover /* const eventBox = document.getElementById('cal-sun'); */
     const eventBoxLen = eventBox.querySelectorAll('label').length;
     for (let i = 0; i < eventBoxLen; i += 1) {
-       eventBox.querySelector('label').remove();
+        eventBox.querySelector('label').remove();
     }
 }
 
@@ -44,6 +44,10 @@ const sideBar = document.querySelector('#mySideBar ul');
 // so i can use it in populate()
 // the function content is at the bottom of the file
 let sideBarClick = function sideBarClickedTemp() {};
+
+function goToDailyLog(key) {
+    window.location.href = `daily_log.html?day=${key}`;
+}
 
 function setTasks(allTasks, taskBox) {
     allTasks.forEach((task) => {
@@ -55,10 +59,16 @@ function setTasks(allTasks, taskBox) {
 
 /**
  * Changes the date title, removes existing content, populates page with current date's content
- * @param {string} key - The date of the journal
+ * @param {string} keyT - The date of the journal
  */
-function populate(key) {
-    // removeAll();
+
+function populateW(keyT) {
+    // set curDate to the sunday before keyT
+    const dateObj = new Date(`${keyT}T00:00:00`);
+    dateObj.setDate(dateObj.getDate() - dateObj.getDay());
+    window.curDate.setDate(dateObj.getDate());
+    const key = getDaysKey(window.curDate);
+
     const name = getName(key);
 
     const title = [
@@ -79,12 +89,22 @@ function populate(key) {
         const allTasks = log.tasks;
         const allEve = log.events;
         const day = log.name;
-    
+
         window.curDate.setDate(window.curDate.getDate() + 1);
-       
+
+        // set onclick for div outside
+        const divOutside = document.getElementById(
+            `cal-${days[i].getAttribute('id')}`
+        );
+        divOutside.setAttribute('data-key', tempKey);
+
+        divOutside.onclick = function onClickText() {
+            goToDailyLog(this.getAttribute('data-key'));
+        };
+
+        // set name for thing
         // eslint-disable-next-line prefer-destructuring
         days[i].innerText = getName(tempKey).split(',')[1];
-    
 
         const taskDay = log.name.slice(0, 3).toLowerCase();
         const taskID = ['cal', 'task', taskDay].join('-');
@@ -97,7 +117,7 @@ function populate(key) {
         // setting all tasks
         setTasks(allTasks, taskBox);
 
-        for(let j = 0; j < allEve.length; j += 1 ){
+        for (let j = 0; j < allEve.length; j += 1) {
             const eventLabel = document.createElement('label');
 
             // Get start and end times (hours and minutes) of event
@@ -105,14 +125,17 @@ function populate(key) {
             const endTime = allEve[j].to;
 
             const startTimeHr = startTime.slice(0, startTime.indexOf(':'));
-            const startTimeMinutes = startTime.substr(startTime.indexOf(':')+1, 3);
-            
+            const startTimeMinutes = startTime.substr(
+                startTime.indexOf(':') + 1,
+                3
+            );
+
             const endTimeHr = endTime.slice(0, endTime.indexOf(':'));
-            const endTimeMinutes = endTime.substr(endTime.indexOf(':')+1, 3);
-            
+            const endTimeMinutes = endTime.substr(endTime.indexOf(':') + 1, 3);
+
             const startTimeAMPM = startTime.slice(-2);
             const endTimeAMPM = endTime.slice(-2);
-            
+
             // Constant attributes
             eventLabel.style.position = 'absolute';
             eventLabel.style.left = 0;
@@ -125,28 +148,25 @@ function populate(key) {
             eventLabel.style.backgroundColor = 'lightpink';
             eventLabel.textContent = allEve[j].content;
             eventLabel.style.border = '1px solid black';
-            
+
             /*
                 Use start time to calculate 'top'
             */
-            let top = startTimeHr + 10*(startTimeMinutes/60);
-            
+            let top = startTimeHr + 10 * (startTimeMinutes / 60);
+
             // If 12 AM
-            if(startTimeHr === '12' && startTimeAMPM === 'AM') {
-                top = 10*(startTimeMinutes/60);
+            if (startTimeHr === '12' && startTimeAMPM === 'AM') {
+                top = 10 * (startTimeMinutes / 60);
                 top += '%';
                 eventLabel.style.top = top;
-            } 
-            else if(startTimeAMPM === 'AM') {
+            } else if (startTimeAMPM === 'AM') {
                 top += '%';
                 eventLabel.style.top = top;
-            }
-            else if(startTimeHr === '12' && startTimeAMPM === 'PM') {
-                top = 120 + 10*(startTimeMinutes/60);
+            } else if (startTimeHr === '12' && startTimeAMPM === 'PM') {
+                top = 120 + 10 * (startTimeMinutes / 60);
                 top += '%';
                 eventLabel.style.top = top;
-            }
-            else if(startTimeAMPM === 'PM') {
+            } else if (startTimeAMPM === 'PM') {
                 top = parseFloat(top) + 120;
                 top += '%';
                 eventLabel.style.top = top;
@@ -158,50 +178,36 @@ function populate(key) {
                 less than  10 and AM:
             */
             let bottom;
-            if(endTimeHr < 10 && endTimeAMPM === 'AM') { 
-                bottom = 10*(10-endTimeHr) - 10*(endTimeMinutes/60);
+            if (endTimeHr < 10 && endTimeAMPM === 'AM') {
+                bottom = 10 * (10 - endTimeHr) - 10 * (endTimeMinutes / 60);
                 bottom += '%';
-                eventLabel.style.bottom = bottom; 
-            } else if(endTimeHr >= 10 && endTimeAMPM === 'AM') {
-                bottom = 10*endTimeHr%10 + 10*(endTimeMinutes/60);
-                bottom = `-${bottom}%`; 
-                eventLabel.style.bottom = bottom; 
-            } else if(endTimeHr === 12 && endTimeAMPM === 'PM') {
-                bottom = 20 + 10*(endTimeMinutes/60);
+                eventLabel.style.bottom = bottom;
+            } else if (endTimeHr >= 10 && endTimeAMPM === 'AM') {
+                bottom = ((10 * endTimeHr) % 10) + 10 * (endTimeMinutes / 60);
                 bottom = `-${bottom}%`;
-                eventLabel.style.bottom = bottom; 
+                eventLabel.style.bottom = bottom;
+            } else if (endTimeHr === 12 && endTimeAMPM === 'PM') {
+                bottom = 20 + 10 * (endTimeMinutes / 60);
+                bottom = `-${bottom}%`;
+                eventLabel.style.bottom = bottom;
             } else {
-                bottom = 20 + 10*(endTimeHr) + 10*(endTimeMinutes/60);
+                bottom = 20 + 10 * endTimeHr + 10 * (endTimeMinutes / 60);
                 bottom = `-${bottom}%`;
                 eventLabel.style.bottom = bottom;
             }
-            
+
             eventBox.appendChild(eventLabel);
         }
-
     }
 
     // Reset curDate to beginning of week
     window.curDate.setDate(window.curDate.getDate() - 7);
 
-
-    // allTasks.forEach((task) => {
-    //     const newTask = document.createElement('task-log');
-    //     newTask.content = task;
-    //     taskArea.appendChild(newTask);
-    // });
-
-    // allEve.forEach((event) => {
-    //     const newEvent = document.createElement('event-log');
-    //     newEvent.content = event;      
-    //     // eventArea.appendChild(newEvent);
-    // });
-
     // update the sidebar
     const allDays = getWeek();
     for (let i = 0; i < 7; i += 1) {
         const newDayLink = document.createElement('a');
-       newDayLink.innerText = getName(allDays[i]);
+        newDayLink.innerText = getName(allDays[i]);
         newDayLink.setAttribute('href', '#');
         newDayLink.setAttribute('data-key', allDays[i]);
         newDayLink.onclick = sideBarClick;
@@ -211,16 +217,26 @@ function populate(key) {
 
 // router code put here to prevent dependency cycle
 
-function setState(dateKey, newState = true) {
-    if (newState) {
-        window.history.pushState({ key: dateKey }, '', `#${dateKey}`);
-    }
+function setStateW(dateKey, newState = true) {
+    // get the new url address...
+    // first rid of anything after ? or #
+    // then append the dateKey after a #
+    let url = window.location.href;
+    const indQ = url.indexOf('?');
+    if (indQ !== -1) url = url.slice(0, indQ);
+    const indH = url.indexOf('#');
+    if (indH !== -1) url = url.slice(0, indH);
+    url = `${url}#${dateKey}`;
+
+    if (newState) window.history.pushState({ key: dateKey }, '', url);
+    else window.history.replaceState({ key: dateKey }, '', url);
+
     window.curDate = new Date(`${dateKey}T00:00:00`);
-    populate(dateKey);
+    populateW(dateKey);
 }
 
 function popState(event) {
-    if (event.state != null) setState(event.state.key, false);
+    if (event.state != null) setStateW(event.state.key, false);
 }
 window.onpopstate = popState;
 
@@ -234,7 +250,7 @@ forward.addEventListener('click', (event) => {
     window.curDate.setDate(window.curDate.getDate() + 7);
     const key = getDaysKey(window.curDate);
 
-    setState(key);
+    setStateW(key);
 });
 
 /**
@@ -247,7 +263,7 @@ backward.addEventListener('click', (event) => {
     window.curDate.setDate(window.curDate.getDate() - 7);
     const key = getDaysKey(window.curDate);
 
-    setState(key);
+    setStateW(key);
 });
 
 /**
@@ -255,25 +271,29 @@ backward.addEventListener('click', (event) => {
  * @listens document#DOMContentLoaded
  */
 document.addEventListener('DOMContentLoaded', () => {
-    // set the current state
-    // window.localStorage.clear();
-    if (window.curDate.getDay() !== 0) {
-        window.curDate.setDate(
-            window.curDate.getDate() - window.curDate.getDay()
-        );
-    }
-    const key = getDaysKey(window.curDate);
-    setState(key);
+    // the key of the date that we want to load
+    let key = '';
+    const url = window.location.href;
+    const searchStr = '?day=';
+    const indexQ = url.indexOf(searchStr);
+    const indexH = url.indexOf('#');
+
+    // if the url contians ?day=2021-06-02 (came from weekly log button click)
+    if (indexQ !== -1) key = url.slice(indexQ + searchStr.length);
+    // if the url contains #2021-06-02 (came from weekly log pressing browser for/back)
+    else if (indexH !== -1) key = url.slice(indexH + 1);
+    // otherwise go to curDate
+    else key = getDaysKey(window.curDate);
+
+    setStateW(key, false);
 });
 
-// side bar navigate
-// .forEach replaced to satisfy linter
-
+// side bar daily log links
+// navigate to daily log
 sideBarClick = function sideBarClickActual(event) {
     event.preventDefault();
-    setState(getDaysKey(new Date(this.innerText)));
-    document.querySelector('.closebtn').onclick(event);
-}
+    goToDailyLog(this.getAttribute('data-key'));
+};
 
 const arr = document.querySelectorAll('#mySidebar small a');
 for (let i = 0; i < arr.length; i += 1) {
