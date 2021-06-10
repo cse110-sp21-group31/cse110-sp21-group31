@@ -218,19 +218,12 @@ function populate(key) {
             event_label.style.color = 'white';
             event_label.style.display = 'flex';
             event_label.style.flexDirection = 'row';
-            // event_label.style.width = '100%';
+            event_label.style.width = '100%';
             event_label.style.justifyContent = 'center';
             event_label.style.alignItems = 'center';
             event_label.style.backgroundColor = 'lightpink';
             event_label.textContent = allEve[j].content;
-            event_label.style.border = '1px solid black';
             
-            // position: absolute;
-            // display: flex;
-            // flex-direction: row;
-            // justify-content: center;
-            // align-items: center;
-            // width: 33%;
             /*
                 Use start time to calculate 'top'
             */
@@ -251,24 +244,25 @@ function populate(key) {
             */
             let bottom;
             if(end_time_hr < 10 && end_time_ampm == 'AM') { 
-                bottom = 10*(10-end_time_hr) + 10*(end_time_minutes/60);
+                
+                bottom = 10*(10-end_time_hr) - 10*(end_time_minutes/60);
                 bottom += '%';
                 event_label.style.bottom = bottom; 
             } else if(end_time_hr > 10 && end_time_ampm == 'PM') {
+                console.log('CASE 2');
                 bottom = 10 + 10*(end_time_minutes/60);
                 bottom = '-' + bottom + '%';
                 event_label.style.bottom = bottom; 
             } else {
+                console.log('CASE 3');
                 bottom = 20 + 10*(10-end_time_hr) + 10*(end_time_minutes/60);
                 bottom = '-' + bottom + '%';
                 event_label.style.bottom = bottom;
             }
             
             const id = 'cal-' + day.slice(0, 3).toLowerCase();
-            
             document.getElementById(id).appendChild(event_label);
             console.log(`id=${id}, top=${event_label.style.top}, bottom=${event_label.style.bottom}`);
-            console.log(`element = ${document.getElementById(id)}`);
             console.log(`parent=${event_label.parentElement.id}`);
         }
 

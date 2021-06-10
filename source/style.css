@@ -330,7 +330,7 @@
 }
 
 #cal-mon {
-    
+    position: relative;
 }
 
 #cal-mon div {
@@ -354,12 +354,10 @@
     position: relative;
     width: 100%;
     height: 100%;
-    
-    /* background-color: teal;
-    top: 50%; */
 }
 
 #cal-tue {
+    position: relative;
 }
 
 #cal-tue div {
@@ -383,12 +381,10 @@
     position: relative;
     width: 100%;
     height: 100%;
-    
-    /* background-color: teal; */
-    /* top: 50%; */
 }
 
 #cal-wed {
+    position: relative;
 }
 
 #cal-wed div {
@@ -418,7 +414,7 @@
 }
 
 #cal-thu {
-    
+    position: relative;
 }
 
 #cal-thu div {
@@ -448,6 +444,7 @@
 }
 
 #cal-fri {
+    position: relative;
 }
 
 #cal-fri div {
@@ -477,6 +474,7 @@
 }
 
 #cal-sat {
+    position: relative;
 }
 
 #cal-sat div {
