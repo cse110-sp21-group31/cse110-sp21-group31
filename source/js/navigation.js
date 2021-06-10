@@ -4,7 +4,6 @@ import { youtubeUpload, pinterestUpload, soundcloudUpload } from './media.js';
 
 /* date variables */
 window.curDate = new Date();
-const possibleImageSubscripts = ['.jpg', '.png'];
 
 /* access log components */
 const taskArea = document.getElementById('log-tasks-area');
@@ -46,22 +45,6 @@ function removeAll() {
     const sideBarLength = sideBar.childNodes.length;
     for (let i = 0; i < sideBarLength; i += 1)
         sideBar.removeChild(sideBar.lastChild);
-}
-
-/**
- * Identify if the given string contains image subscripts
- * @param {string} link
- * @return true/false
- */
-function isLinkImage(link) {
-    let bool = false;
-    const subscript = link.slice(link.lastIndexOf('.'));
-    possibleImageSubscripts.forEach((item) => {
-        if (subscript === item) {
-            bool = true;
-        }
-    });
-    return bool;
 }
 
 // this function is here just as a reference
