@@ -34,8 +34,7 @@ getWeek
 */
 function getWeek() {
     const currentDayOfWeek = window.curDate.getDay();
-    const date = new Date();
-    date.setDate(window.curDate.getDate() - currentDayOfWeek);
+    const date = new Date(window.curDate - currentDayOfWeek);
 
     const result = [];
     for (let i = 0; i < 7; i += 1) {

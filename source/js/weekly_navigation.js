@@ -5,8 +5,6 @@ import { getDaysKey, getWeek, getName } from './date.js';
 window.curDate = new Date();
 
 /* access log components */
-const taskArea = document.getElementById('log-tasks-area');
-const eventArea = document.getElementById('log-events-area');
 // const noteArea = document.getElementById('notes-text-area');
 // const mediaArea = document.getElementById('media-text-area');
 const forward = document.getElementById('right-arrow');
@@ -24,24 +22,36 @@ const sideBar = document.querySelector('#mySideBar ul');
 /** TODO:
  * Removes the current content from the weekly log 
  */
-// function removeAll() {
-//     const taskChildren = taskArea.childNodes;
-//     const taskLength = taskChildren.length;
-//     for (let i = 0; i < taskLength; i += 1) {
-//         taskArea.removeChild(taskArea.lastChild);
-//     }
-// 
-//     const eveChildren = eventArea.childNodes;
-//     const eveLength = eveChildren.length;
-//     for (let i = 0; i < eveLength; i += 1) {
-//         eventArea.removeChild(eventArea.lastChild);
-//     }
-// }
+ function removeAll(taskBox, eventBox) {
+    // sideBar remover
+    const sideBarLen = sideBar.childNodes.length;
+    for (let i = 0; i < sideBarLen; i += 1) {
+        sideBar.removeChild(sideBar.lastChild);
+    }
+    // task remover
+    const taskBoxLen = taskBox.childNodes.length;
+    for (let i = 0; i < taskBoxLen; i += 1) {
+        taskBox.removeChild(taskBox.lastChild);
+    }
+    // event remover /* const eventBox = document.getElementById('cal-sun'); */
+    const eventBoxLen = eventBox.querySelectorAll('label').length;
+    for (let i = 0; i < eventBoxLen; i += 1) {
+       eventBox.querySelector('label').remove();
+    }
+}
 
 // this function is here just as a reference
 // so i can use it in populate()
 // the function content is at the bottom of the file
 let sideBarClick = function sideBarClickedTemp() {};
+
+function setTasks(allTasks, taskBox) {
+    allTasks.forEach((task) => {
+        taskBox.append(['—', task.content].join(' '));
+        const br = document.createElement('br');
+        taskBox.append(br);
+    });
+}
 
 /**
  * Changes the date title, removes existing content, populates page with current date's content
@@ -63,7 +73,6 @@ function populate(key) {
     // Sets all dates for each day
     const days = document.getElementsByClassName('date');
     for (let i = 0; i < 7; i += 1) {
-
         // loop through every log
         const tempKey = getDaysKey(window.curDate);
         const log = getDaysData(tempKey);
@@ -76,6 +85,18 @@ function populate(key) {
         // eslint-disable-next-line prefer-destructuring
         days[i].innerText = getName(tempKey).split(',')[1];
     
+
+        const taskDay = log.name.slice(0, 3).toLowerCase();
+        const taskID = ['cal', 'task', taskDay].join('-');
+        const taskBox = document.getElementById(taskID);
+        const id = 'cal-' + day.slice(0, 3).toLowerCase();
+        const eventBox = document.getElementById(id);
+
+        // clear any existing entries (add var for event container as parameter)
+        removeAll(taskBox, eventBox);
+        // setting all tasks
+        setTasks(allTasks, taskBox);
+
         for(let j = 0; j < allEve.length; j += 1 ){
             const event_label = document.createElement('label');
 
@@ -155,9 +176,9 @@ function populate(key) {
                 event_label.style.bottom = bottom;
             }
             
-            const id = 'cal-' + day.slice(0, 3).toLowerCase();
-            document.getElementById(id).appendChild(event_label);
+            eventBox.appendChild(event_label);
         }
+
     }
 
     // Reset curDate to beginning of week

@@ -470,29 +470,51 @@
 */
 #cal-task-sun {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
 #cal-task-mon {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
-#cal-task-tues {
+#cal-task-tue {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
 #cal-task-wed {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
-#cal-task-thurs {
+#cal-task-thu {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
 #cal-task-fri {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
 #cal-task-sat {
+    border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
 #middle-item-log {
