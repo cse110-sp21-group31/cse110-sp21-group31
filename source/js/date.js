@@ -17,6 +17,8 @@ function getDaysKey(dateObj) {
 
 /**
 getName
+
+Returns a descriptive name for a day.
 @param: key of that day
 @return: the name of that day "Thursday, May 13th"
 */
@@ -30,6 +32,8 @@ function getName(key) {
 
 /**
 getWeek
+
+Returns an array of keys for the days of the week.
 @return: an array of keys for each day in the week that key belongs in
 */
 function getWeek() {
