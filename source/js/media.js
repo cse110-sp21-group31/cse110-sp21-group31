@@ -21,9 +21,9 @@ function toggle(elementID, displayType) {
 }
 
 function youtubeUpload(link) {
-    let youtubeDiv = document.createElement('div');
+    const youtubeDiv = document.createElement('div');
     youtubeDiv.setAttribute('class', 'media-item');
-    let youtubeIfr = document.createElement('iframe');
+    const youtubeIfr = document.createElement('iframe');
     youtubeIfr.setAttribute('src', `https://www.youtube.com/embed/${link.substring(32)}`);
     youtubeIfr.style.width = '560';
     youtubeIfr.style.height = '315';
@@ -32,10 +32,10 @@ function youtubeUpload(link) {
 }
 
 function pinterestUpload(link) {
-    let pinterestDiv = document.createElement('div');
+    const pinterestDiv = document.createElement('div');
     pinterestDiv.setAttribute('class', 'media-item');
-    let pinterestIfr = document.createElement('iframe');
-    let pinterestUrl = `https://assets.pinterest.com/ext/embed.html?id=${link.substring(30)}`;
+    const pinterestIfr = document.createElement('iframe');
+    const pinterestUrl = `https://assets.pinterest.com/ext/embed.html?id=${link.substring(30)}`;
     pinterestIfr.setAttribute('src', pinterestUrl.substr(0, pinterestUrl.length - 1));
     pinterestIfr.style.width = '236';
     pinterestIfr.style.height = '520';
@@ -46,9 +46,9 @@ function pinterestUpload(link) {
 }
 
 function soundcloudUpload(link) {
-    let soundcloudDiv = document.createElement('div');
+    const soundcloudDiv = document.createElement('div');
     soundcloudDiv.setAttribute('class', 'media-item');
-    let soundcloudIfr = document.createElement('iframe');
+    const soundcloudIfr = document.createElement('iframe');
     soundcloudIfr.setAttribute('src', `https://w.soundcloud.com/player/?url=${link}`);
     soundcloudIfr.style.width = '100%';
     soundcloudIfr.style.height = '150';
