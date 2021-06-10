@@ -24,8 +24,19 @@ const sideBar = document.querySelector('#mySideBar ul');
 /** TODO:
  * Removes the current content from the weekly log 
  */
-function removeAll() {
-    
+function removeAll(taskBox) {
+
+    // sideBar remover
+    const sideBar_len = sideBar.childNodes.length;
+    for (let i = 0; i < sideBar_len; i += 1) {
+        sideBar.removeChild(sideBar.lastChild);
+    }
+
+    // task remover
+    const taskBox_len = taskBox.childNodes.length;
+    for (let i = 0; i < taskBox_len; i += 1) {
+        taskBox.removeChild(taskBox.lastChild);
+    }
 }
 
 // this function is here just as a reference
@@ -183,6 +194,18 @@ function populate(key) {
         console.log(tempKey + ", " + test_events[tempKey]);
         window.curDate.setDate(window.curDate.getDate() + 1);
         
+        // eslint-disable-next-line prefer-destructuring
+        days[i].innerText = getName(tempKey).split(',')[1];
+
+        // task variables
+        const allTasks = log.tasks;
+        const taskDay = log.name.slice(0,3).toLowerCase();
+        const taskID = ['cal', 'task', taskDay].join('-');
+        const taskBox = document.getElementById(taskID);
+
+        // clear any existing entries (add var for event container as parameter)
+        removeAll(taskBox);
+
         if(test_events[tempKey] == undefined){ 
             continue;
         }
@@ -190,13 +213,6 @@ function populate(key) {
         const allEve = test_events[tempKey].events;
         const day = test_events[tempKey].name;
         console.log(allEve);
-
-        const allTasks = log.tasks;
-        const taskDay = log.name.slice(0,3).toLowerCase();
-        const taskID = ['cal', 'task', taskDay].join('-');
-        const taskBox = document.getElementById(taskID);
-
-        // removeAll(taskBox);
 
         for(let j = 0; j < allEve.length; j += 1 ){
             const event_label = document.createElement('label');
@@ -268,8 +284,6 @@ function populate(key) {
         // setting all tasks
         setTasks(allTasks, taskBox);
 
-        // eslint-disable-next-line prefer-destructuring
-        days[i].innerText = getName(tempKey).split(',')[1];
     }
 
     // Reset curDate to beginning of week
