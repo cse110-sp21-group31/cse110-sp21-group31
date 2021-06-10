@@ -22,11 +22,11 @@
 
   Team Radar:
 
-  ![Our Team Radar](/admin/retrospective/team_radar_3.PNG)
+  ![Our Team Radar](/admin/retrospective/team_radar_3.png)
 
   Mad/Sad/Glad:
   
-  ![Mad/Sad/Glad](/admin/retrospective/mad_sad_glad_3.PNG)
+  ![Mad/Sad/Glad](/admin/retrospective/mad_sad_glad_3.png)
 
 ### 2. Plan for Public and Private Videos
 - Get all bugs fixed before 4 PM tomorrow
