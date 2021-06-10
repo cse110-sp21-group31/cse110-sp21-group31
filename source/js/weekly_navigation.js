@@ -130,7 +130,28 @@ function populate(key) {
                 "link1", "link2"
             ]
         },
-
+        '2021-06-10': {
+            name: "Thursday, May 13th",
+            notepad: "blan blah blah",
+            tasks: [
+                {
+                    content: "Go on a run",
+                    completed: true/false,
+                    tags: ["Other"]
+                },
+            ],
+            events: [
+                {
+                    content: "CSE 110 Lecture",
+                    tags: "Lecture",
+                    from: "4:00 AM",
+                    to: "11:35 AM"
+                }, 
+            ],
+            media: [
+                "link1", "link2"
+            ]
+        },
         '2021-06-11': {
             name: "Thursday, May 13th",
             notepad: "blan blah blah",
@@ -163,43 +184,103 @@ function populate(key) {
         const tempKey = getDaysKey(window.curDate);
         const log = getDaysData(tempKey);
         const allTasks = log.tasks;
-        // const allEve = log.events;
+        console.log(tempKey + ", " + test_events[tempKey]);
+        window.curDate.setDate(window.curDate.getDate() + 1);
         
+        if(test_events[tempKey] == undefined){ 
+            continue;
+        }
+
         const allEve = test_events[tempKey].events;
         const day = test_events[tempKey].name;
         console.log(allEve);
 
-        // content: "CSE 110 Lecture",
-        // tags: "Lecture",
-        // from: "4:00 AM",
-        // to: "5:30 AM"
-
         for(let j = 0; j < allEve.length; j += 1 ){
-            if
-            let content = allEve[j].content;
+            const event_label = document.createElement('label');
+
+            const start_time = allEve[j].from;
+            const end_time = allEve[j].to;
+
+            const start_time_hr = start_time.slice(0, start_time.indexOf(':'));
+            const start_time_minutes = start_time.substr(start_time.indexOf(':')+1, 3);
             
+            const end_time_hr = end_time.slice(0, end_time.indexOf(':'));
+            const end_time_minutes = end_time.substr(end_time.indexOf(':')+1, 3);
+            
+            const start_time_ampm = start_time.slice(-2);
+            const end_time_ampm = end_time.slice(-2);
+
+            console.log(`start time hr:min: ${start_time_hr}, ${start_time_minutes} ${start_time_ampm} end time hr:min${end_time_hr}, ${end_time_minutes} ${end_time_ampm}`);
+            
+            // Constant attributes
+            event_label.style.position = 'absolute';
+            event_label.style.left = 0;
+            event_label.style.color = 'white';
+            event_label.style.display = 'flex';
+            event_label.style.flexDirection = 'row';
+            event_label.style.width = '100%';
+            event_label.style.justifyContent = 'center';
+            event_label.style.alignItems = 'center';
+            event_label.style.backgroundColor = 'lightpink';
+            event_label.textContent = allEve[j].content;
+            
+            /*
+                Use start time to calculate 'top'
+            */
+            let top = start_time_hr + 10*(start_time_minutes/60);
+            if(start_time_ampm == 'AM') { 
+                event_label.style.top = top; 
+            } else {
+                top = parseFloat(top) + 120;
+                top += '%';
+                event_label.style.top = top;
+            }
+
+            /* 
+                Use end time to calculate 'bottom'
+                Note: this depends on whether event ends before or after 10 am
+                less than  10 and AM:
+            */
+            let bottom;
+            if(end_time_hr < 10 && end_time_ampm == 'AM') { 
+                bottom = 10*(10-end_time_hr) + 10*(end_time_minutes/60);
+                bottom += '%';
+                event_label.style.bottom = bottom; 
+            } else if(end_time_hr > 10 && end_time_ampm == 'PM') {
+                bottom = 10 + 10*(end_time_minutes/60);
+                bottom = '-' + bottom + '%';
+                event_label.style.bottom = bottom; 
+            } else {
+                bottom = 20 + 10*(10-end_time_hr) + 10*(end_time_minutes/60);
+                bottom = '-' + bottom + '%';
+                event_label.style.bottom = bottom;
+            }
+            
+            const id = 'cal-' + day.slice(0, 3).toLowerCase();
+            console.log(`id=${id}`);
+            // document.getElementById(id).appendChild(event_label);
+            console.log(`element = ${document.getElementById(id)}`);
         }
 
         // eslint-disable-next-line prefer-destructuring
         days[i].innerText = getName(tempKey).split(',')[1];
-        window.curDate.setDate(window.curDate.getDate() + 1);
     }
 
     // Reset curDate to beginning of week
     window.curDate.setDate(window.curDate.getDate() - 7);
 
 
-    allTasks.forEach((task) => {
-        const newTask = document.createElement('task-log');
-        newTask.content = task;
-        taskArea.appendChild(newTask);
-    });
+    // allTasks.forEach((task) => {
+    //     const newTask = document.createElement('task-log');
+    //     newTask.content = task;
+    //     taskArea.appendChild(newTask);
+    // });
 
-    allEve.forEach((event) => {
-        const newEvent = document.createElement('event-log');
-        newEvent.content = event;      
-        // eventArea.appendChild(newEvent);
-    });
+    // allEve.forEach((event) => {
+    //     const newEvent = document.createElement('event-log');
+    //     newEvent.content = event;      
+    //     // eventArea.appendChild(newEvent);
+    // });
 
     // update the sidebar
     const allDays = getWeek();
