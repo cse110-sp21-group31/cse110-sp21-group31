@@ -12,6 +12,7 @@ const noteArea = document.getElementById('notes-text-area');
 const mediaArea = document.getElementById('media-text-area');
 const forward = document.getElementById('right-arrow');
 const backward = document.getElementById('left-arrow');
+const sidebarButton = document.getElementById('header-item-img');
 const sideBar = document.querySelector('#mySideBar ul');
 
 /**
@@ -164,6 +165,14 @@ backward.addEventListener('click', (event) => {
     const key = getDaysKey(window.curDate);
 
     setState(key);
+});
+
+/**
+ * Saves notepad content to localStorage when pressing the navigation button
+ * @listens sidebarButton#click
+ */
+sidebarButton.addEventListener('click', () => {
+    updateNotepad(getDaysKey(window.curDate), noteArea.innerText);
 });
 
 // side bar navigate
