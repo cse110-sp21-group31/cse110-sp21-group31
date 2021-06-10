@@ -1,7 +1,7 @@
 import { getDaysKey } from './date.js';
 import setState from './navigation.js';
 import toggleOptionsDisplay from './button_controller.js';
-import { getCustomTags, addCustomTag } from './storage.js';
+import { getCustomTags, addCustomTag, updateNotepad } from './storage.js';
 
 // obj that maps displayed tag name on website options
 // to the class name that options have to have
@@ -34,3 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     applyTagsDOM.style.display = 'none';
     toggleOptionsDisplay();
 });
+
+/**
+ * Saves notepad content to localStorage when pressing the navigation button
+ * @listens sidebarButton#onkeyup
+ */
+ document.getElementById('notes-text-area').onkeyup = () => {
+    updateNotepad(getDaysKey(window.curDate), document.getElementById('notes-text-area').innerText);
+}
