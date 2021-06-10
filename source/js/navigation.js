@@ -1,8 +1,10 @@
 import { getDaysData } from './storage.js';
 import { getDaysKey, getWeek, getName } from './date.js';
+import { youtubeUpload, pinterestUpload, soundcloudUpload } from './media.js';
 
 /* date variables */
-const possibleImageSubscripts = ['.jpg', '.png'];
+
+window.curDate = new Date();
 
 /* access log components */
 const taskArea = document.getElementById('log-tasks-area');
@@ -46,22 +48,6 @@ function removeAll() {
         sideBar.removeChild(sideBar.lastChild);
 }
 
-/**
- * Identify if the given string contains image subscripts
- * @param {string} link
- * @return true/false
- */
-function isLinkImage(link) {
-    let bool = false;
-    const subscript = link.slice(link.lastIndexOf('.'));
-    possibleImageSubscripts.forEach((item) => {
-        if (subscript === item) {
-            bool = true;
-        }
-    });
-    return bool;
-}
-
 // this function is here just as a reference
 // so i can use it in populate()
 // the function content is at the bottom of the file
@@ -91,15 +77,15 @@ function populate(key) {
     });
 
     allMedia.forEach((item) => {
-        let x;
-        if (isLinkImage(item)) {
-            x = 'img';
-        } else {
-            x = 'audio';
+        if (item.includes('youtube')) {
+            youtubeUpload(item);
         }
-        x = document.createElement(x);
-        x.src = item;
-        mediaArea.appendChild(x);
+        if (item.includes('pinterest')) {
+            pinterestUpload(item);
+        }
+        if (item.includes('soundcloud')) {
+            soundcloudUpload(item);
+        }
     });
 
     allEve.forEach((event) => {
@@ -110,6 +96,8 @@ function populate(key) {
 
     // update the sidebar
     const allDays = getWeek();
+    console.log('weak');
+    console.log(allDays);
     for (let i = 0; i < 7; i += 1) {
         const newDayLink = document.createElement('a');
         newDayLink.innerText = getName(allDays[i]);

@@ -5,8 +5,6 @@ import { getDaysKey, getWeek, getName } from './date.js';
 window.curDate = new Date();
 
 /* access log components */
-const taskArea = document.getElementById('log-tasks-area');
-const eventArea = document.getElementById('log-events-area');
 // const noteArea = document.getElementById('notes-text-area');
 // const mediaArea = document.getElementById('media-text-area');
 const forward = document.getElementById('right-arrow');
@@ -23,19 +21,24 @@ const sideBar = document.querySelector('#mySideBar ul');
 /** TODO:
  * Removes the current content from the weekly log
  */
-// function removeAll() {
-//     const taskChildren = taskArea.childNodes;
-//     const taskLength = taskChildren.length;
-//     for (let i = 0; i < taskLength; i += 1) {
-//         taskArea.removeChild(taskArea.lastChild);
-//     }
-//
-//     const eveChildren = eventArea.childNodes;
-//     const eveLength = eveChildren.length;
-//     for (let i = 0; i < eveLength; i += 1) {
-//         eventArea.removeChild(eventArea.lastChild);
-//     }
-// }
+
+function removeAll(taskBox, eventBox) {
+    // sideBar remover
+    const sideBarLen = sideBar.childNodes.length;
+    for (let i = 0; i < sideBarLen; i += 1) {
+        sideBar.removeChild(sideBar.lastChild);
+    }
+    // task remover
+    const taskBoxLen = taskBox.childNodes.length;
+    for (let i = 0; i < taskBoxLen; i += 1) {
+        taskBox.removeChild(taskBox.lastChild);
+    }
+    // event remover /* const eventBox = document.getElementById('cal-sun'); */
+    const eventBoxLen = eventBox.querySelectorAll('label').length;
+    for (let i = 0; i < eventBoxLen; i += 1) {
+        eventBox.querySelector('label').remove();
+    }
+}
 
 // this function is here just as a reference
 // so i can use it in populate()
@@ -46,10 +49,19 @@ function goToDailyLog(key) {
     window.location.href = `daily_log.html?day=${key}`;
 }
 
+function setTasks(allTasks, taskBox) {
+    allTasks.forEach((task) => {
+        taskBox.append(['—', task.content].join(' '));
+        const br = document.createElement('br');
+        taskBox.append(br);
+    });
+}
+
 /**
  * Changes the date title, removes existing content, populates page with current date's content
  * @param {string} keyT - The date of the journal
  */
+
 function populateW(keyT) {
     // set curDate to the sunday before keyT
     const dateObj = new Date(`${keyT}T00:00:00`);
@@ -57,8 +69,6 @@ function populateW(keyT) {
     window.curDate.setDate(dateObj.getDate());
     const key = getDaysKey(window.curDate);
 
-    // start
-    const log = getDaysData(key);
     const name = getName(key);
 
     const title = [
@@ -73,12 +83,12 @@ function populateW(keyT) {
     // Sets all dates for each day
     const days = document.getElementsByClassName('date');
     for (let i = 0; i < 7; i += 1) {
-        // update its date text
+        // loop through every log
         const tempKey = getDaysKey(window.curDate);
-
-        // linter wont let me put this in one line >:(
-        const x = getName(tempKey).split(',')[1];
-        days[i].innerText = x;
+        const log = getDaysData(tempKey);
+        const allTasks = log.tasks;
+        const allEve = log.events;
+        const day = log.name;
 
         window.curDate.setDate(window.curDate.getDate() + 1);
 
@@ -91,26 +101,107 @@ function populateW(keyT) {
         divOutside.onclick = function onClickText() {
             goToDailyLog(this.getAttribute('data-key'));
         };
+
+        // set name for thing
+        // eslint-disable-next-line prefer-destructuring
+        days[i].innerText = getName(tempKey).split(',')[1];
+
+        const taskDay = log.name.slice(0, 3).toLowerCase();
+        const taskID = ['cal', 'task', taskDay].join('-');
+        const taskBox = document.getElementById(taskID);
+        const id = `cal-${day.slice(0, 3).toLowerCase()}`;
+        const eventBox = document.getElementById(id);
+
+        // clear any existing entries (add var for event container as parameter)
+        removeAll(taskBox, eventBox);
+        // setting all tasks
+        setTasks(allTasks, taskBox);
+
+        for (let j = 0; j < allEve.length; j += 1) {
+            const eventLabel = document.createElement('label');
+
+            // Get start and end times (hours and minutes) of event
+            const startTime = allEve[j].from;
+            const endTime = allEve[j].to;
+
+            const startTimeHr = startTime.slice(0, startTime.indexOf(':'));
+            const startTimeMinutes = startTime.substr(
+                startTime.indexOf(':') + 1,
+                3
+            );
+
+            const endTimeHr = endTime.slice(0, endTime.indexOf(':'));
+            const endTimeMinutes = endTime.substr(endTime.indexOf(':') + 1, 3);
+
+            const startTimeAMPM = startTime.slice(-2);
+            const endTimeAMPM = endTime.slice(-2);
+
+            // Constant attributes
+            eventLabel.style.position = 'absolute';
+            eventLabel.style.left = 0;
+            eventLabel.style.color = 'white';
+            eventLabel.style.display = 'flex';
+            eventLabel.style.flexDirection = 'row';
+            eventLabel.style.width = '100%';
+            eventLabel.style.justifyContent = 'center';
+            eventLabel.style.alignItems = 'center';
+            eventLabel.style.backgroundColor = 'lightpink';
+            eventLabel.textContent = allEve[j].content;
+            eventLabel.style.border = '1px solid black';
+
+            /*
+                Use start time to calculate 'top'
+            */
+            let top = startTimeHr + 10 * (startTimeMinutes / 60);
+
+            // If 12 AM
+            if (startTimeHr === '12' && startTimeAMPM === 'AM') {
+                top = 10 * (startTimeMinutes / 60);
+                top += '%';
+                eventLabel.style.top = top;
+            } else if (startTimeAMPM === 'AM') {
+                top += '%';
+                eventLabel.style.top = top;
+            } else if (startTimeHr === '12' && startTimeAMPM === 'PM') {
+                top = 120 + 10 * (startTimeMinutes / 60);
+                top += '%';
+                eventLabel.style.top = top;
+            } else if (startTimeAMPM === 'PM') {
+                top = parseFloat(top) + 120;
+                top += '%';
+                eventLabel.style.top = top;
+            }
+
+            /* 
+                Use end time to calculate 'bottom'
+                Note: this depends on whether event ends before or after 10 am
+                less than  10 and AM:
+            */
+            let bottom;
+            if (endTimeHr < 10 && endTimeAMPM === 'AM') {
+                bottom = 10 * (10 - endTimeHr) - 10 * (endTimeMinutes / 60);
+                bottom += '%';
+                eventLabel.style.bottom = bottom;
+            } else if (endTimeHr >= 10 && endTimeAMPM === 'AM') {
+                bottom = ((10 * endTimeHr) % 10) + 10 * (endTimeMinutes / 60);
+                bottom = `-${bottom}%`;
+                eventLabel.style.bottom = bottom;
+            } else if (endTimeHr === 12 && endTimeAMPM === 'PM') {
+                bottom = 20 + 10 * (endTimeMinutes / 60);
+                bottom = `-${bottom}%`;
+                eventLabel.style.bottom = bottom;
+            } else {
+                bottom = 20 + 10 * endTimeHr + 10 * (endTimeMinutes / 60);
+                bottom = `-${bottom}%`;
+                eventLabel.style.bottom = bottom;
+            }
+
+            eventBox.appendChild(eventLabel);
+        }
     }
 
     // Reset curDate to beginning of week
     window.curDate.setDate(window.curDate.getDate() - 7);
-    // removeAll();
-
-    const allTasks = log.tasks;
-    const allEve = log.events;
-
-    allTasks.forEach((task) => {
-        const newTask = document.createElement('task-log');
-        newTask.content = task;
-        taskArea.appendChild(newTask);
-    });
-
-    allEve.forEach((event) => {
-        const newEvent = document.createElement('event-log');
-        newEvent.content = event;
-        eventArea.appendChild(newEvent);
-    });
 
     // update the sidebar
     const allDays = getWeek();
