@@ -1,5 +1,6 @@
 import { getDaysData } from './storage.js';
-import { getDaysKey } from './date.js';
+import { getDaysKey, getWeek, getName } from './date.js';
+import { youtubeUpload, pinterestUpload, soundcloudUpload } from './media.js';
 
 /* date variables */
 window.curDate = new Date();
@@ -12,6 +13,7 @@ const noteArea = document.getElementById('notes-text-area');
 const mediaArea = document.getElementById('media-text-area');
 const forward = document.getElementById('right-arrow');
 const backward = document.getElementById('left-arrow');
+const sideBar = document.querySelector('#mySideBar ul');
 
 /**
  * Removes the current content from the log, notepad, and media tab
@@ -40,6 +42,10 @@ function removeAll() {
     for (let i = 0; i < noteLength; i += 1) {
         noteArea.removeChild(noteArea.lastChild);
     }
+
+    const sideBarLength = sideBar.childNodes.length;
+    for (let i = 0; i < sideBarLength; i += 1)
+        sideBar.removeChild(sideBar.lastChild);
 }
 
 /**
@@ -57,6 +63,11 @@ function isLinkImage(link) {
     });
     return bool;
 }
+
+// this function is here just as a reference
+// so i can use it in populate()
+// the function content is at the bottom of the file
+let sideBarClick = function sideBarClickedTemp() {};
 
 /**
  * Changes the date title, removes existing content, populates page with current date's content
@@ -82,15 +93,15 @@ function populate(key) {
     });
 
     allMedia.forEach((item) => {
-        let x;
-        if (isLinkImage(item)) {
-            x = 'img';
-        } else {
-            x = 'audio';
+        if (item.includes('youtube')) {
+            youtubeUpload(item);
         }
-        x = document.createElement(x);
-        x.src = item;
-        mediaArea.appendChild(x);
+        if (item.includes('pinterest')) {
+            pinterestUpload(item);
+        }
+        if (item.includes('soundcloud')) {
+            soundcloudUpload(item);
+        }    
     });
 
     allEve.forEach((event) => {
@@ -98,6 +109,17 @@ function populate(key) {
         newEvent.content = event;
         eventArea.appendChild(newEvent);
     });
+
+    // update the sidebar
+    const allDays = getWeek();
+    for (let i = 0; i < 7; i += 1) {
+        const newDayLink = document.createElement('a');
+        newDayLink.innerText = getName(allDays[i]);
+        newDayLink.setAttribute('href', '#');
+        newDayLink.setAttribute('data-key', allDays[i]);
+        newDayLink.onclick = sideBarClick;
+        sideBar.appendChild(newDayLink);
+    }
 }
 
 // router code put here to prevent dependency cycle
@@ -141,27 +163,11 @@ backward.addEventListener('click', (event) => {
     setState(key);
 });
 
-/**
- * When the initial document is loaded, call populate on today's journal content
- * @listens document#DOMContentLoaded
- */
-document.addEventListener('DOMContentLoaded', () => {
-    // set the current state
-    // window.localStorage.clear();
-    const key = getDaysKey(window.curDate);
-    setState(key);
-});
-
 // side bar navigate
-// .forEach replaced to satisfy linter
-
-function sideBarClick(event) {
+sideBarClick = function sideBarClickedActual(event) {
     event.preventDefault();
-    setState(getDaysKey(new Date(this.innerText)));
+    setState(this.getAttribute('data-key'));
     document.querySelector('.closebtn').onclick(event);
-}
+};
 
-const arr = document.querySelectorAll('#mySidebar small a');
-for (let i = 0; i < arr.length; i += 1) {
-    arr[i].onclick = sideBarClick;
-}
+export default setState;
