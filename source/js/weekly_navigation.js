@@ -42,11 +42,22 @@ const sideBar = document.querySelector('#mySideBar ul');
 // the function content is at the bottom of the file
 let sideBarClick = function sideBarClickedTemp() {};
 
+function goToDailyLog(key) {
+    window.location.href = `daily_log.html?day=${key}`;
+}
+
 /**
  * Changes the date title, removes existing content, populates page with current date's content
- * @param {string} key - The date of the journal
+ * @param {string} keyT - The date of the journal
  */
-function populateW(key) {
+function populateW(keyT) {
+    // set curDate to the sunday before keyT
+    const dateObj = new Date(`${keyT}T00:00:00`);
+    dateObj.setDate(dateObj.getDate() - dateObj.getDay());
+    window.curDate.setDate(dateObj.getDate());
+    const key = getDaysKey(window.curDate);
+
+    // start
     const log = getDaysData(key);
     const name = getName(key);
 
@@ -62,17 +73,24 @@ function populateW(key) {
     // Sets all dates for each day
     const days = document.getElementsByClassName('date');
     for (let i = 0; i < 7; i += 1) {
+        // update its date text
         const tempKey = getDaysKey(window.curDate);
-        // eslint-disable-next-line prefer-destructuring
-        days[i].innerText = getName(tempKey).split(',')[1];
 
-        days[i].setAttribute('data-key', tempKey);
-
-        days[i].onclick = function goToDailyLog() {
-            window.location.href = `daily_log.html?day=${tempKey}`;
-        };
+        // linter wont let me put this in one line >:(
+        const x = getName(tempKey).split(',')[1];
+        days[i].innerText = x;
 
         window.curDate.setDate(window.curDate.getDate() + 1);
+
+        // set onclick for div outside
+        const divOutside = document.getElementById(
+            `cal-${days[i].getAttribute('id')}`
+        );
+        divOutside.setAttribute('data-key', tempKey);
+
+        divOutside.onclick = function onClickText() {
+            goToDailyLog(this.getAttribute('data-key'));
+        };
     }
 
     // Reset curDate to beginning of week
@@ -176,26 +194,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // otherwise go to curDate
     else key = getDaysKey(window.curDate);
 
-    // change date to sunday if need be
-    window.curDate = new Date(`${key}T00:00:00`);
-
-    if (window.curDate.getDay() !== 0) {
-        window.curDate.setDate(
-            window.curDate.getDate() - window.curDate.getDay()
-        );
-        key = getDaysKey(window.curDate);
-    }
-
     setStateW(key, false);
 });
 
-// side bar navigate
-// .forEach replaced to satisfy linter
-
+// side bar daily log links
+// navigate to daily log
 sideBarClick = function sideBarClickActual(event) {
     event.preventDefault();
-    setStateW(getDaysKey(new Date(this.innerText)));
-    document.querySelector('.closebtn').onclick(event);
+    goToDailyLog(this.getAttribute('data-key'));
 };
 
 const arr = document.querySelectorAll('#mySidebar small a');
