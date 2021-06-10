@@ -22,7 +22,7 @@ function sortPoints(a, b) {
 
 /**
  *
- * @param {array of event objects} eventArr
+ * @param {array} - event objects eventArr
  * @return array of integers that represent width
  */
 function getEventWidths(eventArr) {
