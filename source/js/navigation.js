@@ -68,7 +68,7 @@ function populate(key) {
     const allEve = log.events;
     const allMedia = log.media;
 
-    noteArea.append(log.notepad);
+    noteArea.innerText = log.notepad;
 
     allTasks.forEach((task) => {
         const newTask = document.createElement('task-log');
@@ -142,7 +142,6 @@ window.onpopstate = popState;
  */
 forward.addEventListener('click', (event) => {
     event.preventDefault();
-
     window.curDate.setDate(window.curDate.getDate() + 1);
     const key = getDaysKey(window.curDate);
 
@@ -155,7 +154,6 @@ forward.addEventListener('click', (event) => {
  */
 backward.addEventListener('click', (event) => {
     event.preventDefault();
-
     window.curDate.setDate(window.curDate.getDate() - 1);
     const key = getDaysKey(window.curDate);
 

@@ -188,6 +188,7 @@ export {
     addCustomTag,
     getCustomTags,
     updateTaskChecked,
+    updateNotepad,
     addCustomTagStorage,
 };
 
