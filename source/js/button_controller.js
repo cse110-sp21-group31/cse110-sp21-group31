@@ -1,5 +1,6 @@
 import { addEvent, addTask, addCustomTag } from './storage.js';
 import { getDaysKey } from './date.js';
+// import { getDate } from './navigation.js';
 
 /* 
 button_controller.js
@@ -245,12 +246,64 @@ implements upload button functionality
                     }
 
                     // pull time info from clock icon
-                    entry.from = convert24To12(
-                        document.getElementById('start-time').children[0].value
-                    );
-                    entry.to = convert24To12(
-                        document.getElementById('end-time').children[0].value
-                    );
+                    const from24 =
+                        document.getElementById('start-time').children[0].value;
+                    const to24 =
+                        document.getElementById('end-time').children[0].value;
+                    const fromTime = convert24To12(from24);
+                    const toTime = convert24To12(to24);
+
+                    /**
+                     *  Flipped Time cases(from is after to):
+                     *  AM to AM/ PM to PM: flip times and create event normally
+                     *  PM to AM: create two events through the night, split at 00:00
+                     */
+
+                    // check if times flipped(from hour is greater, or same hour & from minutes greater)
+                    if (
+                        from24.substring(0, 2) > to24.substring(0, 2) ||
+                        (from24.substring(0, 2) === to24.substring(0, 2) &&
+                            from24.substring(3, 5) > to24.substring(3, 5))
+                    ) {
+                        // check PM to AM
+                        if (
+                            fromTime.substring(
+                                fromTime.length - 2,
+                                fromTime.length
+                            ) === 'PM' &&
+                            toTime.substring(
+                                toTime.length - 2,
+                                toTime.length
+                            ) === 'AM'
+                        ) {
+                            // create two events
+                            // create and add tomorrow's event, change entry.to to 23:59
+                            const tomorrowEntry =
+                                document.createElement('event-log');
+                            entry.from = '12:00 AM';
+                            entry.to = toTime;
+
+                            tomorrowEntry.content = entry;
+                            window.curDate.setDate(
+                                window.curDate.getDate() + 1
+                            );
+                            addEvent(getDaysKey(window.curDate), entry);
+                            window.curDate.setDate(
+                                window.curDate.getDate() - 1
+                            );
+                            // resume entry for today's event
+                            entry.from = fromTime;
+                            entry.to = '11:59 PM';
+                        } else {
+                            // flip times
+                            entry.from = toTime;
+                            entry.to = fromTime;
+                        }
+                    } else {
+                        // normal time case
+                        entry.from = fromTime;
+                        entry.to = toTime;
+                    }
 
                     // initialize event element
                     const newEntry = document.createElement('event-log');
