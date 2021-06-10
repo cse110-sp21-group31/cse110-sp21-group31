@@ -205,6 +205,9 @@ function populate(key) {
 
         // clear any existing entries (add var for event container as parameter)
         removeAll(taskBox);
+        
+        // setting all tasks
+        setTasks(allTasks, taskBox);
 
         if(test_events[tempKey] == undefined){ 
             continue;
@@ -280,9 +283,6 @@ function populate(key) {
             // document.getElementById(id).appendChild(event_label);
             console.log(`element = ${document.getElementById(id)}`);
         }
-
-        // setting all tasks
-        setTasks(allTasks, taskBox);
 
     }
 
