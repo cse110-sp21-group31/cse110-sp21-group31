@@ -9,7 +9,7 @@ const mediaDiv = document.getElementById('media-text-area');
 /**
  * Toggle the display of the HTML element with elementID between displayType and none
  * @param {string} elementID - The ID for the HTML element
- * @param {string} displayType - The desired dispaly type
+ * @param {string} displayType - The desired display type
  */
 function toggle(elementID, displayType) {
     const element = document.getElementById(elementID);
@@ -25,15 +25,15 @@ function youtubeUpload(link) {
     youtubeDiv.setAttribute('class', 'media-item');
     let youtubeIfr = document.createElement('iframe');
     youtubeIfr.setAttribute('src', `https://www.youtube.com/embed/${link.substring(32)}`);
-    youtubeIfr.style.width = '100%';
-    youtubeIfr.style.height = '50%';
+    youtubeIfr.style.width = '560';
+    youtubeIfr.style.height = '315';
     youtubeDiv.appendChild(youtubeIfr);
     mediaDiv.appendChild(youtubeDiv);
 }
 
 function pinterestUpload(link) {
     let pinterestDiv = document.createElement('div');
-    pinterestDiv.setAttribute('class', 'iframe');
+    pinterestDiv.setAttribute('class', 'media-item');
     let pinterestIfr = document.createElement('iframe');
     let pinterestUrl = `https://assets.pinterest.com/ext/embed.html?id=${link.substring(30)}`;
     pinterestIfr.setAttribute('src', pinterestUrl.substr(0, pinterestUrl.length - 1));

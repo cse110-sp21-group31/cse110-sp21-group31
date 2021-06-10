@@ -454,22 +454,14 @@
 
 .media-item {
     display: flex;
-    /* flex: none; */
-    flex-grow: 1;
+    flex: none;
     margin: 1% 1% 1% 1%;
     justify-content: center;
     align-items: center;
-    min-height: 40%;
-    width: 98%;
-}
-
-.iframe {
-    display: flex;
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* flex-grow: 1; */
-    margin: 5% 1% 5% 1%;
-    height: 90%;
+    height: 80%;
+    width: 95%;
+    border: 1px solid transparent;
+    border-radius: 15px;
 }
 
 .item-footer {
@@ -585,22 +577,51 @@ body {
 
 #popup-clock {
     display: none;
-    width: 10%;
-    height: 15%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    bottom: 9%; 
-    right: 14.5%;
-    background-color: rgba(166, 239, 255);
+    bottom: 7%; 
+    right: 16.5%;
+    width: 13%;
+    height: 16%;
+    background-color: rgba(44, 47, 48, 0.219);
+    text-align: center;
+    padding: 1% 1% 1% 1%;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px transparent;
+    border-radius: 10px;
 }
 
 #popup-clock label {
     font-family: 'Roboto', 'sans-serif';
     text-align: center;
+    font-weight: bolder;
+    color: #fff;
+}
+
+#start-time-container {
+    padding: 10% 0 5% 0;
+}
+
+#end-time-container {
+    padding: 5% 0 10% 0;
+}
+
+#clock-submit-button {
+    margin: 5% 0 0 0;
+    align-self: flex-end;
+    width: 100%;
+    border: 1px transparent;
+    border-radius: 10px;
+    font-family: 'Roboto', 'sans-serif';
 }
 
 #time-selector {
     display: flex;
     flex-direction: column;
+    align-items: flex-end;
 }
 
 #start-time {
@@ -698,16 +719,44 @@ event-log:hover, task-log:hover {
 
 #popup-media {
     display: none;
-    width: 13%;
-    height: 9%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     position: fixed;
-    bottom: 9%; 
+    bottom: 7%; 
     right: 1.2%;
-    background-color: rgba(166, 239, 255);
+    width: 13%;
+    height: 16%;
+    background-color: rgba(44, 47, 48, 0.219);
+    text-align: center;
+    padding: 1% 1% 1% 1%;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px transparent;
+    border-radius: 10px;
 }
 
-#popup-media label {
+#media-text {
     font-family: 'Roboto', 'sans-serif';
     text-align: center;
+    font-weight: bolder;
+    color: #fff;
 }
 
+#media-url {
+    width: 100%;
+    border: 1px transparent;
+}
+
+#media-uploader {
+    margin: 10% 0 0 0;
+}
+
+#media-submit-button {
+    margin: 5% 0 0 0;
+    align-self: flex-end;
+    width: 100%;
+    border: 1px transparent;
+    border-radius: 10px;
+    font-family: 'Roboto', 'sans-serif';
+}
