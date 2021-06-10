@@ -548,7 +548,7 @@ select {
     display: flex;
     flex-direction: column;
     flex: 1;
-    flex-shrink: 1;
+    /* flex-shrink: 1; */
     height: 100%;
     width: 100%;
     /* justify-content: center; */
@@ -560,18 +560,17 @@ select {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 0 0 0 5%;
 }
 
 #tags-selector {
     display: flex;
     flex-direction: row;
-    flex-grow: 1;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
     position: relative;
-    /* margin: 0px 5px 0px 5px; */
 }
 
 #tag-selection {
@@ -580,8 +579,8 @@ select {
     justify-content: center;
     align-items: center;
     position: absolute;
-    bottom: 22%;
-    right: 10%;
+    top: auto; 
+    bottom: 25%
 }
 
 .all-tags {
@@ -589,9 +588,13 @@ select {
 }
 
 #tags-selector input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    right: 4.5%;
-    bottom: 1.5%;
+    top: auto; 
+    bottom: 25%;
     height: 30px;
     width: 125px;
 }
@@ -600,10 +603,10 @@ select {
     display: flex;
     flex-direction: row;
     flex: 1;
-    flex-shrink: 1;
     width: 100%;
     justify-content: center;
     align-self: center;
+    margin: 0 5% 0 0;
 }
 
 /* Other Components */
