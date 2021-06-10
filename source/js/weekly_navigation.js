@@ -89,7 +89,7 @@ function populate(key) {
         const taskDay = log.name.slice(0, 3).toLowerCase();
         const taskID = ['cal', 'task', taskDay].join('-');
         const taskBox = document.getElementById(taskID);
-        const id = 'cal-' + day.slice(0, 3).toLowerCase();
+        const id = `cal-${day.slice(0, 3).toLowerCase()}`;
         const eventBox = document.getElementById(id);
 
         // clear any existing entries (add var for event container as parameter)
@@ -98,58 +98,58 @@ function populate(key) {
         setTasks(allTasks, taskBox);
 
         for(let j = 0; j < allEve.length; j += 1 ){
-            const event_label = document.createElement('label');
+            const eventLabel = document.createElement('label');
 
             // Get start and end times (hours and minutes) of event
-            const start_time = allEve[j].from;
-            const end_time = allEve[j].to;
+            const startTime = allEve[j].from;
+            const endTime = allEve[j].to;
 
-            const start_time_hr = start_time.slice(0, start_time.indexOf(':'));
-            const start_time_minutes = start_time.substr(start_time.indexOf(':')+1, 3);
+            const startTimeHr = startTime.slice(0, startTime.indexOf(':'));
+            const startTimeMinutes = startTime.substr(startTime.indexOf(':')+1, 3);
             
-            const end_time_hr = end_time.slice(0, end_time.indexOf(':'));
-            const end_time_minutes = end_time.substr(end_time.indexOf(':')+1, 3);
+            const endTimeHr = endTime.slice(0, endTime.indexOf(':'));
+            const endTimeMinutes = endTime.substr(endTime.indexOf(':')+1, 3);
             
-            const start_time_ampm = start_time.slice(-2);
-            const end_time_ampm = end_time.slice(-2);
+            const startTimeAMPM = startTime.slice(-2);
+            const endTimeAMPM = endTime.slice(-2);
             
             // Constant attributes
-            event_label.style.position = 'absolute';
-            event_label.style.left = 0;
-            event_label.style.color = 'white';
-            event_label.style.display = 'flex';
-            event_label.style.flexDirection = 'row';
-            event_label.style.width = '100%';
-            event_label.style.justifyContent = 'center';
-            event_label.style.alignItems = 'center';
-            event_label.style.backgroundColor = 'lightpink';
-            event_label.textContent = allEve[j].content;
-            event_label.style.border = '1px solid black';
+            eventLabel.style.position = 'absolute';
+            eventLabel.style.left = 0;
+            eventLabel.style.color = 'white';
+            eventLabel.style.display = 'flex';
+            eventLabel.style.flexDirection = 'row';
+            eventLabel.style.width = '100%';
+            eventLabel.style.justifyContent = 'center';
+            eventLabel.style.alignItems = 'center';
+            eventLabel.style.backgroundColor = 'lightpink';
+            eventLabel.textContent = allEve[j].content;
+            eventLabel.style.border = '1px solid black';
             
             /*
                 Use start time to calculate 'top'
             */
-            let top = start_time_hr + 10*(start_time_minutes/60);
+            let top = startTimeHr + 10*(startTimeMinutes/60);
             
             // If 12 AM
-            if(start_time_hr == '12' && start_time_ampm == 'AM') {
-                top = 10*(start_time_minutes/60);
+            if(startTimeHr === '12' && startTimeAMPM === 'AM') {
+                top = 10*(startTimeMinutes/60);
                 top += '%';
-                event_label.style.top = top;
+                eventLabel.style.top = top;
             } 
-            else if(start_time_ampm == 'AM') {
+            else if(startTimeAMPM === 'AM') {
                 top += '%';
-                event_label.style.top = top;
+                eventLabel.style.top = top;
             }
-            else if(start_time_hr == '12' && start_time_ampm == 'PM') {
-                top = 120 + 10*(start_time_minutes/60);
+            else if(startTimeHr === '12' && startTimeAMPM === 'PM') {
+                top = 120 + 10*(startTimeMinutes/60);
                 top += '%';
-                event_label.style.top = top;
+                eventLabel.style.top = top;
             }
-            else if(start_time_ampm == 'PM') {
+            else if(startTimeAMPM === 'PM') {
                 top = parseFloat(top) + 120;
                 top += '%';
-                event_label.style.top = top;
+                eventLabel.style.top = top;
             }
 
             /* 
@@ -158,25 +158,25 @@ function populate(key) {
                 less than  10 and AM:
             */
             let bottom;
-            if(end_time_hr < 10 && end_time_ampm == 'AM') { 
-                bottom = 10*(10-end_time_hr) - 10*(end_time_minutes/60);
+            if(endTimeHr < 10 && endTimeAMPM === 'AM') { 
+                bottom = 10*(10-endTimeHr) - 10*(endTimeMinutes/60);
                 bottom += '%';
-                event_label.style.bottom = bottom; 
-            } else if(end_time_hr >= 10 && end_time_ampm == 'AM') {
-                bottom = 10*end_time_hr%10 + 10*(end_time_minutes/60);
-                bottom = '-' + bottom + '%';
-                event_label.style.bottom = bottom; 
-            } else if(end_time_hr == 12 && end_time_ampm == 'PM') {
-                bottom = 20 + 10*(end_time_minutes/60);
-                bottom = '-' + bottom + '%';
-                event_label.style.bottom = bottom; 
+                eventLabel.style.bottom = bottom; 
+            } else if(endTimeHr >= 10 && endTimeAMPM === 'AM') {
+                bottom = 10*endTimeHr%10 + 10*(endTimeMinutes/60);
+                bottom = `-${bottom}%`; 
+                eventLabel.style.bottom = bottom; 
+            } else if(endTimeHr === 12 && endTimeAMPM === 'PM') {
+                bottom = 20 + 10*(endTimeMinutes/60);
+                bottom = `-${bottom}%`;
+                eventLabel.style.bottom = bottom; 
             } else {
-                bottom = 20 + 10*(end_time_hr) + 10*(end_time_minutes/60);
-                bottom = '-' + bottom + '%';
-                event_label.style.bottom = bottom;
+                bottom = 20 + 10*(endTimeHr) + 10*(endTimeMinutes/60);
+                bottom = `-${bottom}%`;
+                eventLabel.style.bottom = bottom;
             }
             
-            eventBox.appendChild(event_label);
+            eventBox.appendChild(eventLabel);
         }
 
     }
