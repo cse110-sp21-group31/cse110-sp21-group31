@@ -184,6 +184,7 @@ export {
     getCustomTagColor,
     addTask,
     addEvent,
+    addLink,
     addCustomTag,
     getCustomTags,
     updateTaskChecked,
@@ -191,7 +192,6 @@ export {
 };
 
 /*
-
 LocalStorage: {
     
     "custom-tags": {
@@ -199,7 +199,6 @@ LocalStorage: {
         "Assignment": "red",
         "Other": "yellow"
     },
-
     "2021-05-13": {
         name: "Thursday, May 13th",
         notepad: "blan blah blah",
@@ -222,10 +221,7 @@ LocalStorage: {
             "link1", "link2", ...
         ],
     }
-
     "2021-05-14": {...},
-
     "2021-05-15": {...},
 }
-
 */

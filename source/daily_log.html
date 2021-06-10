@@ -14,6 +14,7 @@
     <script src="./js/clock.js" type="module"></script>
     <script src="./js/button_controller.js" type="module"></script>
     <script src="./js/main.js" type="module"></script>
+    <script src="./js/media.js" type="module"></script>
 
     <!-- Fonts -->
     <!-- Sen -->
@@ -43,8 +44,8 @@
 
         <div class='item-header'>
             <div id='header-item-img'>
-                <a href="#" class='openbtn' onclick="openNav()"><img src="images/nav_button.png"
-                        alt="Navigation Button" height='50' width='50'></a>
+                <a href="#" class='openbtn' onclick="openNav()"><img src="images/nav_button.png" alt="Navigation Button"
+                        height='50' width='50'></a>
             </div>
             <div id='header-item-title'>
                 <h1 id='header' class="main-title">Daily Log</h1>
@@ -84,7 +85,7 @@
                     <h2 class='main-title'>Media</h2>
                 </div>
                 <div id='media-text-area'>
-
+                   
                 </div>
             </div>
         </div>
@@ -101,12 +102,18 @@
             </div>
             <div id='clock-tags-upload-area'>
                 <div class='clock-form'>
-                    <img id='clock-img' src="images/clock.png" alt="Clock" height='40' width='40'></a>    
+                    <img id='clock-img' src="images/clock.png" alt="Clock" height='40' width='40'></a>
                     <div id='popup-clock'>
                         <form id='time-selector'>
-                            <label id='start-time' for='startTime'>Start Time:<input type='time' id='start-time' name='start-time'></label>
-                            <label id='end-time' for='endTime'>End Time:<input type='time' id='end-time' name='end-time'></label>
-                            <button type='button' id="clock-submit-button">Submit</button>
+                            <div id='start-time-container'>
+                                <label id='start-time' for='startTime'>Start Time:</label>
+                                <input type='time' id='start-time' name='start-time'>
+                            </div>
+                            <div id='end-time-container'>
+                                <label id='end-time' for='endTime'>End Time:</label>
+                                <input type='time' id='end-time' name='end-time'>
+                            </div>
+                            <button type='button' id="clock-submit-button">Submit</button>        
                         </form>
                     </div>
                 </div>
@@ -118,7 +125,16 @@
                     <input class="all-tags" id="add-tag-option" type="text" placeholder="Add Tag Here...">
                 </div>
                 <div id='upload-img'>
-                    <a href="#"><img src="images/upload_button.png" alt="Upload Button" height='40' width='40'></a>
+                    <a href="#"><img id='media-img' src="images/upload_button.png" alt="Right Arrow" height='40'
+                            width='40'></a>
+                    <div id='popup-media'>
+                        <label id='media-text'>Please upload your files to a hosting service:
+                            YouTube, Pinterest, and Soundcloud supported</label>
+                        <form id='media-uploader'>
+                            <input type='text' id='media-url'>
+                            <button type='button' id='media-submit-button'>Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -141,5 +157,5 @@
     }
 
     document.querySelector('.openbtn').onclick = openNav;
-    document.querySelector('.closebtn').onclick = closeNav;    
+    document.querySelector('.closebtn').onclick = closeNav;
 </script>
