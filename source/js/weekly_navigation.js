@@ -35,6 +35,12 @@ function removeAll(taskBox) {
     for (let i = 0; i < taskBoxLen; i += 1) {
         taskBox.removeChild(taskBox.lastChild);
     }
+
+    // event remover
+    // cont eventBoxLen = eventBox.childNodes.length;
+    // for (let i = 0; i < eventBoxLen; i +=1) {
+    //   eventBox.removeChild(eventBox.lastChild);
+    // }
 }
 
 // this function is here just as a reference
