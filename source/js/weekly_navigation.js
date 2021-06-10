@@ -33,6 +33,13 @@ function removeAll() {
 // the function content is at the bottom of the file
 let sideBarClick = function sideBarClickedTemp() {};
 
+function setTasks(allTasks, taskBox) {
+    allTasks.forEach((task) => {
+        taskBox.append('—' + task.content);
+        const br = document.createElement('br');
+        taskBox.append(br);
+    });
+}
 /**
  * Changes the date title, removes existing content, populates page with current date's content
  * @param {string} key - The date of the journal
@@ -185,7 +192,7 @@ function populate(key) {
         console.log(allEve);
 
         const allTasks = log.tasks;
-        const taskDay = day.slice(0,3).toLowerCase();
+        const taskDay = log.name.slice(0,3).toLowerCase();
         const taskID = ['cal', 'task', taskDay].join('-');
         const taskBox = document.getElementById(taskID);
 
