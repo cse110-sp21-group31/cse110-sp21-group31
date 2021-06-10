@@ -210,26 +210,22 @@ function populate(key) {
             const start_time_ampm = start_time.slice(-2);
             const end_time_ampm = end_time.slice(-2);
 
-            console.log(`start time hr:min: ${start_time_hr}, ${start_time_minutes} ${start_time_ampm} end time hr:min${end_time_hr}, ${end_time_minutes} ${end_time_ampm}`);
+            console.log(`start time hr:min: ${start_time_hr}:${start_time_minutes} ${start_time_ampm} end time hr:min ${end_time_hr}:${end_time_minutes} ${end_time_ampm}`);
             
             // Constant attributes
             event_label.style.position = 'absolute';
-            event_label.style.left = '0';
+            event_label.style.left = 0;
             event_label.style.color = 'white';
             event_label.style.display = 'flex';
             event_label.style.flexDirection = 'row';
-            event_label.style.width = '100%';
+            // event_label.style.width = '100%';
             event_label.style.justifyContent = 'center';
             event_label.style.alignItems = 'center';
             event_label.style.backgroundColor = 'lightpink';
             event_label.textContent = allEve[j].content;
+            event_label.style.border = '1px solid black';
             
             // position: absolute;
-            // top: 140%;
-            // bottom: -70%;
-            // left: 66%;
-            // background-color: lightgreen;
-            // color: white;
             // display: flex;
             // flex-direction: row;
             // justify-content: center;
@@ -240,11 +236,12 @@ function populate(key) {
             */
             let top = start_time_hr + 10*(start_time_minutes/60);
             if(start_time_ampm == 'AM') { 
+                top += '%';
                 event_label.style.top = top; 
             } else {
                 top = parseFloat(top) + 120;
                 top += '%';
-                event_label.style.top = 'top';
+                event_label.style.top = top;
             }
 
             /* 
@@ -268,10 +265,11 @@ function populate(key) {
             }
             
             const id = 'cal-' + day.slice(0, 3).toLowerCase();
-            console.log(`id=${id}`);
-            // document.getElementById(id).appendChild(event_label);
-            console.log(`event_label=${event_label}`);
+            
+            document.getElementById(id).appendChild(event_label);
+            console.log(`id=${id}, top=${event_label.style.top}, bottom=${event_label.style.bottom}`);
             console.log(`element = ${document.getElementById(id)}`);
+            console.log(`parent=${event_label.parentElement.id}`);
         }
 
         // eslint-disable-next-line prefer-destructuring
