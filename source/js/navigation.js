@@ -96,8 +96,7 @@ function populate(key) {
 
     // update the sidebar
     const allDays = getWeek();
-    console.log('weak');
-    console.log(allDays);
+
     for (let i = 0; i < 7; i += 1) {
         const newDayLink = document.createElement('a');
         newDayLink.innerText = getName(allDays[i]);
