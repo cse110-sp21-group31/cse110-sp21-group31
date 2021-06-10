@@ -142,7 +142,6 @@
     height: 10%;
     justify-content: center;
     align-items: center;
-    margin: 0 0 1px 0;
     border-right: 1px solid rgb(213, 215, 220);
 }
 
@@ -259,10 +258,11 @@
 }
 
 #cal-sun {
-    
+    position: relative;
 }
 
 #cal-sun div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -270,12 +270,26 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+}
+
+#cal-sun div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 #cal-mon {
+    position: relative;
 }
 
 #cal-mon div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -283,12 +297,26 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
 }
 
-#cal-tues {
+#cal-mon div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
-#cal-tues div {
+#cal-tue {
+    position: relative;
+}
+
+#cal-tue div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -296,12 +324,26 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+}
+
+#cal-tue div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
 }
 
 #cal-wed {
+    position: relative;
 }
 
 #cal-wed div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -309,13 +351,29 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
 }
 
-#cal-thurs {
+#cal-wed div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
     
+    /* background-color: teal;
+    top: 50%; */
 }
 
-#cal-thurs div {
+#cal-thu {
+    position: relative;
+}
+
+#cal-thu div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -323,12 +381,29 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+}
+
+#cal-thu div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    /* background-color: teal;
+    top: 50%; */
 }
 
 #cal-fri {
+    position: relative;
 }
 
 #cal-fri div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -336,18 +411,50 @@
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+}
+
+#cal-fri div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    /* background-color: teal;
+    top: 50%; */
 }
 
 #cal-sat {
+    position: relative;
 }
 
 #cal-sat div {
+    box-sizing: border-box;
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
     font-family: 'Roboto', 'sans-serif';
     justify-content: center;
     align-items: center;
+    overflow-y: hidden;
+}
+
+#cal-sat div label {
+    display: flex;
+    flex-direction: row;
+    color: white;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+    /* background-color: teal;
+    top: 50%; */
 }
 
 .hour {
@@ -363,29 +470,51 @@
 */
 #cal-task-sun {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
 #cal-task-mon {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
-#cal-task-tues {
+#cal-task-tue {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
 #cal-task-wed {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
-#cal-task-thurs {
+#cal-task-thu {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
 #cal-task-fri {
     border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
 #cal-task-sat {
+    border-right: 1px solid black;
+    font-family: 'Roboto', 'sans-serif';
+    padding: 10px;
+    line-height: 130%;
 }
 
 #middle-item-log {
