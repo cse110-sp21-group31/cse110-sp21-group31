@@ -142,7 +142,6 @@
     height: 10%;
     justify-content: center;
     align-items: center;
-    margin: 0 0 1px 0;
     border-right: 1px solid rgb(213, 215, 220);
 }
 
@@ -259,10 +258,11 @@
 }
 
 #cal-sun {
-    
+    position: relative;
 }
 
 #cal-sun div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -287,10 +287,54 @@
     top: 50%; */
 }
 
+#overlay {
+    position: absolute;
+    top: 22.5%;
+    bottom: 20%;
+    left: 0;
+    background-color: lightpink;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    width: 33%;
+    justify-content: center;
+    align-items: center;
+}
+
+#overlay2 {
+    position: absolute;
+    top: 50%;
+    bottom: -10%;
+    left: 33%;
+    background-color: lightblue;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+
+#overlay3 {
+    position: absolute;
+    top: 140%;
+    bottom: -70%;
+    left: 66%;
+    background-color: lightgreen;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 33%;
+}
+
 #cal-mon {
+    
 }
 
 #cal-mon div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -315,10 +359,11 @@
     top: 50%; */
 }
 
-#cal-tues {
+#cal-tue {
 }
 
-#cal-tues div {
+#cal-tue div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -329,7 +374,7 @@
     overflow-y: hidden;
 }
 
-#cal-tues div label {
+#cal-tue div label {
     display: flex;
     flex-direction: row;
     color: white;
@@ -347,6 +392,7 @@
 }
 
 #cal-wed div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -371,11 +417,12 @@
     top: 50%; */
 }
 
-#cal-thurs {
+#cal-thu {
     
 }
 
-#cal-thurs div {
+#cal-thu div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -386,7 +433,7 @@
     overflow-y: hidden;
 }
 
-#cal-thurs div label {
+#cal-thu div label {
     display: flex;
     flex-direction: row;
     color: white;
@@ -404,6 +451,7 @@
 }
 
 #cal-fri div {
+    box-sizing: border-box;
     border-right: 1px solid rgb(213, 215, 220);
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
@@ -432,6 +480,7 @@
 }
 
 #cal-sat div {
+    box-sizing: border-box;
     border-bottom: 1px solid rgb(213, 215, 220);
     flex: none;
     height: 10%;
