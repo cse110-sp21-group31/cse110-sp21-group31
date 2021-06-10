@@ -43,6 +43,123 @@ const sideBar = document.querySelector('#mySideBar ul');
 // the function content is at the bottom of the file
 let sideBarClick = function sideBarClickedTemp() {};
 
+
+ // Test Events
+ let test_events = {
+    '2021-06-07': {
+        name: "Monday, June 7th",
+        notepad: "blan blah blah",
+        tasks: [
+            {
+                content: "Go on a run",
+                completed: true/false,
+                tags: ["Other"]
+            },
+        ],
+        events: [
+            {
+                content: "Event 1",
+                tags: "Lecture",
+                from: "4:30 AM",
+                to: "7:30 AM"
+            }, 
+        ],
+        media: [
+            "link1", "link2",
+        ]
+    },
+
+    '2021-06-08': {
+        name: "Tuesday, June 8th",
+        notepad: "blan blah blah",
+        tasks: [
+            {
+                content: "Go on a run",
+                completed: true/false,
+                tags: ["Other"]
+            },
+        ],
+        events: [
+            {
+                content: "Event 2",
+                tags: "Lecture",
+                from: "2:15 PM",
+                to: "5:37 PM"
+            }, 
+        ],
+        media: [
+            "link1", "link2"
+        ]
+    },
+
+    '2021-06-09': {
+        name: "Wednesday, June 9th",
+        notepad: "blan blah blah",
+        tasks: [
+            {
+                content: "Go on a run",
+                completed: true/false,
+                tags: ["Other"]
+            },
+        ],
+        events: [
+            {
+                content: "Event 3",
+                tags: "Lecture",
+                from: "2:05 AM",
+                to: "3:20 AM"
+            }, 
+        ],
+        media: [
+            "link1", "link2"
+        ]
+    },
+    '2021-06-10': {
+        name: "Thursday, June 10th",
+        notepad: "blan blah blah",
+        tasks: [
+            {
+                content: "Go on a run",
+                completed: true/false,
+                tags: ["Other"]
+            },
+        ],
+        events: [
+            {
+                content: "Event 4",
+                tags: "Lecture",
+                from: "4:00 AM",
+                to: "11:35 AM"
+            }, 
+        ],
+        media: [
+            "link1", "link2"
+        ]
+    },
+    '2021-06-11': {
+        name: "Friday, June 11th",
+        notepad: "blan blah blah",
+        tasks: [
+            {
+                content: "Go on a run",
+                completed: true/false,
+                tags: ["Other"]
+            },
+        ],
+        events: [
+            {
+                content: "Event 5",
+                tags: "Lecture",
+                from: "4:00 AM",
+                to: "5:30 AM"
+            }, 
+        ],
+        media: [
+            "link1", "link2"
+        ]
+    },
+}
+
 /**
  * Changes the date title, removes existing content, populates page with current date's content
  * @param {string} key - The date of the journal
@@ -60,122 +177,6 @@ function populate(key) {
 
     document.getElementsByTagName('h3')[0].innerText = title;
 
-    // Test Events
-    let test_events = {
-        '2021-06-07': {
-            name: "Thursday, May 13th",
-            notepad: "blan blah blah",
-            tasks: [
-                {
-                    content: "Go on a run",
-                    completed: true/false,
-                    tags: ["Other"]
-                },
-            ],
-            events: [
-                {
-                    content: "CSE 110 Lecture",
-                    tags: "Lecture",
-                    from: "4:30 AM",
-                    to: "7:30 AM"
-                }, 
-            ],
-            media: [
-                "link1", "link2",
-            ]
-        },
-
-        '2021-06-08': {
-            name: "Thursday, May 13th",
-            notepad: "blan blah blah",
-            tasks: [
-                {
-                    content: "Go on a run",
-                    completed: true/false,
-                    tags: ["Other"]
-                },
-            ],
-            events: [
-                {
-                    content: "CSE 110 Lecture",
-                    tags: "Lecture",
-                    from: "2:15 PM",
-                    to: "5:37 PM"
-                }, 
-            ],
-            media: [
-                "link1", "link2"
-            ]
-        },
-
-        '2021-06-09': {
-            name: "Thursday, May 13th",
-            notepad: "blan blah blah",
-            tasks: [
-                {
-                    content: "Go on a run",
-                    completed: true/false,
-                    tags: ["Other"]
-                },
-            ],
-            events: [
-                {
-                    content: "CSE 110 Lecture",
-                    tags: "Lecture",
-                    from: "2:05 AM",
-                    to: "3:20 AM"
-                }, 
-            ],
-            media: [
-                "link1", "link2"
-            ]
-        },
-        '2021-06-10': {
-            name: "Thursday, May 13th",
-            notepad: "blan blah blah",
-            tasks: [
-                {
-                    content: "Go on a run",
-                    completed: true/false,
-                    tags: ["Other"]
-                },
-            ],
-            events: [
-                {
-                    content: "CSE 110 Lecture",
-                    tags: "Lecture",
-                    from: "4:00 AM",
-                    to: "11:35 AM"
-                }, 
-            ],
-            media: [
-                "link1", "link2"
-            ]
-        },
-        '2021-06-11': {
-            name: "Thursday, May 13th",
-            notepad: "blan blah blah",
-            tasks: [
-                {
-                    content: "Go on a run",
-                    completed: true/false,
-                    tags: ["Other"]
-                },
-            ],
-            events: [
-                {
-                    content: "CSE 110 Lecture",
-                    tags: "Lecture",
-                    from: "4:00 AM",
-                    to: "5:30 AM"
-                }, 
-            ],
-            media: [
-                "link1", "link2"
-            ]
-        },
-    }
-
     // Sets all dates for each day
     const days = document.getElementsByClassName('date');
     for (let i = 0; i < 7; i += 1) {
@@ -184,13 +185,12 @@ function populate(key) {
         const tempKey = getDaysKey(window.curDate);
         const log = getDaysData(tempKey);
         const allTasks = log.tasks;
-        console.log(tempKey + ", " + test_events[tempKey]);
         window.curDate.setDate(window.curDate.getDate() + 1);
         
         if(test_events[tempKey] == undefined){ 
             continue;
         }
-
+        console.log(tempKey + ", " + test_events[tempKey].name);
         const allEve = test_events[tempKey].events;
         const day = test_events[tempKey].name;
         console.log(allEve);
@@ -214,7 +214,7 @@ function populate(key) {
             
             // Constant attributes
             event_label.style.position = 'absolute';
-            event_label.style.left = 0;
+            event_label.style.left = '0';
             event_label.style.color = 'white';
             event_label.style.display = 'flex';
             event_label.style.flexDirection = 'row';
@@ -224,6 +224,17 @@ function populate(key) {
             event_label.style.backgroundColor = 'lightpink';
             event_label.textContent = allEve[j].content;
             
+            // position: absolute;
+            // top: 140%;
+            // bottom: -70%;
+            // left: 66%;
+            // background-color: lightgreen;
+            // color: white;
+            // display: flex;
+            // flex-direction: row;
+            // justify-content: center;
+            // align-items: center;
+            // width: 33%;
             /*
                 Use start time to calculate 'top'
             */
@@ -233,7 +244,7 @@ function populate(key) {
             } else {
                 top = parseFloat(top) + 120;
                 top += '%';
-                event_label.style.top = top;
+                event_label.style.top = 'top';
             }
 
             /* 
@@ -259,6 +270,7 @@ function populate(key) {
             const id = 'cal-' + day.slice(0, 3).toLowerCase();
             console.log(`id=${id}`);
             // document.getElementById(id).appendChild(event_label);
+            console.log(`event_label=${event_label}`);
             console.log(`element = ${document.getElementById(id)}`);
         }
 
