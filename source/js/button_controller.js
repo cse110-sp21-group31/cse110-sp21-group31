@@ -71,6 +71,7 @@ if (tagSelectorDOM !== null) {
         let closeSideBar = true;
         let openTagWindow = true;
         let closeTagWindow = true;
+        let closeClock = true;
 
         for (let i = 0; i < elements.length; i += 1) {
             const eleClass = elements[i].getAttribute('class');
@@ -95,6 +96,11 @@ if (tagSelectorDOM !== null) {
             // or the opensidebar button, dont close side bar
             if (eleId === 'mySidebar' || eleClass === 'openbtn')
                 closeSideBar = false;
+
+            // if you clicked inside the clock
+            // then you shouldn't close it
+            if (eleId === 'popup-clock' || eleId === 'clock-img')
+                closeClock = false;
         }
 
         if (closeTagWindow && tagSelectorDOM.style.height !== '') {
@@ -107,6 +113,12 @@ if (tagSelectorDOM !== null) {
             document.getElementById('mySidebar').style.width !== '0px'
         )
             document.querySelector('.closebtn').onclick(event);
+
+        if (closeClock) {
+            const clockDOM = document.getElementById('popup-clock');
+            if (clockDOM.style.display !== 'none')
+                clockDOM.style.display = 'none';
+        }
     });
 
     const addTagDOM = document.getElementById('add-tag-option');
