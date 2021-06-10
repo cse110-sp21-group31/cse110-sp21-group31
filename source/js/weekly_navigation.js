@@ -24,19 +24,9 @@ const sideBar = document.querySelector('#mySideBar ul');
 /** TODO:
  * Removes the current content from the weekly log 
  */
-// function removeAll() {
-//     const taskChildren = taskArea.childNodes;
-//     const taskLength = taskChildren.length;
-//     for (let i = 0; i < taskLength; i += 1) {
-//         taskArea.removeChild(taskArea.lastChild);
-//     }
-// 
-//     const eveChildren = eventArea.childNodes;
-//     const eveLength = eveChildren.length;
-//     for (let i = 0; i < eveLength; i += 1) {
-//         eventArea.removeChild(eventArea.lastChild);
-//     }
-// }
+function removeAll() {
+    
+}
 
 // this function is here just as a reference
 // so i can use it in populate()
@@ -183,7 +173,6 @@ function populate(key) {
         // loop through every log
         const tempKey = getDaysKey(window.curDate);
         const log = getDaysData(tempKey);
-        const allTasks = log.tasks;
         console.log(tempKey + ", " + test_events[tempKey]);
         window.curDate.setDate(window.curDate.getDate() + 1);
         
@@ -194,6 +183,13 @@ function populate(key) {
         const allEve = test_events[tempKey].events;
         const day = test_events[tempKey].name;
         console.log(allEve);
+
+        const allTasks = log.tasks;
+        const taskDay = day.slice(0,3).toLowerCase();
+        const taskID = ['cal', 'task', taskDay].join('-');
+        const taskBox = document.getElementById(taskID);
+
+        // removeAll(taskBox);
 
         for(let j = 0; j < allEve.length; j += 1 ){
             const event_label = document.createElement('label');
@@ -261,6 +257,9 @@ function populate(key) {
             // document.getElementById(id).appendChild(event_label);
             console.log(`element = ${document.getElementById(id)}`);
         }
+
+        // setting all tasks
+        setTasks(allTasks, taskBox);
 
         // eslint-disable-next-line prefer-destructuring
         days[i].innerText = getName(tempKey).split(',')[1];
