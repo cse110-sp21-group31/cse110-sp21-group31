@@ -545,6 +545,12 @@
     flex-direction: column;
     height: 100%;
     overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#log-tasks-area::-webkit-scrollbar {
+    display: none;
 }
 
 #log-events-area {
@@ -553,6 +559,12 @@
     height: 100%;
     overflow-y: auto;
     border-top: 1px solid black;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#log-events-area::-webkit-scrollbar {
+    display: none;
 }
 
 #middle-item-notes {
