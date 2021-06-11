@@ -50,6 +50,14 @@ body::-webkit-scrollbar {
     text-align: center;
 }
 
+#header-item-logo {
+    grid-column: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
 /* Middle Section */
 
 .item-middle {
@@ -588,6 +596,12 @@ body::-webkit-scrollbar {
     flex-direction: column;
     height: 100%;
     overflow-y: auto;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#log-tasks-area::-webkit-scrollbar {
+    display: none;
 }
 
 #log-events-area {
@@ -596,6 +610,12 @@ body::-webkit-scrollbar {
     height: 100%;
     overflow-y: auto;
     border-top: 1px solid black;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#log-events-area::-webkit-scrollbar {
+    display: none;
 }
 
 #middle-item-notes {
@@ -607,6 +627,13 @@ body::-webkit-scrollbar {
     border: 1px solid black;
     border-radius: 25px;
     margin-left: 5px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#middle-item-notes::-webkit-scrollbar {
+    display: none;
 }
 
 #notes-title {
@@ -622,6 +649,13 @@ body::-webkit-scrollbar {
     grid-row: 2 / 3;
     font-family: 'Sen', 'sans-serif';
     padding: 15px;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#notes-text-area::-webkit-scrollbar {
+    display: none;
 }
 
 #notes-text-area:empty:before {
@@ -709,12 +743,6 @@ select {
 
 #clock-tags-upload-area {
     grid-column: 3 / 4;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-
-#clock-tags-upload-area {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -724,11 +752,13 @@ select {
 
 #clock-form {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     flex: 1;
-    flex-grow: 1;
-    justify-content: center;
-    align-items: center;
+    /* flex-shrink: 1; */
+    height: 100%;
+    width: 100%;
+    /* justify-content: center; */
+    /* align-items: center; */
 }
 
 #clock-img {
@@ -736,22 +766,27 @@ select {
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 0 0 0 5%;
 }
 
 #tags-selector {
     display: flex;
     flex-direction: row;
-    flex: 1;
-    flex-grow: 1;
+    width: 100%;
+    height: 100%;
     justify-content: center;
     align-items: center;
-    margin: 0px 5px 0px 5px;
+    position: relative;
 }
 
 #tag-selection {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    bottom: 1.5%;
-    right: 4.5%;
+    top: auto;
+    bottom: 25%;
 }
 
 .all-tags {
@@ -759,9 +794,13 @@ select {
 }
 
 #tags-selector input {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     position: absolute;
-    right: 4.5%;
-    bottom: 1.5%;
+    top: auto;
+    bottom: 25%;
     height: 30px;
     width: 125px;
 }
@@ -770,9 +809,10 @@ select {
     display: flex;
     flex-direction: row;
     flex: 1;
-    flex-grow: 1;
+    width: 100%;
     justify-content: center;
     align-self: center;
+    margin: 0 5% 0 0;
 }
 
 /* Other Components */
@@ -982,39 +1022,64 @@ task-log:hover {
     font-family: 'Roboto', 'sans-serif';
 }
 
+/* Color for Events*/
+
 .UCSD-tag {
     background-color: rgb(161, 183, 122);
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
 }
 
 .lecture-tag {
     background-color: salmon;
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
 }
 
 .other-tag {
     background-color: violet;
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
 }
 
-/* Color Tags */
 .red-tag {
     background-color: rgb(166, 39, 0);
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
 }
 
 .blue-tag {
     background-color: rgb(64, 129, 183);
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
 }
 
 .green-tag {
     background-color: rgb(82, 173, 124);
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
 }
 
 .orange-tag {
     background-color: rgb(244, 135, 45);
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
 }
 
 .violet-tag {
     background-color: rgb(218, 189, 246);
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
 }
 
 .pink-tag {
     background-color: rgb(255, 163, 163);
+    color: white;
+    font-family: 'Roboto', 'sans-serif';
+}
+
+.no-tag {
+    background-color: lightgray;
+    color: black;
+    font-family: 'Roboto', 'sans-serif';
 }
