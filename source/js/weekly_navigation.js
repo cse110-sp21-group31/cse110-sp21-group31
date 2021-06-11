@@ -1,4 +1,4 @@
-import { getDaysData } from './storage.js';
+import { getCustomTagColor, getDaysData } from './storage.js';
 import { getDaysKey, getWeek, getName } from './date.js';
 
 /* date variables */
@@ -150,8 +150,9 @@ function populateW(keyT) {
 
             // apply tag styling
             let tagsClass = 'no-tag';
-            if (allEve[j].tags.length > 0)
-                tagsClass = `${allEve[j].tags[0]}-tag`;
+            if (allEve[j].tags.length > 0) {
+                tagsClass = `${getCustomTagColor(allEve[j].tags[0])}-tag`;
+            }
             eventLabel.setAttribute('class', tagsClass);
 
             /*
