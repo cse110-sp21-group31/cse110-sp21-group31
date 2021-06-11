@@ -24,6 +24,8 @@
 
 [Team Status Video](admin/videos/statusvideo1.mp4)
 
+All standups are in the #standups channel on Slack.
+
 ## Design Documents
 
 ### Figma
