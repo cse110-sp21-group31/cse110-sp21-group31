@@ -1,4 +1,4 @@
-import { getDaysData } from './storage.js';
+import { getCustomTagColor, getDaysData } from './storage.js';
 import { getDaysKey, getWeek, getName } from './date.js';
 
 /* date variables */
@@ -51,9 +51,10 @@ function goToDailyLog(key) {
 
 function setTasks(allTasks, taskBox) {
     allTasks.forEach((task) => {
-        taskBox.append(['—', task.content].join(' '));
-        const br = document.createElement('br');
-        taskBox.append(br);
+        const newTask = document.createElement('div');
+        newTask.classList.add('weekly-task-container');
+        newTask.innerText = ['—', task.content].join(' ');
+        taskBox.append(newTask);
     });
 }
 
@@ -123,7 +124,8 @@ function populateW(keyT) {
             // Get start and end times (hours and minutes) of event
             const startTime = allEve[j].from;
             const endTime = allEve[j].to;
-
+            // eslint-disable-next-line no-continue
+            if (startTime === '' || endTime === '') continue;
             const startTimeHr = startTime.slice(0, startTime.indexOf(':'));
             const startTimeMinutes = startTime.substr(
                 startTime.indexOf(':') + 1,
@@ -139,15 +141,21 @@ function populateW(keyT) {
             // Constant attributes
             eventLabel.style.position = 'absolute';
             eventLabel.style.left = 0;
-            eventLabel.style.color = 'white';
+
             eventLabel.style.display = 'flex';
             eventLabel.style.flexDirection = 'row';
             eventLabel.style.width = '100%';
             eventLabel.style.justifyContent = 'center';
             eventLabel.style.alignItems = 'center';
-            eventLabel.style.backgroundColor = 'lightpink';
             eventLabel.textContent = allEve[j].content;
             eventLabel.style.border = '1px solid black';
+
+            // apply tag styling
+            let tagsClass = 'no-tag';
+            if (allEve[j].tags.length > 0) {
+                tagsClass = `${getCustomTagColor(allEve[j].tags[0])}-tag`;
+            }
+            eventLabel.setAttribute('class', tagsClass);
 
             /*
                 Use start time to calculate 'top'
