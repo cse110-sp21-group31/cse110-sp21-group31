@@ -1,5 +1,7 @@
 # CSE 110 Spring 2021 Group 31
 
+![Team 31 Logo](admin/branding/real_logo.png)
+
 ## Here we will track the progress of our project
 
 [Team Page](admin/team.md)
