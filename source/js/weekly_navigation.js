@@ -1,5 +1,6 @@
 import { getCustomTagColor, getDaysData } from './storage.js';
 import { getDaysKey, getWeek, getName } from './date.js';
+import getEventWidths from './components/sortEvents.js';
 
 /* date variables */
 window.curDate = new Date();
@@ -88,8 +89,18 @@ function populateW(keyT) {
         const tempKey = getDaysKey(window.curDate);
         const log = getDaysData(tempKey);
         const allTasks = log.tasks;
-        const allEve = log.events;
+
         const day = log.name;
+
+        // get only the events with a from and to time in allEve
+        const tempEve = [];
+        for (let j = 0; j < log.events.length; j += 1)
+            if (log.events[j].from !== '' && log.events[j].to !== '')
+                tempEve.push(log.events[j]);
+        const allEve = tempEve;
+
+        // get the widths and left percentage
+        const eveWidths = getEventWidths(allEve);
 
         window.curDate.setDate(window.curDate.getDate() + 1);
 
@@ -124,8 +135,7 @@ function populateW(keyT) {
             // Get start and end times (hours and minutes) of event
             const startTime = allEve[j].from;
             const endTime = allEve[j].to;
-            // eslint-disable-next-line no-continue
-            if (startTime === '' || endTime === '') continue;
+
             const startTimeHr = startTime.slice(0, startTime.indexOf(':'));
             const startTimeMinutes = startTime.substr(
                 startTime.indexOf(':') + 1,
@@ -140,15 +150,17 @@ function populateW(keyT) {
 
             // Constant attributes
             eventLabel.style.position = 'absolute';
-            eventLabel.style.left = 0;
-
             eventLabel.style.display = 'flex';
             eventLabel.style.flexDirection = 'row';
-            eventLabel.style.width = '100%';
             eventLabel.style.justifyContent = 'center';
             eventLabel.style.alignItems = 'center';
             eventLabel.textContent = allEve[j].content;
             eventLabel.style.border = '1px solid black';
+            eventLabel.style.wordBreak = 'break-word';
+
+            // set the widths and left percentages
+            eventLabel.style.left = `${eveWidths[j].left}%`;
+            eventLabel.style.width = `${eveWidths[j].width}%`;
 
             // apply tag styling
             let tagsClass = 'no-tag';
