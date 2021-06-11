@@ -155,7 +155,6 @@ function populateW(keyT) {
             eventLabel.style.justifyContent = 'center';
             eventLabel.style.alignItems = 'center';
             eventLabel.textContent = allEve[j].content;
-            eventLabel.style.border = '1px solid black';
             eventLabel.style.wordBreak = 'break-word';
 
             // set the widths and left percentages
