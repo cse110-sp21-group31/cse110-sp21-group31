@@ -140,25 +140,25 @@ function test(run = false) {
     if (!run) return;
     const events = [
         {
-            from: '5:00 AM',
-            to: '10:00 AM',
+            from: '1:44 AM',
+            to: '6:44 AM',
         },
         {
-            from: '6:00 AM',
-            to: '9:00 AM',
+            from: '1:44 AM',
+            to: '6:44 AM',
         },
         {
-            from: '7:00 AM',
-            to: '11:00 AM',
+            from: '1:44 AM',
+            to: '6:44 AM',
         },
         {
-            from: '10:00 AM',
-            to: '12:00 PM',
+            from: '1:44 AM',
+            to: '6:44 AM',
         },
     ];
-    getEventWidths(events);
+    console.log(getEventWidths(events));
 }
 
-test();
+test(true);
 
-export default getEventWidths;
+//export default getEventWidths;
