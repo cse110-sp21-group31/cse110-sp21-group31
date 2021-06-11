@@ -123,7 +123,7 @@ function populateW(keyT) {
             // Get start and end times (hours and minutes) of event
             const startTime = allEve[j].from;
             const endTime = allEve[j].to;
-
+            if (startTime === '' || endTime === '') continue;
             const startTimeHr = startTime.slice(0, startTime.indexOf(':'));
             const startTimeMinutes = startTime.substr(
                 startTime.indexOf(':') + 1,
