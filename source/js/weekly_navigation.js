@@ -139,15 +139,20 @@ function populateW(keyT) {
             // Constant attributes
             eventLabel.style.position = 'absolute';
             eventLabel.style.left = 0;
-            eventLabel.style.color = 'white';
+
             eventLabel.style.display = 'flex';
             eventLabel.style.flexDirection = 'row';
             eventLabel.style.width = '100%';
             eventLabel.style.justifyContent = 'center';
             eventLabel.style.alignItems = 'center';
-            eventLabel.style.backgroundColor = 'lightpink';
             eventLabel.textContent = allEve[j].content;
             eventLabel.style.border = '1px solid black';
+
+            // apply tag styling
+            let tagsClass = 'no-tag';
+            if (allEve[j].tags.length > 0)
+                tagsClass = `${allEve[j].tags[0]}-tag`;
+            eventLabel.setAttribute('class', tagsClass);
 
             /*
                 Use start time to calculate 'top'
