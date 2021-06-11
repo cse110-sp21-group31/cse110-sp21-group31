@@ -205,4 +205,4 @@ function test(run = false) {
 
 test(false);
 
-export default getEventWidths;
+export { getEventWidths, minutesSinceMidnight };
