@@ -139,17 +139,17 @@ function populateW(keyT) {
             const startTime = allEve[j].from;
             const endTime = allEve[j].to;
 
-            const startTimeHr = startTime.slice(0, startTime.indexOf(':'));
-            const startTimeMinutes = startTime.substr(
-                startTime.indexOf(':') + 1,
-                3
-            );
+            // const startTimeHr = startTime.slice(0, startTime.indexOf(':'));
+            // const startTimeMinutes = startTime.substr(
+            //     startTime.indexOf(':') + 1,
+            //     3
+            // );
 
-            const endTimeHr = endTime.slice(0, endTime.indexOf(':'));
-            const endTimeMinutes = endTime.substr(endTime.indexOf(':') + 1, 3);
+            // const endTimeHr = endTime.slice(0, endTime.indexOf(':'));
+            // const endTimeMinutes = endTime.substr(endTime.indexOf(':') + 1, 3);
 
-            const startTimeAMPM = startTime.slice(-2);
-            const endTimeAMPM = endTime.slice(-2);
+            // const startTimeAMPM = startTime.slice(-2);
+            // const endTimeAMPM = endTime.slice(-2);
 
             // Constant attributes
             eventLabel.style.position = 'absolute';
