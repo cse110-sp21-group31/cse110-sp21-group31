@@ -564,6 +564,13 @@
     border: 1px solid black;
     border-radius: 25px;
     margin-left: 5px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#middle-item-notes::-webkit-scrollbar {
+    display: none;
 }
 
 #notes-title {
@@ -579,6 +586,13 @@
     grid-row: 2 / 3;
     font-family: 'Sen', 'sans-serif';
     padding: 15px;
+    overflow: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#notes-text-area::-webkit-scrollbar {
+    display: none;
 }
 
 #notes-text-area:empty:before {
