@@ -51,9 +51,10 @@ function goToDailyLog(key) {
 
 function setTasks(allTasks, taskBox) {
     allTasks.forEach((task) => {
-        taskBox.append(['—', task.content].join(' '));
-        const br = document.createElement('br');
-        taskBox.append(br);
+        const newTask = document.createElement('div');
+        newTask.classList.add('weekly-task-container');
+        newTask.innerText = ['—', task.content].join(' ');
+        taskBox.append(newTask);
     });
 }
 

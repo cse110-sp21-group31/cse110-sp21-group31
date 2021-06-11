@@ -7,6 +7,15 @@
     grid-gap: 5px;
 }
 
+body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+body::-webkit-scrollbar {
+    display: none;
+}
+
 .container-weekly {
     width: 100%;
     height: 100%;
@@ -60,6 +69,7 @@
     display: grid;
     grid-template-rows: 7% auto;
     grid-gap: 5px;
+    overflow-y: hidden;
 }
 
 .middle-item-bar {
@@ -94,6 +104,7 @@
     grid-column: span 3;
     display: grid;
     grid-template-columns: 4% auto;
+    overflow-y: hidden;
 }
 
 #side-label-column {
@@ -128,6 +139,13 @@
     height: 100%;
     display: grid;
     grid-template-rows: 1fr 6fr 2fr;
+    overflow-y: hidden;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+#calendar::-webkit-scrollbar {
+    display: none;
 }
 
 #calendar-time-column {
@@ -184,6 +202,13 @@
     display: grid;
     grid-template-columns: 0.2fr repeat(7, 1fr);
     background-color: lightyellow;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    overflow: hidden;
+}
+
+#calender-tasks-row::-webkit-scrollbar {
+    display: none;
 }
 
 /* 
@@ -468,11 +493,11 @@
     Tasks in Calendar Task row 
 */
 #cal-task-sun {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
     font-family: 'Roboto', 'sans-serif';
-    padding: 10px;
-    line-height: 130%;
-    width: 206px;
-    height: 105px;
     overflow-y: scroll;
     word-wrap: break-word;
     border-right: 1px solid black;
@@ -485,6 +510,12 @@
 
 #cal-task-sun::-webkit-scrollbar {
     display: none;
+}
+
+.weekly-task-container {
+    text-align: left;
+    margin: 5% 0 0 3%;
+    width: 100%;
 }
 
 #cal-task-mon {
