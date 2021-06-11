@@ -621,7 +621,7 @@
     scrollbar-width: none;  /* Firefox */
 }
 
-#media-text-area:::-webkit-scrollbar {
+#media-text-area::-webkit-scrollbar {
     display: none;
 }
 
