@@ -10,6 +10,8 @@
 
 [Public Video](https://youtu.be/lRs0KPIfwW8)
 
+[Private Video](https://youtu.be/En6fajC2ynk)
+
 ## Web Application Links
 
 [Daily Log](https://cse110-sp21-group31.netlify.app/daily_log)
