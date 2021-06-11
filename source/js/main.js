@@ -29,7 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // if the url contians ?day=2021-06-02 (came from weekly log button click)
     if (indexQ !== -1) key = url.slice(indexQ + searchStr.length);
     // if the url contains #2021-06-02 (came from weekly log pressing browser for/back)
-    else if (indexH !== -1) key = url.slice(indexH + 1);
+    else if (indexH !== -1 && indexH + 1 !== url.length)
+        key = url.slice(indexH + 1);
     // otherwise go to curDate
     else key = getDaysKey(window.curDate);
 
@@ -61,6 +62,9 @@ document.addEventListener('DOMContentLoaded', () => {
  * Saves notepad content to localStorage when pressing the navigation button
  * @listens sidebarButton#onkeyup
  */
- document.getElementById('notes-text-area').onkeyup = () => {
-    updateNotepad(getDaysKey(window.curDate), document.getElementById('notes-text-area').innerText);
-}
+document.getElementById('notes-text-area').onkeyup = () => {
+    updateNotepad(
+        getDaysKey(window.curDate),
+        document.getElementById('notes-text-area').innerText
+    );
+};
