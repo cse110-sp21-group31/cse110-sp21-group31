@@ -41,6 +41,14 @@
     text-align: center;
 }
 
+#header-item-logo {
+    grid-column: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
 /* Middle Section */
 
 .item-middle {
