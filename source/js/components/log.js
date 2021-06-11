@@ -29,6 +29,7 @@ class Log extends HTMLElement {
                 padding: 5px 5px 5px 5px;
                 box-shadow: 0px 1px 1px;
                 margin: 0 5px 0 5px;
+                color: white;
             }
             
             /* Starting Tag Classes */
@@ -46,11 +47,11 @@ class Log extends HTMLElement {
             
             /* Color Tags */
             .red-tag {
-                background-color: rgb(166, 39, 0);
+                background-color: rgb(201, 86, 51);
             }
             
             .blue-tag {
-                background-color: rgb(64, 129, 183);
+                background-color: rgb(113, 170, 216);
             }
             
             .green-tag {
