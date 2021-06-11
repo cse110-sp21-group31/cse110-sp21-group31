@@ -174,7 +174,7 @@ function getEventWidths(eventArr) {
 
             // debug statements for testing
             if (count === numInt) {
-                console.log('nowhere to put event without intersection');
+                //console.log('nowhere to put event without intersection');
                 count = 0;
             }
 
