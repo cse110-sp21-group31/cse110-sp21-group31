@@ -17,9 +17,9 @@ function minutesSinceMidnight(time) {
 
 /**
  * helper function for Array.sort()
- * @param {point obj} a
- * @param {point obj} b
- * @returns
+ * @param {Object} a a point obj
+ * @param {Object} b a point obj
+ * @returns Integer <0 if a < b
  */
 function sortPoints(a, b) {
     if (a.val === b.val) return a.from ? 1 : -1;
@@ -28,8 +28,8 @@ function sortPoints(a, b) {
 
 /**
  * returns if events a and b intercept
- * @param {event obj} a
- * @param {event obj} b
+ * @param {Object} a an event obj
+ * @param {Object} b an event obj
  */
 function eventsIntercept(a, b) {
     if (a.to <= b.from) return false;
@@ -38,8 +38,8 @@ function eventsIntercept(a, b) {
 }
 /**
  * returns if rects a and b intercept
- * @param {rect obj} a
- * @param {rect obj} b
+ * @param {Object} a a rect obj
+ * @param {Object} b a rect obj
  */
 function rectsIntercept(a, b) {
     if (!eventsIntercept(a, b)) return false;
@@ -50,7 +50,7 @@ function rectsIntercept(a, b) {
 
 /**
  *
- * @param {array} - event objects eventArr
+ * @param {Array} - event objects eventArr
  * @return array of integers that represent width
  */
 function getEventWidths(eventArr) {
@@ -174,7 +174,7 @@ function getEventWidths(eventArr) {
 
             // debug statements for testing
             if (count === numInt) {
-                //console.log('nowhere to put event without intersection');
+                // console.log('nowhere to put event without intersection');
                 count = 0;
             }
 
@@ -200,7 +200,7 @@ function test(run = false) {
             to: '6:44 AM',
         },
     ];
-    console.log(getEventWidths(events));
+    getEventWidths(events);
 }
 
 test(false);
