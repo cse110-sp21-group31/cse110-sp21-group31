@@ -31,7 +31,8 @@ body::-webkit-scrollbar {
     width: 100%;
     display: grid;
     grid-template-columns: 6% auto 6%;
-    background-color: lightblue;
+    /* background-color: lightblue; */
+    background-color: #c9edfb;
 }
 
 #header-item-img {
@@ -86,7 +87,8 @@ body::-webkit-scrollbar {
     height: 100%;
     display: flex;
     flex-direction: row;
-    background-color: lightblue;
+    /* background-color: lightblue; */
+    background-color: #ffe4e1;
 }
 
 #left-arrow {
@@ -119,7 +121,7 @@ body::-webkit-scrollbar {
     grid-column: 1 / 2;
     height: 100%;
 
-    background-color: lightblue;
+    background-color: #c9edfb;;
 
     display: grid;
     grid-template-rows: 1fr 6fr 2fr;
@@ -174,10 +176,12 @@ body::-webkit-scrollbar {
     grid-column: 1 / 2;
     display: flex;
     flex-direction: column;
+    
 }
 
 #calendar-task-dummy {
-    background-color: white;
+    background-color: rgb(242, 243, 244);
+    border-right: 1px solid black;
 }
 
 .calendar-dummy-div2 {
@@ -395,9 +399,6 @@ body::-webkit-scrollbar {
     position: relative;
     width: 100%;
     height: 100%;
-
-    /* background-color: teal;
-    top: 50%; */
 }
 
 #cal-thu {
@@ -425,9 +426,6 @@ body::-webkit-scrollbar {
     position: relative;
     width: 100%;
     height: 100%;
-
-    /* background-color: teal;
-    top: 50%; */
 }
 
 #cal-fri {
@@ -455,9 +453,6 @@ body::-webkit-scrollbar {
     position: relative;
     width: 100%;
     height: 100%;
-
-    /* background-color: teal;
-    top: 50%; */
 }
 
 #cal-sat {
@@ -484,9 +479,6 @@ body::-webkit-scrollbar {
     position: relative;
     width: 100%;
     height: 100%;
-
-    /* background-color: teal;
-    top: 50%; */
 }
 
 .hour {
@@ -500,10 +492,15 @@ body::-webkit-scrollbar {
 /* 
     Tasks in Calendar Task row 
 */
+.weekly-task-container {
+    text-align: left;
+    margin: 5% 0 0 3%;
+    width: 100%;
+}
+
 #cal-task-sun {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
     font-family: 'Roboto', 'sans-serif';
     overflow-y: scroll;
@@ -520,52 +517,88 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.weekly-task-container {
-    text-align: left;
-    margin: 5% 0 0 3%;
-    width: 100%;
+#cal-task-mon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Roboto', 'sans-serif';
+    overflow-y: scroll;
+    word-wrap: break-word;
+    border-right: 1px solid black;
 }
 
-#cal-task-mon {
-    border-right: 1px solid black;
-    font-family: 'Roboto', 'sans-serif';
-    padding: 10px;
-    line-height: 130%;
+#cal-task-mon::-webkit-scrollbar {
+    display: none;
 }
 
 #cal-task-tue {
-    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Roboto', 'sans-serif';
-    padding: 10px;
-    line-height: 130%;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    border-right: 1px solid black;
+}
+
+#cal-task-tue::-webkit-scrollbar {
+    display: none;
 }
 
 #cal-task-wed {
-    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Roboto', 'sans-serif';
-    padding: 10px;
-    line-height: 130%;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    border-right: 1px solid black;
+}
+
+#cal-task-wed::-webkit-scrollbar {
+    display: none;
 }
 
 #cal-task-thu {
-    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Roboto', 'sans-serif';
-    padding: 10px;
-    line-height: 130%;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    border-right: 1px solid black;
+}
+
+#cal-task-thu::-webkit-scrollbar {
+    display: none;
 }
 
 #cal-task-fri {
-    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Roboto', 'sans-serif';
-    padding: 10px;
-    line-height: 130%;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    border-right: 1px solid black;
+}
+
+#cal-task-fri::-webkit-scrollbar {
+    display: none;
 }
 
 #cal-task-sat {
-    border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-family: 'Roboto', 'sans-serif';
-    padding: 10px;
-    line-height: 130%;
+    overflow-y: scroll;
+    word-wrap: break-word;
+    border-right: 1px solid black;
+}
+
+#cal-task-sat::-webkit-scrollbar {
+    display: none;
 }
 
 #middle-item-log {
@@ -573,8 +606,11 @@ body::-webkit-scrollbar {
     grid-row-start: 2;
     display: grid;
     grid-template-rows: 10% auto;
-    background-color: lightblue;
-    border: 1px solid black;
+    /* background-color: lightblue; */
+    /* background-color: #7feefe; */
+    /* background-color: #85eaea; */
+    background-color: #c9edfb;
+    /* border: 1px solid black; */
     border-radius: 25px;
     overflow: hidden;
 }
@@ -587,7 +623,7 @@ body::-webkit-scrollbar {
     grid-row: 2 / 3;
     display: grid;
     grid-template-rows: 1fr 1fr;
-    border-top: 1px solid black;
+    border-top: 1px solid #9dccdd;
     overflow-y: hidden;
 }
 
@@ -609,7 +645,7 @@ body::-webkit-scrollbar {
     flex-direction: column;
     height: 100%;
     overflow-y: auto;
-    border-top: 1px solid black;
+    border-top: 1px solid #9dccdd;
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
@@ -623,8 +659,8 @@ body::-webkit-scrollbar {
     grid-row-start: 2;
     display: grid;
     grid-template-rows: 10% auto;
-    background-color: lightyellow;
-    border: 1px solid black;
+    /* background-color: lightyellow; */
+    background-color: #fffec5;
     border-radius: 25px;
     margin-left: 5px;
     overflow-y: scroll;
@@ -638,7 +674,7 @@ body::-webkit-scrollbar {
 
 #notes-title {
     grid-row: 1 / 2;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid #d8d7a8;
 }
 
 [contenteditable] {
@@ -669,7 +705,10 @@ body::-webkit-scrollbar {
     display: grid;
     grid-template-rows: 10% auto;
     background-color: rgb(178, 228, 189);
-    border: 1px solid black;
+    /* background-color: #eddbf0; */
+    /* background-color: #5ef38c; */
+    /* background-color: #7aff95; */
+    /* border: 1px solid black; */
     border-radius: 25px;
     margin-right: 5px;
     overflow: hidden;
@@ -677,7 +716,7 @@ body::-webkit-scrollbar {
 
 #media-title {
     grid-row: 1 / 2;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid rgb(154, 192, 163);
 }
 
 #media-text-area {
@@ -686,6 +725,12 @@ body::-webkit-scrollbar {
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#media-text-area::-webkit-scrollbar {
+    display: none;
 }
 
 .media-item {
@@ -704,7 +749,8 @@ body::-webkit-scrollbar {
     grid-row: 3 / 4;
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
-    background-color: lightpink;
+    /* background-color: lightpink; */
+    background-color: #ffe4e1;
 }
 
 #task-event-selector-area {
@@ -912,7 +958,7 @@ task-log {
 
 event-log:hover,
 task-log:hover {
-    background-color: rgb(157, 207, 223);
+    background-color: #aad8eb;
     overflow: hidden;
 }
 /*
@@ -930,19 +976,27 @@ task-log:hover {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: aqua;
-    box-shadow: 3px 0 30px;
+    background-color: rgba(131, 128, 128, 0.575);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 60px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 .sidebar p {
-    padding: 8px 8px 8px 32px;
+    text-align: center;
+    /* padding: 8px 8px 8px 32px; */
     text-decoration: none;
     font-family: 'Sen', 'sans-serif';
     font-size: 35px;
-    color: #000000;
+    color: white;
     display: block;
     transition: 0.3s;
 }
@@ -952,13 +1006,13 @@ task-log:hover {
     text-decoration: none;
     font-family: 'Sen', 'sans-serif';
     font-size: 18px;
-    color: #000000;
+    color: white;
     display: block;
     transition: 0.3s;
 }
 
 .sidebar a:hover {
-    color: #f1f1f1;
+    color: black;
 }
 
 .sidebar .closebtn {

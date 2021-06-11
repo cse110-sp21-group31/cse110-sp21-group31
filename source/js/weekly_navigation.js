@@ -1,5 +1,9 @@
 import { getCustomTagColor, getDaysData } from './storage.js';
 import { getDaysKey, getWeek, getName } from './date.js';
+import {
+    getEventWidths,
+    minutesSinceMidnight,
+} from './components/sortEvents.js';
 
 /* date variables */
 window.curDate = new Date();
@@ -88,8 +92,18 @@ function populateW(keyT) {
         const tempKey = getDaysKey(window.curDate);
         const log = getDaysData(tempKey);
         const allTasks = log.tasks;
-        const allEve = log.events;
+
         const day = log.name;
+
+        // get only the events with a from and to time in allEve
+        const tempEve = [];
+        for (let j = 0; j < log.events.length; j += 1)
+            if (log.events[j].from !== '' && log.events[j].to !== '')
+                tempEve.push(log.events[j]);
+        const allEve = tempEve;
+
+        // get the widths and left percentage
+        const eveWidths = getEventWidths(allEve);
 
         window.curDate.setDate(window.curDate.getDate() + 1);
 
@@ -124,31 +138,31 @@ function populateW(keyT) {
             // Get start and end times (hours and minutes) of event
             const startTime = allEve[j].from;
             const endTime = allEve[j].to;
-            // eslint-disable-next-line no-continue
-            if (startTime === '' || endTime === '') continue;
-            const startTimeHr = startTime.slice(0, startTime.indexOf(':'));
-            const startTimeMinutes = startTime.substr(
-                startTime.indexOf(':') + 1,
-                3
-            );
 
-            const endTimeHr = endTime.slice(0, endTime.indexOf(':'));
-            const endTimeMinutes = endTime.substr(endTime.indexOf(':') + 1, 3);
+            // const startTimeHr = startTime.slice(0, startTime.indexOf(':'));
+            // const startTimeMinutes = startTime.substr(
+            //     startTime.indexOf(':') + 1,
+            //     3
+            // );
 
-            const startTimeAMPM = startTime.slice(-2);
-            const endTimeAMPM = endTime.slice(-2);
+            // const endTimeHr = endTime.slice(0, endTime.indexOf(':'));
+            // const endTimeMinutes = endTime.substr(endTime.indexOf(':') + 1, 3);
+
+            // const startTimeAMPM = startTime.slice(-2);
+            // const endTimeAMPM = endTime.slice(-2);
 
             // Constant attributes
             eventLabel.style.position = 'absolute';
-            eventLabel.style.left = 0;
-
             eventLabel.style.display = 'flex';
             eventLabel.style.flexDirection = 'row';
-            eventLabel.style.width = '100%';
             eventLabel.style.justifyContent = 'center';
             eventLabel.style.alignItems = 'center';
             eventLabel.textContent = allEve[j].content;
-            eventLabel.style.border = '1px solid black';
+            eventLabel.style.wordBreak = 'break-word';
+
+            // set the widths and left percentages
+            eventLabel.style.left = `${eveWidths[j].left}%`;
+            eventLabel.style.width = `${eveWidths[j].width}%`;
 
             // apply tag styling
             let tagsClass = 'no-tag';
@@ -157,52 +171,11 @@ function populateW(keyT) {
             }
             eventLabel.setAttribute('class', tagsClass);
 
-            /*
-                Use start time to calculate 'top'
-            */
-            let top = startTimeHr + 10 * (startTimeMinutes / 60);
-
-            // If 12 AM
-            if (startTimeHr === '12' && startTimeAMPM === 'AM') {
-                top = 10 * (startTimeMinutes / 60);
-                top += '%';
-                eventLabel.style.top = top;
-            } else if (startTimeAMPM === 'AM') {
-                top += '%';
-                eventLabel.style.top = top;
-            } else if (startTimeHr === '12' && startTimeAMPM === 'PM') {
-                top = 120 + 10 * (startTimeMinutes / 60);
-                top += '%';
-                eventLabel.style.top = top;
-            } else if (startTimeAMPM === 'PM') {
-                top = parseFloat(top) + 120;
-                top += '%';
-                eventLabel.style.top = top;
-            }
-
-            /* 
-                Use end time to calculate 'bottom'
-                Note: this depends on whether event ends before or after 10 am
-                less than  10 and AM:
-            */
-            let bottom;
-            if (endTimeHr < 10 && endTimeAMPM === 'AM') {
-                bottom = 10 * (10 - endTimeHr) - 10 * (endTimeMinutes / 60);
-                bottom += '%';
-                eventLabel.style.bottom = bottom;
-            } else if (endTimeHr >= 10 && endTimeAMPM === 'AM') {
-                bottom = ((10 * endTimeHr) % 10) + 10 * (endTimeMinutes / 60);
-                bottom = `-${bottom}%`;
-                eventLabel.style.bottom = bottom;
-            } else if (endTimeHr === 12 && endTimeAMPM === 'PM') {
-                bottom = 20 + 10 * (endTimeMinutes / 60);
-                bottom = `-${bottom}%`;
-                eventLabel.style.bottom = bottom;
-            } else {
-                bottom = 20 + 10 * endTimeHr + 10 * (endTimeMinutes / 60);
-                bottom = `-${bottom}%`;
-                eventLabel.style.bottom = bottom;
-            }
+            // calculate top and bottom percentages
+            eventLabel.style.top = `${minutesSinceMidnight(startTime) / 6}%`;
+            eventLabel.style.bottom = `${
+                (10 * 60 - minutesSinceMidnight(endTime)) / 6
+            }%`;
 
             eventBox.appendChild(eventLabel);
         }
