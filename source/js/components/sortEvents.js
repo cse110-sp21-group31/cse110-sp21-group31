@@ -83,7 +83,7 @@ function getEventWidths(eventArr) {
         lastInd = 0;
         for (let i = 0; i < 2 * n; i += 1) {
             const index = points[i].ind;
-            if (!points[i].from && !vis[index]) {
+            if (points[i].from && !vis[index]) {
                 if (events[index].from >= lastInd) {
                     lastInd = events[index].to;
                     vis[index] = true;
@@ -160,3 +160,5 @@ function test(run = false) {
 }
 
 test();
+
+export default getEventWidths;
