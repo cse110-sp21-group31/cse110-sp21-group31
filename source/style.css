@@ -930,19 +930,27 @@ task-log:hover {
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: aqua;
-    box-shadow: 3px 0 30px;
+    background-color: rgba(0, 0, 0, 0.575);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     overflow-x: hidden;
     transition: 0.3s;
     padding-top: 60px;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.sidebar::-webkit-scrollbar {
+    display: none;
 }
 
 .sidebar p {
-    padding: 8px 8px 8px 32px;
+    text-align: center;
+    /* padding: 8px 8px 8px 32px; */
     text-decoration: none;
     font-family: 'Sen', 'sans-serif';
     font-size: 35px;
-    color: #000000;
+    color: white;
     display: block;
     transition: 0.3s;
 }
@@ -952,13 +960,13 @@ task-log:hover {
     text-decoration: none;
     font-family: 'Sen', 'sans-serif';
     font-size: 18px;
-    color: #000000;
+    color: white;
     display: block;
     transition: 0.3s;
 }
 
 .sidebar a:hover {
-    color: #f1f1f1;
+    color: black;
 }
 
 .sidebar .closebtn {
