@@ -15,8 +15,12 @@ function minutesSinceMidnight(time) {
     return result;
 }
 
-// helper functions
-
+/**
+ * helper function for Array.sort()
+ * @param {point obj} a
+ * @param {point obj} b
+ * @returns
+ */
 function sortPoints(a, b) {
     if (a.val === b.val) return a.from ? 1 : -1;
     return a.val - b.val;
