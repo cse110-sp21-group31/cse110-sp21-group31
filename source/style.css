@@ -686,6 +686,12 @@ body::-webkit-scrollbar {
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#media-text-area::-webkit-scrollbar {
+    display: none;
 }
 
 .media-item {
